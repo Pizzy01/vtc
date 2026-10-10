@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUX-TAXI Genève | Service de Chauffeur Privé 24/7 & Transferts Alpes</title>
+  <meta name="description" content="Chauffeur Privé & VTC Haut de Gamme à Genève (GVA). Transferts aéroport, navettes ski vers Chamonix, Courchevel, Verbier & mise à disposition VIP 24/7. Prix fixes."/>
+  <meta name="keywords" content="Chauffeur privé Genève, VTC Genève, Transfert aéroport Genève, VTC Chamonix, VTC Courchevel, Mercedes S Class Chauffeur, Maybach Genève"/>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <link rel="stylesheet" href="assets/css/vitesse-prestige.css"/>
+
+  <!-- Google Schema.org Structured Data (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TaxiService",
+    "name": "LUX-TAXI GENÈVE",
+    "description": "Service de Chauffeur Privé Haut de Gamme & VTC à Genève et dans les Alpes Suisses.",
+    "url": "https://lux-taxi.com",
+    "telephone": "+41766207850",
+    "email": "contact@lux-taxi.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rte de l'Aéroport 21",
+      "addressLocality": "Genève",
+      "postalCode": "1215",
+      "addressCountry": "CH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "46.2381",
+      "longitude": "6.1090"
+    },
+    "areaServed": ["Genève", "Lausanne", "Chamonix", "Courchevel", "Verbier", "Zermatt"],
+    "priceRange": "$$$$",
+    "openingHours": "Mo-Su 00:00-23:59"
+  }
+  </script>
+
+  <style>
+    .perspective-container { perspective: 1000px; }
+    .tilt-card-3d { transform-style: preserve-3d; transition: transform 0.15s ease-out; }
+    
+    /* Optimized background position for instant Maybach car visibility */
+    .bg-hero-maybach {
+      background-image: url('assets/images/maybach-bg.jpg');
+      background-position: center 38%;
+    }
+
+    .gold-particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #C6A96B;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #C6A96B;
+      opacity: 0.6;
+      animation: floatParticle 10s infinite linear;
+      pointer-events: none;
+    }
+    @keyframes floatParticle {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.7; }
+      80% { opacity: 0.7; }
+      100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="relative bg-cover bg-center bg-no-repeat animate-kenburns bg-[#0B0B0C] text-[#F5F1E8] selection:bg-[#C6A96B] selection:text-black overflow-x-hidden font-sans" style="background-image: url('assets/images/maybach-bg.jpg');">
+
+  <!-- AMBIENT PARTICLES & VIGNETTE LAYER -->
+  <div class="fixed inset-0 pointer-events-none z-10 overflow-hidden">
+    <div class="gold-particle" style="top:70%; left:20%; animation-delay:0s;"></div>
+    <div class="gold-particle" style="top:60%; left:80%; animation-delay:2.5s;"></div>
+    <div class="gold-particle" style="top:80%; left:50%; animation-delay:5s;"></div>
+    <div class="gold-particle" style="top:65%; left:35%; animation-delay:7.5s;"></div>
+  </div>
+  <div class="fixed inset-0 ambient-halo pointer-events-none z-0"></div>
+  <div class="fixed inset-0 hero-vignette pointer-events-none z-0"></div>
+
+  <!-- 1. HEADER (SLIM MINIMALIST WITH LANGUAGE SWITCHER & WHATSAPP) -->
+  <header class="relative z-30 px-4 sm:px-12 py-4 sm:py-7 flex items-center justify-between">
+    
+    <!-- Minimalist Circular Gold LT Seal Emblem -->
+    <a href="index.html" class="flex items-center group">
+      <div class="logo-lt-seal shadow-2xl">
+        <div class="logo-lt-seal-inner">LT</div>
+      </div>
+    </a>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-2.5 sm:gap-4">
+      
+      <!-- Language Switcher Dropdown (FR ▾) -->
+      <div class="lang-dropdown">
+        <button class="glass-luxe-pill px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-mono text-[#F5F1E8] flex items-center gap-1 hover:border-[#C6A96B] transition-all focus:outline-none">
+          <span id="active-lang-code" class="font-bold text-[#C6A96B]">FR</span>
+          <span class="text-[9px] text-[#AAA59B]">▾</span>
+        </button>
+        <div class="lang-dropdown-menu">
+          <div onclick="VitesseI18n.setLanguage('fr')" class="lang-item">
+            <span>Français</span> <span class="font-mono text-[10px] text-[#C6A96B]">FR</span>
+          </div>
+          <div onclick="VitesseI18n.setLanguage('en')" class="lang-item">
+            <span>English</span> <span class="font-mono text-[10px] text-[#AAA59B]">EN</span>
+          </div>
+          <div onclick="VitesseI18n.setLanguage('de')" class="lang-item">
+            <span>Deutsch</span> <span class="font-mono text-[10px] text-[#AAA59B]">DE</span>
+          </div>
+          <div onclick="VitesseI18n.setLanguage('it')" class="lang-item">
+            <span>Italiano</span> <span class="font-mono text-[10px] text-[#AAA59B]">IT</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp VIP Badge (Desktop) -->
+      <a href="https://wa.me/41766207850" target="_blank" class="hidden sm:inline-flex items-center gap-2.5 text-xs font-semibold px-5 py-2.5 rounded-full glass-luxe-pill text-[#F5F1E8] transition-all">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="tracking-wider" data-i18n="nav.whatsapp">WhatsApp VIP 24/7</span>
+      </a>
+
+      <!-- Burger Menu Button -->
+      <button id="burger-btn" onclick="toggleMenu()" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full glass-luxe-pill flex flex-col items-center justify-center gap-1 sm:gap-1.5 transition-all focus:outline-none shadow-xl">
+        <span class="w-4 sm:w-5 h-[1.5px] bg-[#C6A96B] transition-all transform origin-center" id="b-line1"></span>
+        <span class="w-4 sm:w-5 h-[1.5px] bg-[#C6A96B] transition-all" id="b-line2"></span>
+      </button>
+    </div>
+
+  </header>
+
+  <!-- 2. HERO SECTION WITH 3D TILT CARD & ICONIC MAYBACH BACKGROUND -->
+  <section class="relative z-20 px-4 sm:px-12 text-center min-h-[85vh] flex items-center justify-center py-12 perspective-container">
+    <div id="tilt-card" class="tilt-card-3d space-y-5 max-w-3xl mx-auto">
+      
+      <!-- Eyebrow Badge -->
+      <div class="animate-fadeup-1 inline-flex items-center gap-2 px-4 sm:px-6 py-1.5 rounded-full border border-[#C6A96B]/50 bg-[#0B0B0C]/60 backdrop-blur-md text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.22em] text-[#C6A96B] shadow-2xl">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B] animate-pulse"></span>
+        <span data-i18n="hero.eyebrow">SWISS PRIVATE CHAUFFEUR · GENÈVE & ALPES</span>
+      </div>
+
+      <!-- Main Editorial Title -->
+      <h1 class="animate-fadeup-2 font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.1] drop-shadow-2xl">
+        <span data-i18n="hero.title_part1">Le voyage,</span> 
+        <span class="block text-[#C6A96B] mt-1 font-serif-luxe font-normal italic tracking-normal" data-i18n="hero.title_part2">autrement.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="animate-fadeup-3 text-xs sm:text-sm text-[#F5F1E8]/90 max-w-md sm:max-w-lg mx-auto font-normal tracking-wide leading-relaxed drop-shadow-lg" data-i18n="hero.description">
+        Service de VTC & Chauffeur Privé Haut de Gamme à Genève. Transferts aéroport, navettes stations de ski et mise à disposition VIP 24/7.
+      </p>
+
+      <!-- Primary Action Buttons -->
+      <div class="animate-fadeup-4 pt-2 sm:pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button onclick="toggleBookingModal()" class="btn-gold-luxe font-display font-extrabold text-[11px] sm:text-xs uppercase tracking-[0.14em] px-9 py-4 rounded-full transition-all shadow-2xl w-full sm:w-auto text-center" data-i18n="hero.cta_primary">
+          Réserver un chauffeur ↗
+        </button>
+        <a href="https://wa.me/41766207850" target="_blank" class="glass-luxe-pill text-xs font-semibold px-8 py-4 rounded-full text-[#F5F1E8] flex items-center justify-center gap-2 hover:border-[#C6A96B] transition-all w-full sm:w-auto">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>WhatsApp VIP Direct</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. SECTION 1: LES PILIERS DE NOTRE SERVICE -->
+  <section class="relative z-20 px-4 sm:px-12 py-20 max-w-7xl mx-auto border-t border-hairline bg-[#0B0B0C]/90 backdrop-blur-md">
+    
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+      <span class="text-[10px] font-mono tracking-[0.25em] text-[#C6A96B] uppercase font-bold" data-i18n="pillars.eyebrow">EXCELLENCE & SERENITÉ</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F1E8]" data-i18n="pillars.title">Les Piliers de Notre Service</h2>
+      <p class="text-xs sm:text-sm text-[#AAA59B] leading-relaxed" data-i18n="pillars.subtitle">Un accompagnement d'exception pensé pour la clientèle internationale, diplomatique et d'affaires.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Card 1 -->
+      <div class="luxe-card p-8 space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-[#0B0B0C] border border-[#292929] flex items-center justify-center text-[#C6A96B] font-mono text-lg font-bold">
+          01
+        </div>
+        <h3 class="font-serif-luxe text-2xl text-[#F5F1E8]" data-i18n="pillars.p1_title">Ponctualité & Suivi de Vol</h3>
+        <p class="text-xs text-[#AAA59B] leading-relaxed" data-i18n="pillars.p1_desc">
+          Suivi en temps réel de votre vol à l'Aéroport de Genève (GVA). Accueil nominatif en zone d'arrivée avec pancarte et prise en charge intégrale de vos bagages.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="luxe-card p-8 space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-[#0B0B0C] border border-[#292929] flex items-center justify-center text-[#C6A96B] font-mono text-lg font-bold">
+          02
+        </div>
+        <h3 class="font-serif-luxe text-2xl text-[#F5F1E8]" data-i18n="pillars.p2_title">Discrétion & Sérénité Absolue</h3>
+        <p class="text-xs text-[#AAA59B] leading-relaxed" data-i18n="pillars.p2_desc">
+          Chauffeurs costumés, bilingues et formés aux exigences de confidentialité la plus stricte. Un service discret, raffiné et sécurisé à chaque instant.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="luxe-card p-8 space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-[#0B0B0C] border border-[#292929] flex items-center justify-center text-[#C6A96B] font-mono text-lg font-bold">
+          03
+        </div>
+        <h3 class="font-serif-luxe text-2xl text-[#F5F1E8]" data-i18n="pillars.p3_title">Flotte Prestige de Dernier Cri</h3>
+        <p class="text-xs text-[#AAA59B] leading-relaxed" data-i18n="pillars.p3_desc">
+          Mercedes-Benz Classe S, Classe V & Maybach d'une propreté irréprochable. Intérieurs cuir, vitres teintées et équipements de confort modernes.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. SECTION 2: NOS PRESTATIONS SIGNATURE -->
+  <section class="relative z-20 px-4 sm:px-12 py-20 max-w-7xl mx-auto border-t border-hairline bg-[#151515]/60 backdrop-blur-md">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+      <div class="space-y-3 max-w-xl">
+        <span class="text-[10px] font-mono tracking-[0.25em] text-[#C6A96B] uppercase font-bold" data-i18n="services.eyebrow">PRESTATIONS SUR MESURE</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F1E8]" data-i18n="services.title">Un Service Privé Répondant à Exigence</h2>
+        <p class="text-xs sm:text-sm text-[#AAA59B]" data-i18n="services.subtitle">Du simple transfert urbain au circuit sur mesure dans les Alpes suisses et françaises.</p>
+      </div>
+      <a href="pages/services.html" class="glass-luxe-pill px-6 py-3 rounded-full text-xs font-mono tracking-wider uppercase text-[#C6A96B] hover:bg-[#C6A96B] hover:text-black transition-all text-center">
+        Découvrir tous nos services →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="luxe-card p-6 flex flex-col justify-between space-y-6">
+        <div class="space-y-3">
+          <div class="text-[10px] font-mono tracking-widest text-[#C6A96B] uppercase">01 / GENÈVE & SUISSE</div>
+          <h3 class="font-serif-luxe text-xl text-[#F5F1E8]" data-i18n="services.s1_title">Transferts Aéroport & Gares</h3>
+          <p class="text-xs text-[#AAA59B] leading-relaxed" data-i18n="services.s1_desc">
+            Connexions fluides entre GVA, Genève-Cornavin, Lausanne et les aéroports régionaux. Suivi des retards de vol sans aucun supplément.
+          </p>
+        </div>
+        <button onclick="toggleBookingModal()" class="text-xs font-mono text-[#C6A96B] hover:underline flex items-center gap-2">
+          <span>Réserver ce transfert</span> <span>↗</span>
+        </button>
+      </div>
+
+      <div class="luxe-card p-6 flex flex-col justify-between space-y-6 border-[#C6A96B]/40">
+        <div class="space-y-3">
+          <div class="text-[10px] font-mono tracking-widest text-[#C6A96B] uppercase">02 / SUR MESURE</div>
+          <h3 class="font-serif-luxe text-xl text-[#F5F1E8]" data-i18n="services.s2_title">Chauffeur Privé à l'Heure VIP</h3>
+          <p class="text-xs text-[#AAA59B] leading-relaxed" data-i18n="services.s2_desc">
+            Mise à disposition dédiée pour vos rendez-vous d'affaires, sessions shopping Rue du Rhône ou soirées de gala à Genève et Montreux.
+          </p>
+        </div>
+        <button onclick="toggleBookingModal()" class="text-xs font-mono text-[#C6A96B] hover:underline flex items-center gap-2">
+          <span>Réserver à l'heure</span> <span>↗</span>
+        </button>
+      </div>
+
+      <div class="luxe-card p-6 flex flex-col justify-between space-y-6">
+        <div class="space-y-3">
+          <div class="text-[10px] font-mono tracking-widest text-[#C6A96B] uppercase">03 / STATIONS DE SKI</div>
+          <h3 class="font-serif-luxe text-xl text-[#F5F1E8]" data-i18n="services.s3_title">Navettes Ski & Stations Alpines</h3>
+          <p class="text-xs text-[#AAA59B] leading-relaxed" data-i18n="services.s3_desc">
+            Transferts d'exception en 4x4 équipé pour la montagne vers Chamonix, Courchevel, Megève, Verbier, Zermatt, Crans-Montana et Gstaad.
+          </p>
+        </div>
+        <button onclick="toggleBookingModal()" class="text-xs font-mono text-[#C6A96B] hover:underline flex items-center gap-2">
+          <span>Réserver navette ski</span> <span>↗</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. SECTION 3: SHOWROOM FLOTTE MERCEDES & MAYBACH -->
+  <section class="relative z-20 px-4 sm:px-12 py-20 max-w-7xl mx-auto border-t border-hairline bg-[#0B0B0C]/90 backdrop-blur-md">
+    
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+      <span class="text-[10px] font-mono tracking-[0.25em] text-[#C6A96B] uppercase font-bold" data-i18n="fleet.eyebrow">EXCELLENCE AUTOMOBILE</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F1E8]" data-i18n="fleet.title">Notre Flotte de Véhicules d'Exception</h2>
+      <p class="text-xs sm:text-sm text-[#AAA59B]" data-i18n="fleet.subtitle">Chaque véhicule est sélectionné pour offrir une alliance parfaite entre confort de première classe et sécurité.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Vehicle 1 -->
+      <div class="luxe-card overflow-hidden flex flex-col justify-between">
+        <div class="p-6 space-y-4">
+          <div class="inline-block px-3 py-1 rounded-full border border-[#C6A96B]/30 text-[9px] font-mono text-[#C6A96B] uppercase" data-i18n="fleet.f1_tag">EXECUTIVE FIRST CLASS</div>
+          <h3 class="font-serif-luxe text-2xl text-[#F5F1E8]" data-i18n="fleet.f1_title">Mercedes-Benz Classe S Limousine</h3>
+          <p class="text-xs text-[#AAA59B] leading-relaxed" data-i18n="fleet.f1_desc">
+            La référence mondiale du voyage d'affaires. Insonorisation exceptionnelle, sièges arrière chauffants et massants, suspension pneumatique.
+          </p>
+        </div>
+        <div class="p-6 bg-[#0B0B0C]/80 border-t border-[#292929] flex justify-between items-center text-xs font-mono text-[#C6A96B]">
+          <span data-i18n="fleet.f1_specs">Max 3 Passagers · 3 Bagages VIP</span>
+          <span>↗</span>
+        </div>
+      </div>
+
+      <!-- Vehicle 2 -->
+      <div class="luxe-card overflow-hidden flex flex-col justify-between border-[#C6A96B]/40">
+        <div class="p-6 space-y-4">
+          <div class="inline-block px-3 py-1 rounded-full border border-[#C6A96B]/30 text-[9px] font-mono text-[#C6A96B] uppercase" data-i18n="fleet.f2_tag">PREMIUM BUSINESS VAN</div>
+          <h3 class="font-serif-luxe text-2xl text-[#F5F1E8]" data-i18n="fleet.f2_title">Mercedes-Benz Classe V VIP Extra-Long</h3>
+          <p class="text-xs text-[#AAA59B] leading-relaxed" data-i18n="fleet.f2_desc">
+            L'espace d'un salon privé pour vos déplacements de groupe, délégations et séjours en famille avec bagages de ski ou de golf.
+          </p>
+        </div>
+        <div class="p-6 bg-[#0B0B0C]/80 border-t border-[#292929] flex justify-between items-center text-xs font-mono text-[#C6A96B]">
+          <span data-i18n="fleet.f2_specs">Max 7 Passagers · 7 Bagages VIP</span>
+          <span>↗</span>
+        </div>
+      </div>
+
+      <!-- Vehicle 3 -->
+      <div class="luxe-card overflow-hidden flex flex-col justify-between">
+        <div class="p-6 space-y-4">
+          <div class="inline-block px-3 py-1 rounded-full border border-[#C6A96B]/30 text-[9px] font-mono text-[#C6A96B] uppercase" data-i18n="fleet.f3_tag">ULTIMATE LUXURY</div>
+          <h3 class="font-serif-luxe text-2xl text-[#F5F1E8]" data-i18n="fleet.f3_title">Mercedes-Maybach Classe S First Class</h3>
+          <p class="text-xs text-[#AAA59B] leading-relaxed" data-i18n="fleet.f3_desc">
+            L'apogée du luxe automobile. Espace arrière démesuré, console centrale réfrigérée, finitions artisanales et discrétion absolue.
+          </p>
+        </div>
+        <div class="p-6 bg-[#0B0B0C]/80 border-t border-[#292929] flex justify-between items-center text-xs font-mono text-[#C6A96B]">
+          <span data-i18n="fleet.f3_specs">Max 2 Passagers VIP · 3 Bagages VIP</span>
+          <span>↗</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="pages/flotte.html" class="glass-luxe-pill px-8 py-3.5 rounded-full text-xs font-mono tracking-wider uppercase text-[#F5F1E8] hover:border-[#C6A96B] transition-all inline-block">
+        Explorer le catalogue de véhicules complet →
+      </a>
+    </div>
+
+  </section>
+
+  <!-- 6. SECTION 4: L'EXPÉRIENCE À BORD -->
+  <section class="relative z-20 px-4 sm:px-12 py-20 max-w-7xl mx-auto border-t border-hairline bg-[#151515]/60 backdrop-blur-md">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <div class="space-y-6">
+        <span class="text-[10px] font-mono tracking-[0.25em] text-[#C6A96B] uppercase font-bold" data-i18n="experience.eyebrow">ATTENTIONS PARTICULIÈRES</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F1E8]" data-i18n="experience.title">L'Expérience à Bord Lux-Taxi</h2>
+        <p class="text-xs sm:text-sm text-[#AAA59B] leading-relaxed" data-i18n="experience.subtitle">Chaque détail compte pour vous offrir un voyage relaxant et productif.</p>
+        
+        <div class="space-y-4 pt-2">
+          <div class="flex items-start gap-3 text-xs text-[#F5F1E8]">
+            <div class="w-5 h-5 rounded-full bg-[#C6A96B]/20 border border-[#C6A96B] flex items-center justify-center text-[#C6A96B] font-bold text-[10px] shrink-0 mt-0.5">✓</div>
+            <span data-i18n="experience.exp1">Bouteilles d'eau minérale Évian & rafraîchissements offerts</span>
+          </div>
+          <div class="flex items-start gap-3 text-xs text-[#F5F1E8]">
+            <div class="w-5 h-5 rounded-full bg-[#C6A96B]/20 border border-[#C6A96B] flex items-center justify-center text-[#C6A96B] font-bold text-[10px] shrink-0 mt-0.5">✓</div>
+            <span data-i18n="experience.exp2">Connexion Wi-Fi 5G haut débit & sélecteur de chargeurs tous smartphones</span>
+          </div>
+          <div class="flex items-start gap-3 text-xs text-[#F5F1E8]">
+            <div class="w-5 h-5 rounded-full bg-[#C6A96B]/20 border border-[#C6A96B] flex items-center justify-center text-[#C6A96B] font-bold text-[10px] shrink-0 mt-0.5">✓</div>
+            <span data-i18n="experience.exp3">Presse internationale, journaux suisses et magazines de prestige</span>
+          </div>
+          <div class="flex items-start gap-3 text-xs text-[#F5F1E8]">
+            <div class="w-5 h-5 rounded-full bg-[#C6A96B]/20 border border-[#C6A96B] flex items-center justify-center text-[#C6A96B] font-bold text-[10px] shrink-0 mt-0.5">✓</div>
+            <span data-i18n="experience.exp4">Sièges enfants VIP & rehausseurs installés sur simple demande</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Reassurance Cards Box -->
+      <div class="luxe-card p-8 space-y-6 border-[#C6A96B]/40">
+        <span class="text-[10px] font-mono tracking-[0.25em] text-[#C6A96B] uppercase font-bold" data-i18n="reassurance.eyebrow">TRANSPARENCE & ENGAGEMENT</span>
+        <h3 class="font-display font-bold text-2xl text-[#F5F1E8]" data-i18n="reassurance.title">Pourquoi Choisir LUX-TAXI Genève ?</h3>
+        
+        <div class="space-y-4 text-xs">
+          <div class="p-4 rounded-xl bg-[#0B0B0C] border border-[#292929] space-y-1">
+            <div class="font-bold text-[#F5F1E8]" data-i18n="reassurance.r1_title">100% Tarifs Fixes Garantis</div>
+            <div class="text-[#AAA59B]" data-i18n="reassurance.r1_desc">Prix connus à la réservation. Pas de frais de trafic, pas de frais cachés.</div>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0B0B0C] border border-[#292929] space-y-1">
+            <div class="font-bold text-[#F5F1E8]" data-i18n="reassurance.r2_title">Annulation & Flexibilité</div>
+            <div class="text-[#AAA59B]" data-i18n="reassurance.r2_desc">Modification ou annulation gratuite jusqu'à 24h avant le départ.</div>
+          </div>
+          <div class="p-4 rounded-xl bg-[#0B0B0C] border border-[#292929] space-y-1">
+            <div class="font-bold text-[#F5F1E8]" data-i18n="reassurance.r3_title">Paiement Sécurisé & Facture</div>
+            <div class="text-[#AAA59B]" data-i18n="reassurance.r3_desc">Paiement en ligne, à bord ou par virement d'entreprise avec facture détaillée.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- 7. SECTION FINAL CALL TO ACTION -->
+  <section class="relative z-20 px-4 sm:px-12 py-24 text-center max-w-4xl mx-auto">
+    <div class="luxe-card p-10 sm:p-16 space-y-6 border-[#C6A96B]/50 shadow-2xl">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C6A96B]/40 bg-[#0B0B0C] text-[10px] font-mono text-[#C6A96B] uppercase font-bold tracking-widest">
+        SERVICE VIP 24/7 EN SUISSE
+      </div>
+      <h2 class="font-serif-luxe text-3xl sm:text-5xl text-[#F5F1E8] italic">Réservez Votre Chauffeur Privé Dès Maintenant</h2>
+      <p class="text-xs sm:text-sm text-[#AAA59B] max-w-md mx-auto">
+        Bénéficiez d'un tarif fixe garanti et de l'excellence d'un chauffeur privé dédié à Genève et dans toutes les Alpes.
+      </p>
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button onclick="toggleBookingModal()" class="btn-gold-luxe font-display font-extrabold text-xs uppercase tracking-widest px-10 py-4 rounded-full w-full sm:w-auto" data-i18n="hero.cta_primary">
+          Réserver un chauffeur ↗
+        </button>
+        <a href="https://wa.me/41766207850" target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs px-8 py-4 rounded-full flex items-center justify-center gap-2 transition-all">
+          <span>Commander sur WhatsApp 24/7</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. SLEEK MINIMALIST FOOTER -->
+  <footer class="relative z-20 px-4 sm:px-12 py-6 flex flex-col md:flex-row items-center justify-between text-xs text-[#AAA59B] glass-luxe-pill border-t border-[#292929] gap-4">
+    
+    <!-- Destinations -->
+    <div class="flex items-center gap-2 text-center">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B]"></span>
+      <span class="text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-[#F5F1E8]" data-i18n="footer.regions">Genève • Lausanne • Chamonix • Courchevel • Verbier • Zermatt</span>
+    </div>
+
+    <!-- Official Lux-Taxi Contact Details -->
+    <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[10px] sm:text-[11px] font-mono tracking-wider uppercase">
+      <span class="text-[#AAA59B] hidden md:inline" data-i18n="footer.address">📍 Rte de l'Aéroport 21, 1215 Genève</span>
+      <span class="text-[#292929] hidden md:inline">•</span>
+      <a href="https://wa.me/41766207850" target="_blank" class="text-emerald-400 hover:underline flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> WhatsApp VIP
+      </a>
+      <span class="text-[#292929]">•</span>
+      <a href="tel:+41766207850" class="text-[#F5F1E8] font-bold whitespace-nowrap hover:text-[#C6A96B] transition-colors" data-i18n="footer.phone">+41 76 620 78 50</a>
+      <span class="text-[#292929] hidden sm:inline">•</span>
+      <a href="mailto:contact@lux-taxi.com" class="text-[#AAA59B] hover:text-white hidden sm:inline" data-i18n="footer.email">contact@lux-taxi.com</a>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-[9px] sm:text-[10px] text-gray-400 font-mono" data-i18n="footer.copyright">
+      © 2026 LUX-TAXI Genève. Tous droits réservés.
+    </div>
+  </footer>
+
+  <!-- 9. FULLSCREEN BURGER MENU OVERLAY -->
+  <div id="menu-overlay" class="closed fixed inset-0 z-50 bg-[#0B0B0C]/97 backdrop-blur-3xl flex flex-col justify-between p-6 sm:p-16">
+    
+    <div class="flex justify-between items-center border-b border-[#292929] pb-5">
+      <span class="text-xs font-mono text-[#C6A96B] uppercase tracking-widest">Navigation Privée • LUX-TAXI GENÈVE</span>
+      <button onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-wider text-[#AAA59B] hover:text-[#C6A96B] transition-colors">Fermer ✕</button>
+    </div>
+
+    <nav class="flex flex-col space-y-4 sm:space-y-6 text-xl sm:text-3xl font-display font-black uppercase tracking-wider">
+      <a href="index.html" onclick="toggleMenu()" class="text-[#C6A96B]" data-i18n="nav.home">01. Accueil</a>
+      <a href="pages/services.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="nav.services">02. Services & Prestations</a>
+      <a href="pages/flotte.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="nav.fleet">03. Flotte Mercedes & Maybach</a>
+      <a href="pages/destinations.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="nav.destinations">04. Destinations (Genève, Alpes)</a>
+      <a href="pages/reservation.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="nav.booking">05. Réservation Privée</a>
+      <a href="https://wa.me/41766207850" target="_blank" class="text-emerald-400 hover:underline text-lg sm:text-xl pt-2">→ Contacter sur WhatsApp VIP 24/7</a>
+    </nav>
+
+    <div class="flex justify-between items-center text-xs text-[#AAA59B] border-t border-[#292929] pt-5 font-mono">
+      <span>Genève • Suisse</span>
+      <span>+41 76 620 78 50 • contact@lux-taxi.com</span>
+    </div>
+
+  </div>
+
+  <!-- 10. FRICTIONLESS 3-STEP BOOKING MODAL -->
+  <div id="booking-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md items-center justify-center p-4">
+    <div class="bg-[#151515] border border-[#292929] rounded-2xl w-full max-w-2xl p-6 sm:p-8 relative shadow-2xl">
+      
+      <button onclick="toggleBookingModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white font-mono text-sm">✕</button>
+      
+      <h2 class="font-serif-luxe text-2xl text-[#F5F1E8] mb-1" data-i18n="booking.title">MOTEUR DE RÉSERVATION PRIVÉ</h2>
+      <p class="text-xs text-[#AAA59B] mb-6" data-i18n="booking.subtitle">Obtenez un tarif fixe garanti sans aucuns frais cachés.</p>
+
+      <div class="grid grid-cols-3 gap-2 mb-6 text-center text-[10px] font-mono uppercase tracking-wider">
+        <div id="step-tab-1" class="py-2 border-b-2 border-[#C6A96B] text-[#C6A96B] font-bold" data-i18n="booking.step1_title">1. Prestation</div>
+        <div id="step-tab-2" class="py-2 border-b-2 border-gray-800 text-gray-500" data-i18n="booking.step2_title">2. Trajet</div>
+        <div id="step-tab-3" class="py-2 border-b-2 border-gray-800 text-gray-500" data-i18n="booking.step3_title">3. Confirmation</div>
+      </div>
+
+      <div id="booking-step-1" class="space-y-4">
+        <label class="block text-xs font-mono uppercase text-[#AAA59B]">Sélectionnez la Prestation</label>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button type="button" onclick="selectService('aeroport')" class="p-4 rounded-xl border border-[#292929] hover:border-[#C6A96B] bg-[#0B0B0C] text-left text-xs font-medium space-y-1">
+            <div class="font-bold text-[#F5F1E8]" data-i18n="booking.service_airport">Transfert Aéroport (GVA)</div>
+            <div class="text-[10px] text-[#AAA59B]">Accueil nominatif & suivi vol inclus</div>
+          </button>
+          <button type="button" onclick="selectService('mise-dispo')" class="p-4 rounded-xl border border-[#292929] hover:border-[#C6A96B] bg-[#0B0B0C] text-left text-xs font-medium space-y-1">
+            <div class="font-bold text-[#F5F1E8]" data-i18n="booking.service_hourly">Chauffeur à l'Heure VIP</div>
+            <div class="text-[10px] text-[#AAA59B]">Mise à disposition sur-mesure</div>
+          </button>
+          <button type="button" onclick="selectService('ski')" class="p-4 rounded-xl border border-[#292929] hover:border-[#C6A96B] bg-[#0B0B0C] text-left text-xs font-medium space-y-1">
+            <div class="font-bold text-[#F5F1E8]" data-i18n="booking.service_ski">Navette Ski & Alpes</div>
+            <div class="text-[10px] text-[#AAA59B]">Chamonix, Courchevel, Verbier</div>
+          </button>
+          <button type="button" onclick="selectService('corporate')" class="p-4 rounded-xl border border-[#292929] hover:border-[#C6A96B] bg-[#0B0B0C] text-left text-xs font-medium space-y-1">
+            <div class="font-bold text-[#F5F1E8]" data-i18n="booking.service_corporate">Transport Corporate</div>
+            <div class="text-[10px] text-[#AAA59B]">Facture entreprise & délégations</div>
+          </button>
+        </div>
+      </div>
+
+      <div id="booking-step-2" class="hidden space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="block text-[10px] font-mono uppercase text-[#AAA59B]" data-i18n="booking.pickup">Point de Départ</label>
+            <input type="text" id="bm-pickup" value="Aéroport de Genève (GVA)" class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs text-[#F5F1E8] focus:outline-none focus:border-[#C6A96B]">
+          </div>
+          <div class="space-y-1">
+            <label class="block text-[10px] font-mono uppercase text-[#AAA59B]" data-i18n="booking.dropoff">Destination</label>
+            <input type="text" id="bm-dropoff" placeholder="Hôtel, Chamonix, Lausanne..." class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs text-[#F5F1E8] focus:outline-none focus:border-[#C6A96B]">
+          </div>
+          <div class="space-y-1">
+            <label class="block text-[10px] font-mono uppercase text-[#AAA59B]" data-i18n="booking.date">Date & Heure</label>
+            <input type="datetime-local" class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs text-[#F5F1E8] focus:outline-none focus:border-[#C6A96B]">
+          </div>
+          <div class="space-y-1">
+            <label class="block text-[10px] font-mono uppercase text-[#AAA59B]" data-i18n="booking.flight_no">N° Vol (Suivi Inclus)</label>
+            <input type="text" placeholder="Ex: LX 2801" class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs font-mono text-[#F5F1E8] focus:outline-none focus:border-[#C6A96B]">
+          </div>
+        </div>
+        <div class="pt-2 flex justify-between">
+          <button type="button" onclick="goToStep(1)" class="text-xs text-[#AAA59B] hover:text-white">← Retour</button>
+          <button type="button" onclick="goToStep(3)" class="btn-gold-luxe px-6 py-2.5 rounded-xl text-xs">Continuer →</button>
+        </div>
+      </div>
+
+      <div id="booking-step-3" class="hidden space-y-4 text-center py-4">
+        <div class="text-xs font-mono text-[#AAA59B]" data-i18n="booking.price_label">Tarif Fixe Estimé</div>
+        <div class="font-mono text-4xl font-extrabold text-[#C6A96B]">CHF 120</div>
+        <p class="text-xs text-gray-400">TVA, bagages & attente offerte incluses.</p>
+
+        <div class="pt-4 flex flex-col sm:flex-row items-center gap-3">
+          <button type="button" onclick="alert('Réservation confirmée ! Notre concierge vous contacte immédiatement.'); toggleBookingModal();" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs" data-i18n="booking.confirm_btn">
+            Valider & Réserver mon Chauffeur ↗
+          </button>
+          <a href="https://wa.me/41766207850" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs py-3.5 rounded-xl text-center" data-i18n="booking.whatsapp_btn">
+            Commander via WhatsApp 24/7
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="assets/js/i18n.js"></script>
+  <script>
+    let isMenuOpen = false;
+    function toggleMenu() {
+      const overlay = document.getElementById('menu-overlay');
+      const bLine1 = document.getElementById('b-line1');
+      const bLine2 = document.getElementById('b-line2');
+      
+      isMenuOpen = !isMenuOpen;
+      if (isMenuOpen) {
+        overlay.classList.remove('closed');
+        overlay.classList.add('open');
+        bLine1.classList.add('rotate-45', 'translate-y-[3px]');
+        bLine2.classList.add('-rotate-45', '-translate-y-[3px]');
+      } else {
+        overlay.classList.remove('open');
+        overlay.classList.add('closed');
+        bLine1.classList.remove('rotate-45', 'translate-y-[3px]');
+        bLine2.classList.remove('-rotate-45', '-translate-y-[3px]');
+      }
+    }
+
+    function toggleBookingModal() {
+      const modal = document.getElementById('booking-modal');
+      if (modal.classList.contains('hidden')) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        goToStep(1);
+      } else {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+      }
+    }
+
+    function goToStep(step) {
+      document.getElementById('booking-step-1').classList.add('hidden');
+      document.getElementById('booking-step-2').classList.add('hidden');
+      document.getElementById('booking-step-3').classList.add('hidden');
+      
+      document.getElementById(`booking-step-${step}`).classList.remove('hidden');
+    }
+
+    function selectService(service) {
+      const dropInput = document.getElementById('bm-dropoff');
+      if (service === 'ski') dropInput.value = 'Chamonix-Mont-Blanc';
+      if (service === 'mise-dispo') dropInput.value = 'Mise à disposition (4h)';
+      if (service === 'corporate') dropInput.value = 'Palexpo Genève';
+      goToStep(2);
+    }
+
+    // Parallax 3D Card
+    const tiltCard = document.getElementById('tilt-card');
+    let ticking = false;
+
+    document.addEventListener('mousemove', (e) => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const moveX = (e.clientX / window.innerWidth - 0.5) * 16;
+          const moveY = (e.clientY / window.innerHeight - 0.5) * 16;
+          
+          if (tiltCard) {
+            tiltCard.style.transform = `rotateY(${moveX * 0.4}deg) rotateX(${-moveY * 0.4}deg)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+
+</body>
+</html>

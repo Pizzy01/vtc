@@ -1,0 +1,110 @@
+{
+  "brand": {
+    "name": "LUX-TAXI GINEVRA",
+    "subtitle": "Autista Privato • Ginevra & Alpi"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Servizi VIP",
+    "fleet": "Flotta Prestige",
+    "destinations": "Destinazioni & Alpi",
+    "about": "Chi Siamo",
+    "booking": "Prenotazione Privata",
+    "contact": "Contatto 24/7",
+    "whatsapp": "WhatsApp VIP 24/7",
+    "book": "Prenota"
+  },
+  "hero": {
+    "eyebrow": "SWISS PRIVATE CHAUFFEUR · GINEVRA & ALPI",
+    "title_part1": "Il viaggio,",
+    "title_part2": "ridefinito.",
+    "description": "Servizio di NCC & Autista Privato di Alto Livello a Ginevra. Transfer aeroporto, navette stazioni sciistiche e servizio orario VIP 24/7.",
+    "cta_primary": "Prenota un Autista ↗"
+  },
+  "pillars": {
+    "eyebrow": "ECCELLENZA & RISERVATEZZA",
+    "title": "I Pilastri del Nostro Servizio",
+    "subtitle": "Un'assistenza esclusiva pensata per la clientela internazionale e diplomatica.",
+    "p1_title": "Puntualità & Monitoraggio Volo",
+    "p1_desc": "Monitoraggio in tempo reale del volo all'Aeroporto di Ginevra (GVA). Accoglienza personalizzata in sala arrivi con supporto bagagli.",
+    "p2_title": "Assoluta Discrezione",
+    "p2_desc": "Autisti bilingui in abito formale addestrati alla massima riservatezza e sicurezza.",
+    "p3_title": "Flotta Prestige Recente",
+    "p3_desc": "Mercedes-Benz Classe S, Classe V e Maybach impecabili con interni in pelle e vetri oscurati."
+  },
+  "services": {
+    "eyebrow": "SERVIZI SU MISURA",
+    "title": "Servizio Autista Privato d'Eccellenza",
+    "subtitle": "Dai transfer urbani ai viaggi esclusivi verso le Alpi svizzere e francesi.",
+    "s1_title": "Transfer Aeroporto & Stazioni",
+    "s1_desc": "Collegamenti rapidi tra GVA, Ginevra-Cornavin, Losanna e le stazioni sciistiche.",
+    "s2_title": "Autista Privato a Ore VIP",
+    "s2_desc": "Disponibilità dedicata per meeting aziendali, shopping in Rue du Rhône o serate di gala.",
+    "s3_title": "Navette Sci & Transfer Alpini",
+    "s3_desc": "Transfer in 4x4 di lusso verso Chamonix, Courchevel, Megève, Verbier, Zermatt e Gstaad."
+  },
+  "fleet": {
+    "eyebrow": "ECCELLENZA AUTOMOBILISTICA",
+    "title": "La Nostra Flotta d'Eccezione",
+    "subtitle": "Ogni veicolo è selezionato per offrire il massimo del comfort e della sicurezza.",
+    "f1_title": "Mercedes-Benz Classe S Limousine",
+    "f1_tag": "EXECUTIVE FIRST CLASS",
+    "f1_desc": "Il riferimento mondiale nei viaggi d'affari. Isolamento acustico superiore e sedili massaggianti.",
+    "f1_specs": "Max 3 Passeggeri · 3 Bagagli VIP",
+    "f2_title": "Mercedes-Benz Classe V VIP Extra-Long",
+    "f2_tag": "PREMIUM BUSINESS VAN",
+    "f2_desc": "Un salotto privato su ruote per gruppi, delegazioni e viaggi in famiglia.",
+    "f2_specs": "Max 7 Passeggeri · 7 Bagagli VIP",
+    "f3_title": "Mercedes-Maybach Classe S First Class",
+    "f3_tag": "ULTIMATE LUXURY",
+    "f3_desc": "Il vertice del lusso automobilistico con spazio posteriore straordinario e console refrigerata.",
+    "f3_specs": "Max 2 Passeggeri VIP · 3 Bagagli VIP"
+  },
+  "experience": {
+    "eyebrow": "ATTENZIONE AI DETTAGLI",
+    "title": "L'Esperienza a Bordo Lux-Taxi",
+    "subtitle": "Ogni dettaglio è curato per garantirvi un viaggio rilassante.",
+    "exp1": "Bottiglie d'acqua minerale Évian e rinfreschi offerti",
+    "exp2": "Wi-Fi 5G ad alta velocità e caricabatterie multi-dispositivo",
+    "exp3": "Stampa internazionale, quotidiani svizzeri e riviste di prestigio",
+    "exp4": "Seggiolini VIP per bambini installati su richiesta"
+  },
+  "reassurance": {
+    "eyebrow": "TRASPARENZA & AFFIDABILITÀ",
+    "title": "Perché Scegliere LUX-TAXI Ginevra?",
+    "r1_title": "Tariffe Fisse Garantite 100%",
+    "r1_desc": "Prezzi trasparenti alla prenotazione senza supplementi per il traffico.",
+    "r2_title": "Cancellazione Gratuita",
+    "r2_desc": "Modifica o cancellazione gratuita fino a 24 ore prima della partenza.",
+    "r3_title": "Pagamento Sicuro & Fatturazione",
+    "r3_desc": "Pagamento online, a bordo o tramite bonifico aziendale con fattura."
+  },
+  "booking": {
+    "title": "SISTEMA DI PRENOTAZIONE PRIVATO",
+    "subtitle": "Tariffa fissa garantita senza costi nascosti.",
+    "step1_title": "1. Servizio",
+    "step2_title": "2. Percorso",
+    "step3_title": "3. Conferma",
+    "service_airport": "Transfer Aeroporto (GVA)",
+    "service_hourly": "Autista VIP a Ore",
+    "service_ski": "Navetta Sci & Alpi",
+    "service_corporate": "Trasporto Aziendale",
+    "pickup": "Luogo di Partenza",
+    "dropoff": "Destinazione",
+    "date": "Data & Ora",
+    "flight_no": "N° Volo (Tracking incluso)",
+    "passengers": "Passeggeri",
+    "luggage": "Bagagli",
+    "vehicle": "Categoria Veicolo",
+    "price_label": "Tariffa Fissa Stimata",
+    "confirm_btn": "Conferma & Prenota Autista ↗",
+    "whatsapp_btn": "Ordina via WhatsApp 24/7"
+  },
+  "footer": {
+    "address": "📍 Rte de l'Aéroport 21, 1215 Ginevra",
+    "phone": "+41 76 620 78 50",
+    "email": "contact@lux-taxi.com",
+    "regions": "Ginevra • Losanna • Chamonix • Courchevel • Verbier • Zermatt",
+    "copyright": "© 2026 LUX-TAXI Ginevra. Tutti i diritti riservati."
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "blog": {
+    "title": "Actualités, Guides Travel & Conseils SEO — LUX-TAXI GENÈVE",
+    "articles": [
+      {
+        "id": "guide-transfert-aeroport-geneve-gva",
+        "slug": "guide-transfert-aeroport-geneve-gva",
+        "title": "Guide Complet : Réserver un Chauffeur Privé à l'Aéroport de Genève (GVA)",
+        "category": "Transfert Aéroport",
+        "date": "2026-10-01",
+        "author": "Conciergerie Lux-Taxi",
+        "excerpt": "Comment éviter l'attente aux taxis traditionnels à Genève-Cointrin ? Découvrez les avantages de l'accueil nominatif en zone d'arrivée avec suivi de vol en temps réel.",
+        "image": "assets/images/maybach-bg.jpg",
+        "readTime": "4 min de lecture",
+        "keywords": ["Chauffeur privé Genève", "Transfert GVA", "VTC Aéroport Genève", "Accès VIP Cointrin"]
+      },
+      {
+        "id": "navette-ski-chamonix-courchevel-verbier",
+        "slug": "navette-ski-chamonix-courchevel-verbier",
+        "title": "Transferts VIP vers les Alpes : Chamonix, Courchevel, Verbier & Zermatt",
+        "category": "Navettes Ski",
+        "date": "2026-09-25",
+        "author": "Conciergerie Lux-Taxi",
+        "excerpt": "Préparez vos séjours au ski avec nos véhicules 4x4 équipés montagne. Confort de première classe, chaînes et chauffeurs experts de la conduite alpine.",
+        "image": "assets/images/maybach-bg.jpg",
+        "readTime": "5 min de lecture",
+        "keywords": ["VTC Genève Chamonix", "Transfert Genève Courchevel", "Navette Ski VIP", "Chauffeur privé Verbier"]
+      },
+      {
+        "id": "chauffeur-prive-palexpo-geneva-watch-week",
+        "slug": "chauffeur-prive-palexpo-geneva-watch-week",
+        "title": "Transport Corporate & Événements à Palexpo & Watches and Wonders",
+        "category": "Corporate & Événements",
+        "date": "2026-09-18",
+        "author": "Conciergerie Lux-Taxi",
+        "excerpt": "Pour vos délégations d'affaires, congrès et salons horlogers à Genève, optez pour la mise à disposition VIP en Mercedes Classe V et Maybach.",
+        "image": "assets/images/maybach-bg.jpg",
+        "readTime": "3 min de lecture",
+        "keywords": ["VTC Palexpo Genève", "Watches and Wonders transfert", "Chauffeur corporate Genève", "Mise à disposition VIP"]
+      }
+    ]
+  }
+}

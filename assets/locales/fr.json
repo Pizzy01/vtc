@@ -1,0 +1,110 @@
+{
+  "brand": {
+    "name": "LUX-TAXI GENÈVE",
+    "subtitle": "Chauffeur Privé • Genève & Alpes"
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services & Prestations",
+    "fleet": "Flotte Prestige",
+    "destinations": "Destinations & Alpes",
+    "about": "À Propos & Engagement",
+    "booking": "Réservation Privée",
+    "contact": "Contact 24/7",
+    "whatsapp": "WhatsApp VIP 24/7",
+    "book": "Réserver"
+  },
+  "hero": {
+    "eyebrow": "SWISS PRIVATE CHAUFFEUR · GENÈVE & ALPES",
+    "title_part1": "Le voyage,",
+    "title_part2": "autrement.",
+    "description": "Service de VTC & Chauffeur Privé Haut de Gamme à Genève. Transferts aéroport, navettes stations de ski et mise à disposition VIP 24/7.",
+    "cta_primary": "Réserver un chauffeur ↗"
+  },
+  "pillars": {
+    "eyebrow": "EXCELLENCE & SERENITÉ",
+    "title": "Les Piliers de Notre Service",
+    "subtitle": "Un accompagnement d'exception pensé pour la clientèle internationale, diplomatique et d'affaires.",
+    "p1_title": "Ponctualité & Suivi de Vol",
+    "p1_desc": "Suivi en temps réel de votre vol à l'Aéroport de Genève (GVA). Accueil nominatif en zone d'arrivée avec pancarte et prise en charge intégrale de vos bagages.",
+    "p2_title": "Discrétion & Sérénité Absolute",
+    "p2_desc": "Chauffeurs costumés, bilingues et formés aux exigences de confidentialité la plus stricte. Un service discret, raffiné et sécurisé à chaque instant.",
+    "p3_title": "Flotte Prestige de Dernier Cri",
+    "p3_desc": "Mercedes-Benz Classe S, Classe V & Maybach d'une propreté irréprochable. Intérieurs cuir, vitres teintées et équipements de confort modernes."
+  },
+  "services": {
+    "eyebrow": "PRESTATIONS SUR MESURE",
+    "title": "Un Service Privé Répondant à Exigence",
+    "subtitle": "Du simple transfert urbain au circuit sur mesure dans les Alpes suisses et françaises.",
+    "s1_title": "Transferts Aéroport & Gares",
+    "s1_desc": "Connexions fluides entre GVA, Genève-Cornavin, Lausanne et les aéroports régionaux. Suivi des retards de vol sans aucun supplément.",
+    "s2_title": "Chauffeur Privé à l'Heure VIP",
+    "s2_desc": "Mise à disposition dédiée pour vos rendez-vous d'affaires, sessions shopping Rue du Rhône ou soirées de gala à Genève et Montreux.",
+    "s3_title": "Navettes Ski & Stations Alpines",
+    "s3_desc": "Transferts d'exception en 4x4 équipé pour la montagne vers Chamonix, Courchevel, Megève, Verbier, Zermatt, Crans-Montana et Gstaad."
+  },
+  "fleet": {
+    "eyebrow": "EXCELLENCE AUTOMOBILE",
+    "title": "Notre Flotte de Véhicules d'Exception",
+    "subtitle": "Chaque véhicule est sélectionné pour offrir une alliance parfaite entre confort de première classe et sécurité.",
+    "f1_title": "Mercedes-Benz Classe S Limousine",
+    "f1_tag": "EXECUTIVE FIRST CLASS",
+    "f1_desc": "La référence mondiale du voyage d'affaires. Insonorisation exceptionnelle, sièges arrière chauffants et massants, suspension pneumatique.",
+    "f1_specs": "Max 3 Passagers · 3 Bagages VIP",
+    "f2_title": "Mercedes-Benz Classe V VIP Extra-Long",
+    "f2_tag": "PREMIUM BUSINESS VAN",
+    "f2_desc": "L'espace d'un salon privé pour vos déplacements de groupe, délégations et séjours en famille avec bagages de ski ou de golf.",
+    "f2_specs": "Max 7 Passagers · 7 Bagages VIP",
+    "f3_title": "Mercedes-Maybach Classe S First Class",
+    "f3_tag": "ULTIMATE LUXURY",
+    "f3_desc": "L'apogée du luxe automobile. Espace arrière démesuré, console centrale réfrigérée, finitions artisanales et discrétion absolue.",
+    "f3_specs": "Max 2 Passagers VIP · 3 Bagages VIP"
+  },
+  "experience": {
+    "eyebrow": "ATTENTIONS PARTICULIÈRES",
+    "title": "L'Expérience à Bord Lux-Taxi",
+    "subtitle": "Chaque détail compte pour vous offrir un voyage relaxant et productif.",
+    "exp1": "Bouteilles d'eau minérale Évian & rafraîchissements offerts",
+    "exp2": "Connexion Wi-Fi 5G haut débit & sélecteur de chargeurs tous smartphones",
+    "exp3": "Presse internationale, journaux suisses et magazines de prestige",
+    "exp4": "Sièges enfants VIP & rehausseurs installés sur simple demande"
+  },
+  "reassurance": {
+    "eyebrow": "TRANSPARENCE & ENGAGEMENT",
+    "title": "Pourquoi Choisir LUX-TAXI Genève ?",
+    "r1_title": "100% Tarifs Fixes Garantis",
+    "r1_desc": "Prix connus à la réservation. Pas de frais de trafic, pas de frais cachés.",
+    "r2_title": "Annulation & Flexibilité",
+    "r2_desc": "Modification ou annulation gratuite jusqu'à 24h avant le départ.",
+    "r3_title": "Paiement Sécurisé & Facture",
+    "r3_desc": "Paiement en ligne, à bord ou par virement d'entreprise avec facture détaillée."
+  },
+  "booking": {
+    "title": "MOTEUR DE RÉSERVATION PRIVÉ",
+    "subtitle": "Tarif fixe garanti sans aucuns frais cachés.",
+    "step1_title": "1. Prestation",
+    "step2_title": "2. Trajet",
+    "step3_title": "3. Confirmation",
+    "service_airport": "Transfert Aéroport (GVA)",
+    "service_hourly": "Chauffeur à l'Heure VIP",
+    "service_ski": "Navette Ski & Alpes",
+    "service_corporate": "Transport Corporate",
+    "pickup": "Point de Départ",
+    "dropoff": "Destination",
+    "date": "Date & Heure",
+    "flight_no": "N° de Vol (Suivi inclus)",
+    "passengers": "Passagers",
+    "luggage": "Bagages",
+    "vehicle": "Catégorie Véhicule",
+    "price_label": "Tarif Fixe Estimé",
+    "confirm_btn": "Valider & Réserver mon Chauffeur ↗",
+    "whatsapp_btn": "Commander via WhatsApp 24/7"
+  },
+  "footer": {
+    "address": "📍 Rte de l'Aéroport 21, 1215 Genève",
+    "phone": "+41 76 620 78 50",
+    "email": "contact@lux-taxi.com",
+    "regions": "Genève • Lausanne • Chamonix • Courchevel • Verbier • Zermatt",
+    "copyright": "© 2026 LUX-TAXI Genève. Tous droits réservés."
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "brand": "LUX-TAXI GENÈVE",
+  "currency": "CHF",
+  "vehicles": [
+    {
+      "id": "classe-s",
+      "name": "MERCEDES-BENZ CLASSE S LIMOUSINE",
+      "category": "Executive First Class",
+      "tagline": "À partir de CHF 120 / h · Transferts VIP GVA",
+      "image": "assets/images/maybach-bg.jpg",
+      "passengers": 3,
+      "luggage": 3,
+      "transmission": "4MATIC Transmission Intégrale",
+      "comfort": [
+        "Insonorisation supérieure & suspension pneumatique AirMatic",
+        "Sièges arrière Executive inclinables, chauffants & massants",
+        "Bouteilles d'eau Évian & rafraîchissements offerts",
+        "Wi-Fi 5G haut débit & sélecteur de chargeurs tous mobiles",
+        "Vitres teintées privacy & stores de protection intégrés"
+      ]
+    },
+    {
+      "id": "classe-v",
+      "name": "MERCEDES-BENZ CLASSE V VIP EXTRA-LONG",
+      "category": "Premium Business Van",
+      "tagline": "À partir de CHF 140 / h · Groupes & Ski Alpes",
+      "image": "assets/images/maybach-bg.jpg",
+      "passengers": 7,
+      "luggage": 7,
+      "transmission": "4MATIC Transmission Intégrale Montagne",
+      "comfort": [
+        "Salon VIP avec sièges individuels en cuir nappa",
+        "Espace géant pour sacs de ski, clubs de golf & valises",
+        "Prises 230V & Wi-Fi 5G pour travailler pendant le trajet",
+        "Climatisation automatique multi-zones réglable à l'arrière",
+        "Suspension adaptative idéale pour les routes alpines"
+      ]
+    },
+    {
+      "id": "maybach",
+      "name": "MERCEDES-MAYBACH CLASSE S FIRST CLASS",
+      "category": "Ultimate Luxury Suite",
+      "tagline": "À partir de CHF 250 / h · Prestation Prestige Sur-Mesure",
+      "image": "assets/images/maybach-bg.jpg",
+      "passengers": 2,
+      "luggage": 3,
+      "transmission": "V8 Biturbo 4MATIC First Class",
+      "comfort": [
+        "Fauteuils Recline First Class avec repose-jambes électrique",
+        "Console centrale réfrigérée avec flûtes à champagne argentées",
+        "Système audio Burmester High-End 4D Surround",
+        "Bouteilles d'eau d'exception & rafraîchissements haut de gamme",
+        "Discrétion absolue et chauffeur certifié conciergerie VIP"
+      ]
+    },
+    {
+      "id": "eqs-suv",
+      "name": "MERCEDES-BENZ EQS SUV ELECTRIC VIP",
+      "category": "Zero Emission Executive",
+      "tagline": "À partir de CHF 130 / h · Silence & Écologie",
+      "image": "assets/images/maybach-bg.jpg",
+      "passengers": 4,
+      "luggage": 4,
+      "transmission": "100% Électrique 4MATIC Dual Motor",
+      "comfort": [
+        "Silence de roulement absolu et zéro émission de CO2",
+        "Écran Hyperscreen Mercedes MBUX dernière génération",
+        "Sièges en cuir écologique ultra-moelleux",
+        "Purificateur d'air HEPA à bord avec parfum d'ambiance d'exception"
+      ]
+    },
+    {
+      "id": "range-rover",
+      "name": "RANGE ROVER AUTOBIOGRAPHY LWB",
+      "category": "Exclusive Alpine SUV",
+      "tagline": "À partir de CHF 200 / h · Navette Ski Prestige",
+      "image": "assets/images/maybach-bg.jpg",
+      "passengers": 4,
+      "luggage": 5,
+      "transmission": "4x4 All-Terrain Terrain Response 2",
+      "comfort": [
+        "Châssis long LWB avec espace jambes arrière démesuré",
+        "Transmission intégrale parfaite pour la neige & le verglas",
+        "Toit panoramique ouvrant & console multimédia arrière",
+        "Coffre spacieux pour bagages et équipement de ski VIP"
+      ]
+    }
+  ]
+}

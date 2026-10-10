@@ -1,0 +1,110 @@
+{
+  "brand": {
+    "name": "LUX-TAXI GENF",
+    "subtitle": "Privatchauffeur • Genf & Alpen"
+  },
+  "nav": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "fleet": "Fahrzeugflotte",
+    "destinations": "Destinationen & Alpen",
+    "about": "Über uns",
+    "booking": "Reservierung",
+    "contact": "Kontakt 24/7",
+    "whatsapp": "WhatsApp VIP 24/7",
+    "book": "Buchen"
+  },
+  "hero": {
+    "eyebrow": "SWISS PRIVATE CHAUFFEUR · GENF & ALPEN",
+    "title_part1": "Reisen,",
+    "title_part2": "neu definiert.",
+    "description": "Erstklassiger VTC & Privatchauffeur-Service in Genf. Flughafentransfers, Ski-Shuttles und 24/7 VIP-Stundenservice.",
+    "cta_primary": "Chauffeur buchen ↗"
+  },
+  "pillars": {
+    "eyebrow": "EXZELLENZ & DISKRETION",
+    "title": "Unsere Grundsätze",
+    "subtitle": "Maßgeschneiderter Service für internationale und diplomatische Kunden.",
+    "p1_title": "Pünktlichkeit & Flugverfolgung",
+    "p1_desc": "Echtzeit-Verfolgung Ihres Fluges am Flughafen Genf (GVA). Namensbegrüßung in der Ankunftshalle.",
+    "p2_title": "Höchste Diskretion",
+    "p2_desc": "Zweisprachige Chauffeurs mit Höchstmaß an Vertraulichkeit und Sicherheit.",
+    "p3_title": "Neueste Luxusflotte",
+    "p3_desc": "Neueste Fahrzeuge von Mercedes-Benz S-Klasse, V-Klasse & Maybach mit Lederausstattung."
+  },
+  "services": {
+    "eyebrow": "INDIVIDUELLE DIENSTLEISTUNGEN",
+    "title": "Exklusiver Privatchauffeur-Service",
+    "subtitle": "Von städtischen Transfers bis zu erstklassigen Alpenfahrten.",
+    "s1_title": "Flughafen- & Bahnhofstransfers",
+    "s1_desc": "Direkte Verbindungen zwischen GVA, Genf-Cornavin, Lausanne und den Skigebieten.",
+    "s2_title": "Stundenweiser VIP-Chauffeur",
+    "s2_desc": "Für Geschäftstermine, Shopping auf der Rue du Rhône oder Galaabende.",
+    "s3_title": "Ski-Shuttles & Alpintransfers",
+    "s3_desc": "Fahrten nach Chamonix, Courchevel, Megève, Verbier, Zermatt und Gstaad."
+  },
+  "fleet": {
+    "eyebrow": "AUTOMOBILE EXZELLENZ",
+    "title": "Unsere Exklusive Fahrzeugflotte",
+    "subtitle": "Höchster Komfort und maximale Sicherheit auf allen Strecken.",
+    "f1_title": "Mercedes-Benz S-Klasse Limousine",
+    "f1_tag": "EXECUTIVE FIRST CLASS",
+    "f1_desc": "Der weltweite Maßstab für Geschäftsreisen. Erstklassige Geräuschdämmung und Sitzmassage.",
+    "f1_specs": "Max 3 Passagiere · 3 VIP Koffer",
+    "f2_title": "Mercedes-Benz V-Klasse VIP Extra-Lang",
+    "f2_tag": "PREMIUM BUSINESS VAN",
+    "f2_desc": "Viel Raum für Gruppenreisen, Familien und Skiausrüstung.",
+    "f2_specs": "Max 7 Passagiere · 7 VIP Koffer",
+    "f3_title": "Mercedes-Maybach S-Klasse First Class",
+    "f3_tag": "ULTIMATE LUXURY",
+    "f3_desc": "Die Spitze des automobilen Luxus mit unvergleichlichem Fond-Komfort.",
+    "f3_specs": "Max 2 VIP Passagiere · 3 VIP Koffer"
+  },
+  "experience": {
+    "eyebrow": "BESONDERE AUFMERKSAMKEIT",
+    "title": "Das Lux-Taxi Bordeinrichtung",
+    "subtitle": "Jedes Detail zählt für Ihre entspannte Reise.",
+    "exp1": "Kostenloses Évian Mineralwasser & Erfrischungen",
+    "exp2": "Highspeed 5G WLAN & Ladestationen für alle Smartphones",
+    "exp3": "Internationale Presse und Schweizer Magazin-Auswahl",
+    "exp4": "VIP Kindersitze auf Anfrage kostenlos verfügbar"
+  },
+  "reassurance": {
+    "eyebrow": "TRANSPARENZ & VERLÄSSLICHKEIT",
+    "title": "Warum LUX-TAXI Genf wählen?",
+    "r1_title": "100% Festpreisgarantie",
+    "r1_desc": "Keine versteckten Kosten, keine Stauaufschläge.",
+    "r2_title": "Kostenlose Stornierung",
+    "r2_desc": "Kostenfrei stornierbar oder änderbar bis 24 Stunden vor Abfahrt.",
+    "r3_title": "Sichere Zahlung & Rechnung",
+    "r3_desc": "Zahlung online, im Fahrzeug oder per Firmenüberweisung."
+  },
+  "booking": {
+    "title": "PRIVATES BUCHUNGSSYSTEM",
+    "subtitle": "Garantierter Festpreis ohne versteckte Gebühren.",
+    "step1_title": "1. Dienstleistung",
+    "step2_title": "2. Route",
+    "step3_title": "3. Bestätigung",
+    "service_airport": "Flughafentransfer (GVA)",
+    "service_hourly": "VIP Stundenchauffeur",
+    "service_ski": "Ski & Alpen Shuttle",
+    "service_corporate": "Firmentransport",
+    "pickup": "Abholort",
+    "dropoff": "Zielort",
+    "date": "Datum & Uhrzeit",
+    "flight_no": "Flugnummer (Tracking inkl.)",
+    "passengers": "Passagiere",
+    "luggage": "Gepäckstücke",
+    "vehicle": "Fahrzeugkategorie",
+    "price_label": "Geschätzter Festpreis",
+    "confirm_btn": "Chauffeur Verbindlich Buchen ↗",
+    "whatsapp_btn": "Direkt per WhatsApp Bestellen 24/7"
+  },
+  "footer": {
+    "address": "📍 Rte de l'Aéroport 21, 1215 Genf",
+    "phone": "+41 76 620 78 50",
+    "email": "contact@lux-taxi.com",
+    "regions": "Genf • Lausanne • Chamonix • Courchevel • Verbier • Zermatt",
+    "copyright": "© 2026 LUX-TAXI Genf. Alle Rechte vorbehalten."
+  }
+}

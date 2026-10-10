@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services de Transport Premium en Suisse | LUX-TAXI Genève</title>
+  <meta name="description" content="Services de chauffeur privé à Genève (GVA) : transferts aéroport, navettes ski vers Chamonix, Courchevel, Verbier & mise à disposition VIP 24/7."/>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/vitesse-prestige.css"/>
+</head>
+<body class="bg-[#0B0B0C] text-[#F5F1E8] font-sans selection:bg-[#C6A96B] selection:text-black">
+
+  <!-- 1. HEADER (SLIM MINIMALIST WITH CIRCULAR GOLD LT SEAL LOGO) -->
+  <header class="sticky top-0 z-40 px-4 sm:px-12 py-4 flex items-center justify-between backdrop-blur-md bg-[#0B0B0C]/85 border-b border-hairline">
+    
+    <!-- Minimalist Circular Gold LT Seal Emblem -->
+    <a href="../index.html" class="flex items-center group">
+      <div class="logo-lt-seal shadow-2xl">
+        <div class="logo-lt-seal-inner">LT</div>
+      </div>
+    </a>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-3">
+      <a href="../index.html" class="text-xs font-mono uppercase text-[#AAA59B] hover:text-[#C6A96B] transition-colors">← Accueil</a>
+      <a href="https://wa.me/41766207850" target="_blank" class="glass-luxe-pill px-4 py-2 rounded-full text-xs font-semibold text-[#F5F1E8]">WhatsApp 24/7</a>
+      <button onclick="toggleMenu()" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full glass-luxe-pill flex flex-col items-center justify-center gap-1 focus:outline-none">
+        <span class="w-4 h-[1.5px] bg-[#C6A96B]"></span>
+        <span class="w-4 h-[1.5px] bg-[#C6A96B]"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 2. SLIM HIGH-CONVERTING HERO HEADER -->
+  <section class="py-6 sm:py-10 px-4 sm:px-12 max-w-7xl mx-auto border-b border-hairline">
+    <div class="bg-gradient-to-r from-[#151515] via-[#1A1A1C] to-[#0B0B0C] p-6 sm:p-10 rounded-3xl border border-[#292929] flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="space-y-3 text-left max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#C6A96B]/40 bg-[#0B0B0C] text-[9px] font-mono font-bold text-[#C6A96B] uppercase tracking-widest">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B] animate-pulse"></span>
+          EXCELLENCE & CONCIERGERIE SUISSE
+        </div>
+        
+        <h1 class="font-display font-black text-2xl sm:text-4xl text-[#F5F1E8] tracking-tight leading-tight">
+          Votre Chauffeur Privé sur Mesure <span class="font-serif-luxe font-normal italic text-[#C6A96B]">à Genève & dans les Alpes</span>
+        </h1>
+
+        <p class="text-xs sm:text-sm text-[#AAA59B]">
+          Transferts aéroport GVA, navettes stations de ski et mise à disposition VIP 24/7. Sélectionnez un service ci-dessous pour réserver.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="reservation.html" class="btn-gold-luxe px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
+          Réserver en 1-Clic ↗
+        </a>
+        <a href="https://wa.me/41766207850" target="_blank" class="glass-luxe-pill px-5 py-3 rounded-full text-xs font-semibold text-[#F5F1E8] hover:text-[#C6A96B]">
+          Devis Express WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. TITLE & INTERACTIVE DIRECTIVE BANNER -->
+  <section class="pt-8 pb-4 px-4 text-center max-w-3xl mx-auto space-y-2">
+    <span class="text-[10px] font-mono tracking-[0.25em] text-[#C6A96B] uppercase font-bold">GAMME DE PRESTATIONS HIGH-END</span>
+    <h2 class="font-display font-bold text-2xl sm:text-3xl text-[#F5F1E8]">Explorez Nos Services & Tarifs Privilégiés</h2>
+    <p class="text-xs text-[#AAA59B]">
+      Survolez ou appuyez sur une carte pour consulter le détail de la prestation et réserver directement.
+    </p>
+  </section>
+
+  <!-- 4. COMPOSANT "CARTE SERVICE INTERACTIVE" GRID -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-12 pb-20 grid grid-cols-1 md:grid-cols-2 gap-8">
+    
+    <!-- CARD 01: Service Chauffeur Privé VIP (Suit Chauffeur Opening Door) -->
+    <div onclick="toggleCard(this)" class="service-interactive-card aspect-[4/3] sm:aspect-[16/10] cursor-pointer group">
+      <img src="../assets/images/service_chauffeur_vip.jpg" alt="Chauffeur Privé VIP ouvrant portière" class="service-card-bg-img"/>
+      
+      <!-- Fixed Top Category Badge + Fixed Rate -->
+      <div class="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
+        <span class="px-3 py-1 bg-black/85 backdrop-blur-md rounded-full border border-[#C6A96B]/40 font-mono text-[9px] text-[#C6A96B] font-bold uppercase tracking-wider">
+          01 / CHAUFFEUR PRIVÉ VIP
+        </span>
+        <span class="px-3 py-1 bg-[#C6A96B] text-black font-mono text-[10px] font-bold rounded-full shadow-lg">
+          Dès 120 CHF / h
+        </span>
+      </div>
+
+      <!-- Overlay Panel with Smooth Reveal Transition -->
+      <div class="service-overlay-panel">
+        <div class="space-y-1">
+          <div class="text-[10px] font-mono text-[#C6A96B] uppercase tracking-widest font-semibold flex items-center justify-between">
+            <span>MISE À DISPOSITION VIP 24/7</span>
+            <span class="text-[9px] text-gray-400 font-normal">Toucher / Appuyer pour explorer ▾</span>
+          </div>
+          <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Chauffeur Privé à l'Heure & Journée</h3>
+        </div>
+
+        <!-- Hidden Detail Reveal State (Slides up on Hover / Tap) -->
+        <div class="service-details-reveal space-y-3">
+          <p class="text-xs text-[#AAA59B] leading-relaxed">
+            Pour vos rendez-vous d'affaires, vos sessions shopping Rue du Rhône ou vos soirées privées, disposez d'un chauffeur dédié bilingue en costume sombre.
+          </p>
+
+          <div class="space-y-2 pt-1">
+            <div class="flex items-center gap-2 text-[11px] text-[#F5F1E8]">
+              <span class="text-[#C6A96B] font-bold">✓</span> Berline ou Limousine dédiée à disposition exclusive
+            </div>
+            <div class="flex items-center gap-2 text-[11px] text-[#F5F1E8]">
+              <span class="text-[#C6A96B] font-bold">✓</span> Itinéraire 100% souple & modifications illimitées
+            </div>
+            <div class="flex items-center gap-2 text-[11px] text-[#F5F1E8]">
+              <span class="text-[#C6A96B] font-bold">✓</span> Confidentialité diplomatique & eaux fraîches offertes
+            </div>
+          </div>
+
+          <div class="pt-3 flex items-center gap-3">
+            <a href="reservation.html" onclick="event.stopPropagation()" class="btn-gold-luxe px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+              Réserver ce Service ↗
+            </a>
+            <a href="https://wa.me/41766207850" target="_blank" onclick="event.stopPropagation()" class="bg-emerald-600/90 hover:bg-emerald-600 px-4 py-2.5 rounded-full text-[10px] font-semibold text-white">
+              WhatsApp Direct
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 02: Navettes Ski & Stations Alpines (Snowy Mountain Pass 4x4) -->
+    <div onclick="toggleCard(this)" class="service-interactive-card aspect-[4/3] sm:aspect-[16/10] cursor-pointer group">
+      <img src="../assets/images/service_navette_ski.jpg" alt="Navette Ski 4x4 Mercedes V-Class col enneigé" class="service-card-bg-img"/>
+      
+      <div class="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
+        <span class="px-3 py-1 bg-black/85 backdrop-blur-md rounded-full border border-[#C6A96B]/40 font-mono text-[9px] text-[#C6A96B] font-bold uppercase tracking-wider">
+          02 / NAVETTE SKI & ALPES
+        </span>
+        <span class="px-3 py-1 bg-[#C6A96B] text-black font-mono text-[10px] font-bold rounded-full shadow-lg">
+          Dès 350 CHF
+        </span>
+      </div>
+
+      <div class="service-overlay-panel">
+        <div class="space-y-1">
+          <div class="text-[10px] font-mono text-[#C6A96B] uppercase tracking-widest font-semibold flex items-center justify-between">
+            <span>STATIONS ALPINES SUISSES & FR</span>
+            <span class="text-[9px] text-gray-400 font-normal">Toucher / Appuyer pour explorer ▾</span>
+          </div>
+          <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Navettes Ski & Stations Prestigieuses</h3>
+        </div>
+
+        <div class="service-details-reveal space-y-3">
+          <p class="text-xs text-[#AAA59B] leading-relaxed">
+            Liaisons directes en véhicules 4x4 de luxe équipés montagne depuis l'Aéroport de Genève vers Chamonix, Courchevel, Megève, Verbier, Zermatt et Gstaad.
+          </p>
+
+          <div class="space-y-2 pt-1">
+            <div class="flex items-center gap-2 text-[11px] text-[#F5F1E8]">
+              <span class="text-[#C6A96B] font-bold">✓</span> Mercedes 4MATIC équipés pneus neige premium
+            </div>
+            <div class="flex items-center gap-2 text-[11px] text-[#F5F1E8]">
+              <span class="text-[#C6A96B] font-bold">✓</span> Capacité jusqu'à 7 passagers & housses de ski
+            </div>
+            <div class="flex items-center gap-2 text-[11px] text-[#F5F1E8]">
+              <span class="text-[#C6A96B] font-bold">✓</span> Chauffeurs aguerris aux conditions hivernales alpines
+            </div>
+          </div>
+
+          <div class="pt-3 flex items-center gap-3">
+            <a href="reservation.html" onclick="event.stopPropagation()" class="btn-gold-luxe px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+              Réserver ce Service ↗
+            </a>
+            <a href="https://wa.me/41766207850" target="_blank" onclick="event.stopPropagation()" class="bg-emerald-600/90 hover:bg-emerald-600 px-4 py-2.5 rounded-full text-[10px] font-semibold text-white">
+              WhatsApp Direct
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 03: Événementiel, Galas & Corporate (Red Carpet Limousine Arrival) -->
+    <div onclick="toggleCard(this)" class="service-interactive-card aspect-[4/3] sm:aspect-[16/10] cursor-pointer group">
+      <img src="../assets/images/service_corporate_gala.jpg" alt="Arrivée VIP Tapis rouge Galas et Congrès Palexpo" class="service-card-bg-img"/>
+      
+      <div class="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
+        <span class="px-3 py-1 bg-black/85 backdrop-blur-md rounded-full border border-[#C6A96B]/40 font-mono text-[9px] text-[#C6A96B] font-bold uppercase tracking-wider">
+          03 / ÉVÉNEMENTIEL & CORPORATE
+        </span>
+        <span class="px-3 py-1 bg-[#C6A96B] text-black font-mono text-[10px] font-bold rounded-full shadow-lg">
+          Sur Devis / Cortège VIP
+        </span>
+      </div>
+
+      <div class="service-overlay-panel">
+        <div class="space-y-1">
+          <div class="text-[10px] font-mono text-[#C6A96B] uppercase tracking-widest font-semibold flex items-center justify-between">
+            <span>PALEXPO, SALONS & CONGRÈS</span>
+            <span class="text-[9px] text-gray-400 font-normal">Toucher / Appuyer pour explorer ▾</span>
+          </div>
+          <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Délégations, Congrès & Soirées Gala</h3>
+        </div>
+
+        <div class="service-details-reveal space-y-3">
+          <p class="text-xs text-[#AAA59B] leading-relaxed">
+            Prise en charge logistique et transport VIP pour événements majeurs à Genève (Watches & Wonders, Palexpo) et réceptions d'entreprises.
+          </p>
+
+          <div class="space-y-2 pt-1">
+            <div class="flex items-center gap-2 text-[11px] text-[#F5F1E8]">
+              <span class="text-[#C6A96B] font-bold">✓</span> Flotte coordonnée Classe S, Maybach & Vans Classe V
+            </div>
+            <div class="flex items-center gap-2 text-[11px] text-[#F5F1E8]">
+              <span class="text-[#C6A96B] font-bold">✓</span> Accréditations VIP & régie de transport sur site
+            </div>
+            <div class="flex items-center gap-2 text-[11px] text-[#F5F1E8]">
+              <span class="text-[#C6A96B] font-bold">✓</span> Facturation entreprise simplifiée & chauffeur coordinateur
+            </div>
+          </div>
+
+          <div class="pt-3 flex items-center gap-3">
+            <a href="reservation.html" onclick="event.stopPropagation()" class="btn-gold-luxe px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+              Réserver ce Service ↗
+            </a>
+            <a href="https://wa.me/41766207850" target="_blank" onclick="event.stopPropagation()" class="bg-emerald-600/90 hover:bg-emerald-600 px-4 py-2.5 rounded-full text-[10px] font-semibold text-white">
+              WhatsApp Direct
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 04: Transferts Aéroport GVA (Airport Terminal & Jet Privé) -->
+    <div onclick="toggleCard(this)" class="service-interactive-card aspect-[4/3] sm:aspect-[16/10] cursor-pointer group">
+      <img src="../assets/images/service_aeroport_gva.jpg" alt="Accueil chauffeur privé terminal aéroport de Genève GVA jet privé" class="service-card-bg-img"/>
+      
+      <div class="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
+        <span class="px-3 py-1 bg-black/85 backdrop-blur-md rounded-full border border-[#C6A96B]/40 font-mono text-[9px] text-[#C6A96B] font-bold uppercase tracking-wider">
+          04 / AIRPORT GVA
+        </span>
+        <span class="px-3 py-1 bg-[#C6A96B] text-black font-mono text-[10px] font-bold rounded-full shadow-lg">
+          Dès 90 CHF
+        </span>
+      </div>
+
+      <div class="service-overlay-panel">
+        <div class="space-y-1">
+          <div class="text-[10px] font-mono text-[#C6A96B] uppercase tracking-widest font-semibold flex items-center justify-between">
+            <span>TERMINAL GVA & AVIATION PRIVÉE</span>
+            <span class="text-[9px] text-gray-400 font-normal">Toucher / Appuyer pour explorer ▾</span>
+          </div>
+          <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Transfert Aéroport de Genève (GVA)</h3>
+        </div>
+
+        <div class="service-details-reveal space-y-3">
+          <p class="text-xs text-[#AAA59B] leading-relaxed">
+            Accueil privilégié nominatif avec pancarte en zone d'arrivée (vols commerciaux Cointrin ou terminal jet privé C3/C4).
+          </p>
+
+          <div class="space-y-2 pt-1">
+            <div class="flex items-center gap-2 text-[11px] text-[#F5F1E8]">
+              <span class="text-[#C6A96B] font-bold">✓</span> Suivi du vol en direct & 60 minutes d'attente incluses
+            </div>
+            <div class="flex items-center gap-2 text-[11px] text-[#F5F1E8]">
+              <span class="text-[#C6A96B] font-bold">✓</span> Accueil personnalisé en salle d'arrivée & bagages pris en charge
+            </div>
+            <div class="flex items-center gap-2 text-[11px] text-[#F5F1E8]">
+              <span class="text-[#C6A96B] font-bold">✓</span> Tarif fixe tout compris garanti dès la réservation
+            </div>
+          </div>
+
+          <div class="pt-3 flex items-center gap-3">
+            <a href="reservation.html" onclick="event.stopPropagation()" class="btn-gold-luxe px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+              Réserver ce Service ↗
+            </a>
+            <a href="https://wa.me/41766207850" target="_blank" onclick="event.stopPropagation()" class="bg-emerald-600/90 hover:bg-emerald-600 px-4 py-2.5 rounded-full text-[10px] font-semibold text-white">
+              WhatsApp Direct
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 5. SECTION PROCESSUS -->
+  <section class="py-20 px-4 sm:px-12 max-w-7xl mx-auto border-t border-hairline bg-[#151515]/50">
+    <div class="text-center max-w-xl mx-auto mb-16 space-y-3">
+      <span class="text-[10px] font-mono tracking-[0.25em] text-[#C6A96B] uppercase font-bold">DÉROULEMENT SIMPLIFIÉ</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F1E8]">Comment Fonctionne la Prise en Charge ?</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="p-8 rounded-2xl bg-[#0B0B0C] border border-[#292929] space-y-4">
+        <div class="text-[#C6A96B] font-mono text-2xl font-bold border-b border-[#292929] pb-3">01</div>
+        <h3 class="font-serif-luxe text-xl text-[#F5F1E8]">Communication du besoin</h3>
+        <p class="text-xs text-[#AAA59B] leading-relaxed">Indiquez votre horaire, vol et destination sur notre moteur privé ou par WhatsApp.</p>
+      </div>
+
+      <div class="p-8 rounded-2xl bg-[#0B0B0C] border border-[#292929] space-y-4">
+        <div class="text-[#C6A96B] font-mono text-2xl font-bold border-b border-[#292929] pb-3">02</div>
+        <h3 class="font-serif-luxe text-xl text-[#F5F1E8]">Organisation & Suivi</h3>
+        <p class="text-xs text-[#AAA59B] leading-relaxed">Votre chauffeur dédié planifie la prise en charge et suit votre vol en direct.</p>
+      </div>
+
+      <div class="p-8 rounded-2xl bg-[#0B0B0C] border border-[#292929] space-y-4">
+        <div class="text-[#C6A96B] font-mono text-2xl font-bold border-b border-[#292929] pb-3">03</div>
+        <h3 class="font-serif-luxe text-xl text-[#F5F1E8]">Accueil & Prise en Charge</h3>
+        <p class="text-xs text-[#AAA59B] leading-relaxed">Accueil nominatif en zone d'arrivée avec gestion complète de vos bagages.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FINAL CALL TO ACTION -->
+  <section class="py-24 px-4 text-center max-w-4xl mx-auto border-t border-hairline">
+    <div class="luxe-card p-10 sm:p-16 space-y-6 border-[#C6A96B]/40">
+      <span class="text-[10px] font-mono text-[#C6A96B] uppercase tracking-widest font-bold">VOTRE PROCHAIN DÉPLACEMENT COMMENCE ICI</span>
+      <h2 class="font-serif-luxe text-3xl sm:text-5xl text-[#F5F1E8]">Organisez Votre Transfert Privé en Suisse</h2>
+      <p class="text-xs sm:text-sm text-[#AAA59B] max-w-md mx-auto">
+        Obtenez un tarif fixe garanti et bénéficiez de l'accompagnement d'un chauffeur privé d'exception à Genève et dans les Alpes.
+      </p>
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="reservation.html" class="btn-gold-luxe font-display font-extrabold text-xs uppercase tracking-widest px-10 py-4 rounded-full w-full sm:w-auto text-center">
+          Demander un devis / Réserver ↗
+        </a>
+        <a href="https://wa.me/41766207850" target="_blank" class="bg-emerald-600 text-white font-semibold text-xs px-8 py-4 rounded-full w-full sm:w-auto text-center">
+          WhatsApp VIP 24/7
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. BURGER MENU OVERLAY -->
+  <div id="menu-overlay" class="closed fixed inset-0 z-50 bg-[#0B0B0C]/97 backdrop-blur-3xl flex flex-col justify-between p-6 sm:p-16">
+    <div class="flex justify-between items-center border-b border-[#292929] pb-5">
+      <span class="text-xs font-mono text-[#C6A96B] uppercase tracking-widest">Navigation Privée • LUX-TAXI GENÈVE</span>
+      <button onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-wider text-[#AAA59B] hover:text-[#C6A96B]">Fermer ✕</button>
+    </div>
+    <nav class="flex flex-col space-y-4 sm:space-y-6 text-xl sm:text-3xl font-display font-black uppercase tracking-wider">
+      <a href="../index.html" class="hover:text-[#C6A96B]">01. Accueil</a>
+      <a href="services.html" class="text-[#C6A96B]">02. Services & Prestations</a>
+      <a href="flotte.html" class="hover:text-[#C6A96B]">03. Flotte Mercedes & Maybach</a>
+      <a href="destinations.html" class="hover:text-[#C6A96B]">04. Destinations (Genève, Alpes)</a>
+      <a href="reservation.html" class="hover:text-[#C6A96B]">05. Réservation Privée</a>
+    </nav>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="px-6 py-6 text-center text-xs text-[#AAA59B] border-t border-[#292929] font-mono">
+    📍 Rte de l'Aéroport 21, 1215 Genève • 📞 +41 76 620 78 50 • contact@lux-taxi.com
+  </footer>
+
+  <script>
+    let isMenuOpen = false;
+    function toggleMenu() {
+      const overlay = document.getElementById('menu-overlay');
+      isMenuOpen = !isMenuOpen;
+      overlay.classList.toggle('closed', !isMenuOpen);
+      overlay.classList.toggle('open', isMenuOpen);
+    }
+
+    function toggleCard(cardElement) {
+      // Toggle active class for mobile tap interaction
+      cardElement.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfert Genève à Chamonix-Mont-Blanc | Lux-Taxi</title>
+    <meta name="description" content="Transfert ski privé entre l'Aéroport de Genève (GVA) et Chamonix. Durée ~1h15, véhicules 4x4 d'hiver équipés, transport des skis gratuit. Dès CHF 390.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { black: '#0A0A0C', ebony: '#0F141A', studio: '#F8F9FA', border: '#E5E5E5', accent: '#C5A059' }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white text-brand-black font-sans">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white border-b border-brand-border py-4 px-6 flex items-center justify-between">
+        <a href="../../index.html" class="flex items-center gap-3">
+            <div class="w-9 h-9 bg-brand-ebony text-white flex items-center justify-center font-bold text-lg">LT</div>
+            <span class="font-extrabold text-lg uppercase tracking-widest text-brand-ebony">LUX-TAXI</span>
+        </a>
+        <a href="../../index.html#reservation" class="bg-brand-ebony text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider">
+            Réserver ce trajet
+        </a>
+    </header>
+
+    <!-- Destination Hero -->
+    <section class="bg-brand-studio border-b border-brand-border py-16 px-4">
+        <div class="max-w-4xl mx-auto text-center space-y-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-gray-500">TRANSFERT STATIONS DE SKI</span>
+            <h1 class="text-4xl font-extrabold text-brand-ebony">GENÈVE ↔ CHAMONIX-MONT-BLANC</h1>
+            <p class="text-sm text-gray-600">Liaison directe depuis l'Aéroport de Genève ou votre domicile vers les chalets et hôtels de Chamonix.</p>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="py-16 max-w-5xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            
+            <div class="space-y-4 text-sm text-gray-700">
+                <h3 class="text-xl font-bold text-brand-ebony uppercase tracking-wider">Caractéristiques du trajet</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-brand-accent"></i> <strong>Distance :</strong> ~85 kilomètres</li>
+                    <li class="flex items-center gap-3"><i data-lucide="clock" class="w-5 h-5 text-brand-accent"></i> <strong>Durée indicative :</strong> 1h15 à 1h45 selon trafic</li>
+                    <li class="flex items-center gap-3"><i data-lucide="shield-alert" class="w-5 h-5 text-brand-accent"></i> <strong>Passage de frontière :</strong> Suisse / France (Formalités incluses)</li>
+                    <li class="flex items-center gap-3"><i data-lucide="snowflake" class="w-5 h-5 text-brand-accent"></i> <strong>Véhicules équipés neige :</strong> Pneus hiver & transmission 4x4 intégrale</li>
+                    <li class="flex items-center gap-3"><i data-lucide="briefcase" class="w-5 h-5 text-brand-accent"></i> <strong>Matériel de ski :</strong> Prise en charge gratuite de housses à skis et bagages</li>
+                </ul>
+            </div>
+
+            <div class="border border-brand-border rounded-xl p-8 bg-brand-studio text-center space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-gray-400">TARIF FIXE GARANTI</span>
+                <div class="text-4xl font-extrabold text-brand-ebony">Dès CHF 390</div>
+                <p class="text-xs text-gray-500">Comprend le suivi de vol, l'attente gratuite, le passage de frontière et les péages autoroutiers.</p>
+                <a href="../../index.html#reservation" class="block w-full bg-brand-ebony text-white py-3.5 rounded-lg font-bold text-xs uppercase tracking-wider shadow">
+                    Réserver mon transfert Chamonix
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,3251 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IBR LUXURY AUTO| Marché Automobile de Luxe</title>
+<script src="prospect.config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode:"class",
+  theme:{extend:{
+    colors:{
+      "primary":"var(--accent)",
+      "on-primary":"var(--on-accent)",
+      "primary-container":"var(--bg-secondary)",
+      "on-primary-container":"var(--text-secondary)",
+      "secondary":"var(--text-secondary)",
+      "on-secondary":"var(--bg-primary)",
+      "secondary-container":"var(--bg-secondary)",
+      "on-secondary-container":"var(--text-primary)",
+      "surface":"var(--bg-primary)",
+      "surface-dim":"var(--bg-primary)",
+      "surface-bright":"var(--bg-secondary)",
+      "surface-container-lowest":"var(--bg-primary)",
+      "surface-container-low":"var(--bg-secondary)",
+      "surface-container":"var(--bg-secondary)",
+      "surface-container-high":"var(--bg-secondary)",
+      "surface-container-highest":"var(--bg-secondary)",
+      "on-surface":"var(--text-primary)",
+      "on-surface-variant":"var(--text-secondary)",
+      "outline":"var(--border-color)",
+      "outline-variant":"var(--border-color)",
+      "background":"var(--bg-primary)",
+      "on-background":"var(--text-primary)",
+      "inverse-surface":"var(--text-primary)",
+      "inverse-on-surface":"var(--bg-primary)",
+      "inverse-primary":"var(--accent)",
+      "error":"var(--danger)",
+      "on-error":"var(--bg-primary)",
+      "error-container":"var(--danger)",
+      "on-error-container":"var(--text-primary)",
+      "primary-fixed":"var(--accent)",
+      "primary-fixed-dim":"var(--accent-gold)",
+      "on-primary-fixed":"var(--on-accent)",
+      "on-primary-fixed-variant":"var(--accent-gold)",
+      "accent-gold":"var(--accent-gold)",
+      "surface-tint":"var(--bg-secondary)",
+      "surface-variant":"var(--bg-secondary)"
+    },
+    borderRadius:{"DEFAULT":"0.5rem","lg":"0.75rem","xl":"1rem","24px":"24px","full":"9999px"},
+    spacing:{
+      "section-gap":"120px","gutter":"24px","margin-desktop":"80px","margin-mobile":"20px",
+      "base":"8px","container-max":"1440px"
+    },
+    fontFamily:{
+      "display-xl":["Outfit","sans-serif"],
+      "headline-lg":["Outfit","sans-serif"],
+      "headline-lg-mobile":["Outfit","sans-serif"],
+      "headline-md":["Outfit","sans-serif"],
+      "headline-md-mobile":["Outfit","sans-serif"],
+      "body-lg":["Inter","sans-serif"],
+      "body-md":["Inter","sans-serif"],
+      "label-caps":["Outfit","sans-serif"]
+    },
+    fontSize:{
+      "display-xl":["80px",{lineHeight:"96px",letterSpacing:"-0.04em",fontWeight:"700"}],
+      "headline-lg":["48px",{lineHeight:"56px",letterSpacing:"-0.03em",fontWeight:"600"}],
+      "headline-lg-mobile":["32px",{lineHeight:"40px",letterSpacing:"-0.03em",fontWeight:"600"}],
+      "headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.02em",fontWeight:"500"}],
+      "headline-md-mobile":["24px",{lineHeight:"32px",letterSpacing:"-0.02em",fontWeight:"600"}],
+      "body-lg":["18px",{lineHeight:"28px",letterSpacing:"0",fontWeight:"400"}],
+      "body-md":["16px",{lineHeight:"24px",letterSpacing:"0",fontWeight:"400"}],
+      "label-caps":["12px",{lineHeight:"16px",letterSpacing:"0.15em",fontWeight:"500"}]
+    }
+  }}
+}
+</script>
+<style>
+  :root {
+    --bg-primary: #faf9f6;
+    --bg-secondary: #f0f4f8;
+    --bg-card: #ffffff;
+    --text-primary: #0c0a09;
+    --text-secondary: #78716c;
+    --border-color: #e7e5e4;
+    --accent: #154ec1;
+    --on-accent: #ffffff;
+    --accent-gold: #96742a;
+    --danger: #dc2626;
+    --shadow-card: 0 4px 20px rgba(0,0,0,0.05);
+    --input-bg: #ffffff;
+    --nav-bg: rgba(250, 250, 249, 0.85);
+  }
+
+  html.dark {
+    --bg-primary: #0A0E14;
+    --bg-secondary: #131A24;
+    --bg-card: #131A24;
+    --text-primary: #FFFFFF;
+    --text-secondary: #9AA7B8;
+    --border-color: rgba(255, 255, 255, 0.06);
+    --accent: #1E6FFF;
+    --on-accent: #FFFFFF;
+    --accent-gold: #C9A24B;
+    --danger: #f87171;
+    --shadow-card: 0 4px 30px rgba(0,0,0,0.4);
+    --input-bg: #131A24;
+    --nav-bg: rgba(10, 14, 20, 0.85);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background-color:var(--bg-primary);
+    color:var(--text-primary);
+    overflow-x:hidden;
+    min-height:100dvh;
+    transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(180deg, var(--text-primary) 30%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glass{background:var(--bg-card);border:1px solid var(--border-color);box-shadow: var(--shadow-card);transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);}
+  .glass-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;box-shadow: var(--shadow-card);transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);}
+  .glass-dark{background:var(--bg-secondary);border:1px solid var(--border-color);transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);}
+  .glass-panel{background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);}
+  .glass-input{background:var(--bg-secondary);border:1px solid var(--border-color);color:var(--text-primary);transition:all 0.8s cubic-bezier(0.16, 1, 0.3, 1);}
+  .glass-input:focus{border-color:var(--accent-gold);background:var(--bg-primary);outline:none;box-shadow: 0 0 0 1px var(--accent-gold);}
+  
+  .page {
+    display: none;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1), transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .page.active {
+    display: block;
+    animation: pageFadeIn 1.0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes pageFadeIn {
+    0% { opacity: 0; transform: translateY(16px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Hero Car Entrance Animation */
+  @keyframes heroCarEnter {
+    0% {
+      transform: translateX(120px) scale(1.02);
+      filter: blur(8px) contrast(1.15);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0) scale(1);
+      filter: blur(0) contrast(1);
+      opacity: 1;
+    }
+  }
+  .animate-hero-car {
+    animation: heroCarEnter 600ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
+  /* Chrome 3D rotation wobble for brand logos */
+  @keyframes chromeWobble {
+    0% { transform: rotateY(-18deg) rotateX(2deg); }
+    50% { transform: rotateY(18deg) rotateX(-2deg); }
+    100% { transform: rotateY(-18deg) rotateX(2deg); }
+  }
+  .chrome-logo {
+    animation: chromeWobble 7s ease-in-out infinite;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .reveal{opacity:0;transform:translateY(25px);transition:all 1.0s cubic-bezier(0.16, 1, 0.3, 1)}
+  .reveal.active{opacity:1;transform:translateY(0)}
+  .fade-in-section{opacity:0;transform:translateY(35px);transition:opacity 1.0s ease-out,transform 1.0s ease-out}
+  .fade-in-section.is-visible{opacity:1;transform:translateY(0)}
+  .card-hover:hover .card-img{transform:scale(1.04)}
+  .card-container {
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+    transform-style: preserve-3d;
+  }
+  .transition-cubic{transition:all 0.8s cubic-bezier(0.16, 1, 0.3, 1)}
+  .hide-scrollbar::-webkit-scrollbar{display:none}
+  .hide-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+  ::-webkit-scrollbar{width:6px}
+  ::-webkit-scrollbar-track{background:transparent}
+  ::-webkit-scrollbar-thumb{background:rgba(120,120,120,0.15);border-radius:10px}
+  .step-indicator{transition:width 1.0s cubic-bezier(0.16,1,0.3,1)}
+  
+  /* nav active state */
+  .nav-btn.is-active{background:var(--accent);color:var(--on-accent);border-radius:9999px;transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);}
+  .nav-btn.is-active span{color:var(--on-accent)}
+
+  /* Theme Switcher Button */
+  .theme-toggle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+  }
+  .theme-toggle-btn:hover {
+    background: var(--bg-secondary);
+    border-color: var(--text-secondary);
+  }
+
+  .brand-badge {
+    flex-shrink: 0;
+    padding: 10px 24px;
+    background: transparent;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .brand-badge:hover {
+    color: var(--text-primary);
+    border-bottom-color: var(--accent-gold);
+  }
+
+  /* Skeleton Loading */
+  @keyframes pulse-skeleton {
+    0%, 100% {
+      background-color: var(--bg-secondary);
+      opacity: 0.6;
+    }
+    50% {
+      background-color: var(--border-color);
+      opacity: 1;
+    }
+  }
+  .skeleton {
+    animation: pulse-skeleton 1.5s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  .skeleton img {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .skeleton.loaded img {
+    opacity: 1;
+  }
+  .skeleton.loaded {
+    animation: none;
+    background-color: transparent;
+  }
+
+  /* Bento Grid Card styles */
+  .bento-card {
+    background: #090909;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .bento-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(184, 144, 83, 0.4);
+    box-shadow: 0 0 15px rgba(184, 144, 83, 0.25);
+  }
+  .bento-card-main {
+    height: 480px;
+  }
+  .bento-card-side {
+    height: 228px;
+  }
+
+  /* Hero Car Animation Classes */
+  @keyframes heroCarIntro {
+    0% {
+      transform: scale(1.08);
+      filter: blur(8px);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1.0);
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+  @keyframes heroCarPulse {
+    0%, 100% {
+      transform: scale(1.0);
+    }
+    50% {
+      transform: scale(1.02);
+    }
+  }
+  .animate-hero-car {
+    animation: heroCarIntro 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, heroCarPulse 8s ease-in-out infinite 1.2s;
+    transform-origin: center center;
+  }
+  @media (min-width: 768px) {
+    .animate-hero-car {
+      transform-origin: right center;
+    }
+  }
+
+  /* Shine Sweep Overlay */
+  @keyframes shineSweep {
+    0% { transform: translateX(-150%) skewX(-12deg); }
+    20%, 100% { transform: translateX(150%) skewX(-12deg); }
+  }
+  .shine-overlay {
+    animation: shineSweep 6s ease-in-out infinite;
+  }
+
+  /* Infinite Marquee styles */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+  .mask-gradient {
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  }
+</style>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary selection:text-surface">
+
+<!-- ═══════════════════════════════════════════════════ SHADER BACKGROUND -->
+<div class="fixed inset-0 w-full h-full -z-10 bg-background transition-colors duration-300">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--bg-secondary),transparent_60%)] opacity-70"></div>
+  <canvas id="bg-particles-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-80"></canvas>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ ADMIN LOGIN MODAL -->
+<div id="admin-modal" class="fixed inset-0 z-[200] flex items-center justify-center" style="display:none!important">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-md" onclick="closeAdminModal()"></div>
+  <div class="glass-card rounded-[24px] p-10 w-full max-w-sm relative z-10 mx-4">
+    <h2 class="font-headline-md text-headline-md text-primary mb-2">Accès Admin</h2>
+    <p class="text-on-surface-variant text-sm mb-8">Connectez-vous pour gérer vos annonces.</p>
+    <div class="space-y-4">
+      <input id="admin-user" class="glass-input w-full px-5 py-4 rounded-[16px] placeholder:text-on-surface-variant/40 focus:ring-0" placeholder="Email" type="email"/>
+      <input id="admin-pass" class="glass-input w-full px-5 py-4 rounded-[16px] placeholder:text-on-surface-variant/40 focus:ring-0" placeholder="Mot de passe" type="password" onkeydown="if(event.key==='Enter')doLogin()"/>
+      <p id="admin-err" class="text-error text-sm hidden">Identifiants incorrects.</p>
+    </div>
+    <button onclick="doLogin()" class="w-full mt-6 py-4 bg-primary text-on-primary font-semibold rounded-xl hover:scale-[1.02] active:scale-95 transition-all">Se connecter</button>
+    <button onclick="closeAdminModal()" class="w-full mt-3 py-4 glass text-primary font-medium rounded-xl hover:bg-white/10 active:scale-95 transition-all">Annuler</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SHARED HEADER -->
+<header id="shared-header" class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-background/85 backdrop-blur-[30px] border-b border-outline transition-all duration-300">
+  <!-- left -->
+  <div class="flex items-center gap-4">
+    <button id="hdr-back" class="material-symbols-outlined text-primary hover:opacity-80 transition-all" onclick="navigate('catalog')" style="display:none">arrow_back</button>
+    <button id="hdr-menu" class="material-symbols-outlined text-primary hover:opacity-80 transition-all mr-2" onclick="toggleMobileMenu()">menu</button>
+    <div class="flex items-center gap-2 cursor-pointer select-none" onclick="navigate('home')">
+      <div id="header-logo-container" class="flex items-center"></div>
+      <h1 id="header-brand-title" class="brand-title-text text-[17px] tracking-[0.3em] text-primary font-extrabold">IBR LUXURY AUTO</h1>
+    </div>
+  </div>
+  <!-- center (desktop only) -->
+  <div id="hdr-desktop-links" class="hidden md:flex items-center gap-10">
+    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-cubic cursor-pointer" onclick="navigate('home')">Accueil</a>
+    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-cubic cursor-pointer" onclick="navigate('catalog')">Catalogue</a>
+  </div>
+  <!-- right -->
+  <div class="flex items-center gap-4">
+    <button onclick="toggleTheme()" class="theme-toggle-btn">
+      <span class="material-symbols-outlined text-[20px]" id="theme-toggle-icon">dark_mode</span>
+    </button>
+    <span id="hdr-fav" class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80" style="display:none">favorite</span>
+    <span id="hdr-share" class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80" style="display:none">share</span>
+    <span id="hdr-search" class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80">search</span>
+    <span id="hdr-notif" class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80">notifications</span>
+    <div id="hdr-avatar" class="hidden w-8 h-8 rounded-full bg-surface-container-highest border border-outline overflow-hidden cursor-pointer flex items-center justify-center text-primary" onclick="navigate('admin')">
+      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════ PAGE: HOME -->
+<div id="page-home" class="page active">
+<main class="pb-32 pt-0">
+  <!-- Hero -->
+  <section class="relative h-[751px] w-full overflow-hidden bg-[#030303]">
+    <!-- Showroom Mercedes Image as Background centerpiece -->
+    <img alt="Mercedes-AMG GT Coupe" id="hero-car-img" class="absolute inset-0 w-full h-full object-contain md:object-right select-none pointer-events-none transform translate-x-full opacity-0 filter blur-md z-0" src="./hero_mercedes_luxury.png" onerror="this.src='https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=1600&q=90';this.onerror=null;" onload="triggerHeroCarAnimation(this)"/>
+
+    <!-- Shine Sweep Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-accent-gold/15 to-transparent z-10 pointer-events-none transform -skew-x-12 translate-x-[-150%] shine-overlay"></div>
+
+    <!-- Fade gradients to blend square showroom photo into pure black fullscreen container -->
+    <div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#030303] via-transparent to-transparent z-10 pointer-events-none h-40"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#030303] via-transparent to-transparent z-10 pointer-events-none w-48 hidden md:block"></div>
+    <div class="absolute inset-0 bg-gradient-to-l from-[#030303] via-transparent to-transparent z-10 pointer-events-none w-48 left-auto right-0 hidden md:block"></div>
+
+    <!-- Text & Search bar positioned over the background like original V2 layout -->
+    <div class="absolute inset-0 flex flex-col justify-end px-margin-mobile md:px-margin-desktop pb-32 z-20">
+      <div class="relative w-full max-w-lg">
+        <h2 class="text-gradient mb-8 max-w-2xl reveal active font-extrabold tracking-tighter" style="font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.15;">Votre véhicule d'exception.</h2>
+        <div class="flex items-center w-full bg-white/10 dark:bg-black/30 border border-black/10 dark:border-white/10 backdrop-blur-md px-5 py-3.5 rounded-xl transition-all focus-within:border-accent-gold/50 focus-within:ring-1 focus-within:ring-accent-gold/20 reveal active">
+          <span class="material-symbols-outlined text-primary/50 mr-3 text-[20px]">search</span>
+          <input id="home-search" class="bg-transparent border-none focus:ring-0 text-primary w-full font-body-md placeholder:text-primary/30 p-0 text-base outline-none" placeholder="Chercher une marque, un budget, Abidjan..." type="text" onkeydown="if(event.key==='Enter')searchCatalog()" autocomplete="off" oninput="showSearchSuggestions(this.value)"/>
+          <button onclick="searchCatalog()" class="ml-4 text-accent-gold text-xs tracking-wider font-semibold hover:opacity-80 transition-opacity font-label-caps uppercase">Rechercher</button>
+        </div>
+        
+        <!-- Suggestions Dropdown -->
+        <div id="search-suggestions" class="absolute left-0 right-0 mt-2 bg-stone-900/95 border border-white/10 backdrop-blur-xl rounded-xl overflow-hidden shadow-2xl z-50 transition-all duration-300 transform scale-95 opacity-0 pointer-events-none max-h-60 overflow-y-auto">
+          <!-- Injected dynamically by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Infinite Brand Marquee Section -->
+  <section class="w-full overflow-hidden bg-background py-8 border-y border-outline relative z-10">
+    <div class="w-full overflow-hidden mask-gradient">
+      <div class="flex animate-marquee whitespace-nowrap">
+        <!-- Set 1 -->
+        <div class="flex items-center gap-20 pr-20 shrink-0">
+          <div class="flex items-center gap-3 text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer" onclick="filterBrand('Mercedes-Benz')">
+            <svg class="w-6 h-6 fill-none stroke-current" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M12 1v11l-9.5 5.5M12 12l9.5 5.5"/></svg>
+            <span class="font-label-caps text-[10px] tracking-[0.2em] font-bold">MERCEDES</span>
+          </div>
+          <div class="flex items-center gap-3 text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer" onclick="filterBrand('BMW')">
+            <svg class="w-6 h-6 fill-none stroke-current" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><circle cx="12" cy="12" r="7"/><path d="M12 1v22M1 12h22"/><path d="M12 12h7A7 7 0 0 0 12 5v7z M12 12H5A7 7 0 0 0 12 19v-7z" fill="currentColor" opacity="0.3" stroke="none"/></svg>
+            <span class="font-label-caps text-[10px] tracking-[0.2em] font-bold">BMW</span>
+          </div>
+          <div class="flex items-center gap-3 text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer" onclick="filterBrand('Porsche')">
+            <svg class="w-6 h-6 fill-none stroke-current" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2C9.5 2.5 5 4 5 7c0 6.5 4.5 11 7 13.5 2.5-2.5 7-7 7-13.5 0-3-4.5-4.5-7-5z"/><path d="M12 2v18.5"/><path d="M8 7.5h8M8 12.5h8"/><path d="M12 7.5L8 12.5M12 12.5l4-5" stroke-width="1" opacity="0.5"/></svg>
+            <span class="font-label-caps text-[10px] tracking-[0.2em] font-bold">PORSCHE</span>
+          </div>
+          <div class="flex items-center gap-3 text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer" onclick="filterBrand('Range Rover')">
+            <svg class="w-6 h-6 fill-none stroke-current" stroke-width="1.5" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="11" ry="6"/><path d="M6 12h12M8 10.5l1.5 3 1.5-3 1.5 3 1.5-3" stroke-width="1"/></svg>
+            <span class="font-label-caps text-[10px] tracking-[0.2em] font-bold">RANGE ROVER</span>
+          </div>
+          <div class="flex items-center gap-3 text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer" onclick="filterBrand('Audi')">
+            <svg class="w-8 h-6 fill-none stroke-current" stroke-width="1.5" viewBox="0 0 32 24"><circle cx="7" cy="12" r="4.5"/><circle cx="13" cy="12" r="4.5"/><circle cx="19" cy="12" r="4.5"/><circle cx="25" cy="12" r="4.5"/></svg>
+            <span class="font-label-caps text-[10px] tracking-[0.2em] font-bold">AUDI</span>
+          </div>
+          <div class="flex items-center gap-3 text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer" onclick="filterBrand('Toyota')">
+            <svg class="w-6 h-6 fill-none stroke-current" stroke-width="1.5" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="11" ry="8"/><ellipse cx="12" cy="10.5" rx="7.5" ry="4"/><ellipse cx="12" cy="12" rx="3.5" ry="8"/></svg>
+            <span class="font-label-caps text-[10px] tracking-[0.2em] font-bold">TOYOTA</span>
+          </div>
+        </div>
+        
+        <!-- Set 2 (Identical for seamless scroll) -->
+        <div class="flex items-center gap-20 pr-20 shrink-0">
+          <div class="flex items-center gap-3 text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer" onclick="filterBrand('Mercedes-Benz')">
+            <svg class="w-6 h-6 fill-none stroke-current" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M12 1v11l-9.5 5.5M12 12l9.5 5.5"/></svg>
+            <span class="font-label-caps text-[10px] tracking-[0.2em] font-bold">MERCEDES</span>
+          </div>
+          <div class="flex items-center gap-3 text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer" onclick="filterBrand('BMW')">
+            <svg class="w-6 h-6 fill-none stroke-current" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><circle cx="12" cy="12" r="7"/><path d="M12 1v22M1 12h22"/><path d="M12 12h7A7 7 0 0 0 12 5v7z M12 12H5A7 7 0 0 0 12 19v-7z" fill="currentColor" opacity="0.3" stroke="none"/></svg>
+            <span class="font-label-caps text-[10px] tracking-[0.2em] font-bold">BMW</span>
+          </div>
+          <div class="flex items-center gap-3 text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer" onclick="filterBrand('Porsche')">
+            <svg class="w-6 h-6 fill-none stroke-current" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2C9.5 2.5 5 4 5 7c0 6.5 4.5 11 7 13.5 2.5-2.5 7-7 7-13.5 0-3-4.5-4.5-7-5z"/><path d="M12 2v18.5"/><path d="M8 7.5h8M8 12.5h8"/><path d="M12 7.5L8 12.5M12 12.5l4-5" stroke-width="1" opacity="0.5"/></svg>
+            <span class="font-label-caps text-[10px] tracking-[0.2em] font-bold">PORSCHE</span>
+          </div>
+          <div class="flex items-center gap-3 text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer" onclick="filterBrand('Range Rover')">
+            <svg class="w-6 h-6 fill-none stroke-current" stroke-width="1.5" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="11" ry="6"/><path d="M6 12h12M8 10.5l1.5 3 1.5-3 1.5 3 1.5-3" stroke-width="1"/></svg>
+            <span class="font-label-caps text-[10px] tracking-[0.2em] font-bold">RANGE ROVER</span>
+          </div>
+          <div class="flex items-center gap-3 text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer" onclick="filterBrand('Audi')">
+            <svg class="w-8 h-6 fill-none stroke-current" stroke-width="1.5" viewBox="0 0 32 24"><circle cx="7" cy="12" r="4.5"/><circle cx="13" cy="12" r="4.5"/><circle cx="19" cy="12" r="4.5"/><circle cx="25" cy="12" r="4.5"/></svg>
+            <span class="font-label-caps text-[10px] tracking-[0.2em] font-bold">AUDI</span>
+          </div>
+          <div class="flex items-center gap-3 text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer" onclick="filterBrand('Toyota')">
+            <svg class="w-6 h-6 fill-none stroke-current" stroke-width="1.5" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="11" ry="8"/><ellipse cx="12" cy="10.5" rx="7.5" ry="4"/><ellipse cx="12" cy="12" rx="3.5" ry="8"/></svg>
+            <span class="font-label-caps text-[10px] tracking-[0.2em] font-bold">TOYOTA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured -->
+  <section class="mt-section-gap">
+    <div class="px-margin-mobile flex justify-between items-end mb-8">
+      <div>
+        <span class="font-label-caps text-label-caps text-outline uppercase">Sélectionnés pour vous</span>
+        <h3 class="font-headline-md-mobile text-headline-md-mobile text-primary">Nos Annonces Vedettes</h3>
+      </div>
+      <button class="font-label-caps text-label-caps text-primary border-b border-primary/30 pb-1" onclick="navigate('catalog')">VOIR TOUT</button>
+    </div>
+    <div id="featured-listings-container" class="grid grid-cols-1 md:grid-cols-5 gap-6 px-margin-mobile">
+      <!-- Injected dynamically by JS -->
+    </div>
+  </section>
+
+  <!-- Trending -->
+  <section class="mt-section-gap px-margin-mobile pb-8">
+    <h3 class="font-headline-md-mobile text-headline-md-mobile text-primary mb-8 reveal">Tendances Actuelles</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+      <div class="md:col-span-2 h-[400px] border border-outline rounded-xl overflow-hidden relative group cursor-pointer reveal" onclick="openDetail('rangeroverauto')">
+        <img alt="Voiture tendance" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm11GrOUPKmmOoOYwW-4wyu_dKnXm5mIQThnQtQq8mUUH8SaJ37RIgSQckwAk7y7KLH8GYMxEyCkZv4Z6E5daxLUA9GSrZuAaHr_M3kDR-ahUImxdUrxXdlzeEr3YSMnjwPSQSXMf7aMqre8uno0nId_4sEV8jXnVx2NRxRp2LdJujA4vg-PrgeGfz08oyY3Fv2sdDh_2OmhALHeBF8lYa-1-nofx93w0UjVv8IgTgIiMqgTXc6necKOpnIPccEz5UirzIIKLC_AtS"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
+          <span class="font-label-caps text-label-caps text-white/60 mb-2 uppercase text-[10px] tracking-widest">LA PLUS RECHERCHÉE</span>
+          <h4 class="font-headline-md text-headline-md text-white mb-4" style="font-family: 'Outfit', sans-serif; font-weight: 700;">Range Rover Autobiography 2024</h4>
+          <div class="flex items-center gap-4">
+            <button class="bg-white text-black px-6 py-2.5 rounded-lg font-label-caps text-xs tracking-wider uppercase font-semibold hover:opacity-90 transition-opacity">Explorer</button>
+            <span class="text-white font-bold text-lg">115M FCFA</span>
+          </div>
+        </div>
+      </div>
+      <div class="h-[400px] border border-outline rounded-xl flex flex-col items-center justify-center p-8 text-center bg-transparent reveal delay-150">
+        <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary text-3xl">trending_up</span>
+        </div>
+        <h4 class="font-headline-md text-headline-md text-primary mb-2" style="font-family: 'Outfit', sans-serif; font-weight: 700;">Analyse du Marché</h4>
+        <p class="font-body-md text-on-surface-variant text-sm mb-6 max-w-xs leading-relaxed">Les SUV de luxe ont connu une hausse de demande de 24% ce mois-ci en Côte d'Ivoire.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ SECTION: POURQUOI CHOISIR -->
+  <section class="mt-section-gap px-margin-mobile">
+    <div class="text-center max-w-xl mx-auto mb-12 reveal">
+      <span class="font-label-caps text-label-caps text-outline uppercase tracking-widest text-[10px]">Confiance & Expertise</span>
+      <h3 class="font-headline-md-mobile md:font-headline-md text-primary mt-2 font-bold" style="font-family: 'Outfit', sans-serif;">Pourquoi choisir IBR Luxury Auto ?</h3>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Card 1 -->
+      <div class="border border-outline rounded-2xl p-6 bg-secondary-container/40 backdrop-blur-sm hover:border-accent-gold/50 transition-all flex flex-col justify-between h-52 reveal">
+        <div class="w-10 h-10 rounded-lg bg-accent-gold/10 flex items-center justify-center text-accent-gold">
+          <span class="material-symbols-outlined text-[24px]">verified</span>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-sans font-bold text-primary text-base mb-1">✓ Véhicules sélectionnés avec soin</h4>
+          <p class="text-xs text-on-surface-variant leading-relaxed">Une sélection rigoureuse de modèles de prestige, inspectés minutieusement par nos équipes qualifiées.</p>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="border border-outline rounded-2xl p-6 bg-secondary-container/40 backdrop-blur-sm hover:border-accent-gold/50 transition-all flex flex-col justify-between h-52 reveal">
+        <div class="w-10 h-10 rounded-lg bg-accent-gold/10 flex items-center justify-center text-accent-gold">
+          <span class="material-symbols-outlined text-[24px]">person_check</span>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-sans font-bold text-primary text-base mb-1">✓ Accompagnement personnalisé</h4>
+          <p class="text-xs text-on-surface-variant leading-relaxed">Un interlocuteur unique et dédié tout au long de votre parcours, disponible à chaque étape.</p>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="border border-outline rounded-2xl p-6 bg-secondary-container/40 backdrop-blur-sm hover:border-accent-gold/50 transition-all flex flex-col justify-between h-52 reveal">
+        <div class="w-10 h-10 rounded-lg bg-accent-gold/10 flex items-center justify-center text-accent-gold">
+          <span class="material-symbols-outlined text-[24px]">public</span>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-sans font-bold text-primary text-base mb-1">✓ Importation vers l'Afrique</h4>
+          <p class="text-xs text-on-surface-variant leading-relaxed">Sourcing sécurisé et logistique simplifiée depuis Dubaï et la Chine vers l'Afrique de l'Ouest.</p>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="border border-outline rounded-2xl p-6 bg-secondary-container/40 backdrop-blur-sm hover:border-accent-gold/50 transition-all flex flex-col justify-between h-52 reveal">
+        <div class="w-10 h-10 rounded-lg bg-accent-gold/10 flex items-center justify-center text-accent-gold">
+          <span class="material-symbols-outlined text-[24px]">local_shipping</span>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-sans font-bold text-primary text-base mb-1">✓ Assistance jusqu'à la livraison</h4>
+          <p class="text-xs text-on-surface-variant leading-relaxed">Suivi en temps réel de votre expédition, transit, dédouanement et remise des clés en main propre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ SECTION: COMMENT CA MARCHE -->
+  <section id="sec-how-it-works" class="mt-section-gap px-margin-mobile">
+    <div class="text-center max-w-xl mx-auto mb-16 reveal">
+      <span class="font-label-caps text-label-caps text-outline uppercase tracking-widest text-[10px]">Processus Logistique</span>
+      <h3 class="font-headline-md-mobile md:font-headline-md text-primary mt-2 font-bold" style="font-family: 'Outfit', sans-serif;">Comment ça marche ?</h3>
+      <p class="text-xs text-on-surface-variant mt-2">Un parcours client direct et entièrement transparent en 5 étapes clés.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 relative max-w-container-max mx-auto">
+      <!-- Connection line on desktop -->
+      <div class="hidden lg:block absolute top-10 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-accent via-accent-gold to-transparent -z-10 opacity-30"></div>
+      
+      <!-- Step 1 -->
+      <div class="flex flex-col items-center text-center space-y-4 reveal">
+        <div class="w-14 h-14 rounded-full bg-secondary border border-accent-gold/40 flex items-center justify-center font-sans font-extrabold text-accent-gold shadow-lg text-lg">1</div>
+        <div>
+          <h4 class="font-sans font-bold text-primary text-base mb-1">Choisissez un véhicule</h4>
+          <p class="text-[11px] text-on-surface-variant leading-relaxed">Parcourez notre catalogue premium ou spécifiez vos critères via notre formulaire de recherche.</p>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div class="flex flex-col items-center text-center space-y-4 reveal delay-75">
+        <div class="w-14 h-14 rounded-full bg-secondary border border-accent-gold/40 flex items-center justify-center font-sans font-extrabold text-accent-gold shadow-lg text-lg">2</div>
+        <div>
+          <h4 class="font-sans font-bold text-primary text-base mb-1">Contactez notre équipe</h4>
+          <p class="text-[11px] text-on-surface-variant leading-relaxed">Un conseiller étudie votre projet et affine votre sélection par messagerie instantanée.</p>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div class="flex flex-col items-center text-center space-y-4 reveal delay-150">
+        <div class="w-14 h-14 rounded-full bg-secondary border border-accent-gold/40 flex items-center justify-center font-sans font-extrabold text-accent-gold shadow-lg text-lg">3</div>
+        <div>
+          <h4 class="font-sans font-bold text-primary text-base mb-1">Validation et paiement</h4>
+          <p class="text-[11px] text-on-surface-variant leading-relaxed">Validation de la fiche technique, devis d'importation personnalisé et paiement sécurisé.</p>
+        </div>
+      </div>
+      <!-- Step 4 -->
+      <div class="flex flex-col items-center text-center space-y-4 reveal delay-225">
+        <div class="w-14 h-14 rounded-full bg-secondary border border-accent-gold/40 flex items-center justify-center font-sans font-extrabold text-accent-gold shadow-lg text-lg">4</div>
+        <div>
+          <h4 class="font-sans font-bold text-primary text-base mb-1">Organisation du transport</h4>
+          <p class="text-[11px] text-on-surface-variant leading-relaxed">Fret maritime sécurisé en conteneur individuel au départ de Dubaï ou de la Chine.</p>
+        </div>
+      </div>
+      <!-- Step 5 -->
+      <div class="flex flex-col items-center text-center space-y-4 reveal delay-300">
+        <div class="w-14 h-14 rounded-full bg-secondary border border-accent-gold/40 flex items-center justify-center font-sans font-extrabold text-accent-gold shadow-lg text-lg">5</div>
+        <div>
+          <h4 class="font-sans font-bold text-primary text-base mb-1">Livraison dans votre pays</h4>
+          <p class="text-[11px] text-on-surface-variant leading-relaxed">Transit, dédouanement final par nos soins et livraison clés en main à votre convenance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ SECTION: JE CHERCHE UN VEHICULE -->
+  <section class="mt-section-gap px-margin-mobile">
+    <div class="max-w-4xl mx-auto border border-outline rounded-3xl p-8 md:p-12 bg-secondary-container/30 backdrop-blur-md relative overflow-hidden reveal">
+      <div class="absolute -right-20 -top-20 w-60 h-60 rounded-full bg-accent-gold/5 blur-3xl pointer-events-none"></div>
+      
+      <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+         <div class="md:w-1/3 space-y-4">
+           <span class="font-label-caps text-label-caps text-accent-gold uppercase tracking-widest text-[10px]">Demande Sur-Mesure</span>
+           <h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary leading-tight font-bold" style="font-family: 'Outfit', sans-serif;">Vous ne trouvez pas votre véhicule ?</h3>
+           <p class="text-xs text-on-surface-variant leading-relaxed">Indiquez-nous vos critères. Notre équipe basée à Dubaï et en Chine recherche, négocie et gère toute la logistique d'importation jusqu'à votre domicile.</p>
+         </div>
+         <div class="md:w-2/3 w-full">
+           <form id="sourcing-form" onsubmit="submitSourcingRequest(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+             <div class="space-y-1">
+               <label class="text-[11px] font-label-caps text-on-surface-variant uppercase tracking-wider">Marque *</label>
+               <input id="source-brand" type="text" required class="glass-input w-full px-4 py-3 rounded-lg text-sm placeholder:text-stone-500 focus:ring-0" placeholder="ex. BMW"/>
+             </div>
+             <div class="space-y-1">
+               <label class="text-[11px] font-label-caps text-on-surface-variant uppercase tracking-wider">Modèle *</label>
+               <input id="source-model" type="text" required class="glass-input w-full px-4 py-3 rounded-lg text-sm placeholder:text-stone-500 focus:ring-0" placeholder="ex. iX M60"/>
+             </div>
+             <div class="space-y-1">
+               <label class="text-[11px] font-label-caps text-on-surface-variant uppercase tracking-wider">Budget Max (FCFA) *</label>
+               <input id="source-budget" type="text" required class="glass-input w-full px-4 py-3 rounded-lg text-sm placeholder:text-stone-500 focus:ring-0" placeholder="ex. 65.000.000"/>
+             </div>
+             <div class="space-y-1">
+               <label class="text-[11px] font-label-caps text-on-surface-variant uppercase tracking-wider">Pays de livraison *</label>
+               <input id="source-country" type="text" required class="glass-input w-full px-4 py-3 rounded-lg text-sm placeholder:text-stone-500 focus:ring-0" placeholder="ex. Burkina Faso"/>
+             </div>
+             <div class="col-span-1 md:col-span-2 space-y-1">
+               <label class="text-[11px] font-label-caps text-on-surface-variant uppercase tracking-wider">Numéro WhatsApp *</label>
+               <input id="source-whatsapp" type="text" required class="glass-input w-full px-4 py-3 rounded-lg text-sm placeholder:text-stone-500 focus:ring-0" placeholder="ex. +226 70 00 00 00"/>
+             </div>
+             <div class="col-span-1 md:col-span-2 space-y-1">
+               <label class="text-[11px] font-label-caps text-on-surface-variant uppercase tracking-wider">Commentaire libre</label>
+               <textarea id="source-comment" rows="3" class="glass-input w-full px-4 py-3 rounded-lg text-sm placeholder:text-stone-500 focus:ring-0 resize-none" placeholder="Année minimale, transmission, couleur préférée..."></textarea>
+             </div>
+             <div class="col-span-1 md:col-span-2 mt-4">
+               <button type="submit" class="w-full py-4 bg-primary text-on-primary font-bold rounded-lg text-sm hover:opacity-95 active:scale-95 transition-all uppercase tracking-widest font-label-caps">Recevoir une proposition</button>
+             </div>
+           </form>
+           <!-- Success Banner -->
+           <div id="sourcing-success" class="hidden mt-4 border border-green-500/30 rounded-xl p-4 flex items-center gap-3 bg-emerald-950/20 backdrop-blur-sm">
+             <span class="material-symbols-outlined text-green-400">check_circle</span>
+             <div>
+               <p class="text-sm font-bold text-white">Demande de proposition reçue !</p>
+               <p class="text-xs text-on-surface-variant">Notre équipe commerciale vous contactera sous 24 heures sur WhatsApp.</p>
+             </div>
+           </div>
+         </div>
+       </div>
+    </div>
+  </section>
+</main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ PAGE: CATALOG -->
+<div id="page-catalog" class="page">
+<main class="pt-32 pb-40 min-h-screen px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10">
+  <div class="flex flex-col md:flex-row gap-12">
+    <!-- Sidebar Filters -->
+    <aside class="w-full md:w-[280px] shrink-0 space-y-8 md:sticky top-32 h-fit pb-10 border-b md:border-b-0 md:border-r border-outline pb-8 md:pb-0 md:pr-8">
+      <div class="flex items-center justify-between">
+        <h2 class="font-headline-md text-headline-md text-primary" style="font-family: 'Outfit', sans-serif; font-weight: 700;">Filtres</h2>
+        <button class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary transition-cubic" onclick="resetFilters()">RÉINITIALISER</button>
+      </div>
+      <div class="space-y-4">
+        <label class="font-label-caps text-label-caps text-on-surface-variant">MARQUE</label>
+        <div class="grid grid-cols-2 gap-2" id="brand-filters">
+          <button class="brand-btn border border-outline py-2.5 px-4 rounded-lg text-left text-sm bg-transparent hover:border-primary transition-cubic" onclick="toggleBrand(this,'Toyota')">Toyota</button>
+          <button class="brand-btn border border-outline py-2.5 px-4 rounded-lg text-left text-sm bg-transparent hover:border-primary transition-cubic" onclick="toggleBrand(this,'Mercedes-Benz')">Mercedes-Benz</button>
+          <button class="brand-btn border border-outline py-2.5 px-4 rounded-lg text-left text-sm bg-transparent hover:border-primary transition-cubic" onclick="toggleBrand(this,'BMW')">BMW</button>
+          <button class="brand-btn border border-outline py-2.5 px-4 rounded-lg text-left text-sm bg-transparent hover:border-primary transition-cubic" onclick="toggleBrand(this,'Hyundai')">Hyundai</button>
+          <button class="brand-btn border border-outline py-2.5 px-4 rounded-lg text-left text-sm bg-transparent hover:border-primary transition-cubic" onclick="toggleBrand(this,'Kia')">Kia</button>
+          <button class="brand-btn border border-outline py-2.5 px-4 rounded-lg text-left text-sm bg-transparent hover:border-primary transition-cubic" onclick="toggleBrand(this,'Audi')">Audi</button>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="flex justify-between items-center">
+          <label class="font-label-caps text-label-caps text-on-surface-variant">PRIX (FCFA)</label>
+          <span class="font-label-caps text-label-caps text-primary text-[10px]">5M – 150M</span>
+        </div>
+        <div class="relative h-[2px] bg-outline rounded-full w-full">
+          <div class="absolute h-full bg-primary w-2/3 left-1/4 rounded-full"></div>
+          <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-3.5 h-3.5 bg-primary rounded-full border-2 border-background cursor-pointer"></div>
+          <div class="absolute top-1/2 left-[91%] -translate-y-1/2 w-3.5 h-3.5 bg-primary rounded-full border-2 border-background cursor-pointer"></div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="space-y-2">
+          <label class="font-label-caps text-label-caps text-on-surface-variant">ANNÉE MIN</label>
+          <div class="border border-outline py-2.5 px-4 rounded-lg flex justify-between items-center cursor-pointer bg-transparent hover:border-primary transition-all">
+            <span class="text-sm">2020</span><span class="material-symbols-outlined text-[18px]">expand_more</span>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <label class="font-label-caps text-label-caps text-on-surface-variant">ANNÉE MAX</label>
+          <div class="border border-outline py-2.5 px-4 rounded-lg flex justify-between items-center cursor-pointer bg-transparent hover:border-primary transition-all">
+            <span class="text-sm">2025</span><span class="material-symbols-outlined text-[18px]">expand_more</span>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <label class="font-label-caps text-label-caps text-on-surface-variant">TRANSMISSION</label>
+        <div class="flex gap-2" id="transmission-filters">
+          <button class="flex-1 border border-outline py-2.5 rounded-lg text-sm bg-transparent hover:border-primary transition-all" onclick="selectTransmission('Automatique', this)">Automatique</button>
+          <button class="flex-1 border border-outline py-2.5 rounded-lg text-sm bg-transparent hover:border-primary transition-all" onclick="selectTransmission('Manuelle', this)">Manuelle</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Grid -->
+    <section class="flex-1">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-12">
+        <div>
+          <h1 class="font-headline-lg text-primary uppercase font-extrabold tracking-tight">Catalogue</h1>
+          <p class="text-on-surface-variant mt-1.5 font-body-md">1 248 véhicules d'exception disponibles</p>
+        </div>
+        <div class="border border-outline py-2.5 px-5 rounded-lg flex items-center gap-3 cursor-pointer hover:border-primary transition-all">
+          <span class="text-sm text-on-surface-variant">Trier par :</span>
+          <span class="text-sm font-bold text-primary">Plus récents</span>
+          <span class="material-symbols-outlined text-[18px]">expand_more</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="catalog-grid">
+        <!-- Injected dynamically by JS -->
+      </div>
+      <div id="load-more-container" class="mt-20 flex justify-center">
+        <button onclick="loadMoreCars()" class="bg-primary text-on-primary px-10 py-3.5 rounded-lg font-label-caps text-xs tracking-widest hover:opacity-90 active:scale-95 transition-cubic uppercase">Explorer Plus</button>
+      </div>
+    </section>
+  </div>
+</main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ PAGE: DETAIL -->
+<div id="page-detail" class="page">
+  <!-- Preview Banner -->
+  <div id="preview-banner" class="hidden sticky left-0 w-full z-50 bg-amber-600/95 backdrop-blur-xl border-b border-amber-500/30 text-white py-3.5 px-6 flex items-center justify-between shadow-lg" style="height: 48px;">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-[20px] text-amber-100">visibility</span>
+      <span class="text-xs font-semibold uppercase tracking-wider font-label-caps">Mode Prévisualisation — Annonce non publiée</span>
+    </div>
+    <div class="flex gap-2">
+      <button onclick="exitPreview()" class="bg-white/20 hover:bg-white/30 text-white font-bold px-4 py-1.5 rounded-lg text-[10px] tracking-wider uppercase font-label-caps transition-all">Retour</button>
+      <button onclick="publishFromPreview()" class="bg-white text-stone-900 font-bold px-4 py-1.5 rounded-lg text-[10px] tracking-wider uppercase font-label-caps hover:bg-white/90 transition-all">Publier</button>
+    </div>
+  </div>
+
+<main class="pt-[72px] pb-32 max-w-container-max mx-auto">
+  <!-- Gallery -->
+  <section class="relative w-full aspect-[16/10] md:aspect-[21/9] overflow-hidden">
+    <div class="absolute inset-0 flex transition-transform duration-700 ease-in-out" id="detail-gallery-track">
+      <div class="min-w-full h-full skeleton">
+        <img id="detail-img-1" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" src="" alt="Photo principale" onload="handleImgLoad(this)"/>
+      </div>
+      <div class="min-w-full h-full skeleton">
+        <img id="detail-img-2" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdGW9HahNXdK-riz_M-JxhUN05G76dsMDAi1OfOIuYYwI2rTRfmKGSuFbLqvgO4Cl0xLb7szMwZubtvam2fpu-V93if3m5DGIQ9EQ5n8-qv8JPTSpRmeEg4NcZawnOUH_oudVxpNpy0ffE5Ym6gcG9pM9ZbOUrziYMB4vpb8vZ5uD_1zlYo6P6G2uHJZ9t9w_8I4JR2_cw_KGn_Muw5Ajci7BAm6qaz-xF20VWdZcZhpA75XBxTgSJ1pa4CmYBFywWyZJ6ma0opJw_" alt="Intérieur" onload="handleImgLoad(this)"/>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
+      <div class="w-12 h-1 bg-white rounded-full"></div>
+      <div class="w-12 h-1 bg-white/30 rounded-full hover:bg-white/50 transition-all cursor-pointer" onclick="goSlide(1)"></div>
+    </div>
+    <button class="absolute left-4 top-1/2 -translate-y-1/2 glass p-3 rounded-full hover:bg-white/20" onclick="goSlide(-1)"><span class="material-symbols-outlined text-primary">chevron_left</span></button>
+    <button class="absolute right-4 top-1/2 -translate-y-1/2 glass p-3 rounded-full hover:bg-white/20" onclick="goSlide(1)"><span class="material-symbols-outlined text-primary">chevron_right</span></button>
+  </section>
+
+  <div class="px-margin-mobile md:px-margin-desktop mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-8 space-y-12">
+      <div class="space-y-4">
+        <span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Disponible Maintenant</span>
+        <h1 id="detail-title" class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">—</h1>
+        <div id="detail-badges" class="flex flex-wrap gap-2 mt-3"></div>
+        <p class="text-body-lg text-on-surface-variant max-w-2xl leading-relaxed mt-4">Un véhicule d'exception soigneusement sélectionné et certifié par nos experts. Méticuleusement entretenu, disponible pour livraison partout en Afrique.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="border border-outline p-5 rounded-xl space-y-3 bg-transparent flex flex-col justify-between">
+          <svg class="w-5 h-5 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+          </svg>
+          <div>
+            <p class="font-label-caps text-[9px] text-on-surface-variant uppercase tracking-wider">Année</p>
+            <p id="detail-year" class="font-headline-md text-headline-md text-primary mt-1" style="font-family: 'Outfit', sans-serif; font-weight: 700;">—</p>
+          </div>
+        </div>
+        <div class="border border-outline p-5 rounded-xl space-y-3 bg-transparent flex flex-col justify-between">
+          <svg class="w-5 h-5 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.22 14.32a3 3 0 11-6.44 0M9 21h6M3 12h3m12 0h3M5.12 5.12l2.12 2.12m9.52 0l2.12-2.12M12 3v3M12 12l2.5-2.5" />
+          </svg>
+          <div>
+            <p class="font-label-caps text-[9px] text-on-surface-variant uppercase tracking-wider">Kilométrage</p>
+            <p id="detail-km" class="font-headline-md text-headline-md text-primary mt-1" style="font-family: 'Outfit', sans-serif; font-weight: 700;">—</p>
+          </div>
+        </div>
+        <div class="border border-outline p-5 rounded-xl space-y-3 bg-transparent flex flex-col justify-between">
+          <svg class="w-5 h-5 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2h-2m-4 14v-4m0-4V3m-4 18v-4m0-4V7M7 11V9a2 2 0 012-2h2" />
+          </svg>
+          <div>
+            <p class="font-label-caps text-[9px] text-on-surface-variant uppercase tracking-wider">Moteur</p>
+            <p id="detail-engine" class="font-headline-md text-headline-md text-primary mt-1" style="font-family: 'Outfit', sans-serif; font-weight: 700;">—</p>
+          </div>
+        </div>
+        <div class="border border-outline p-5 rounded-xl space-y-3 bg-transparent flex flex-col justify-between">
+          <svg class="w-5 h-5 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 4.5h12v15H3zM18.75 8.25a2.25 2.25 0 012.25 2.25v6a2.25 2.25 0 01-2.25 2.25M15 6.75h3.75v3H15M7 11.25h4v3H7z" />
+          </svg>
+          <div>
+            <p class="font-label-caps text-[9px] text-on-surface-variant uppercase tracking-wider">Carburant</p>
+            <p id="detail-fuel" class="font-headline-md text-headline-md text-primary mt-1" style="font-family: 'Outfit', sans-serif; font-weight: 700;">—</p>
+          </div>
+        </div>
+      </div>
+      <div class="border border-outline rounded-xl p-8 bg-transparent">
+        <h3 class="font-headline-md text-headline-md text-primary mb-8" style="font-family: 'Outfit', sans-serif; font-weight: 700;">Détails du Véhicule</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
+          <div class="flex justify-between border-b border-outline pb-4"><span class="text-on-surface-variant text-sm">Transmission</span><span id="detail-table-transmission" class="text-primary font-bold text-sm">Automatique</span></div>
+          <div class="flex justify-between border-b border-outline pb-4"><span class="text-on-surface-variant text-sm">Carburant</span><span id="detail-table-fuel" class="text-primary font-bold text-sm">Essence</span></div>
+          <div class="flex justify-between border-b border-outline pb-4"><span class="text-on-surface-variant text-sm">Puissance</span><span id="detail-table-power" class="text-primary font-bold text-sm">550 ch</span></div>
+          <div class="flex justify-between border-b border-outline pb-4"><span class="text-on-surface-variant text-sm">Provenance</span><span id="detail-table-origin" class="text-primary font-bold text-sm">Allemagne</span></div>
+          <div class="flex justify-between border-b border-outline pb-4"><span class="text-on-surface-variant text-sm">État</span><span id="detail-table-condition" class="text-primary font-bold text-sm">Neuf</span></div>
+          <div class="flex justify-between border-b border-outline pb-4"><span class="text-on-surface-variant text-sm">Ville</span><span id="detail-table-city" class="text-primary font-bold text-sm">Abidjan</span></div>
+        </div>
+      </div>
+      <div class="border border-outline p-8 rounded-xl flex flex-col md:flex-row items-center gap-8 bg-transparent">
+        <div class="relative">
+          <div class="w-24 h-24 rounded-full border border-outline flex items-center justify-center text-primary bg-stone-900 overflow-hidden">
+            <svg class="w-16 h-16 fill-current" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <div class="absolute bottom-0 right-0 w-5 h-5 bg-green-500 border-4 border-background rounded-full"></div>
+        </div>
+        <div class="flex-1 text-center md:text-left">
+          <p class="font-label-caps text-label-caps text-accent-gold mb-1">CONCESSIONNAIRE AGRÉÉ</p>
+          <h4 class="prospect-name font-headline-md text-headline-md text-primary" style="font-family: 'Outfit', sans-serif; font-weight: 700;">Julian Sterling</h4>
+          <p class="text-on-surface-variant text-sm mb-4">Votre conseiller commercial dédié à votre écoute</p>
+          <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <button class="px-6 py-2.5 bg-primary text-on-primary font-bold rounded-lg flex items-center gap-2 hover:scale-[1.02] active:scale-95 transition-all text-xs tracking-widest uppercase font-label-caps" onclick="contactCall()"><span class="material-symbols-outlined text-sm">call</span> Appeler</button>
+            <button class="px-6 py-2.5 border border-outline text-primary font-bold rounded-lg flex items-center gap-2 hover:border-primary active:scale-95 transition-all text-xs tracking-widest uppercase font-label-caps" onclick="contactWhatsapp('general')"><span class="material-symbols-outlined text-sm">chat_bubble</span> WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing card -->
+    <div class="lg:col-span-4">
+      <div class="sticky top-28 border border-outline p-8 rounded-xl space-y-8 bg-transparent">
+        <div class="space-y-2">
+          <p class="font-label-caps text-label-caps text-on-surface-variant">PRIX DE VENTE</p>
+          <h2 id="detail-price" class="text-[32px] leading-tight text-accent-gold font-extrabold" style="font-family: 'Outfit', sans-serif;">—</h2>
+          <p class="text-on-surface-variant text-xs">Hors taxes et frais de livraison</p>
+        </div>
+        <div class="space-y-4">
+          <button class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg text-sm transition-all active:scale-[0.98] uppercase tracking-widest font-label-caps flex items-center justify-center gap-2" onclick="contactVehicleWhatsapp()">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.114-2.903-6.989-1.873-1.874-4.354-2.904-6.991-2.905-5.442 0-9.87 4.42-9.874 9.865-.001 1.716.45 3.39 1.306 4.869l-.98 3.578 3.668-.962zm11.394-4.523c-.3-.15-1.772-.875-2.046-.975-.276-.1-.477-.15-.677.15-.2.3-.777.975-.95 1.175-.177.2-.35.225-.65.075-3.05-1.527-5.15-2.656-6.657-5.234-.397-.68-.078-1.047.272-1.397.314-.313.677-.775.777-.925.1-.15.05-.3-.025-.45s-.677-1.625-.925-2.25c-.242-.602-.491-.507-.677-.517-.174-.01-.375-.012-.576-.012-.2 0-.525.075-.8.375-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.11 3.224 5.115 4.525.714.31 1.272.496 1.708.635.717.227 1.37.195 1.885.118.574-.086 1.772-.725 2.022-1.425.25-.7.25-1.3 0-1.425-.075-.15-.275-.225-.575-.375z"/></svg>
+            Contacter le vendeur
+          </button>
+          <button class="w-full py-4 border border-outline text-primary font-bold rounded-lg text-sm transition-all hover:border-primary active:scale-[0.98] uppercase tracking-widest font-label-caps flex items-center justify-center gap-2 bg-transparent" onclick="contactCall()">
+            <span class="material-symbols-outlined text-sm">call</span>
+            Appeler directement
+          </button>
+        </div>
+        <div class="pt-6 border-t border-outline space-y-4 text-sm">
+          <div class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-accent-gold text-[20px]">verified</span><span>Inspection Certifiée IBR Luxury</span></div>
+          <div class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-accent-gold text-[20px]">public</span><span>Livraison VIP partout en Afrique</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- Mobile sticky bar -->
+<div id="mobile-sticky-cta" class="md:hidden fixed bottom-24 left-0 right-0 px-margin-mobile z-40 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none">
+  <div class="border border-outline p-3.5 rounded-xl flex items-center justify-between bg-background/95 backdrop-blur-md shadow-lg">
+    <div class="pl-2"><p class="text-[9px] font-label-caps text-on-surface-variant uppercase">Prix</p><p id="detail-price-mobile" class="font-bold text-accent-gold text-sm">—</p></div>
+    <button class="bg-emerald-600 text-white py-2.5 px-6 rounded-lg font-bold text-xs tracking-wider uppercase font-label-caps" onclick="contactVehicleWhatsapp()">Contacter</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ PAGE: PROFILE -->
+<div id="page-profile" class="page">
+<main class="pt-24 pb-32 px-6 md:px-margin-desktop max-w-container-max mx-auto relative z-10">
+  <section class="mb-12 text-center md:text-left">
+    <div class="flex flex-col md:flex-row items-center gap-6">
+      <div class="w-24 h-24 rounded-full border-2 border-accent-gold shadow-lg bg-stone-900 flex items-center justify-center text-accent-gold overflow-hidden">
+        <svg class="w-16 h-16 fill-current" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </div>
+      <div>
+        <p class="font-label-caps text-label-caps text-accent-gold mb-1">MEMBRE PRIVILÈGE</p>
+        <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg tracking-tight text-primary">Espace Client</h2>
+        <p class="text-on-surface-variant text-sm mt-1">Gérez vos favoris et vos demandes de contact.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Favorites Section -->
+  <section class="mb-16">
+    <h3 class="font-headline-md text-headline-md text-primary mb-8 border-b border-outline pb-3" style="font-family: 'Outfit', sans-serif; font-weight: 700;">Mes Véhicules Favoris</h3>
+    <div id="profile-favorites-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Dynamically filled by JS -->
+    </div>
+  </section>
+  
+  <!-- Inquiries Section -->
+  <section>
+    <h3 class="font-headline-md text-headline-md text-primary mb-8 border-b border-outline pb-3" style="font-family: 'Outfit', sans-serif; font-weight: 700;">Mes Demandes en Cours</h3>
+    <div class="glass-card rounded-[20px] p-12 text-center text-on-surface-variant/60 border border-white/5">
+      <span class="material-symbols-outlined text-[36px] mb-2 opacity-40">chat_bubble</span>
+      <p class="text-sm">Aucune demande de contact active.</p>
+    </div>
+  </section>
+</main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ PAGE: ADMIN DASHBOARD -->
+<div id="page-admin" class="page">
+<main class="pt-24 pb-32 px-6 md:px-margin-desktop max-w-container-max mx-auto relative z-10">
+  <section class="mb-12">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <p class="font-label-caps text-label-caps text-on-surface-variant mb-2">BIENVENUE, ADMIN</p>
+        <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg tracking-tight">Panneau de Contrôle</h2>
+      </div>
+      <div class="flex gap-3">
+        <button class="px-6 py-3 rounded-lg bg-primary text-on-primary font-label-caps text-xs tracking-wider font-semibold hover:opacity-90 transition-all active:scale-95 uppercase" onclick="navigate('upload')">+ Nouvelle Annonce</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ ADMIN TABS -->
+  <div class="flex gap-6 border-b border-outline mb-10 overflow-x-auto hide-scrollbar">
+    <button onclick="switchAdminTab('annonces')" id="tab-btn-annonces" class="pb-3 text-sm font-semibold border-b-2 border-primary text-primary transition-all whitespace-nowrap">Gestion des Annonces</button>
+    <button onclick="switchAdminTab('sourcing')" id="tab-btn-sourcing" class="pb-3 text-sm font-semibold border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-all whitespace-nowrap">Demandes de Sourcing</button>
+    <button onclick="switchAdminTab('config')" id="tab-btn-config" class="pb-3 text-sm font-semibold border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-all whitespace-nowrap">Configuration Générale</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ TAB: VÉHICULES/ANNONCES -->
+  <div id="admin-sec-annonces" class="admin-sec space-y-6">
+    <div class="flex items-center justify-between mb-6">
+      <h3 class="font-headline-md text-headline-md font-bold" style="font-family: 'Outfit', sans-serif;">Annonces Actives</h3>
+      <button onclick="navigate('upload')" class="flex items-center gap-2 text-sm text-primary hover:opacity-80"><span class="material-symbols-outlined text-sm">add</span> Publier</button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="admin-listings">
+      <!-- Injected dynamically by JS -->
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ TAB: DEMANDES SOURCING -->
+  <div id="admin-sec-sourcing" class="admin-sec hidden space-y-6">
+    <div class="mb-6">
+      <h3 class="font-headline-md text-headline-md font-bold" style="font-family: 'Outfit', sans-serif;">Demandes Clients ("Je cherche un véhicule")</h3>
+      <p class="text-xs text-on-surface-variant mt-1">Prospects qualifiés ayant rempli le formulaire de sourcing de la page d'accueil.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="admin-sourcing-requests">
+      <!-- Injected dynamically by JS -->
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ TAB: CONFIGURATION -->
+  <div id="admin-sec-config" class="admin-sec hidden space-y-8">
+    <div class="border border-outline rounded-xl p-8 bg-secondary-container/20 backdrop-blur-sm space-y-6 max-w-xl">
+      <h3 class="font-headline-md text-headline-md text-primary font-bold" style="font-family: 'Outfit', sans-serif;">Numéro WhatsApp de Vente</h3>
+      <div class="space-y-4">
+        <div class="space-y-1">
+          <label class="text-xs text-on-surface-variant font-label-caps uppercase tracking-wider">Téléphone WhatsApp (sans '+' ni espaces) *</label>
+          <input id="config-whatsapp" type="text" class="glass-input w-full px-5 py-4 rounded-xl text-sm focus:ring-0" placeholder="ex. 971564808507"/>
+          <p class="text-[10px] text-on-surface-variant/60">C'est ce numéro qui recevra les clics de contact de tous les véhicules.</p>
+        </div>
+        <button onclick="saveAdminConfig()" class="px-6 py-3 rounded-lg bg-primary text-on-primary font-label-caps text-xs tracking-wider font-semibold hover:opacity-90 transition-all active:scale-95 uppercase">Sauvegarder le Numéro</button>
+      </div>
+    </div>
+    
+    <div class="border border-outline rounded-xl p-8 bg-secondary-container/20 backdrop-blur-sm space-y-6 max-w-xl">
+      <h3 class="font-headline-md text-headline-md text-primary font-bold" style="font-family: 'Outfit', sans-serif;">Intégration Supabase</h3>
+      <div class="space-y-4">
+        <div class="space-y-1">
+          <label class="text-xs text-on-surface-variant font-label-caps uppercase tracking-wider">URL du projet Supabase</label>
+          <input id="config-supabase-url" type="text" class="glass-input w-full px-5 py-4 rounded-xl text-sm focus:ring-0" placeholder="https://xxxxxxxx.supabase.co"/>
+        </div>
+        <div class="space-y-1">
+          <label class="text-xs text-on-surface-variant font-label-caps uppercase tracking-wider">Clé Publique Anon Key</label>
+          <input id="config-supabase-key" type="password" class="glass-input w-full px-5 py-4 rounded-xl text-sm focus:ring-0" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."/>
+        </div>
+        <button onclick="saveSupabaseConfig()" class="px-6 py-3 border border-outline rounded-lg text-primary font-label-caps text-xs tracking-wider font-semibold hover:bg-stone-500/10 transition-all active:scale-95 uppercase bg-transparent">Sauvegarder Supabase</button>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- FAB -->
+<button onclick="navigate('upload')" class="fixed bottom-10 right-10 w-16 h-16 rounded-full bg-primary text-on-primary shadow-[0_10px_40px_rgba(255,255,255,0.3)] flex items-center justify-center group hover:scale-110 active:scale-95 transition-all z-[60]">
+  <span class="material-symbols-outlined text-[32px]">add</span>
+  <span class="absolute right-20 bg-primary/90 backdrop-blur-sm text-on-primary px-4 py-2 rounded-full font-label-caps text-label-caps whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">NOUVELLE ANNONCE</span>
+</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ PAGE: UPLOAD -->
+<div id="page-upload" class="page">
+<main class="max-w-3xl mx-auto px-margin-mobile pt-32 pb-40">
+  <div class="w-full h-1 bg-white/10 rounded-full mb-12 overflow-hidden">
+    <div id="upload-progress" class="step-indicator h-full bg-primary" style="width:33%"></div>
+  </div>
+
+  <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-4">Publier une annonce</h1>
+  <p class="text-on-surface-variant text-body-lg mb-12 max-w-lg">Présentez votre véhicule à notre réseau exclusif de collectionneurs à travers le continent.</p>
+
+  <!-- Photo Upload Zone -->
+  <div class="mb-12">
+    <label class="font-label-caps text-label-caps mb-4 block text-on-surface-variant">PHOTOS DU VÉHICULE</label>
+    <div id="upload-drop-zone" class="col-span-4 aspect-video glass-panel rounded-[24px] flex flex-col items-center justify-center border-dashed border-2 border-white/20 hover:border-white/50 transition-all cursor-pointer group mb-4" onclick="document.getElementById('file-input').click()">
+      <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-3xl">photo_camera</span>
+      </div>
+      <h3 class="font-headline-md text-headline-md mb-1">Ajouter des photos</h3>
+      <p class="text-on-surface-variant text-sm">Cliquez ou glissez jusqu'à 15 photos haute résolution</p>
+      <p class="text-on-surface-variant/50 text-xs mt-2">JPG, PNG, WEBP — max 10 Mo par photo</p>
+    </div>
+    <input id="file-input" type="file" multiple accept="image/*" class="hidden" onchange="handleFileUpload(event)"/>
+    <div id="photo-grid" class="grid grid-cols-4 gap-3"></div>
+  </div>
+
+  <!-- Vehicle Details -->
+  <div class="space-y-8 mb-12">
+    <label class="font-label-caps text-label-caps block text-on-surface-variant">SPÉCIFICATIONS PRINCIPALES</label>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="space-y-2">
+        <label class="text-sm text-on-surface-variant px-1">Marque</label>
+        <div class="relative">
+          <select id="up-brand" class="glass-input w-full px-5 py-4 rounded-xl appearance-none text-white focus:ring-0">
+            <option value="" disabled selected>Choisir la marque</option>
+            <option>Toyota</option><option>Mercedes-Benz</option><option>BMW</option>
+            <option>Porsche</option><option>Audi</option><option>Land Rover</option>
+            <option>Ferrari</option><option>Lamborghini</option><option>Bentley</option>
+          </select>
+          <span class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none opacity-50">expand_more</span>
+        </div>
+      </div>
+      <div class="space-y-2">
+        <label class="text-sm text-on-surface-variant px-1">Modèle</label>
+        <input id="up-model" class="glass-input w-full px-5 py-4 rounded-xl placeholder:text-on-surface-variant/30 focus:ring-0" placeholder="ex. 911 GT3 RS" type="text"/>
+      </div>
+      <div class="space-y-2">
+        <label class="text-sm text-on-surface-variant px-1">Année</label>
+        <input id="up-year" class="glass-input w-full px-5 py-4 rounded-xl placeholder:text-on-surface-variant/30 focus:ring-0" placeholder="ex. 2024" type="number" min="2000" max="2026"/>
+      </div>
+      <div class="space-y-2">
+        <label class="text-sm text-on-surface-variant px-1">Kilométrage (km)</label>
+        <input id="up-km" class="glass-input w-full px-5 py-4 rounded-xl placeholder:text-on-surface-variant/30 focus:ring-0" placeholder="ex. 5000" type="number" min="0"/>
+      </div>
+      <div class="space-y-2">
+        <label class="text-sm text-on-surface-variant px-1">Prix (FCFA)</label>
+        <input id="up-price" class="glass-input w-full px-5 py-4 rounded-xl placeholder:text-on-surface-variant/30 focus:ring-0" placeholder="ex. 85000000" type="number" min="0"/>
+      </div>
+      <div class="space-y-2">
+        <label class="text-sm text-on-surface-variant px-1">Ville</label>
+        <input id="up-city" class="glass-input w-full px-5 py-4 rounded-xl placeholder:text-on-surface-variant/30 focus:ring-0" placeholder="ex. Abidjan" type="text"/>
+      </div>
+      <div class="space-y-2">
+        <label class="text-sm text-on-surface-variant px-1">Boîte de vitesses</label>
+        <div class="relative">
+          <select id="up-transmission" class="glass-input w-full px-5 py-4 rounded-xl appearance-none text-white focus:ring-0">
+            <option>Automatique</option>
+            <option>Manuelle</option>
+          </select>
+          <span class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none opacity-50">settings</span>
+        </div>
+      </div>
+      <div class="space-y-2">
+        <label class="text-sm text-on-surface-variant px-1">Carburant</label>
+        <div class="relative">
+          <select id="up-fuel" class="glass-input w-full px-5 py-4 rounded-xl appearance-none text-white focus:ring-0">
+            <option>Essence</option>
+            <option>Diesel</option>
+            <option>Hybride</option>
+            <option>Électrique</option>
+          </select>
+          <span class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none opacity-50">ev_station</span>
+        </div>
+      </div>
+      <div class="space-y-2">
+        <label class="text-sm text-on-surface-variant px-1">Puissance (ch)</label>
+        <input id="up-power" class="glass-input w-full px-5 py-4 rounded-xl placeholder:text-on-surface-variant/30 focus:ring-0" placeholder="ex. 550" type="number" min="0"/>
+      </div>
+      <div class="space-y-2">
+        <label class="text-sm text-on-surface-variant px-1">Pays de provenance</label>
+        <div class="relative">
+          <select id="up-origin" class="glass-input w-full px-5 py-4 rounded-xl appearance-none text-white focus:ring-0">
+            <option value="" disabled selected>Choisir l'origine</option>
+            <option>Allemagne</option><option>Dubaï, EAU</option><option>Belgique</option>
+            <option>Chine</option><option>France</option><option>États-Unis</option>
+          </select>
+          <span class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none opacity-50">public</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Options & Badges Checklist -->
+  <div class="mb-12 space-y-4">
+    <label class="font-label-caps text-label-caps block text-on-surface-variant">BADGES & ÉTIQUETTES AUTOMATIQUES</label>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <label class="flex items-center gap-3 border border-outline p-4 rounded-xl cursor-pointer hover:border-primary transition-all bg-transparent">
+        <input id="up-badge-zero" type="checkbox" class="rounded border-outline text-primary focus:ring-0 w-5 h-5 bg-transparent"/>
+        <span class="text-sm font-medium">Zéro Km</span>
+      </label>
+      <label class="flex items-center gap-3 border border-outline p-4 rounded-xl cursor-pointer hover:border-primary transition-all bg-transparent">
+        <input id="up-badge-dubai" type="checkbox" class="rounded border-outline text-primary focus:ring-0 w-5 h-5 bg-transparent"/>
+        <span class="text-sm font-medium">Import Dubaï</span>
+      </label>
+      <label class="flex items-center gap-3 border border-outline p-4 rounded-xl cursor-pointer hover:border-primary transition-all bg-transparent">
+        <input id="up-badge-dedouane" type="checkbox" class="rounded border-outline text-primary focus:ring-0 w-5 h-5 bg-transparent"/>
+        <span class="text-sm font-medium">Dédouanement Inclus</span>
+      </label>
+      <label class="flex items-center gap-3 border border-outline p-4 rounded-xl cursor-pointer hover:border-primary transition-all bg-transparent">
+        <input id="up-badge-garantie" type="checkbox" class="rounded border-outline text-primary focus:ring-0 w-5 h-5 bg-transparent"/>
+        <span class="text-sm font-medium">Garantie 12 Mois</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Condition -->
+  <div class="mb-12">
+    <label class="font-label-caps text-label-caps mb-4 block text-on-surface-variant">ÉTAT DU VÉHICULE</label>
+    <div class="border border-outline p-1.5 rounded-xl flex gap-1 bg-transparent">
+      <button class="condition-btn flex-1 py-3 px-4 rounded-lg text-sm font-medium transition-all bg-primary text-on-primary" onclick="selectCondition(this)">Neuf</button>
+      <button class="condition-btn flex-1 py-3 px-4 rounded-lg text-sm font-medium transition-all text-on-surface-variant" onclick="selectCondition(this)">Dédouané</button>
+      <button class="condition-btn flex-1 py-3 px-4 rounded-lg text-sm font-medium transition-all text-on-surface-variant" onclick="selectCondition(this)">Occasion</button>
+    </div>
+  </div>
+
+  <!-- Success banner (hidden) -->
+  <div id="upload-success" class="hidden border border-green-500/30 rounded-xl p-6 flex items-center gap-4 mb-8 bg-transparent">
+    <span class="material-symbols-outlined text-green-400 text-3xl">check_circle</span>
+    <div><p class="font-headline-md text-headline-md text-primary" style="font-family: 'Outfit', sans-serif; font-weight: 700;">Annonce publiée !</p><p class="text-on-surface-variant text-sm">Votre véhicule est maintenant visible dans le catalogue.</p></div>
+  </div>
+</main>
+
+<!-- Sticky bottom actions -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-background/80 backdrop-blur-xl border-t border-outline py-6 px-margin-mobile">
+  <div class="max-w-3xl mx-auto flex gap-4">
+    <button onclick="submitListing()" class="flex-[2] bg-primary text-on-primary font-semibold py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all">Publier l'annonce</button>
+    <button onclick="previewListing()" class="flex-1 border border-outline text-primary font-semibold py-4 rounded-xl hover:bg-stone-500/10 active:scale-[0.98] transition-all">Aperçu</button>
+    <button onclick="navigate('admin')" class="flex-1 border border-outline text-primary font-medium py-4 rounded-xl hover:bg-stone-500/10 active:scale-[0.98] transition-all">Annuler</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ PAGE: ABOUT / CONTACT -->
+<div id="page-about" class="page">
+<main class="pt-32 pb-40 min-h-screen px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10 flex flex-col justify-center items-center">
+  <div class="w-full max-w-2xl bg-stone-900/60 border border-white/5 rounded-[24px] p-8 md:p-12 backdrop-blur-xl space-y-10 shadow-2xl">
+    <!-- Header -->
+    <div class="text-center space-y-4">
+      <div id="about-logo-container" class="mx-auto flex justify-center items-center mb-6">
+        <!-- populated from config or default SVG -->
+      </div>
+      <h2 class="prospect-name font-headline-lg text-primary uppercase font-extrabold tracking-tight">—</h2>
+      <p class="text-on-surface-variant text-sm font-body-md max-w-md mx-auto">Votre partenaire de confiance pour des véhicules d'exception.</p>
+    </div>
+    
+    <!-- Details -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-white/10">
+      <div class="space-y-6">
+        <div class="flex items-start gap-4">
+          <span class="material-symbols-outlined text-accent-gold text-[24px] mt-0.5">location_on</span>
+          <div>
+            <h4 class="font-label-caps text-label-caps text-on-surface-variant text-[10px] tracking-wider uppercase font-semibold">Notre Adresse</h4>
+            <p class="prospect-address text-sm text-primary mt-1">—</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="material-symbols-outlined text-accent-gold text-[24px] mt-0.5">call</span>
+          <div>
+            <h4 class="font-label-caps text-label-caps text-on-surface-variant text-[10px] tracking-wider uppercase font-semibold">Téléphone</h4>
+            <a class="prospect-phone text-sm text-primary hover:text-accent-gold transition-colors font-bold mt-1 inline-block">—</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="space-y-6">
+        <div class="flex items-start gap-4">
+          <span class="material-symbols-outlined text-accent-gold text-[24px] mt-0.5">schedule</span>
+          <div>
+            <h4 class="font-label-caps text-label-caps text-on-surface-variant text-[10px] tracking-wider uppercase font-semibold">Horaires d'Ouverture</h4>
+            <p class="prospect-hours text-sm text-primary mt-1">—</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="material-symbols-outlined text-accent-gold text-[24px] mt-0.5">chat_bubble</span>
+          <div>
+            <h4 class="font-label-caps text-label-caps text-on-surface-variant text-[10px] tracking-wider uppercase font-semibold">Messagerie Directe</h4>
+            <p class="text-xs text-on-surface-variant mt-1 mb-3">Discutez instantanément avec notre équipe commerciale.</p>
+            <button onclick="contactWhatsapp('general')" class="px-5 py-2 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg flex items-center gap-2 text-xs tracking-wider uppercase font-label-caps transition-all">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.114-2.903-6.989-1.873-1.874-4.354-2.904-6.991-2.905-5.442 0-9.87 4.42-9.874 9.865-.001 1.716.45 3.39 1.306 4.869l-.98 3.578 3.668-.962zm11.394-4.523c-.3-.15-1.772-.875-2.046-.975-.276-.1-.477-.15-.677.15-.2.3-.777.975-.95 1.175-.177.2-.35.225-.65.075-3.05-1.527-5.15-2.656-6.657-5.234-.397-.68-.078-1.047.272-1.397.314-.313.677-.775.777-.925.1-.15.05-.3-.025-.45s-.677-1.625-.925-2.25c-.242-.602-.491-.507-.677-.517-.174-.01-.375-.012-.576-.012-.2 0-.525.075-.8.375-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.11 3.224 5.115 4.525.714.31 1.272.496 1.708.635.717.227 1.37.195 1.885.118.574-.086 1.772-.725 2.022-1.425.25-.7.25-1.3 0-1.425-.075-.15-.275-.225-.575-.375z"/></svg>
+              Nous Contacter
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+
+<!-- Burger Menu Overlay / Drawer -->
+<div id="burger-menu-overlay" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+<div id="burger-menu" class="fixed top-0 left-0 bottom-0 z-50 w-72 bg-stone-900/95 border-r border-white/10 p-8 flex flex-col justify-between transition-transform duration-300 -translate-x-full">
+  <div class="space-y-8">
+    <!-- Header/Close -->
+    <div class="flex justify-between items-center">
+      <h3 class="brand-title-text font-headline-md text-white tracking-widest font-black uppercase text-sm">IBR LUXURY AUTO</h3>
+      <button onclick="toggleMobileMenu()" class="material-symbols-outlined text-white/70 hover:text-white transition-colors">close</button>
+    </div>
+    
+    <!-- Navigation Links -->
+    <nav class="flex flex-col gap-6">
+      <a onclick="navigate('home'); toggleMobileMenu();" class="font-label-caps text-label-caps text-base text-stone-300 hover:text-accent-gold transition-colors cursor-pointer flex items-center gap-3">
+        <span class="material-symbols-outlined text-base">home</span> Accueil
+      </a>
+      <a onclick="navigate('catalog'); toggleMobileMenu();" class="font-label-caps text-label-caps text-base text-stone-300 hover:text-accent-gold transition-colors cursor-pointer flex items-center gap-3">
+        <span class="material-symbols-outlined text-base">search</span> Catalogue
+      </a>
+      <a onclick="navigate('about'); toggleMobileMenu();" class="font-label-caps text-label-caps text-base text-stone-300 hover:text-accent-gold transition-colors cursor-pointer flex items-center gap-3">
+        <span class="material-symbols-outlined text-base">info</span> À Propos & Contact
+      </a>
+    </nav>
+  </div>
+  
+  <!-- Footer Info (Dealership details) -->
+  <div class="border-t border-white/10 pt-6 space-y-3">
+    <p class="prospect-name text-xs font-bold text-accent-gold uppercase tracking-wider">—</p>
+    <p class="prospect-phone text-xs text-stone-400">—</p>
+    <p class="prospect-address text-[10px] text-stone-500 leading-relaxed">—</p>
+  </div>
+</div>
+
+<!-- Bottom Sheet / Drawer for Mobile Contact Flow -->
+<div id="mobile-contact-drawer" class="fixed inset-x-0 bottom-0 z-50 bg-stone-900/95 border-t border-white/10 rounded-t-[24px] shadow-2xl transition-transform duration-500 ease-out translate-y-full md:hidden" style="padding-bottom: env(safe-area-inset-bottom, 24px);">
+  <!-- Drag Handle -->
+  <div class="w-12 h-1 bg-white/20 rounded-full mx-auto my-3"></div>
+  
+  <div class="px-6 pb-6 space-y-4">
+    <!-- Vehicle Quick Info -->
+    <div class="flex justify-between items-center mb-2">
+      <div>
+        <h4 id="drawer-vehicle-title" class="font-sans font-bold text-white text-base">—</h4>
+        <p class="text-xs text-stone-400" id="drawer-vehicle-meta">—</p>
+      </div>
+      <div class="text-right">
+        <p id="drawer-vehicle-price" class="font-sans font-extrabold text-accent-gold text-base">—</p>
+      </div>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="grid grid-cols-2 gap-3">
+      <button onclick="triggerDrawerWhatsapp()" class="w-full py-3.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 text-xs tracking-wider uppercase font-label-caps transition-all">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.114-2.903-6.989-1.873-1.874-4.354-2.904-6.991-2.905-5.442 0-9.87 4.42-9.874 9.865-.001 1.716.45 3.39 1.306 4.869l-.98 3.578 3.668-.962zm11.394-4.523c-.3-.15-1.772-.875-2.046-.975-.276-.1-.477-.15-.677.15-.2.3-.777.975-.95 1.175-.177.2-.35.225-.65.075-3.05-1.527-5.15-2.656-6.657-5.234-.397-.68-.078-1.047.272-1.397.314-.313.677-.775.777-.925.1-.15.05-.3-.025-.45s-.677-1.625-.925-2.25c-.242-.602-.491-.507-.677-.517-.174-.01-.375-.012-.576-.012-.2 0-.525.075-.8.375-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.11 3.224 5.115 4.525.714.31 1.272.496 1.708.635.717.227 1.37.195 1.885.118.574-.086 1.772-.725 2.022-1.425.25-.7.25-1.3 0-1.425-.075-.15-.275-.225-.575-.375z"/></svg>
+        WhatsApp
+      </button>
+      <button onclick="triggerDrawerCall()" class="w-full py-3.5 border border-white/20 hover:border-white/50 text-white font-bold rounded-xl flex items-center justify-center gap-2 text-xs tracking-wider uppercase font-label-caps transition-all">
+        <span class="material-symbols-outlined text-sm">call</span>
+        Téléphone
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SHARED BOTTOM NAV -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm rounded-full bg-background/90 backdrop-blur-[30px] border border-outline shadow-[0px_10px_35px_rgba(0,0,0,0.1)] z-50 flex justify-around items-center px-2 py-2 transition-colors duration-300">
+  <button class="nav-btn p-3 rounded-full hover:scale-110 transition-transform duration-300 active:scale-95 text-on-surface-variant/70" data-page="home" onclick="navigate('home')"><span class="material-symbols-outlined">home</span></button>
+  <button class="nav-btn p-3 rounded-full hover:scale-110 transition-transform duration-300 active:scale-95 text-on-surface-variant/70" data-page="catalog" onclick="navigate('catalog')"><span class="material-symbols-outlined">search</span></button>
+  <button class="nav-btn p-3 rounded-full hover:scale-110 transition-transform duration-300 active:scale-95 text-on-surface-variant/70" data-page="fav" onclick="navigate('fav')"><span class="material-symbols-outlined">favorite</span></button>
+  <button class="nav-btn p-3 rounded-full hover:scale-110 transition-transform duration-300 active:scale-95 text-on-surface-variant/70" data-page="profile" onclick="navigate('profile')"><span class="material-symbols-outlined">person</span></button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════ SCRIPTS -->
+<script>
+// ─── INITIAL VEHICLES BDD ──────────────────────────────────────────────────────
+const INITIAL_CARS = [
+  {
+    id: "bmwm4",
+    brand: "BMW",
+    model: "M4 Competition",
+    year: "2024",
+    km: "2.400 km",
+    price: "85.000.000",
+    city: "Abidjan",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAvdpJgkzJi8eKBwdCJCp_5jSj0y0PL5LmIgTFhC2LnrjUKlDKuyugE38IaWO0b_TCMxW9n4H45xpL-OWrDNl_sDMjEGp20A5yhd1CxXlTUwj_4Bw9obav6tQ1OrQjWLitKsjhekBVKzuGj0HEZiAUJWuRc8amDfpid6cmEkB9aQoGgmCH50xjyvL41zRt-zu6VU0ns0N4biTaUqFDODAdEJ2ZOPkQmCweZucZtvvCZJIAwitMzychhpGwSpVX98qgNAOfo1BDIpQh0",
+    status: "DISPONIBLE",
+    badges: ["NOUVEAU", "BAS KILOM."],
+    transmission: "Automatique"
+  },
+  {
+    id: "g63amg",
+    brand: "Mercedes-Benz",
+    model: "G63 AMG",
+    year: "2023",
+    km: "12.000 km",
+    price: "145.000.000",
+    city: "Dakar",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCZadXvN9YMFoGKFL6HbWLWZhW8t6t83o2vxS7VeyvWHPxprJN3VoLsYozLoR0i5j859xNsyTtEP-CLrYK3cM1UOV8mpLkvceQMecRSvHMFiKe-vyf326efFdvFTomok9U1IMGddt9R74y2dxKHL5Xd55lwN5ywW33k-XqO3Ms6WHlG3BG_2wxA9Ip6uXsivsMoGYSm8-znrfo3pH6bpT9TMPZvMwcmeZtPoGYlzoyHfJXVHQX5wPzrgT7Fm8yC289ml58R1SyCiha1",
+    status: "CERTIFIÉ",
+    badges: ["NEUF"],
+    transmission: "Automatique"
+  },
+  {
+    id: "toyotalc300",
+    brand: "Toyota",
+    model: "Land Cruiser 300",
+    year: "2024",
+    km: "0 km",
+    price: "92.500.000",
+    city: "Lagos",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBqvvhBeIrRUoi-dOKdbJsFyYR4JzYkEZOgFGLeL8IrEmpKbFg29m27PzG8df3weN_SqwW7O8vz6LudQv_AboYexMQrmBfps1uRL92N-o9IIXCaG5bPdkoBV1YW4mPlYG_IUjdbZtoLbuXuxs1yw3AZoPNcheR5n818qNt6EO_w638YRLTW4DxNP8FvbVPCiK7mQAZkGkoyxa7pkh-_H4dZ1pHTBpLU8mtcn7DKjKnZi-oDnkfjRA7_bAsEVEJb7jUtIk8GBEvuTFTi",
+    status: "DISPONIBLE",
+    badges: ["NEUF"],
+    transmission: "Automatique"
+  },
+  {
+    id: "hyundaitucson",
+    brand: "Hyundai",
+    model: "Tucson Hybrid",
+    year: "2022",
+    km: "34.500 km",
+    price: "28.000.000",
+    city: "Accra",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDYQ74Dogj26fdxeJDZsNI_tQlo3GtBgtu8_KDZRnUsplGrVej0vqU7uHTTeyN-_7ZLlhJFtSgl5nzuVXgNXNX_xR-n2MTZmJ2vu9rww4qg-LghZ7opAimpF-O0-dGZ8vzHcnzMCZNng_-GIGTgUEEvfFKX81Z6WuWXuntNH8Er-M6djKLRqcZOtIUjvPXP7S9cW_kZf9Jxe4LLeuROSk-vaJVJU25-QrmVyj-M3EKYwhxjVKQfhahMjjlT1OKXiUeGD-wSV_zxUSj",
+    status: "DISPONIBLE",
+    badges: ["OCCASION"],
+    transmission: "Automatique"
+  },
+  {
+    id: "mercedesclasses",
+    brand: "Mercedes-Benz",
+    model: "Classe S",
+    year: "2023",
+    km: "12.400 km",
+    price: "45.000.000",
+    city: "Abidjan",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB5skJH34yhpmfFlwfluOm8WnoFH8fBHXiDRfUlHgJWEQ3FvW_wE8dTKlb7LSBrPtZR1RSAat17n4Mycdf3hyjIBFdv_s-8vIPWu98bFK2qNNY1Y1tCBJNXqWuRCtgtPntJ0MwufeSOTVz1-nqXKnf-7z5fSQOXbynfT5940udrbq9nH15keZTuWlydx9Lpweli39Ice954VD8ex-zrdS7n9LMr-NaW6puWYX1LPHrydRqZwc1jbyG7mZFGHQzVQ711ETtFd6qCYyZ7",
+    status: "VEDETTE",
+    badges: ["VEDETTE"],
+    transmission: "Automatique"
+  },
+  {
+    id: "bmwix",
+    brand: "BMW",
+    model: "iX M60",
+    year: "2024",
+    km: "800 km",
+    price: "62.500.000",
+    city: "Abidjan",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBQtTJTau6P-oaoPCCNNhENAqON6O3ASHKlJXA3YXFcwjkkIpCSDHGIbMmF_EjeX0AEhR50mPhdRkze9W0SvR-KUbW-wLntF4tCzjZ-Gjw6TTW33Jizq1PzSlJ09E2DA1MBxBXOxAfbl0yHa_pzDEBjyG5AMmUuNheancuXAzPlAtjENxVkXwXt_pV-Wim9vSgAfu68YqRdftJBUIM9-WxuPeL2uVHiq5_vuJmD8GrhQ2dBiU5zqsBPg7PMCOXsR1kR9AA1ipVFSLNn",
+    status: "VEDETTE",
+    badges: ["ÉLECTRIQUE"],
+    transmission: "Automatique"
+  },
+  {
+    id: "audirs7",
+    brand: "Audi",
+    model: "RS7",
+    year: "2022",
+    km: "25.000 km",
+    price: "58.000.000",
+    city: "Abidjan",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBbMLFTR0c4KYJAxJYEOXpwL9lqsffz5cNjTcQDVgdwRAe1JFMSrMVh1c4y-0dnePnlWPNplSn0eM7XSZupQgipDkjQGjtiOZefJ0UAJBlsYHWH8yqBzZJYeJCCLMea9k35zuEiU1jQSpMAQ1Q0c1giMmI6oQwXgIZAvjuzRHcC6zeC6-_kLAMMAYl_DZ-TG7X3jEVxaWWYplWuzZooWTh0B35Cc1k1D-_1tiDUtRx4YDFIGjqBQ8pEL2evyMAw3sw0YPtI6wOKgdKk",
+    status: "VEDETTE",
+    badges: ["SPORT"],
+    transmission: "Automatique"
+  },
+  {
+    id: "rangeroverauto",
+    brand: "Range Rover",
+    model: "Autobiography",
+    year: "2024",
+    km: "0 km",
+    price: "115.000.000",
+    city: "Abidjan",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCm11GrOUPKmmOoOYwW-4wyu_dKnXm5mIQThnQtQq8mUUH8SaJ37RIgSQckwAk7y7KLH8GYMxEyCkZv4Z6E5daxLUA9GSrZuAaHr_M3kDR-ahUImxdUrxXdlzeEr3YSMnjwPSQSXMf7aMqre8uno0nId_4sEV8jXnVx2NRxRp2LdJujA4vg-PrgeGfz08oyY3Fv2sdDh_2OmhALHeBF8lYa-1-nofx93w0UjVv8IgTgIiMqgTXc6necKOpnIPccEz5UirzIIKLC_AtS",
+    status: "TENDANCE",
+    badges: ["LA PLUS RECHERCHÉE"],
+    transmission: "Automatique"
+  }
+];
+
+// ─── State ───────────────────────────────────────────────────────────────────
+let currentPage = 'home';
+let isAdmin = false;
+let galleryIdx = 0;
+let uploadedPhotos = [];
+let listings = [];
+let selectedBrands = new Set();
+let searchQuery = "";
+let selectedTransmission = ""; // "Automatique" or "Manuelle" or ""
+let favoriteCarIds = new Set();
+let showOnlyFavorites = false;
+let catalogPageSize = 6;
+let currentDetailCar = null;
+
+// Load / Initialize listings
+function initListings() {
+  const stored = localStorage.getItem('vitesse_listings');
+  if (stored) {
+    listings = JSON.parse(stored);
+  } else {
+    listings = [...INITIAL_CARS];
+    saveListings();
+  }
+}
+
+function saveListings() {
+  localStorage.setItem('vitesse_listings', JSON.stringify(listings));
+}
+
+function initFavorites() {
+  const stored = localStorage.getItem('vitesse_favorites');
+  if (stored) {
+    favoriteCarIds = new Set(JSON.parse(stored));
+  }
+}
+
+function saveFavorites() {
+  localStorage.setItem('vitesse_favorites', JSON.stringify(Array.from(favoriteCarIds)));
+}
+
+// ─── Theme Switcher ──────────────────────────────────────────────────────────
+function initTheme() {
+  const savedTheme = localStorage.getItem('vitesse_theme') || 'dark';
+  setTheme(savedTheme);
+}
+
+function setTheme(theme) {
+  const htmlEl = document.documentElement;
+  const iconEl = document.getElementById('theme-toggle-icon');
+  
+  if (theme === 'dark') {
+    htmlEl.classList.add('dark');
+    htmlEl.classList.remove('light');
+    if (iconEl) iconEl.textContent = 'light_mode';
+  } else {
+    htmlEl.classList.add('light');
+    htmlEl.classList.remove('dark');
+    if (iconEl) iconEl.textContent = 'dark_mode';
+  }
+  localStorage.setItem('vitesse_theme', theme);
+  if (typeof applyProspectColorAdjustments === 'function') {
+    applyProspectColorAdjustments(theme);
+  }
+}
+
+function toggleTheme() {
+  const isDark = document.documentElement.classList.contains('dark');
+  setTheme(isDark ? 'light' : 'dark');
+}
+
+// ─── Color Calibration for Contrast in Light Mode ────────────────────────────
+function adjustColorForLightMode(hex) {
+  if (!hex || !hex.startsWith('#')) return hex;
+  let r = parseInt(hex.slice(1, 3), 16) / 255;
+  let g = parseInt(hex.slice(3, 5), 16) / 255;
+  let b = parseInt(hex.slice(5, 7), 16) / 255;
+
+  let max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+
+  if (max === min) {
+    h = s = 0;
+  } else {
+    let d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+    h /= 6;
+  }
+
+  let targetL = Math.max(0.24, Math.min(l - 0.20, 0.34));
+  let targetS = Math.min(s * 1.15, 1.0);
+
+  let q = targetL < 0.5 ? targetL * (1 + targetS) : targetL + targetS - targetL * targetS;
+  let p = 2 * targetL - q;
+
+  function hue2rgb(p, q, t) {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1/6) return p + (q - p) * 6 * t;
+    if (t < 1/2) return q;
+    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+    return p;
+  }
+
+  let rAdjusted = Math.round(hue2rgb(p, q, h + 1/3) * 255);
+  let gAdjusted = Math.round(hue2rgb(p, q, h) * 255);
+  let bAdjusted = Math.round(hue2rgb(p, q, h - 1/3) * 255);
+
+  const toHex = val => val.toString(16).padStart(2, '0');
+  return `#${toHex(rAdjusted)}${toHex(gAdjusted)}${toHex(bAdjusted)}`;
+}
+
+function applyProspectColorAdjustments(theme) {
+  const config = window.PROSPECT_CONFIG || {};
+  const baseColor = config.PROSPECT_COLOR || "#c9a84c";
+  
+  if (theme === 'light') {
+    const adjustedColor = adjustColorForLightMode(baseColor);
+    document.documentElement.style.setProperty('--accent', adjustedColor);
+    document.documentElement.style.setProperty('--accent-gold', adjustedColor);
+  } else {
+    document.documentElement.style.setProperty('--accent', baseColor);
+    document.documentElement.style.setProperty('--accent-gold', baseColor);
+  }
+}
+
+// ─── Router ──────────────────────────────────────────────────────────────────
+function navigate(page) {
+  // Hide mobile contact drawer when navigating away
+  const drawer = document.getElementById('mobile-contact-drawer');
+  if (drawer) {
+    drawer.classList.add('translate-y-full');
+    drawer.classList.remove('translate-y-0');
+  }
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  
+  let targetPage = page;
+  if (page === 'fav') {
+    targetPage = 'catalog';
+    showOnlyFavorites = true;
+  } else {
+    showOnlyFavorites = false;
+  }
+  
+  const pageEl = document.getElementById('page-' + targetPage);
+  if (pageEl) pageEl.classList.add('active');
+  currentPage = page;
+  window.scrollTo(0,0);
+  updateHeader(targetPage);
+  updateNavBar(page);
+  
+  if (targetPage === 'catalog') {
+    catalogPageSize = 6;
+    renderCatalog();
+    initFadeIn();
+  }
+  if (page === 'admin') {
+    renderAdminListings();
+    initCounters();
+  }
+  if (page === 'profile') {
+    renderProfileFavorites();
+  }
+  if (page === 'home') {
+    renderFeatured();
+    initReveal();
+    // Re-trigger hero car animation
+    const img = document.getElementById('hero-car-img');
+    if (img) {
+      img.classList.remove('animate-hero-car');
+      void img.offsetWidth; // trigger reflow
+      img.classList.add('animate-hero-car');
+    }
+  }
+}
+
+function updateHeader(page) {
+  const back = document.getElementById('hdr-back');
+  const menu = document.getElementById('hdr-menu');
+  const fav  = document.getElementById('hdr-fav');
+  const share= document.getElementById('hdr-share');
+  const srch = document.getElementById('hdr-search');
+  const notif= document.getElementById('hdr-notif');
+  const avatar = document.getElementById('hdr-avatar');
+
+  // reset
+  back.style.display = 'none';
+  fav.style.display  = 'none';
+  share.style.display= 'none';
+  menu.style.display = '';
+  srch.style.display = '';
+  notif.style.display= '';
+  avatar.style.display = isAdmin ? 'block' : 'none';
+
+  if(page === 'detail') {
+    back.style.display = 'block';
+    fav.style.display  = 'block';
+    share.style.display= 'block';
+    menu.style.display = 'none';
+    srch.style.display = 'none';
+  }
+  if(page === 'upload') {
+    document.querySelector('#shared-header').style.borderBottom = '1px solid var(--border-color)';
+  }
+}
+
+function updateNavBar(page) {
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('is-active'));
+  const active = document.querySelector('.nav-btn[data-page="' + page + '"]');
+  if(active) active.classList.add('is-active');
+}
+
+// ─── Admin Auth ───────────────────────────────────────────────────────────────
+function requireAdmin(target) {
+  if(isAdmin) { navigate(target); return; }
+  document.getElementById('admin-modal').style.cssText = 'display:flex!important';
+  document.getElementById('admin-modal').dataset.target = target;
+}
+function closeAdminModal() {
+  document.getElementById('admin-modal').style.cssText = 'display:none!important';
+  document.getElementById('admin-err').classList.add('hidden');
+  document.getElementById('admin-user').value = '';
+  document.getElementById('admin-pass').value = '';
+  if (window.location.hash === '#admin') {
+    history.pushState("", document.title, window.location.pathname + window.location.search);
+  }
+}
+function doLogin() {
+  const u = document.getElementById('admin-user').value.trim();
+  const p = document.getElementById('admin-pass').value;
+  if((u === 'admin@vitesse.com' || u === 'admin') && p === 'vitesse2024') {
+    isAdmin = true;
+    document.getElementById('hdr-avatar').style.display = 'block';
+    closeAdminModal();
+    navigate(document.getElementById('admin-modal').dataset.target || 'admin');
+  } else {
+    document.getElementById('admin-err').classList.remove('hidden');
+  }
+}
+function checkAdminHash() {
+  if (window.location.hash === '#admin') {
+    requireAdmin('admin');
+  }
+}
+window.addEventListener('hashchange', checkAdminHash);
+window.addEventListener('load', checkAdminHash);
+
+// ─── Card Helper ──────────────────────────────────────────────────────────────
+function createCarCardHtml(car) {
+  const badgeText = car.badges && car.badges.length ? car.badges[0] : (car.status || 'DISPONIBLE');
+  const badgeClass = "bg-black/50 backdrop-blur-md text-white/90 border border-white/10";
+
+  const cleanPrice = car.price ? car.price : "Sur demande";
+  const priceDisplay = car.price ? `${cleanPrice} <span class="text-[9px] font-semibold text-stone-400 uppercase tracking-widest">FCFA</span>` : "Prix sur demande";
+  const isFav = favoriteCarIds.has(car.id);
+
+  return `
+    <div class="card-container group cursor-pointer flex flex-col transition-all duration-300" onclick="openDetail('${car.id}')">
+      <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 dark:bg-stone-900 mb-3 skeleton">
+        <img class="card-img w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 opacity-0 transition-opacity duration-300" src="${car.img}" alt="${car.brand} ${car.model}" loading="lazy" onload="handleImgLoad(this)"/>
+        <div class="absolute top-3 left-3 ${badgeClass} px-2.5 py-1 rounded text-[8px] font-bold tracking-wider uppercase">${badgeText}</div>
+        <button class="absolute top-3 right-3 ${isFav ? 'text-red-500' : 'text-white/70'} hover:text-red-500 hover:scale-105 active:scale-95 transition-all" onclick="event.stopPropagation(); toggleFavorite(this, '${car.id}')">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' ${isFav ? 1 : 0}, 'wght' 200;">favorite</span>
+        </button>
+      </div>
+      <div class="px-0.5 flex-1 flex flex-col justify-between gap-1">
+        <div>
+          <div class="text-[12px] font-bold text-stone-900 dark:text-stone-100 font-sans tracking-tight uppercase">${car.year} | ${car.km}</div>
+          <h3 class="text-[14px] text-stone-500 dark:text-stone-400 font-sans leading-snug group-hover:text-stone-900 dark:group-hover:text-white transition-colors mt-0.5">${car.brand} ${car.model}</h3>
+        </div>
+        <div class="flex items-center justify-between mt-1 font-sans">
+          <div class="text-[13px] font-bold text-accent-gold">${priceDisplay}</div>
+          <div class="flex items-center gap-0.5 text-[11px] text-stone-400 dark:text-stone-500">
+            <span class="material-symbols-outlined text-[12px]">location_on</span>
+            <span class="font-medium">${car.city}</span>
+          </div>
+        </div>
+        
+        <!-- Contacter le vendeur WhatsApp Button -->
+        <button onclick="event.stopPropagation(); contactVehicleWhatsapp('${car.id}')" class="mt-3 w-full py-2 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-semibold rounded-lg flex items-center justify-center gap-2 text-[11px] uppercase tracking-wider font-label-caps transition-all">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.114-2.903-6.989-1.873-1.874-4.354-2.904-6.991-2.905-5.442 0-9.87 4.42-9.874 9.865-.001 1.716.45 3.39 1.306 4.869l-.98 3.578 3.668-.962zm11.394-4.523c-.3-.15-1.772-.875-2.046-.975-.276-.1-.477-.15-.677.15-.2.3-.777.975-.95 1.175-.177.2-.35.225-.65.075-3.05-1.527-5.15-2.656-6.657-5.234-.397-.68-.078-1.047.272-1.397.314-.313.677-.775.777-.925.1-.15.05-.3-.025-.45s-.677-1.625-.925-2.25c-.242-.602-.491-.507-.677-.517-.174-.01-.375-.012-.576-.012-.2 0-.525.075-.8.375-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.11 3.224 5.115 4.525.714.31 1.272.496 1.708.635.717.227 1.37.195 1.885.118.574-.086 1.772-.725 2.022-1.425.25-.7.25-1.3 0-1.425-.075-.15-.275-.225-.575-.375z"/></svg>
+          Contacter le vendeur
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function toggleFavorite(btn, carId) {
+  const span = btn.querySelector('span');
+  if (favoriteCarIds.has(carId)) {
+    favoriteCarIds.delete(carId);
+    span.style.fontVariationSettings = "'FILL' 0, 'wght' 200";
+    btn.classList.remove('text-red-500');
+    btn.classList.add('text-white/70');
+  } else {
+    favoriteCarIds.add(carId);
+    span.style.fontVariationSettings = "'FILL' 1, 'wght' 200";
+    btn.classList.remove('text-white/70');
+    btn.classList.add('text-red-500');
+  }
+  saveFavorites();
+  
+  if (currentPage === 'fav') {
+    renderCatalog();
+  }
+  if (currentPage === 'profile') {
+    renderProfileFavorites();
+  }
+}
+
+// ─── Rendering dynamic contents ──────────────────────────────────────────────
+function renderFeatured() {
+  const container = document.getElementById('featured-listings-container');
+  if (!container) return;
+  
+  let featured = listings.filter(c => c.status === 'VEDETTE' || (c.badges && c.badges.includes('VEDETTE'))).slice(0, 3);
+  if (featured.length < 3) {
+    const otherCars = listings.filter(c => !featured.some(f => f.id === c.id));
+    featured = featured.concat(otherCars).slice(0, 3);
+  }
+
+  if (featured.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+
+  const car1 = featured[0];
+  const isFav1 = favoriteCarIds.has(car1.id);
+  const cleanPrice1 = car1.price ? car1.price : "Sur demande";
+  
+  let rightStackHtml = '';
+  if (featured.length > 1) {
+    const sideCars = featured.slice(1);
+    rightStackHtml = sideCars.map(car => {
+      const isFav = favoriteCarIds.has(car.id);
+      const badgeText = car.badges && car.badges.length ? car.badges[0] : (car.status || 'DISPONIBLE');
+      const cleanPrice = car.price ? car.price : "Sur demande";
+      return `
+        <div class="bento-card bento-card-side rounded-[20px] overflow-hidden flex flex-row p-4 cursor-pointer group gap-4" onclick="openDetail('${car.id}')">
+          <div class="relative w-2/5 h-full rounded-xl overflow-hidden bg-stone-900 skeleton shrink-0">
+            <img class="card-img w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 opacity-0 transition-opacity duration-300" src="${car.img}" alt="${car.brand} ${car.model}" loading="lazy" onload="handleImgLoad(this)"/>
+            <div class="absolute top-2 left-2 bg-black/50 backdrop-blur-md text-white/90 border border-white/10 px-2 py-0.5 rounded text-[8px] font-bold tracking-wider uppercase">${badgeText}</div>
+            <button class="absolute top-2 right-2 ${isFav ? 'text-red-500' : 'text-white/70'} hover:text-red-500 hover:scale-105 active:scale-95 transition-all" onclick="event.stopPropagation(); toggleFavorite(this, '${car.id}')">
+              <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' ${isFav ? 1 : 0}, 'wght' 200;">favorite</span>
+            </button>
+          </div>
+          <div class="flex-1 flex flex-col justify-between py-1">
+            <div>
+              <div class="text-[10px] font-bold text-stone-400 font-sans tracking-tight uppercase">${car.year} | ${car.km}</div>
+              <h3 class="text-[15px] text-white font-sans font-bold leading-snug group-hover:text-accent-gold transition-colors mt-0.5">${car.brand} ${car.model}</h3>
+              <p class="text-[11px] text-stone-500 mt-1 line-clamp-2">${car.transmission || 'Automatique'} · ${car.fuel || 'Essence'}</p>
+            </div>
+            <div class="flex items-center justify-between mt-2 font-sans">
+              <div class="text-[14px] font-bold text-accent-gold">${cleanPrice} <span class="text-[9px] font-semibold text-stone-400 uppercase tracking-widest">FCFA</span></div>
+              <div class="flex items-center gap-0.5 text-[11px] text-stone-400">
+                <span class="material-symbols-outlined text-[12px]">location_on</span>
+                <span class="font-medium">${car.city}</span>
+              </div>
+            </div>
+            
+            <!-- Contacter le vendeur WhatsApp Button -->
+            <button onclick="event.stopPropagation(); contactVehicleWhatsapp('${car.id}')" class="mt-2 w-full py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-semibold rounded-lg flex items-center justify-center gap-2 text-[10px] uppercase tracking-wider font-label-caps transition-all">
+              <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.114-2.903-6.989-1.873-1.874-4.354-2.904-6.991-2.905-5.442 0-9.87 4.42-9.874 9.865-.001 1.716.45 3.39 1.306 4.869l-.98 3.578 3.668-.962zm11.394-4.523c-.3-.15-1.772-.875-2.046-.975-.276-.1-.477-.15-.677.15-.2.3-.777.975-.95 1.175-.177.2-.35.225-.65.075-3.05-1.527-5.15-2.656-6.657-5.234-.397-.68-.078-1.047.272-1.397.314-.313.677-.775.777-.925.1-.15.05-.3-.025-.45s-.677-1.625-.925-2.25c-.242-.602-.491-.507-.677-.517-.174-.01-.375-.012-.576-.012-.2 0-.525.075-.8.375-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.11 3.224 5.115 4.525.714.31 1.272.496 1.708.635.717.227 1.37.195 1.885.118.574-.086 1.772-.725 2.022-1.425.25-.7.25-1.3 0-1.425-.075-.15-.275-.225-.575-.375z"/></svg>
+              Contacter le vendeur
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  const leftCardHtml = `
+    <div class="bento-card bento-card-main md:col-span-3 rounded-[20px] overflow-hidden flex flex-col p-6 cursor-pointer group" onclick="openDetail('${car1.id}')">
+      <div class="relative flex-1 rounded-xl overflow-hidden bg-stone-900 mb-4 skeleton">
+        <img class="card-img w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 opacity-0 transition-opacity duration-300" src="${car1.img}" alt="${car1.brand} ${car1.model}" loading="lazy" onload="handleImgLoad(this)"/>
+        <div class="absolute top-3 left-3 bg-black/50 backdrop-blur-md text-white/90 border border-white/10 px-2.5 py-1 rounded text-[8px] font-bold tracking-wider uppercase">VEDETTE</div>
+        <button class="absolute top-3 right-3 ${isFav1 ? 'text-red-500' : 'text-white/70'} hover:text-red-500 hover:scale-105 active:scale-95 transition-all" onclick="event.stopPropagation(); toggleFavorite(this, '${car1.id}')">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' ${isFav1 ? 1 : 0}, 'wght' 200;">favorite</span>
+        </button>
+      </div>
+      <div class="flex flex-col justify-between gap-2">
+        <div class="flex justify-between items-start">
+          <div>
+            <div class="text-[12px] font-bold text-stone-400 font-sans tracking-tight uppercase">${car1.year} | ${car1.km}</div>
+            <h3 class="text-[20px] text-white font-sans font-bold leading-snug group-hover:text-accent-gold transition-colors mt-0.5">${car1.brand} ${car1.model}</h3>
+          </div>
+          <div class="text-right font-sans">
+            <div class="text-[18px] font-extrabold text-accent-gold">${cleanPrice1} <span class="text-[10px] font-semibold text-stone-400 uppercase tracking-widest">FCFA</span></div>
+            <div class="flex items-center justify-end gap-0.5 text-[11px] text-stone-400 mt-1">
+              <span class="material-symbols-outlined text-[12px]">location_on</span>
+              <span class="font-medium">${car1.city}</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contacter le vendeur WhatsApp Button -->
+        <button onclick="event.stopPropagation(); contactVehicleWhatsapp('${car1.id}')" class="mt-2 w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-semibold rounded-lg flex items-center justify-center gap-2 text-xs uppercase tracking-wider font-label-caps transition-all">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.114-2.903-6.989-1.873-1.874-4.354-2.904-6.991-2.905-5.442 0-9.87 4.42-9.874 9.865-.001 1.716.45 3.39 1.306 4.869l-.98 3.578 3.668-.962zm11.394-4.523c-.3-.15-1.772-.875-2.046-.975-.276-.1-.477-.15-.677.15-.2.3-.777.975-.95 1.175-.177.2-.35.225-.65.075-3.05-1.527-5.15-2.656-6.657-5.234-.397-.68-.078-1.047.272-1.397.314-.313.677-.775.777-.925.1-.15.05-.3-.025-.45s-.677-1.625-.925-2.25c-.242-.602-.491-.507-.677-.517-.174-.01-.375-.012-.576-.012-.2 0-.525.075-.8.375-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.11 3.224 5.115 4.525.714.31 1.272.496 1.708.635.717.227 1.37.195 1.885.118.574-.086 1.772-.725 2.022-1.425.25-.7.25-1.3 0-1.425-.075-.15-.275-.225-.575-.375z"/></svg>
+          Contacter le vendeur
+        </button>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = `
+    ${leftCardHtml}
+    <div class="md:col-span-2 flex flex-col gap-6">
+      ${rightStackHtml}
+    </div>
+  `;
+}
+
+function renderCatalog() {
+  const container = document.getElementById('catalog-grid');
+  if (!container) return;
+  
+  // Sync Brand Selector Sidebar UI Active Classes
+  document.querySelectorAll('.brand-btn').forEach(btn => {
+    const brand = btn.textContent.trim();
+    if (selectedBrands.has(brand)) {
+      btn.classList.add('bg-primary', 'text-on-primary', 'border-primary');
+    } else {
+      btn.classList.remove('bg-primary', 'text-on-primary', 'border-primary');
+    }
+  });
+
+  // Filter listings
+  let filtered = listings.filter(car => {
+    // Brand matches
+    if (selectedBrands.size > 0 && !selectedBrands.has(car.brand)) {
+      return false;
+    }
+    // SearchQuery matches
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      const matchBrand = car.brand.toLowerCase().includes(q);
+      const matchModel = car.model.toLowerCase().includes(q);
+      const matchCity = car.city.toLowerCase().includes(q);
+      const matchYear = car.year.includes(q);
+      if (!matchBrand && !matchModel && !matchCity && !matchYear) {
+        return false;
+      }
+    }
+    // Transmission matches
+    if (selectedTransmission && car.transmission && car.transmission !== selectedTransmission) {
+      return false;
+    }
+    return true;
+  });
+
+  if (showOnlyFavorites) {
+    filtered = filtered.filter(car => favoriteCarIds.has(car.id));
+  }
+
+  // Update header text dynamically
+  const titleEl = document.querySelector('#page-catalog h1');
+  const countEl = document.querySelector('#page-catalog p');
+  if (showOnlyFavorites) {
+    if (titleEl) titleEl.textContent = "Mes Favoris";
+    if (countEl) countEl.textContent = `${filtered.length} véhicule${filtered.length > 1 ? 's' : ''} mis en favoris`;
+  } else {
+    if (titleEl) titleEl.textContent = "Catalogue";
+    if (countEl) countEl.textContent = `${filtered.length} véhicule${filtered.length > 1 ? 's' : ''} d'exception disponible${filtered.length > 1 ? 's' : ''}`;
+  }
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full py-20 text-center flex flex-col items-center justify-center">
+        <span class="material-symbols-outlined text-[48px] text-zinc-500 mb-4">${showOnlyFavorites ? 'favorite' : 'search_off'}</span>
+        <h3 class="text-lg font-bold text-zinc-950 dark:text-zinc-50 mb-1">${showOnlyFavorites ? 'Aucun favori enregistré' : 'Aucun résultat trouvé'}</h3>
+        <p class="text-zinc-500 text-sm">${showOnlyFavorites ? 'Parcourez le catalogue pour ajouter des véhicules à vos favoris.' : 'Essayez de modifier vos filtres ou termes de recherche.'}</p>
+      </div>
+    `;
+    const loadMoreContainer = document.getElementById('load-more-container');
+    if (loadMoreContainer) loadMoreContainer.classList.add('hidden');
+    return;
+  }
+
+  // Determine if we show/hide load more container
+  const loadMoreContainer = document.getElementById('load-more-container');
+  if (loadMoreContainer) {
+    if (filtered.length <= catalogPageSize) {
+      loadMoreContainer.classList.add('hidden');
+    } else {
+      loadMoreContainer.classList.remove('hidden');
+    }
+  }
+
+  const slicedFiltered = filtered.slice(0, catalogPageSize);
+  container.innerHTML = slicedFiltered.map(car => createCarCardHtml(car)).join('');
+  initTilt();
+}
+
+function loadMoreCars() {
+  catalogPageSize += 6;
+  renderCatalog();
+}
+
+function renderProfileFavorites() {
+  const container = document.getElementById('profile-favorites-grid');
+  if (!container) return;
+
+  const favListings = listings.filter(car => favoriteCarIds.has(car.id));
+
+  if (favListings.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full py-12 text-center flex flex-col items-center justify-center border border-white/5 bg-stone-500/5 rounded-[20px] p-8">
+        <span class="material-symbols-outlined text-[36px] mb-2 opacity-40">favorite</span>
+        <p class="text-sm text-on-surface-variant/60">Aucun favori enregistré.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = favListings.map(car => createCarCardHtml(car)).join('');
+  initTilt();
+}
+
+function renderAdminListings() {
+  const container = document.getElementById('admin-listings');
+  if (!container) return;
+  
+  if (listings.length === 0) {
+    container.innerHTML = `<div class="p-8 text-center text-zinc-500">Aucune annonce active.</div>`;
+    return;
+  }
+
+  container.innerHTML = listings.map((l, index) => {
+    const badgeText = l.badges && l.badges.length ? l.badges[0] : (l.status || 'NOUVEAU');
+    const isActive = l.active !== false;
+    const opacityClass = isActive ? '' : 'opacity-60';
+    const activeText = isActive ? 'DÉSACTIVER' : 'ACTIVER';
+    const activeBtnClass = isActive ? 'hover:border-red-500 hover:text-red-500' : 'hover:border-emerald-500 hover:text-emerald-500';
+
+    return `
+      <div class="glass-card rounded-[24px] overflow-hidden flex flex-col md:flex-row hover:border-accent-gold/40 transition-all group ${opacityClass}">
+        <div class="w-full md:w-64 h-48 overflow-hidden relative bg-zinc-100 dark:bg-zinc-900 border-r border-outline">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${l.img}" alt="${l.brand} ${l.model}"/>
+          <div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 rounded-full text-[10px] font-label-caps">${badgeText}</div>
+          ${!isActive ? `<div class="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center text-[11px] font-bold text-white uppercase tracking-widest">Désactivé</div>` : ''}
+        </div>
+        <div class="flex-1 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="font-bold text-[18px] text-zinc-900 dark:text-zinc-50">${l.brand} ${l.model}</h4>
+              <span class="font-label-caps text-[13px] font-bold text-amber-600 dark:text-accent-gold">${l.price} FCFA</span>
+            </div>
+            <p class="text-zinc-500 dark:text-zinc-400 text-sm mb-4">${l.year} · ${l.km} · ${l.city} · ${l.transmission || 'Automatique'}</p>
+          </div>
+          <div class="flex gap-2 mt-6">
+            <button class="flex-1 py-2 rounded-full border border-outline hover:border-accent-gold hover:bg-zinc-800/10 dark:hover:bg-white/5 transition-all font-label-caps text-[10px]" onclick="editListing(${index})">ÉDITER</button>
+            <button class="flex-1 py-2 rounded-full border border-outline hover:border-accent-gold hover:bg-zinc-800/10 dark:hover:bg-white/5 transition-all font-label-caps text-[10px] ${activeBtnClass}" onclick="toggleListingActive(${index})">${activeText}</button>
+            <button class="p-2 rounded-full border border-outline hover:border-error hover:text-error transition-all" onclick="deleteListing(${index})">
+              <span class="material-symbols-outlined text-[18px]">delete</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ─── Detail Page ──────────────────────────────────────────────────────────────
+let currentPreviewCar = null;
+let totalSlides = 2;
+
+function handleImgLoad(img) {
+  img.classList.remove('opacity-0');
+  const parent = img.closest('.skeleton');
+  if (parent) {
+    parent.classList.add('loaded');
+    parent.classList.remove('skeleton');
+  }
+}
+
+function formatPrice(numStr) {
+  if (!numStr) return '';
+  const val = parseInt(numStr.replace(/\D/g, ''));
+  if (isNaN(val)) return numStr;
+  return val.toLocaleString('fr-FR').replace(/,/g, '.');
+}
+
+function formatKm(numStr) {
+  if (!numStr) return '';
+  const val = parseInt(numStr.replace(/\D/g, ''));
+  if (isNaN(val)) return numStr;
+  if (val === 0) return '0 km';
+  return val.toLocaleString('fr-FR').replace(/,/g, '.') + ' km';
+}
+
+function renderDetailGallery(car) {
+  const track = document.getElementById('detail-gallery-track');
+  if (!track) return;
+
+  const photos = (car.photos && car.photos.length) ? car.photos : [
+    car.img,
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuCdGW9HahNXdK-riz_M-JxhUN05G76dsMDAi1OfOIuYYwI2rTRfmKGSuFbLqvgO4Cl0xLb7szMwZubtvam2fpu-V93if3m5DGIQ9EQ5n8-qv8JPTSpRmeEg4NcZawnOUH_oudVxpNpy0ffE5Ym6gcG9pM9ZbOUrziYMB4vpb8vZ5uD_1zlYo6P6G2uHJZ9t9w_8I4JR2_cw_KGn_Muw5Ajci7BAm6qaz-xF20VWdZcZhpA75XBxTgSJ1pa4CmYBFywWyZJ6ma0opJw_"
+  ];
+
+  track.innerHTML = photos.map((photo, index) => `
+    <div class="min-w-full h-full skeleton relative">
+      <img class="w-full h-full object-cover opacity-0 transition-opacity duration-300" src="${photo}" alt="Photo ${index + 1}" onload="handleImgLoad(this)"/>
+    </div>
+  `).join('');
+
+  // Update indicators
+  const indicatorsContainer = track.parentElement.querySelector('.absolute.bottom-10');
+  if (indicatorsContainer) {
+    indicatorsContainer.innerHTML = photos.map((_, index) => `
+      <div class="w-12 h-1 rounded-full transition-all cursor-pointer ${index === 0 ? 'bg-white' : 'bg-white/30 hover:bg-white/50'}" onclick="goSlide(${index})"></div>
+    `).join('');
+  }
+
+  // Reset index
+  galleryIdx = 0;
+  track.style.transform = 'translateX(0)';
+
+  // Total slides
+  totalSlides = photos.length;
+}
+
+function openDetail(carIdOrObject, isPreview = false) {
+  let car;
+  if (typeof carIdOrObject === 'object') {
+    car = carIdOrObject;
+  } else {
+    car = listings.find(c => c.id === carIdOrObject) || INITIAL_CARS.find(c => c.id === carIdOrObject);
+  }
+  if (!car) return;
+
+  const header = document.getElementById('shared-header');
+  const previewBanner = document.getElementById('preview-banner');
+
+  if (isPreview) {
+    currentPreviewCar = car;
+    if (previewBanner) previewBanner.classList.remove('hidden');
+    if (header) {
+      header.style.top = '48px'; // Shift header down
+    }
+  } else {
+    currentPreviewCar = null;
+    if (previewBanner) previewBanner.classList.add('hidden');
+    if (header) {
+      header.style.top = '0';
+    }
+  }
+
+  // Update standard fields
+  document.getElementById('detail-title').textContent = `${car.brand} ${car.model}`;
+
+  const cleanPrice = car.price ? car.price : "Sur demande";
+  const priceDisplay = car.price ? (car.price.includes("FCFA") || car.price === "—" ? car.price : `${car.price} FCFA`) : "Prix sur demande";
+  document.getElementById('detail-price').textContent = priceDisplay;
+  document.getElementById('detail-price-mobile').textContent = priceDisplay;
+
+  document.getElementById('detail-year').textContent = car.year || '—';
+  document.getElementById('detail-km').textContent = car.km || '—';
+
+  // Custom specs
+  const fuelEl = document.getElementById('detail-fuel');
+  if (fuelEl) fuelEl.textContent = car.fuel || 'Essence';
+
+  const engineEl = document.getElementById('detail-engine');
+  if (engineEl) engineEl.textContent = car.power ? `${car.power} ch` : 'V8 Biturbo';
+
+  // Table details block
+  const tableTransmission = document.getElementById('detail-table-transmission');
+  if (tableTransmission) tableTransmission.textContent = car.transmission || 'Automatique';
+
+  const tableFuel = document.getElementById('detail-table-fuel');
+  if (tableFuel) tableFuel.textContent = car.fuel || 'Essence';
+
+  const tablePower = document.getElementById('detail-table-power');
+  if (tablePower) tablePower.textContent = car.power ? `${car.power} ch` : '550 ch';
+
+  const tableOrigin = document.getElementById('detail-table-origin');
+  if (tableOrigin) tableOrigin.textContent = car.origin || 'Allemagne';
+
+  const tableCondition = document.getElementById('detail-table-condition');
+  if (tableCondition) tableCondition.textContent = car.status || 'Neuf';
+
+  const tableCity = document.getElementById('detail-table-city');
+  if (tableCity) tableCity.textContent = car.city || 'Abidjan';
+
+  // Render badges
+  const badgesContainer = document.getElementById('detail-badges');
+  if (badgesContainer) {
+    badgesContainer.innerHTML = '';
+    const carBadges = car.badges || [];
+    carBadges.forEach(badge => {
+      const span = document.createElement('span');
+      span.className = 'border border-outline px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider bg-stone-500/5 text-accent-gold';
+      span.textContent = badge;
+      badgesContainer.appendChild(span);
+    });
+  }
+
+  // Render gallery
+  renderDetailGallery(car);
+
+  // Set currentDetailCar for drawer/whatsapp message callbacks
+  currentDetailCar = car;
+
+  // Populate mobile contact drawer
+  const drawerTitle = document.getElementById('drawer-vehicle-title');
+  if (drawerTitle) drawerTitle.textContent = `${car.brand} ${car.model}`;
+
+  const drawerMeta = document.getElementById('drawer-vehicle-meta');
+  if (drawerMeta) drawerMeta.textContent = `${car.year} · ${car.km} · ${car.transmission || 'Automatique'}`;
+
+  const drawerPrice = document.getElementById('drawer-vehicle-price');
+  if (drawerPrice) {
+    const cleanPrice = car.price ? car.price : "Sur demande";
+    const priceDisplay = car.price ? (car.price.includes("FCFA") ? car.price : `${car.price} FCFA`) : "Prix sur demande";
+    drawerPrice.innerHTML = priceDisplay;
+  }
+
+  // Show mobile drawer
+  const drawer = document.getElementById('mobile-contact-drawer');
+  if (drawer) {
+    drawer.classList.remove('translate-y-full');
+    drawer.classList.add('translate-y-0');
+  }
+
+  navigate('detail');
+}
+
+function goSlide(dirOrIndex) {
+  if (typeof dirOrIndex === 'number' && dirOrIndex >= 0 && dirOrIndex < totalSlides) {
+    galleryIdx = dirOrIndex;
+  } else {
+    galleryIdx = (galleryIdx + dirOrIndex + totalSlides) % totalSlides;
+  }
+
+  const track = document.getElementById('detail-gallery-track');
+  if (track) {
+    track.style.transform = `translateX(-${galleryIdx*100}%)`;
+  }
+
+  // Update dots
+  const indicators = document.querySelectorAll('#detail-gallery-track ~ .absolute.bottom-10 > div');
+  indicators.forEach((ind, idx) => {
+    if (idx === galleryIdx) {
+      ind.classList.remove('bg-white/30', 'hover:bg-white/50');
+      ind.classList.add('bg-white');
+    } else {
+      ind.classList.remove('bg-white');
+      ind.classList.add('bg-white/30', 'hover:bg-white/50');
+    }
+  });
+}
+
+function contactCall() {
+  const config = window.PROSPECT_CONFIG || {};
+  const phone = config.PROSPECT_PHONE || "+2250700000000";
+  window.location.href = "tel:" + phone.replace(/\s+/g, '');
+}
+
+function contactWhatsapp(type) {
+  const config = window.PROSPECT_CONFIG || {};
+  const whatsappNum = config.PROSPECT_WHATSAPP || "2250700000000";
+  const title = currentDetailCar ? `${currentDetailCar.brand} ${currentDetailCar.model}` : '';
+  const carUrl = window.location.origin + window.location.pathname + '#detail/' + (currentDetailCar ? currentDetailCar.id : '');
+  
+  let msg = `Bonjour, je souhaite contacter ${config.PROSPECT_NAME || 'votre concession'}.`;
+  if (currentDetailCar) {
+    if (type === 'finance') {
+      msg = `Hi, I wish to request financing for ${title} — ${carUrl}`;
+    } else if (type === 'visite') {
+      msg = `Hi, I wish to schedule a viewing for ${title} — ${carUrl}`;
+    } else {
+      msg = `Hi, I'm interested in ${title} — ${carUrl}`;
+    }
+  } else {
+    if (type === 'finance') msg = `Bonjour, je souhaite obtenir des informations de financement.`;
+    else if (type === 'visite') msg = `Bonjour, je souhaite planifier une visite.`;
+  }
+  window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// ─── Search / Filter ──────────────────────────────────────────────────────────
+function searchCatalog() {
+  const homeSearch = document.getElementById('home-search');
+  if (homeSearch) {
+    searchQuery = homeSearch.value.trim();
+  }
+  navigate('catalog');
+  renderCatalog();
+}
+
+function filterBrand(brand) {
+  selectedBrands.clear();
+  selectedBrands.add(brand);
+  searchQuery = "";
+  const input = document.getElementById('home-search');
+  if (input) input.value = "";
+  selectedTransmission = "";
+  catalogPageSize = 6;
+  navigate('catalog');
+}
+
+function toggleBrand(btn, brand) {
+  catalogPageSize = 6;
+  if (selectedBrands.has(brand)) {
+    selectedBrands.delete(brand);
+    btn.classList.remove('bg-primary', 'text-on-primary', 'border-primary');
+  } else {
+    selectedBrands.add(brand);
+    btn.classList.add('bg-primary', 'text-on-primary', 'border-primary');
+  }
+  renderCatalog();
+}
+
+function selectTransmission(type, btn) {
+  catalogPageSize = 6;
+  selectedTransmission = type;
+  document.querySelectorAll('#transmission-filters button').forEach(b => {
+    b.classList.remove('bg-accent', 'text-on-accent');
+  });
+  if (btn) {
+    btn.classList.add('bg-accent', 'text-on-accent');
+  }
+  renderCatalog();
+}
+
+function resetFilters() {
+  catalogPageSize = 6;
+  selectedBrands.clear();
+  selectedTransmission = "";
+  searchQuery = "";
+  document.querySelectorAll('.brand-btn').forEach(b => {
+    b.classList.remove('bg-primary', 'text-on-primary', 'border-primary');
+  });
+  document.querySelectorAll('#transmission-filters button').forEach(b => {
+    b.classList.remove('bg-accent', 'text-on-accent');
+  });
+  renderCatalog();
+}
+
+// ─── Photo Upload ─────────────────────────────────────────────────────────────
+const dropZone = document.getElementById('upload-drop-zone');
+if (dropZone) {
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('border-white/60'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('border-white/60'));
+  dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('border-white/60'); handleFiles(e.dataTransfer.files); });
+}
+
+function handleFileUpload(e) { handleFiles(e.target.files); }
+
+function handleFiles(files) {
+  const grid = document.getElementById('photo-grid');
+  if (!grid) return;
+  const arr = Array.from(files).slice(0, 15 - uploadedPhotos.length);
+  arr.forEach(file => {
+    if(!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      uploadedPhotos.push(ev.target.result);
+      const div = document.createElement('div');
+      div.className = 'relative aspect-square rounded-xl overflow-hidden group';
+      div.innerHTML = `
+        <img src="${ev.target.result}" class="w-full h-full object-cover"/>
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          <button class="bg-white/10 backdrop-blur-md p-2 rounded-full" onclick="removePhoto(this,${uploadedPhotos.length-1})">
+            <span class="material-symbols-outlined text-white text-sm">delete</span>
+          </button>
+        </div>`;
+      grid.appendChild(div);
+      updateProgress();
+    };
+    reader.readAsDataURL(file);
+  });
+  const fileInput = document.getElementById('file-input');
+  if (fileInput) fileInput.value = '';
+}
+
+function removePhoto(btn, idx) {
+  uploadedPhotos.splice(idx, 1);
+  btn.closest('.relative').remove();
+  updateProgress();
+}
+
+function updateProgress() {
+  const hasPhotos = uploadedPhotos.length > 0;
+  const bar = document.getElementById('upload-progress');
+  if (!bar) return;
+  const brand = document.getElementById('up-brand').value;
+  const model = document.getElementById('up-model').value;
+  let pct = 33;
+  if(hasPhotos) pct = 66;
+  if(hasPhotos && brand && model) pct = 100;
+  bar.style.width = pct + '%';
+}
+
+// ─── Submit / Preview Listing ───────────────────────────────────────────────────
+// State additions
+let editingListingIndex = null;
+
+function toggleListingActive(idx) {
+  listings[idx].active = listings[idx].active === false ? true : false;
+  saveListings();
+  renderAdminListings();
+  if (currentPage === 'catalog') {
+    renderCatalog();
+  }
+}
+
+// ─── Submit / Preview Listing ───────────────────────────────────────────────────
+function submitListing() {
+  const brand = document.getElementById('up-brand').value;
+  const model = document.getElementById('up-model').value;
+  const year  = document.getElementById('up-year').value;
+  const km    = document.getElementById('up-km').value;
+  const price = document.getElementById('up-price').value;
+  const city  = document.getElementById('up-city').value;
+  const transmission = document.getElementById('up-transmission').value;
+  const fuel = document.getElementById('up-fuel').value;
+  const power = document.getElementById('up-power').value;
+  const origin = document.getElementById('up-origin').value;
+  const category = document.getElementById('up-category').value;
+
+  if(!brand || !model) { alert('Veuillez renseigner au moins la marque et le modèle.'); return; }
+
+  const img = uploadedPhotos[0] || 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=80';
+  
+  const conditionBtn = Array.from(document.querySelectorAll('.condition-btn')).find(b => b.classList.contains('bg-primary'));
+  const condition = conditionBtn ? conditionBtn.textContent.trim() : 'Neuf';
+
+  const badges = [];
+  if (document.getElementById('up-badge-zero').checked) badges.push("ZÉRO KM");
+  if (document.getElementById('up-badge-dubai').checked) badges.push("IMPORT DUBAÏ");
+  if (document.getElementById('up-badge-dedouane').checked) badges.push("DÉDOUANEMENT INCLUS");
+  if (document.getElementById('up-badge-garantie').checked) badges.push("GARANTIE 12 MOIS");
+  if (badges.length === 0) badges.push(condition.toUpperCase());
+
+  const listing = { 
+    id: editingListingIndex !== null ? listings[editingListingIndex].id : ("custom_" + Date.now()),
+    brand, 
+    model, 
+    year: year || '2024', 
+    km: formatKm(km) || '0 km', 
+    price: formatPrice(price) || '—', 
+    city: city || 'Abidjan', 
+    img,
+    photos: uploadedPhotos.length ? [...uploadedPhotos] : [img],
+    status: condition.toUpperCase(),
+    badges,
+    transmission,
+    fuel,
+    power,
+    origin: origin || 'Allemagne',
+    category: category || 'SUV',
+    active: editingListingIndex !== null ? listings[editingListingIndex].active : true
+  };
+  
+  if (editingListingIndex !== null) {
+    listings[editingListingIndex] = listing;
+  } else {
+    listings.unshift(listing);
+  }
+  saveListings();
+
+  const successEl = document.getElementById('upload-success');
+  const progressEl = document.getElementById('upload-progress');
+  if (successEl) {
+    successEl.querySelector('h3').textContent = editingListingIndex !== null ? "Annonce modifiée !" : "Annonce publiée !";
+    successEl.querySelector('p').textContent = editingListingIndex !== null ? "Les modifications du véhicule ont été enregistrées avec succès." : "Votre véhicule est maintenant visible dans le catalogue.";
+    successEl.classList.remove('hidden');
+  }
+  if (progressEl) progressEl.style.width = '100%';
+
+  setTimeout(() => {
+    resetUploadForm();
+    navigate('admin');
+  }, 2000);
+}
+
+function previewListing() {
+  const brand = document.getElementById('up-brand').value;
+  const model = document.getElementById('up-model').value;
+  const year  = document.getElementById('up-year').value;
+  const km    = document.getElementById('up-km').value;
+  const price = document.getElementById('up-price').value;
+  const city  = document.getElementById('up-city').value;
+  const transmission = document.getElementById('up-transmission').value;
+  const fuel = document.getElementById('up-fuel').value;
+  const power = document.getElementById('up-power').value;
+  const origin = document.getElementById('up-origin').value;
+  const category = document.getElementById('up-category').value;
+
+  if(!brand || !model) { alert('Veuillez renseigner au moins la marque et le modèle.'); return; }
+
+  const img = uploadedPhotos[0] || 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=80';
+  
+  const conditionBtn = Array.from(document.querySelectorAll('.condition-btn')).find(b => b.classList.contains('bg-primary'));
+  const condition = conditionBtn ? conditionBtn.textContent.trim() : 'Neuf';
+
+  const badges = [];
+  if (document.getElementById('up-badge-zero').checked) badges.push("ZÉRO KM");
+  if (document.getElementById('up-badge-dubai').checked) badges.push("IMPORT DUBAÏ");
+  if (document.getElementById('up-badge-dedouane').checked) badges.push("DÉDOUANEMENT INCLUS");
+  if (document.getElementById('up-badge-garantie').checked) badges.push("GARANTIE 12 MOIS");
+  if (badges.length === 0) badges.push(condition.toUpperCase());
+
+  const tempCar = {
+    id: "preview_temp",
+    brand,
+    model,
+    year: year || '2024',
+    km: formatKm(km) || '0 km',
+    price: formatPrice(price) || '—',
+    city: city || 'Abidjan',
+    img,
+    photos: uploadedPhotos.length ? [...uploadedPhotos] : [img],
+    status: condition.toUpperCase(),
+    badges,
+    transmission,
+    fuel,
+    power,
+    origin: origin || 'Allemagne',
+    category: category || 'SUV'
+  };
+
+  openDetail(tempCar, true);
+}
+
+function exitPreview() {
+  const header = document.getElementById('shared-header');
+  const previewBanner = document.getElementById('preview-banner');
+  if (previewBanner) previewBanner.classList.add('hidden');
+  if (header) {
+    header.style.top = '0';
+  }
+  navigate('upload');
+}
+
+function publishFromPreview() {
+  if (currentPreviewCar) {
+    const newCar = { ...currentPreviewCar, id: "custom_" + Date.now() };
+    listings.unshift(newCar);
+    saveListings();
+
+    const header = document.getElementById('shared-header');
+    const previewBanner = document.getElementById('preview-banner');
+    if (previewBanner) previewBanner.classList.add('hidden');
+    if (header) {
+      header.style.top = '0';
+    }
+
+    alert('Annonce publiée avec succès !');
+    resetUploadForm();
+    navigate('admin');
+  }
+}
+
+function editListing(idx) {
+  editingListingIndex = idx;
+  const car = listings[idx];
+  
+  // Set page title
+  const titleEl = document.querySelector('#page-upload h1');
+  if (titleEl) titleEl.textContent = "Modifier l'annonce";
+
+  // Pre-populate fields
+  document.getElementById('up-brand').value = car.brand || '';
+  document.getElementById('up-model').value = car.model || '';
+  document.getElementById('up-year').value = car.year || '';
+  
+  // Clean km & price
+  const kmRaw = car.km ? car.km.replace(/\D/g, '') : '';
+  document.getElementById('up-km').value = kmRaw;
+  const priceRaw = car.price ? car.price.replace(/\D/g, '') : '';
+  document.getElementById('up-price').value = priceRaw;
+
+  document.getElementById('up-city').value = car.city || '';
+  document.getElementById('up-transmission').value = car.transmission || 'Automatique';
+  document.getElementById('up-fuel').value = car.fuel || 'Essence';
+  document.getElementById('up-power').value = car.power || '';
+  document.getElementById('up-origin').value = car.origin || '';
+  
+  const categoryEl = document.getElementById('up-category');
+  if (categoryEl) categoryEl.value = car.category || 'SUV';
+
+  // Badges
+  const badges = car.badges || [];
+  document.getElementById('up-badge-zero').checked = badges.includes("ZÉRO KM");
+  document.getElementById('up-badge-dubai').checked = badges.includes("IMPORT DUBAÏ");
+  document.getElementById('up-badge-dedouane').checked = badges.includes("DÉDOUANEMENT INCLUS");
+  document.getElementById('up-badge-garantie').checked = badges.includes("GARANTIE 12 MOIS");
+
+  // Photos
+  uploadedPhotos = car.photos ? [...car.photos] : [car.img];
+  const grid = document.getElementById('photo-grid');
+  if (grid) {
+    grid.innerHTML = '';
+    uploadedPhotos.forEach((photo, pIdx) => {
+      const div = document.createElement('div');
+      div.className = 'relative aspect-square rounded-xl overflow-hidden group';
+      div.innerHTML = `
+        <img src="${photo}" class="w-full h-full object-cover"/>
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          <button class="bg-white/10 backdrop-blur-md p-2 rounded-full" onclick="removePhoto(this,${pIdx})">
+            <span class="material-symbols-outlined text-white text-sm">delete</span>
+          </button>
+        </div>`;
+      grid.appendChild(div);
+    });
+  }
+
+  // Set condition active state
+  const condition = car.status || 'NEUF';
+  document.querySelectorAll('.condition-btn').forEach(btn => {
+    const isMatched = btn.textContent.trim().toUpperCase() === condition.toUpperCase();
+    btn.classList.toggle('bg-primary', isMatched);
+    btn.classList.toggle('text-on-primary', isMatched);
+    btn.classList.toggle('text-on-surface-variant', !isMatched);
+  });
+
+  updateProgress();
+  navigate('upload');
+}
+
+// Mark listing as sold
+function markAsSold(idx) {
+  listings[idx].status = "VENDU";
+  listings[idx].badges = ["VENDU"];
+  saveListings();
+  renderAdminListings();
+}
+
+// Delete listing
+function deleteListing(idx) {
+  if (confirm('Voulez-vous vraiment supprimer cette annonce ?')) {
+    listings.splice(idx, 1);
+    saveListings();
+    renderAdminListings();
+  }
+}
+
+function resetUploadForm() {
+  editingListingIndex = null;
+  const titleEl = document.querySelector('#page-upload h1');
+  if (titleEl) titleEl.textContent = "Publier une annonce";
+
+  document.getElementById('up-brand').value = '';
+  document.getElementById('up-model').value = '';
+  document.getElementById('up-year').value = '';
+  document.getElementById('up-km').value = '';
+  document.getElementById('up-price').value = '';
+  document.getElementById('up-city').value = '';
+  document.getElementById('up-origin').value = '';
+  document.getElementById('up-transmission').value = 'Automatique';
+  document.getElementById('up-fuel').value = 'Essence';
+  document.getElementById('up-power').value = '';
+  
+  const categoryEl = document.getElementById('up-category');
+  if (categoryEl) categoryEl.value = 'SUV';
+
+  document.getElementById('up-badge-zero').checked = false;
+  document.getElementById('up-badge-dubai').checked = false;
+  document.getElementById('up-badge-dedouane').checked = false;
+  document.getElementById('up-badge-garantie').checked = false;
+  document.getElementById('photo-grid').innerHTML = '';
+  const successEl = document.getElementById('upload-success');
+  const progressEl = document.getElementById('upload-progress');
+  if (successEl) successEl.classList.add('hidden');
+  if (progressEl) progressEl.style.width = '33%';
+  uploadedPhotos = [];
+  document.querySelectorAll('.condition-btn').forEach((b,i) => {
+    b.classList.toggle('bg-primary', i===0);
+    b.classList.toggle('text-on-primary', i===0);
+    b.classList.toggle('text-on-surface-variant', i!==0);
+  });
+}
+
+function selectCondition(btn) {
+  document.querySelectorAll('.condition-btn').forEach(b => {
+    b.classList.remove('bg-primary','text-on-primary');
+    b.classList.add('text-on-surface-variant');
+  });
+  btn.classList.add('bg-primary','text-on-primary');
+  btn.classList.remove('text-on-surface-variant');
+}
+
+// ─── Animations ───────────────────────────────────────────────────────────────
+function initReveal() {
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }), {threshold:.1,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('#page-home .reveal').forEach(el => obs.observe(el));
+}
+function initFadeIn() {
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('is-visible'); }), {threshold:.1});
+  document.querySelectorAll('#page-catalog .fade-in-section').forEach(el => obs.observe(el));
+}
+function initCounters() {
+  document.querySelectorAll('.counter').forEach(counter => {
+    const target = parseInt(counter.dataset.target);
+    counter.textContent = '0';
+    let current = 0;
+    const timer = setInterval(() => {
+      current += Math.ceil(target/60);
+      if(current >= target) { counter.textContent = target.toLocaleString(); clearInterval(timer); }
+      else counter.textContent = current.toLocaleString();
+    }, 20);
+  });
+}
+
+function initTilt() {
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+  document.querySelectorAll('.card-container').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const xc = rect.width / 2;
+      const yc = rect.height / 2;
+      const dx = x - xc;
+      const dy = y - yc;
+      const rotX = -(dy / yc) * 6;
+      const rotY = (dx / xc) * 6;
+      card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    });
+  });
+}
+
+function initHeroParallax() {
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+  const hero = document.querySelector('section.relative.h-\\[751px\\]');
+  const img = hero ? hero.querySelector('#hero-car-img') : null;
+  if (!hero || !img) return;
+  img.style.transition = 'transform 0.15s cubic-bezier(0.25, 1, 0.5, 1)';
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const xc = rect.width / 2;
+    const yc = rect.height / 2;
+    const dx = x - xc;
+    const dy = y - yc;
+    const percentX = (dx / xc) * -15;
+    const percentY = (dy / yc) * -15;
+    // We combine translate and absolute center scaling safely
+    img.style.transform = `translate(${percentX}px, ${percentY}px) scale(1.03)`;
+  });
+  hero.addEventListener('mouseleave', () => {
+    img.style.transform = 'translate(0px, 0px) scale(1)';
+  });
+}
+
+function triggerHeroCarAnimation(img) {
+  img.classList.remove('translate-x-full', 'opacity-0', 'blur-md');
+  img.classList.add('animate-hero-car');
+}
+
+// ─── Search Suggestions (Autocomplete Dropdown) ────────────────────────────────
+function showSearchSuggestions(val) {
+  const dropdown = document.getElementById('search-suggestions');
+  if (!dropdown) return;
+
+  const query = val.trim().toLowerCase();
+  if (!query) {
+    hideSuggestions();
+    return;
+  }
+
+  const suggestions = [];
+
+  // 1. Check brands
+  const matchedBrands = new Set();
+  listings.forEach(car => {
+    if (car.brand.toLowerCase().includes(query)) {
+      matchedBrands.add(car.brand);
+    }
+  });
+  matchedBrands.forEach(brand => {
+    suggestions.push({
+      type: 'brand',
+      label: brand,
+      icon: 'directions_car',
+      action: `filterBrand('${brand}')`
+    });
+  });
+
+  // 2. Check models
+  listings.forEach(car => {
+    const fullName = `${car.brand} ${car.model}`;
+    if (car.model.toLowerCase().includes(query) || fullName.toLowerCase().includes(query)) {
+      suggestions.push({
+        type: 'car',
+        label: `${car.brand} ${car.model} (${car.year})`,
+        icon: 'sell',
+        action: `openDetail('${car.id}')`
+      });
+    }
+  });
+
+  // 3. Check cities
+  const matchedCities = new Set();
+  listings.forEach(car => {
+    if (car.city.toLowerCase().includes(query)) {
+      matchedCities.add(car.city);
+    }
+  });
+  matchedCities.forEach(city => {
+    suggestions.push({
+      type: 'city',
+      label: city,
+      icon: 'location_on',
+      action: `setSearchQueryAndSearch('${city}')`
+    });
+  });
+
+  if (suggestions.length === 0) {
+    dropdown.innerHTML = `
+      <div class="px-5 py-4 text-xs text-stone-500 font-medium">Aucun résultat suggéré pour "${val}"</div>
+    `;
+  } else {
+    dropdown.innerHTML = suggestions.slice(0, 6).map(s => `
+      <div class="px-5 py-3.5 hover:bg-white/5 cursor-pointer flex items-center justify-between text-sm transition-colors text-white border-b border-white/5 last:border-b-0" onclick="${s.action}; hideSuggestions();">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-[18px] text-accent-gold">${s.icon}</span>
+          <span class="font-medium">${s.label}</span>
+        </div>
+        <span class="text-[10px] uppercase font-bold tracking-widest text-stone-500">${s.type === 'brand' ? 'Marque' : s.type === 'car' ? 'Modèle' : 'Ville'}</span>
+      </div>
+    `).join('');
+  }
+
+  dropdown.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+  dropdown.classList.add('opacity-100', 'scale-100');
+}
+
+function hideSuggestions() {
+  const dropdown = document.getElementById('search-suggestions');
+  if (dropdown) {
+    dropdown.classList.remove('opacity-100', 'scale-100');
+    dropdown.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+  }
+}
+
+function setSearchQueryAndSearch(city) {
+  const input = document.getElementById('home-search');
+  if (input) input.value = city;
+  searchQuery = city;
+  navigate('catalog');
+}
+
+// ─── Prospect Configuration and Mobile Drawer Actions ──────────────────────────
+function applyProspectConfig() {
+  const config = window.PROSPECT_CONFIG || {
+    PROSPECT_NAME: "IBR Luxury Auto",
+    PROSPECT_LOGO: "",
+    PROSPECT_WHATSAPP: "2250700000000",
+    PROSPECT_PHONE: "+225 07 00 00 00 00",
+    PROSPECT_ADDRESS: "Boulevard de Marseille, Zone 4",
+    PROSPECT_CITY: "Abidjan",
+    PROSPECT_HOURS: "Lun - Sam: 8h00 - 19h00",
+    PROSPECT_COLOR: "#c9a84c"
+  };
+
+  // 1. Update Title Tag
+  document.title = `${config.PROSPECT_NAME} | Marché Automobile de Luxe`;
+
+  // 2. Update Header Brand Name or Logo
+  const brandTitleEls = document.querySelectorAll('.brand-title-text');
+  brandTitleEls.forEach(el => {
+    el.textContent = config.PROSPECT_NAME;
+  });
+
+  const logoContainer = document.getElementById('header-logo-container');
+  const logoAboutContainer = document.getElementById('about-logo-container');
+  
+  const defaultSvgLogo = `
+    <svg class="w-6 h-6 text-accent-gold" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+      <polygon points="50,12 82,28 82,72 50,88 18,72 18,28" stroke="currentColor" stroke-width="1" stroke-linejoin="round" class="opacity-60" />
+      <path d="M22 35 H28 M25 35 V65 M22 65 H28" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M38 35 V65 M38 35 H49 C54 35 54 49 49 49 H38 M49 49 C55 49 55 65 49 65 H38" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M62 35 V65 M62 35 H72 C77 35 77 49 72 49 H62 M72 49 L79 65" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  `;
+  
+  if (logoContainer) {
+    if (config.PROSPECT_LOGO) {
+      logoContainer.innerHTML = `<img src="${config.PROSPECT_LOGO}" alt="${config.PROSPECT_NAME}" class="h-6 object-contain"/>`;
+    } else {
+      logoContainer.innerHTML = defaultSvgLogo;
+    }
+  }
+
+  if (logoAboutContainer) {
+    if (config.PROSPECT_LOGO) {
+      logoAboutContainer.innerHTML = `<img src="${config.PROSPECT_LOGO}" alt="${config.PROSPECT_NAME}" class="h-16 object-contain"/>`;
+    } else {
+      logoAboutContainer.innerHTML = `
+        <div class="w-20 h-20 rounded-full border border-outline flex items-center justify-center bg-stone-900/60 shadow-inner">
+          <svg class="w-12 h-12 text-accent-gold" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+            <polygon points="50,12 82,28 82,72 50,88 18,72 18,28" stroke="currentColor" stroke-width="1" stroke-linejoin="round" class="opacity-60" />
+            <path d="M22 35 H28 M25 35 V65 M22 65 H28" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M38 35 V65 M38 35 H49 C54 35 54 49 49 49 H38 M49 49 C55 49 55 65 49 65 H38" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M62 35 V65 M62 35 H72 C77 35 77 49 72 49 H62 M72 49 L79 65" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+      `;
+    }
+  }
+
+  // 3. Apply custom color
+  if (config.PROSPECT_COLOR) {
+    document.documentElement.style.setProperty('--accent', config.PROSPECT_COLOR);
+    document.documentElement.style.setProperty('--accent-gold', config.PROSPECT_COLOR);
+  }
+
+  // 4. Update Dealership info in UI
+  const contactNameEls = document.querySelectorAll('.prospect-name');
+  contactNameEls.forEach(el => el.textContent = config.PROSPECT_NAME);
+
+  const contactPhoneEls = document.querySelectorAll('.prospect-phone');
+  contactPhoneEls.forEach(el => {
+    el.textContent = config.PROSPECT_PHONE;
+    if (el.tagName === 'A') el.href = `tel:${config.PROSPECT_PHONE.replace(/\s+/g, '')}`;
+  });
+
+  const contactAddressEls = document.querySelectorAll('.prospect-address');
+  contactAddressEls.forEach(el => el.textContent = `${config.PROSPECT_ADDRESS}, ${config.PROSPECT_CITY}`);
+
+  const contactHoursEls = document.querySelectorAll('.prospect-hours');
+  contactHoursEls.forEach(el => el.textContent = config.PROSPECT_HOURS);
+}
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('burger-menu');
+  const overlay = document.getElementById('burger-menu-overlay');
+  if (menu && overlay) {
+    const isOpen = menu.classList.contains('translate-x-0');
+    if (isOpen) {
+      menu.classList.remove('translate-x-0');
+      menu.classList.add('-translate-x-full');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      overlay.classList.remove('opacity-100');
+    } else {
+      menu.classList.add('translate-x-0');
+      menu.classList.remove('-translate-x-full');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      overlay.classList.add('opacity-100');
+    }
+  }
+}
+
+function triggerDrawerWhatsapp() {
+  if (!currentDetailCar) return;
+  const config = window.PROSPECT_CONFIG || {};
+  const whatsappNum = config.PROSPECT_WHATSAPP || "2250700000000";
+  const title = `${currentDetailCar.brand} ${currentDetailCar.model}`;
+  const carUrl = window.location.origin + window.location.pathname + '#detail/' + currentDetailCar.id;
+  const msg = `Hi, I'm interested in ${title} — ${carUrl}`;
+  window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function triggerDrawerCall() {
+  const config = window.PROSPECT_CONFIG || {};
+  const phone = config.PROSPECT_PHONE || "+225 07 00 00 00 00";
+  window.location.href = "tel:" + phone.replace(/\s+/g, '');
+}
+
+// Close search suggestions on click outside
+document.addEventListener('click', (e) => {
+  const searchContainer = document.querySelector('.relative.w-full.max-w-lg');
+  if (searchContainer && !searchContainer.contains(e.target)) {
+    hideSuggestions();
+  }
+});
+
+// ─── Floating Particles Background Animation ────────────────────────────────
+function initBackgroundParticles() {
+  const canvas = document.getElementById('bg-particles-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+  
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  const lines = [];
+  const lineCount = 35; // 35 speed lines for luxury motion style
+
+  for (let i = 0; i < lineCount; i++) {
+    lines.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      length: Math.random() * 80 + 40, // Length between 40px and 120px
+      speedX: -(Math.random() * 4 + 2), // Speed moving to the left
+      thickness: Math.random() * 1.5 + 0.5, // Sleek thin line
+      opacity: Math.random() * 0.25 + 0.1 // Subtle overlay opacity
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+    const isDark = document.documentElement.classList.contains('dark');
+    
+    // Speed lines color: gold/white in dark mode, bronze/gold in light mode
+    const color = isDark ? '212, 175, 55' : '150, 110, 50';
+
+    lines.forEach(l => {
+      l.x += l.speedX;
+
+      // Wrap around if line moves off-screen
+      if (l.x + l.length < 0) {
+        l.x = width + Math.random() * 50;
+        l.y = Math.random() * height;
+        l.speedX = -(Math.random() * 4 + 2);
+        l.length = Math.random() * 80 + 40;
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(l.x, l.y);
+      ctx.lineTo(l.x + l.length, l.y);
+      ctx.strokeStyle = `rgba(${color}, ${l.opacity})`;
+      ctx.lineWidth = l.thickness;
+      ctx.stroke();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  requestAnimationFrame(draw);
+}
+
+// ─── Supabase & Sourcing Form Integration ──────────────────────────────────────
+let supabase = null;
+function getSupabaseConfig() {
+  return {
+    url: localStorage.getItem('ibr_supabase_url') || '',
+    key: localStorage.getItem('ibr_supabase_key') || ''
+  };
+}
+function initSupabase() {
+  const config = getSupabaseConfig();
+  if (config.url && config.key) {
+    try {
+      supabase = window.supabase.createClient(config.url, config.key);
+      console.log("Supabase Client initialisé !");
+    } catch (err) {
+      console.error("Erreur d'initialisation Supabase:", err);
+      supabase = null;
+    }
+  } else {
+    supabase = null;
+  }
+}
+
+async function submitSourcingRequest(event) {
+  event.preventDefault();
+  const brand = document.getElementById('source-brand').value.trim();
+  const model = document.getElementById('source-model').value.trim();
+  const budget = document.getElementById('source-budget').value.trim();
+  const country = document.getElementById('source-country').value.trim();
+  const whatsapp = document.getElementById('source-whatsapp').value.trim();
+  const comment = document.getElementById('source-comment').value.trim();
+
+  if (!brand || !model || !budget || !country || !whatsapp) {
+    alert('Veuillez remplir tous les champs obligatoires.');
+    return;
+  }
+
+  const requestData = {
+    id: "req_" + Date.now(),
+    brand,
+    model,
+    budget,
+    country,
+    whatsapp,
+    comment,
+    created_at: new Date().toISOString(),
+    status: 'PENDING'
+  };
+
+  let success = false;
+  if (supabase) {
+    try {
+      const { error } = await supabase.from('sourcing_requests').insert([requestData]);
+      if (!error) {
+        success = true;
+      } else {
+        console.error("Supabase insert error:", error);
+      }
+    } catch (err) {
+      console.error("Supabase communication failed, falling back to local storage:", err);
+    }
+  }
+
+  if (!success) {
+    const requests = JSON.parse(localStorage.getItem('ibr_sourcing_requests') || '[]');
+    requests.unshift(requestData);
+    localStorage.setItem('ibr_sourcing_requests', JSON.stringify(requests));
+    success = true;
+  }
+
+  if (success) {
+    document.getElementById('sourcing-form').reset();
+    const successMessage = document.getElementById('sourcing-success');
+    if (successMessage) {
+      successMessage.classList.remove('hidden');
+      setTimeout(() => successMessage.classList.add('hidden'), 5000);
+    }
+  }
+}
+
+// ─── Admin Tabs Navigation & Rendering ─────────────────────────────────────────
+function switchAdminTab(tab) {
+  document.querySelectorAll('.admin-sec').forEach(sec => sec.classList.add('hidden'));
+  const secEl = document.getElementById('admin-sec-' + tab);
+  if (secEl) secEl.classList.remove('hidden');
+
+  const tabs = ['annonces', 'sourcing', 'config'];
+  tabs.forEach(t => {
+    const btn = document.getElementById('tab-btn-' + t);
+    if (btn) {
+      if (t === tab) {
+        btn.classList.add('border-primary', 'text-primary');
+        btn.classList.remove('border-transparent', 'text-on-surface-variant');
+      } else {
+        btn.classList.remove('border-primary', 'text-primary');
+        btn.classList.add('border-transparent', 'text-on-surface-variant');
+      }
+    }
+  });
+
+  if (tab === 'sourcing') {
+    renderSourcingRequests();
+  } else if (tab === 'config') {
+    initAdminConfigForm();
+  }
+}
+
+async function renderSourcingRequests() {
+  const container = document.getElementById('admin-sourcing-requests');
+  if (!container) return;
+
+  let requests = [];
+  let loaded = false;
+
+  if (supabase) {
+    try {
+      const { data, error } = await supabase
+        .from('sourcing_requests')
+        .select('*')
+        .order('created_at', { ascending: false });
+      if (!error && data) {
+        requests = data;
+        loaded = true;
+      }
+    } catch (err) {
+      console.error("Failed to load requests from Supabase:", err);
+    }
+  }
+
+  if (!loaded) {
+    requests = JSON.parse(localStorage.getItem('ibr_sourcing_requests') || '[]');
+  }
+
+  if (requests.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full p-8 text-center text-stone-500 border border-outline rounded-2xl">Aucune demande de sourcing enregistrée.</div>
+    `;
+    return;
+  }
+
+  container.innerHTML = requests.map((req, index) => {
+    const dateVal = req.created_at ? new Date(req.created_at) : new Date(parseInt(req.id.split('_')[1]));
+    const dateStr = dateVal.toLocaleDateString('fr-FR', {
+      day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
+    });
+    
+    const cleanWhatsapp = req.whatsapp.replace(/\D/g, '');
+    const replyMsg = `Bonjour, j'ai bien reçu votre demande de sourcing pour le véhicule ${req.brand} ${req.model} (Budget: ${req.budget}, Livraison: ${req.country}). Parlons-en !`;
+    const whatsappLink = `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(replyMsg)}`;
+
+    return `
+      <div class="glass-card rounded-[20px] p-6 border border-outline hover:border-accent-gold/40 transition-all flex flex-col justify-between gap-4">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="text-[10px] font-bold text-stone-500">${dateStr}</span>
+            <h4 class="font-bold text-base text-white mt-1">${req.brand} ${req.model}</h4>
+            <p class="text-xs text-stone-400 mt-1">Budget: <strong class="text-accent-gold">${req.budget} FCFA</strong> | Pays: <strong>${req.country}</strong></p>
+          </div>
+          <button onclick="deleteSourcingRequest('${req.id}', ${index})" class="text-stone-500 hover:text-red-500 transition-colors">
+            <span class="material-symbols-outlined text-[18px]">delete</span>
+          </button>
+        </div>
+        
+        ${req.comment ? `
+          <div class="p-3 bg-stone-950/40 rounded-lg text-xs text-stone-400 italic">
+            "${req.comment}"
+          </div>
+        ` : ''}
+
+        <div class="flex gap-2 mt-2">
+          <a href="${whatsappLink}" target="_blank" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg text-xs uppercase tracking-wider font-label-caps text-center flex items-center justify-center gap-2 transition-all">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.114-2.903-6.989-1.873-1.874-4.354-2.904-6.991-2.905-5.442 0-9.87 4.42-9.874 9.865-.001 1.716.45 3.39 1.306 4.869l-.98 3.578 3.668-.962zm11.394-4.523c-.3-.15-1.772-.875-2.046-.975-.276-.1-.477-.15-.677.15-.2.3-.777.975-.95 1.175-.177.2-.35.225-.65.075-3.05-1.527-5.15-2.656-6.657-5.234-.397-.68-.078-1.047.272-1.397.314-.313.677-.775.777-.925.1-.15.05-.3-.025-.45s-.677-1.625-.925-2.25c-.242-.602-.491-.507-.677-.517-.174-.01-.375-.012-.576-.012-.2 0-.525.075-.8.375-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.11 3.224 5.115 4.525.714.31 1.272.496 1.708.635.717.227 1.37.195 1.885.118.574-.086 1.772-.725 2.022-1.425.25-.7.25-1.3 0-1.425-.075-.15-.275-.225-.575-.375z"/></svg>
+            Répondre via WhatsApp
+          </a>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+async function deleteSourcingRequest(reqId, index) {
+  if (confirm('Voulez-vous vraiment supprimer cette demande ?')) {
+    let deleted = false;
+    if (supabase) {
+      try {
+        const { error } = await supabase.from('sourcing_requests').delete().eq('id', reqId);
+        if (!error) deleted = true;
+      } catch (err) {
+        console.error("Failed to delete request from Supabase:", err);
+      }
+    }
+    
+    const requests = JSON.parse(localStorage.getItem('ibr_sourcing_requests') || '[]');
+    const localIdx = requests.findIndex(r => r.id === reqId);
+    if (localIdx !== -1) {
+      requests.splice(localIdx, 1);
+      localStorage.setItem('ibr_sourcing_requests', JSON.stringify(requests));
+      deleted = true;
+    } else if (index !== undefined) {
+      requests.splice(index, 1);
+      localStorage.setItem('ibr_sourcing_requests', JSON.stringify(requests));
+      deleted = true;
+    }
+
+    renderSourcingRequests();
+  }
+}
+
+// ─── Admin Config Form ────────────────────────────────────────────────────────
+function initAdminConfigForm() {
+  const config = window.PROSPECT_CONFIG || {};
+  const storedWhatsapp = localStorage.getItem('ibr_whatsapp_number') || config.PROSPECT_WHATSAPP || "971564808507";
+  const whatsappInput = document.getElementById('config-whatsapp');
+  if (whatsappInput) whatsappInput.value = storedWhatsapp;
+
+  const supabaseUrlInput = document.getElementById('config-supabase-url');
+  const supabaseKeyInput = document.getElementById('config-supabase-key');
+  if (supabaseUrlInput && supabaseKeyInput) {
+    supabaseUrlInput.value = localStorage.getItem('ibr_supabase_url') || '';
+    supabaseKeyInput.value = localStorage.getItem('ibr_supabase_key') || '';
+  }
+}
+
+function saveAdminConfig() {
+  const whatsappInput = document.getElementById('config-whatsapp');
+  if (whatsappInput) {
+    const val = whatsappInput.value.replace(/\s+/g, '').replace('+', '');
+    if (val) {
+      localStorage.setItem('ibr_whatsapp_number', val);
+      if (window.PROSPECT_CONFIG) {
+        window.PROSPECT_CONFIG.PROSPECT_WHATSAPP = val;
+      }
+      applyProspectConfig();
+      alert('Configuration WhatsApp enregistrée !');
+    } else {
+      alert('Veuillez entrer un numéro WhatsApp valide.');
+    }
+  }
+}
+
+function saveSupabaseConfig() {
+  const urlVal = document.getElementById('config-supabase-url').value.trim();
+  const keyVal = document.getElementById('config-supabase-key').value.trim();
+  
+  localStorage.setItem('ibr_supabase_url', urlVal);
+  localStorage.setItem('ibr_supabase_key', keyVal);
+  
+  initSupabase();
+  alert('Identifiants Supabase mis à jour ! Connexion rétablie.');
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+initSupabase();
+applyProspectConfig();
+initTheme();
+initListings();
+initFavorites();
+renderFeatured();
+initHeroParallax();
+initBackgroundParticles();
+updateNavBar('home');
+updateHeader('home');
+['up-brand','up-model','up-year','up-km','up-price'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', updateProgress);
+});
+// Hook search input suggestion dropdown event
+const homeSearchInput = document.getElementById('home-search');
+if (homeSearchInput) {
+  homeSearchInput.addEventListener('focus', () => {
+    if (homeSearchInput.value) showSearchSuggestions(homeSearchInput.value);
+  });
+}
+
+// Mobile sticky bar scroll listener
+window.addEventListener('scroll', () => {
+  if (currentPage === 'detail') {
+    const stickyCta = document.getElementById('mobile-sticky-cta');
+    if (stickyCta) {
+      if (window.scrollY > 250) {
+        stickyCta.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+        stickyCta.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        stickyCta.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        stickyCta.classList.remove('opacity-100', 'translate-y-0');
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

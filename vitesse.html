@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>VITESSE</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/vitesse-prestige.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0A0A0A;--black2:#111;--black3:#1A1A1A;--black4:#242424;
+  --white:#fff;--gray:#888;--gray2:#444;
+  --gold:#C9A227;--gold2:#E8C94A;
+}
+html,body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;min-height:100dvh;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--gold)}
+
+/* ════════════════════════════════ FORM PAGE */
+#form-page{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px}
+.form-logo{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.3em;color:var(--gold);margin-bottom:44px}
+.form-inner{width:100%;max-width:480px;display:flex;flex-direction:column;gap:14px}
+
+/* drop zone */
+#drop-zone{
+  width:100%;min-height:200px;border:1.5px dashed #2e2e2e;border-radius:20px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  cursor:pointer;transition:border-color .25s,background .25s;background:var(--black2);
+  position:relative;overflow:hidden;padding:16px;
+}
+#drop-zone:hover,#drop-zone.over{border-color:var(--gold);background:rgba(201,162,39,.04)}
+#drop-default{display:flex;flex-direction:column;align-items:center;gap:10px}
+#drop-default svg{opacity:.3}
+#drop-default p{font-size:13px;color:var(--gray);font-weight:500}
+#drop-default small{font-size:11px;color:var(--gray2)}
+
+/* preview strip inside drop zone */
+#preview-strip{display:none;flex-direction:column;gap:10px;width:100%}
+#preview-strip img.main-preview{width:100%;height:180px;object-fit:cover;border-radius:12px;display:block}
+#thumb-row{display:flex;gap:7px;flex-wrap:wrap}
+.p-thumb-wrap{position:relative;flex-shrink:0}
+.p-thumb{width:64px;height:50px;border-radius:9px;object-fit:cover;border:2px solid transparent;cursor:pointer;transition:all .2s;opacity:.6}
+.p-thumb.sel{border-color:var(--gold);opacity:1}
+.p-thumb:hover{opacity:.9}
+.p-thumb-enhanced{position:absolute;top:3px;right:3px;width:14px;height:14px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:var(--black)}
+.add-more{width:64px;height:50px;border-radius:9px;background:#1a1a1a;border:1.5px dashed #333;display:flex;align-items:center;justify-content:center;font-size:18px;color:#555;cursor:pointer;transition:border-color .2s;flex-shrink:0}
+.add-more:hover{border-color:var(--gold);color:var(--gold)}
+
+/* enhance bar */
+#enhance-bar{
+  display:none;background:rgba(201,162,39,.06);border:1px solid rgba(201,162,39,.2);
+  border-radius:14px;padding:14px 16px;gap:10px;align-items:center;flex-wrap:wrap;
+}
+#enhance-bar.visible{display:flex}
+.enh-badge{font-family:'JetBrains Mono';font-size:9px;letter-spacing:.15em;color:var(--gold);background:rgba(201,162,39,.12);border-radius:100px;padding:3px 10px;white-space:nowrap}
+.btn-auto{flex:1;min-width:140px;height:38px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--black);font-size:12px;font-weight:700;cursor:pointer;transition:opacity .15s;white-space:nowrap}
+.btn-auto:hover{opacity:.88}
+.btn-manual{height:38px;padding:0 14px;border-radius:10px;background:transparent;border:1px solid #2a2a2a;color:var(--gray);font-size:12px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-manual:hover{border-color:var(--gold);color:var(--gold)}
+
+/* inputs */
+.field input{
+  width:100%;padding:15px 18px;border-radius:13px;
+  background:var(--black3);border:1.5px solid var(--black4);
+  color:var(--white);font-size:14px;font-family:'Inter';outline:none;
+  transition:border-color .2s,background .2s;
+}
+.field input:focus{border-color:var(--gold);background:rgba(201,162,39,.03)}
+.field input::placeholder{color:var(--gray2)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* publish btn */
+#publish-btn{
+  width:100%;padding:17px;border-radius:13px;border:none;cursor:pointer;margin-top:6px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--black);font-size:15px;font-weight:700;letter-spacing:.02em;
+  transition:opacity .15s,transform .1s;
+}
+#publish-btn:hover{opacity:.9}
+#publish-btn:active{transform:scale(.98)}
+
+/* ════════════════════════════════ ENHANCE MODAL */
+#enh-modal{
+  display:none;position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,.92);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;padding:16px;
+}
+#enh-modal.open{display:flex}
+.enh-inner{
+  background:var(--black2);border:1px solid #222;border-radius:24px;
+  width:100%;max-width:820px;max-height:90dvh;overflow-y:auto;
+  display:flex;flex-direction:column;
+}
+.enh-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid #1e1e1e}
+.enh-header h2{font-size:16px;font-weight:700}
+.enh-header span{font-family:'JetBrains Mono';font-size:9px;color:var(--gold);letter-spacing:.15em}
+.enh-close{width:34px;height:34px;border-radius:50%;background:#1e1e1e;border:none;color:var(--gray);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .2s}
+.enh-close:hover{background:#2a2a2a;color:var(--white)}
+.enh-body{display:flex;flex-direction:column;gap:0;flex:1}
+
+/* comparison */
+.enh-preview{position:relative;background:#000;overflow:hidden;min-height:240px;max-height:380px;cursor:ew-resize;user-select:none}
+#enh-img-after{width:100%;height:100%;object-fit:contain;display:block}
+#enh-img-before-wrap{
+  position:absolute;top:0;left:0;height:100%;overflow:hidden;
+  border-right:2px solid var(--gold);
+  transition:none;
+}
+#enh-img-before{width:100%;height:100%;object-fit:contain;display:block}
+.enh-divider-handle{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:36px;height:36px;border-radius:50%;
+  background:var(--gold);border:3px solid var(--black);
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;box-shadow:0 0 20px rgba(201,162,39,.5);
+}
+.enh-divider-handle svg{width:14px;height:14px;color:var(--black)}
+.enh-labels{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:space-between;padding:0 16px;pointer-events:none}
+.enh-labels span{font-family:'JetBrains Mono';font-size:9px;letter-spacing:.1em;padding:3px 8px;border-radius:100px;background:rgba(0,0,0,.6)}
+.enh-labels span:first-child{color:var(--gray)}
+.enh-labels span:last-child{color:var(--gold)}
+
+/* sliders panel */
+.enh-sliders{padding:20px 24px;display:flex;flex-direction:column;gap:16px}
+.sl-row{display:flex;align-items:center;gap:12px}
+.sl-label{font-family:'JetBrains Mono';font-size:9px;letter-spacing:.12em;color:var(--gray);width:90px;flex-shrink:0;text-transform:uppercase}
+.sl-track{flex:1;position:relative}
+input[type=range]{width:100%;height:3px;-webkit-appearance:none;appearance:none;background:#2a2a2a;border-radius:3px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);border:2px solid var(--black);box-shadow:0 0 8px rgba(201,162,39,.4);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--gold);border:2px solid var(--black);cursor:pointer}
+.sl-val{font-family:'JetBrains Mono';font-size:10px;color:var(--white);width:34px;text-align:right;flex-shrink:0}
+
+/* presets */
+.enh-presets{display:flex;gap:8px;padding:0 24px;flex-wrap:wrap}
+.preset-btn{padding:6px 14px;border-radius:100px;border:1px solid #2a2a2a;background:transparent;color:var(--gray);font-size:11px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.preset-btn:hover,.preset-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.07)}
+
+/* photo selector */
+.enh-photo-sel{display:flex;gap:8px;padding:0 24px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.enh-photo-sel::-webkit-scrollbar{display:none}
+.enh-sel-thumb{width:56px;height:44px;border-radius:8px;object-fit:cover;cursor:pointer;border:2px solid transparent;opacity:.55;transition:all .2s;flex-shrink:0}
+.enh-sel-thumb.active{border-color:var(--gold);opacity:1}
+
+.enh-footer{padding:16px 24px;border-top:1px solid #1e1e1e;display:flex;gap:10px;flex-wrap:wrap}
+.btn-apply-all{flex:1;min-width:140px;height:44px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--black);font-size:13px;font-weight:700;cursor:pointer;transition:opacity .15s}
+.btn-apply-all:hover{opacity:.88}
+.btn-apply-one{height:44px;padding:0 18px;border-radius:12px;background:transparent;border:1.5px solid #2a2a2a;color:var(--gray);font-size:13px;cursor:pointer;transition:all .2s}
+.btn-apply-one:hover{border-color:var(--white);color:var(--white)}
+.btn-reset-enh{height:44px;padding:0 16px;border-radius:12px;background:transparent;border:1.5px solid #1e1e1e;color:var(--gray2);font-size:12px;cursor:pointer;transition:all .2s}
+.btn-reset-enh:hover{border-color:#444;color:var(--gray)}
+
+/* ════════════════════════════════ CARD PAGE */
+#card-page{display:none;min-height:100dvh;background:var(--black)}
+
+/* hero */
+#c-hero{position:relative;height:100dvh;max-height:720px;overflow:hidden;cursor:pointer}
+#c-hero-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+#c-hero:hover #c-hero-img{transform:scale(1.03)}
+#c-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.25) 0%,rgba(10,10,10,.05) 40%,rgba(10,10,10,.9) 78%,#0A0A0A 100%)}
+#c-hero-bar{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:20px 22px}
+.c-logo{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.3em;color:var(--gold)}
+.c-icon-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;color:var(--white)}
+.c-icon-btn:hover{background:rgba(255,255,255,.16)}
+.c-icon-btn svg{width:17px;height:17px}
+#c-hero-content{position:absolute;bottom:0;left:0;right:0;padding:28px 22px}
+.c-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.28);border-radius:100px;padding:5px 13px;margin-bottom:14px}
+.c-badge span{font-size:9px;font-family:'JetBrains Mono';color:var(--gold);letter-spacing:.15em}
+.c-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+#c-title{font-size:clamp(2rem,10vw,4.2rem);font-weight:900;line-height:1;letter-spacing:-.035em;margin-bottom:10px}
+#c-title em{color:var(--gold);font-style:normal}
+.c-meta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:22px}
+.c-meta-item{display:flex;align-items:center;gap:5px;font-size:12px;color:rgba(255,255,255,.55);font-weight:500}
+.c-meta-item svg{width:13px;height:13px;color:var(--gold)}
+#c-price-row{margin-bottom:24px}
+.c-price-label{font-size:9px;font-family:'JetBrains Mono';color:var(--gray);letter-spacing:.12em;margin-bottom:4px}
+#c-price{font-size:clamp(1.9rem,8vw,3.2rem);font-weight:800;line-height:1;font-family:'JetBrains Mono'}
+#c-price em{font-size:13px;color:var(--gold);font-style:normal;margin-left:6px}
+.c-ctas{display:flex;gap:10px}
+.btn-wa{flex:1;height:52px;border-radius:14px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--black);font-size:14px;font-weight:700;letter-spacing:.02em;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s,transform .1s}
+.btn-wa:hover{opacity:.9}
+.btn-wa:active,.btn-call:active{transform:scale(.97)}
+.btn-call{width:52px;height:52px;border-radius:14px;cursor:pointer;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.13);display:flex;align-items:center;justify-content:center;transition:background .2s;color:var(--white)}
+.btn-call:hover{background:rgba(255,255,255,.13)}
+.btn-call svg,.btn-wa svg{width:19px;height:19px;flex-shrink:0}
+
+/* gallery */
+#c-gallery{padding:20px 20px 0;display:flex;gap:9px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+#c-gallery::-webkit-scrollbar{display:none}
+.g-thumb{flex-shrink:0;width:100px;height:72px;border-radius:11px;object-fit:cover;border:2px solid transparent;cursor:pointer;transition:all .25s;opacity:.55}
+.g-thumb:hover,.g-thumb.active{border-color:var(--gold);opacity:1;transform:scale(1.04)}
+
+/* specs */
+#c-specs{padding:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.spec-card{background:var(--black3);border:1px solid #1f1f1f;border-radius:15px;padding:14px 12px;transition:border-color .2s}
+.spec-card:hover{border-color:rgba(201,162,39,.3)}
+.spec-icon{width:28px;height:28px;border-radius:7px;background:rgba(201,162,39,.1);display:flex;align-items:center;justify-content:center;margin-bottom:9px}
+.spec-icon svg{width:14px;height:14px;color:var(--gold)}
+.spec-label{font-size:8px;font-family:'JetBrains Mono';color:var(--gray);letter-spacing:.1em;margin-bottom:3px;text-transform:uppercase}
+.spec-val{font-size:12px;font-weight:600;color:var(--white)}
+
+/* trust */
+#c-trust{margin:12px 20px 16px;background:var(--black3);border-radius:18px;padding:20px;border:1px solid #1e1e1e}
+.trust-title{font-size:9px;font-family:'JetBrains Mono';color:var(--gold);letter-spacing:.15em;margin-bottom:14px}
+.trust-list{display:flex;flex-direction:column;gap:10px}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(255,255,255,.65)}
+.trust-check{width:20px;height:20px;border-radius:5px;background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trust-check svg{width:10px;height:10px;color:var(--gold)}
+
+/* edit btn */
+#edit-btn{display:block;margin:4px 20px 36px;width:calc(100%-40px);width:calc(100% - 40px);padding:14px;border-radius:12px;background:transparent;border:1px solid #1e1e1e;color:var(--gray2);font-size:12px;font-family:'Inter';cursor:pointer;transition:all .2s;text-align:center}
+#edit-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* sticky bar */
+#c-sticky{position:fixed;bottom:0;left:0;right:0;padding:10px 16px;padding-bottom:calc(10px + env(safe-area-inset-bottom));background:linear-gradient(0deg,var(--black) 55%,transparent 100%);display:none}
+#c-sticky .c-ctas{max-width:600px;margin:0 auto}
+
+/* lightbox */
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:999;display:none;align-items:center;justify-content:center}
+#lb.open{display:flex}
+#lb-img{max-width:100%;max-height:100dvh;object-fit:contain}
+#lb-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+#lb-close:hover{background:rgba(255,255,255,.2)}
+#lb-prev,#lb-next{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+#lb-prev{left:10px}#lb-next{right:10px}
+#lb-prev:hover,#lb-next:hover{background:rgba(255,255,255,.18)}
+
+/* fade-up */
+.fade-up{opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)}
+.fade-up.in{opacity:1;transform:none}
+
+/* enhancement dot on thumbnail */
+.enh-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);position:absolute;top:3px;right:3px;box-shadow:0 0 6px rgba(201,162,39,.6)}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ FORM PAGE -->
+<div id="form-page">
+  <div class="form-logo">VITESSE</div>
+  <div class="form-inner">
+
+    <!-- Drop zone -->
+    <div id="drop-zone"
+      onclick="if(!event.target.closest('.add-more'))document.getElementById('photo-input').click()"
+      ondragover="event.preventDefault();this.classList.add('over')"
+      ondragleave="this.classList.remove('over')"
+      ondrop="event.preventDefault();this.classList.remove('over');handleFiles(event.dataTransfer.files)">
+      <div id="drop-default">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <p>Ajouter les photos</p>
+        <small>Cliquez ou glissez · jusqu'à 20 photos</small>
+      </div>
+      <div id="preview-strip">
+        <img id="main-preview-img" class="main-preview" src="" alt=""/>
+        <div id="thumb-row"></div>
+      </div>
+    </div>
+    <input id="photo-input" type="file" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)"/>
+
+    <!-- Enhance bar -->
+    <div id="enhance-bar">
+      <span class="enh-badge">✦ PHOTOS</span>
+      <button class="btn-auto" onclick="autoEnhanceAll()">✨ Auto-améliorer</button>
+      <button class="btn-manual" onclick="openEnhModal()">Ajuster →</button>
+    </div>
+
+    <!-- Fields -->
+    <div class="field-row">
+      <div class="field"><input id="f-brand" type="text" placeholder="Marque"/></div>
+      <div class="field"><input id="f-model" type="text" placeholder="Modèle"/></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><input id="f-price" type="text" placeholder="Prix (FCFA)"/></div>
+      <div class="field"><input id="f-km"    type="text" placeholder="Kilométrage"/></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><input id="f-year" type="number" placeholder="Année" min="2000" max="2026"/></div>
+      <div class="field"><input id="f-city" type="text"   placeholder="Ville"/></div>
+    </div>
+    <div class="field">
+      <input id="f-phone" type="tel" placeholder="WhatsApp (ex: 22507…)"/>
+    </div>
+
+    <button id="publish-btn" onclick="publish()">Publier la fiche →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ ENHANCE MODAL -->
+<div id="enh-modal">
+  <div class="enh-inner">
+
+    <div class="enh-header">
+      <div><h2>Améliorer les photos</h2><span>VITESSE PHOTO ENGINE</span></div>
+      <button class="enh-close" onclick="closeEnhModal()">✕</button>
+    </div>
+
+    <div class="enh-body">
+
+      <!-- Photo selector -->
+      <div style="padding:14px 24px 6px">
+        <div class="enh-photo-sel" id="enh-photo-sel"></div>
+      </div>
+
+      <!-- Before / After comparison -->
+      <div class="enh-preview" id="enh-preview">
+        <img id="enh-img-after"  src="" alt="after"/>
+        <div id="enh-before-wrap" style="position:absolute;top:0;left:0;height:100%;overflow:hidden;border-right:2px solid var(--gold);width:50%">
+          <img id="enh-img-before" src="" alt="before" style="width:100%;height:100%;object-fit:contain;display:block;position:absolute;top:0;left:0"/>
+        </div>
+        <div id="enh-handle" class="enh-divider-handle" style="left:50%">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 3 12 9 6"/><polyline points="15 6 21 12 15 18"/></svg>
+        </div>
+        <div class="enh-labels"><span>ORIGINAL</span><span>AMÉLIORÉ</span></div>
+      </div>
+
+      <!-- Presets -->
+      <div style="padding:14px 24px 8px">
+        <div class="enh-presets" id="enh-presets">
+          <button class="preset-btn" onclick="applyPreset('auto')">Auto</button>
+          <button class="preset-btn" onclick="applyPreset('vivid')">Vivid</button>
+          <button class="preset-btn" onclick="applyPreset('clean')">Clean</button>
+          <button class="preset-btn" onclick="applyPreset('night')">Night</button>
+          <button class="preset-btn" onclick="applyPreset('warm')">Warm</button>
+          <button class="preset-btn" onclick="applyPreset('none')">Original</button>
+        </div>
+      </div>
+
+      <!-- Sliders -->
+      <div class="enh-sliders">
+        <div class="sl-row">
+          <span class="sl-label">Luminosité</span>
+          <div class="sl-track"><input type="range" id="sl-bright" min="60" max="160" value="100" oninput="updatePreview()"/></div>
+          <span class="sl-val" id="v-bright">0</span>
+        </div>
+        <div class="sl-row">
+          <span class="sl-label">Contraste</span>
+          <div class="sl-track"><input type="range" id="sl-contrast" min="60" max="180" value="100" oninput="updatePreview()"/></div>
+          <span class="sl-val" id="v-contrast">0</span>
+        </div>
+        <div class="sl-row">
+          <span class="sl-label">Couleurs</span>
+          <div class="sl-track"><input type="range" id="sl-sat" min="60" max="200" value="100" oninput="updatePreview()"/></div>
+          <span class="sl-val" id="v-sat">0</span>
+        </div>
+        <div class="sl-row">
+          <span class="sl-label">Netteté</span>
+          <div class="sl-track"><input type="range" id="sl-sharp" min="0" max="100" value="0" oninput="updatePreview()"/></div>
+          <span class="sl-val" id="v-sharp">0</span>
+        </div>
+        <div class="sl-row">
+          <span class="sl-label">Chaleur</span>
+          <div class="sl-track"><input type="range" id="sl-warm" min="-50" max="50" value="0" oninput="updatePreview()"/></div>
+          <span class="sl-val" id="v-warm">0</span>
+        </div>
+        <div class="sl-row">
+          <span class="sl-label">Vignette</span>
+          <div class="sl-track"><input type="range" id="sl-vignette" min="0" max="80" value="0" oninput="updatePreview()"/></div>
+          <span class="sl-val" id="v-vignette">0</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="enh-footer">
+      <button class="btn-apply-all" onclick="applyToAll()">Appliquer à toutes ✓</button>
+      <button class="btn-apply-one" onclick="applyToOne()">Photo active seulement</button>
+      <button class="btn-reset-enh" onclick="resetSliders()">Réinitialiser</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ CARD PAGE -->
+<div id="card-page">
+  <div id="c-hero" onclick="openLb(mainPhotoIdx)">
+    <img id="c-hero-img" src="" alt=""/>
+    <div id="c-hero-overlay"></div>
+    <div id="c-hero-bar">
+      <span class="c-logo">VITESSE</span>
+      <div style="display:flex;gap:8px">
+        <button class="c-icon-btn" onclick="event.stopPropagation();doShare()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </button>
+        <button class="c-icon-btn" onclick="event.stopPropagation();goBack()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="c-hero-content">
+      <div class="c-badge"><div class="c-dot"></div><span>DISPONIBLE · CERTIFIÉ VITESSE</span></div>
+      <div id="c-title"></div>
+      <div class="c-meta" id="c-meta"></div>
+      <div id="c-price-row"><div class="c-price-label">PRIX DE VENTE</div><div id="c-price"></div></div>
+      <div class="c-ctas">
+        <button class="btn-wa" onclick="event.stopPropagation();doWhatsapp()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </button>
+        <button class="btn-call" onclick="event.stopPropagation();doCall()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.82 19.79 19.79 0 01.36 3.22 2 2 0 012.33 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.4a16 16 0 006.72 6.72l.77-.77a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="c-gallery"></div>
+  <div id="c-specs"></div>
+  <div id="c-trust">
+    <div class="trust-title">GARANTIES VITESSE</div>
+    <div class="trust-list">
+      <div class="trust-item"><div class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Véhicule inspecté et certifié</div>
+      <div class="trust-item"><div class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Documents d'importation complets</div>
+      <div class="trust-item"><div class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Titre propre · Dédouané</div>
+      <div class="trust-item"><div class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Livraison partout en Afrique</div>
+    </div>
+  </div>
+  <button id="edit-btn" onclick="goBack()">✏️ Modifier l'annonce</button>
+</div>
+
+<!-- Sticky -->
+<div id="c-sticky">
+  <div class="c-ctas">
+    <button class="btn-wa" onclick="doWhatsapp()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </button>
+    <button class="btn-call" onclick="doCall()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 11.82 19.79 19.79 0 01.36 3.22 2 2 0 012.33 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.4a16 16 0 006.72 6.72l.77-.77a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lb">
+  <button id="lb-close" onclick="closeLb()">✕</button>
+  <button id="lb-prev" onclick="lbNav(-1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <img id="lb-img" src="" alt=""/>
+  <button id="lb-next" onclick="lbNav(1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════ STATE
+let photos      = [];          // original base64
+let enhanced    = [];          // processed base64 (or same as photos if not enhanced)
+let mainPhotoIdx = 0;
+let enhModalPhotoIdx = 0;
+let lbIdx = 0;
+let dragPos = null;
+
+// ════════════════════════════════════════════════════ FILE HANDLING
+function handleFiles(files) {
+  const arr = Array.from(files).filter(f => f.type.startsWith('image/'));
+  if (!arr.length) return;
+  const readers = arr.map(f => new Promise(res => {
+    const r = new FileReader();
+    r.onload = e => res(e.target.result);
+    r.readAsDataURL(f);
+  }));
+  Promise.all(readers).then(res => {
+    photos   = [...photos,   ...res].slice(0, 20);
+    enhanced = [...enhanced, ...res].slice(0, 20);
+    mainPhotoIdx = 0;
+    renderForm();
+    document.getElementById('photo-input').value = '';
+  });
+}
+
+function renderForm() {
+  const strip = document.getElementById('preview-strip');
+  const def   = document.getElementById('drop-default');
+  if (!photos.length) { def.style.display='flex'; strip.style.display='none'; document.getElementById('enhance-bar').classList.remove('visible'); return; }
+  def.style.display = 'none';
+  strip.style.display = 'flex';
+  document.getElementById('enhance-bar').classList.add('visible');
+
+  document.getElementById('main-preview-img').src = enhanced[mainPhotoIdx];
+
+  const row = document.getElementById('thumb-row');
+  row.innerHTML = '';
+  photos.forEach((_, i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'p-thumb-wrap';
+    const img = document.createElement('img');
+    img.src = enhanced[i];
+    img.className = 'p-thumb' + (i === mainPhotoIdx ? ' sel' : '');
+    img.onclick = e => { e.stopPropagation(); mainPhotoIdx = i; renderForm(); };
+    wrap.appendChild(img);
+    if (enhanced[i] !== photos[i]) {
+      const dot = document.createElement('div'); dot.className = 'enh-dot'; wrap.appendChild(dot);
+    }
+    row.appendChild(wrap);
+  });
+  const add = document.createElement('div');
+  add.className = 'add-more';
+  add.textContent = '+';
+  add.onclick = e => { e.stopPropagation(); document.getElementById('photo-input').click(); };
+  row.appendChild(add);
+}
+
+// ════════════════════════════════════════════════════ AUTO-ENHANCE (quick)
+const PRESETS = {
+  auto:  { bright:108, contrast:118, sat:130, sharp:30, warm:8,  vignette:20 },
+  vivid: { bright:105, contrast:130, sat:165, sharp:40, warm:5,  vignette:25 },
+  clean: { bright:110, contrast:110, sat:110, sharp:15, warm:0,  vignette:10 },
+  night: { bright:95,  contrast:125, sat:90,  sharp:20, warm:-8, vignette:40 },
+  warm:  { bright:108, contrast:112, sat:140, sharp:25, warm:20, vignette:15 },
+  none:  { bright:100, contrast:100, sat:100, sharp:0,  warm:0,  vignette:0  }
+};
+
+function autoEnhanceAll() {
+  if (!photos.length) return;
+  const btn = document.querySelector('.btn-auto');
+  btn.textContent = '✨ En cours…';
+  btn.disabled = true;
+  let done = 0;
+  photos.forEach((src, i) => {
+    bakeEnhancement(src, PRESETS.auto, result => {
+      enhanced[i] = result;
+      done++;
+      if (done === photos.length) {
+        btn.textContent = '✅ Toutes améliorées';
+        setTimeout(() => { btn.textContent = '✨ Auto-améliorer'; btn.disabled = false; }, 2000);
+        renderForm();
+      }
+    });
+  });
+}
+
+// ════════════════════════════════════════════════════ ENHANCE MODAL
+function openEnhModal() {
+  if (!photos.length) return;
+  enhModalPhotoIdx = mainPhotoIdx;
+  buildEnhModal();
+  document.getElementById('enh-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  applyPreset('auto');
+}
+function closeEnhModal() {
+  document.getElementById('enh-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function buildEnhModal() {
+  const sel = document.getElementById('enh-photo-sel');
+  sel.innerHTML = '';
+  photos.forEach((_, i) => {
+    const img = document.createElement('img');
+    img.src = enhanced[i];
+    img.className = 'enh-sel-thumb' + (i === enhModalPhotoIdx ? ' active' : '');
+    img.onclick = () => { enhModalPhotoIdx = i; refreshEnhImages(); sel.querySelectorAll('.enh-sel-thumb').forEach((t,j) => t.classList.toggle('active', j===i)); };
+    sel.appendChild(img);
+  });
+  refreshEnhImages();
+  initDrag();
+}
+
+function refreshEnhImages() {
+  document.getElementById('enh-img-before').src = photos[enhModalPhotoIdx];
+  updatePreview();
+}
+
+function updatePreview() {
+  const f = getSliderVals();
+  updateSliderLabels(f);
+  const css = buildCssFilter(f);
+  document.getElementById('enh-img-after').src = photos[enhModalPhotoIdx];
+  document.getElementById('enh-img-after').style.filter = css;
+}
+
+function getSliderVals() {
+  return {
+    bright:   parseInt(document.getElementById('sl-bright').value),
+    contrast: parseInt(document.getElementById('sl-contrast').value),
+    sat:      parseInt(document.getElementById('sl-sat').value),
+    sharp:    parseInt(document.getElementById('sl-sharp').value),
+    warm:     parseInt(document.getElementById('sl-warm').value),
+    vignette: parseInt(document.getElementById('sl-vignette').value)
+  };
+}
+
+function buildCssFilter(f) {
+  const hue = f.warm * 0.3;
+  return `brightness(${f.bright}%) contrast(${f.contrast}%) saturate(${f.sat}%) hue-rotate(${hue}deg)`;
+}
+
+function updateSliderLabels(f) {
+  document.getElementById('v-bright').textContent   = f.bright   > 100 ? '+' + (f.bright-100)   : (f.bright-100);
+  document.getElementById('v-contrast').textContent = f.contrast > 100 ? '+' + (f.contrast-100) : (f.contrast-100);
+  document.getElementById('v-sat').textContent      = f.sat      > 100 ? '+' + (f.sat-100)       : (f.sat-100);
+  document.getElementById('v-sharp').textContent    = f.sharp;
+  document.getElementById('v-warm').textContent     = f.warm     >= 0  ? '+' + f.warm             : f.warm;
+  document.getElementById('v-vignette').textContent = f.vignette;
+}
+
+function applyPreset(name) {
+  const p = PRESETS[name] || PRESETS.auto;
+  document.getElementById('sl-bright').value   = p.bright;
+  document.getElementById('sl-contrast').value = p.contrast;
+  document.getElementById('sl-sat').value      = p.sat;
+  document.getElementById('sl-sharp').value    = p.sharp;
+  document.getElementById('sl-warm').value     = p.warm;
+  document.getElementById('sl-vignette').value = p.vignette;
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === name));
+  updatePreview();
+}
+
+function resetSliders() { applyPreset('none'); }
+
+function applyToAll() {
+  const f = getSliderVals();
+  let done = 0;
+  photos.forEach((src, i) => {
+    bakeEnhancement(src, f, result => {
+      enhanced[i] = result;
+      done++;
+      if (done === photos.length) { closeEnhModal(); renderForm(); }
+    });
+  });
+}
+
+function applyToOne() {
+  const f = getSliderVals();
+  bakeEnhancement(photos[enhModalPhotoIdx], f, result => {
+    enhanced[enhModalPhotoIdx] = result;
+    closeEnhModal();
+    renderForm();
+  });
+}
+
+// ════════════════════════════════════════════════════ CANVAS ENGINE
+function bakeEnhancement(src, settings, callback) {
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width  = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+
+    // Step 1: apply CSS filters via canvas filter
+    const hue = settings.warm * 0.3;
+    ctx.filter = `brightness(${settings.bright}%) contrast(${settings.contrast}%) saturate(${settings.sat}%) hue-rotate(${hue}deg)`;
+    ctx.drawImage(img, 0, 0);
+    ctx.filter = 'none';
+
+    // Step 2: unsharp mask (sharpening)
+    if (settings.sharp > 0) {
+      const amount = settings.sharp / 100;
+      const data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      applySharpen(data, amount);
+      ctx.putImageData(data, 0, 0);
+    }
+
+    // Step 3: vignette
+    if (settings.vignette > 0) {
+      const strength = settings.vignette / 100;
+      const grd = ctx.createRadialGradient(
+        canvas.width/2, canvas.height/2, canvas.height * 0.3,
+        canvas.width/2, canvas.height/2, canvas.width  * 0.8
+      );
+      grd.addColorStop(0, `rgba(0,0,0,0)`);
+      grd.addColorStop(1, `rgba(0,0,0,${strength})`);
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    callback(canvas.toDataURL('image/jpeg', 0.95));
+  };
+  img.src = src;
+}
+
+function applySharpen(imageData, amount) {
+  // Unsharp mask: kernel = [-1,-1,-1,-1,9,-1,-1,-1,-1] mixed with original
+  const W = imageData.width, H = imageData.height;
+  const src = new Uint8ClampedArray(imageData.data);
+  const dst = imageData.data;
+  const kernel = [-1,-1,-1,-1,9,-1,-1,-1,-1];
+  const ksize  = 3, khalf = 1;
+  for (let y = khalf; y < H - khalf; y++) {
+    for (let x = khalf; x < W - khalf; x++) {
+      let r=0,g=0,b=0;
+      for (let ky = 0; ky < ksize; ky++) {
+        for (let kx = 0; kx < ksize; kx++) {
+          const px = ((y + ky - khalf) * W + (x + kx - khalf)) * 4;
+          const k  = kernel[ky * ksize + kx];
+          r += src[px]   * k;
+          g += src[px+1] * k;
+          b += src[px+2] * k;
+        }
+      }
+      const i = (y * W + x) * 4;
+      // blend original with sharpened
+      dst[i]   = clamp(src[i]   + (r - src[i])   * amount);
+      dst[i+1] = clamp(src[i+1] + (g - src[i+1]) * amount);
+      dst[i+2] = clamp(src[i+2] + (b - src[i+2]) * amount);
+    }
+  }
+}
+function clamp(v){ return Math.max(0, Math.min(255, Math.round(v))); }
+
+// ════════════════════════════════════════════════════ DRAG DIVIDER
+function initDrag() {
+  const preview = document.getElementById('enh-preview');
+  const wrap    = document.getElementById('enh-before-wrap');
+  const handle  = document.getElementById('enh-handle');
+
+  function move(clientX) {
+    const rect = preview.getBoundingClientRect();
+    let pct = (clientX - rect.left) / rect.width;
+    pct = Math.max(0.03, Math.min(0.97, pct));
+    const pc = (pct * 100).toFixed(1) + '%';
+    wrap.style.width = pc;
+    handle.style.left = pc;
+  }
+  preview.addEventListener('mousedown',  e => { dragPos = true; move(e.clientX); });
+  window .addEventListener('mousemove',  e => { if(dragPos) move(e.clientX); });
+  window .addEventListener('mouseup',    () => dragPos = false);
+  preview.addEventListener('touchstart', e => { dragPos = true; move(e.touches[0].clientX); }, {passive:true});
+  window .addEventListener('touchmove',  e => { if(dragPos) move(e.touches[0].clientX); }, {passive:true});
+  window .addEventListener('touchend',   () => dragPos = false);
+}
+
+// ════════════════════════════════════════════════════ PUBLISH
+function publish() {
+  const brand = document.getElementById('f-brand').value.trim();
+  const model = document.getElementById('f-model').value.trim();
+  if (!brand && !model) { alert('Veuillez renseigner la marque ou le modèle.'); return; }
+  buildCard();
+  document.getElementById('form-page').style.display = 'none';
+  document.getElementById('card-page').style.display = 'block';
+  document.getElementById('c-sticky').style.display  = 'block';
+  window.scrollTo(0,0);
+  initCardAnimations();
+}
+
+function buildCard() {
+  const brand = document.getElementById('f-brand').value.trim() || 'Marque';
+  const model = document.getElementById('f-model').value.trim() || 'Modèle';
+  const price = document.getElementById('f-price').value.trim();
+  const km    = document.getElementById('f-km').value.trim();
+  const year  = document.getElementById('f-year').value.trim();
+  const city  = document.getElementById('f-city').value.trim();
+
+  // hero
+  const hero = enhanced.length ? enhanced[mainPhotoIdx] : 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1400&q=80';
+  document.getElementById('c-hero-img').src = hero;
+
+  // title
+  document.getElementById('c-title').innerHTML =
+    `<em style="color:rgba(255,255,255,.4);font-size:clamp(.9rem,3.5vw,1.6rem);font-weight:600;display:block;margin-bottom:2px;font-style:normal">${brand}</em>${model}`;
+
+  // meta
+  const meta = document.getElementById('c-meta');
+  meta.innerHTML = '';
+  if (year) meta.innerHTML += metaItem(iCal(), year);
+  if (km)   meta.innerHTML += metaItem(iSpeed(), km);
+  if (city) meta.innerHTML += metaItem(iPin(), city);
+
+  // price
+  document.getElementById('c-price').innerHTML = price
+    ? `${fmtNum(price)}<em>FCFA</em>`
+    : `<em style="font-size:1rem">Prix sur demande</em>`;
+
+  buildGalleryCard();
+  buildSpecsCard(year, km, city);
+}
+
+function metaItem(icon, text) {
+  return `<div class="c-meta-item">${icon}<span>${text}</span></div>`;
+}
+
+function buildGalleryCard() {
+  const el = document.getElementById('c-gallery');
+  el.innerHTML = '';
+  if (enhanced.length <= 1) { el.style.display='none'; return; }
+  el.style.display = 'flex';
+  enhanced.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src = src; img.className = 'g-thumb' + (i===mainPhotoIdx?' active':'');
+    img.onclick = () => {
+      mainPhotoIdx = i;
+      document.getElementById('c-hero-img').src = enhanced[i];
+      document.querySelectorAll('.g-thumb').forEach((t,j) => t.classList.toggle('active', j===i));
+    };
+    el.appendChild(img);
+  });
+}
+
+function buildSpecsCard(year, km, city) {
+  const el = document.getElementById('c-specs');
+  el.innerHTML = '';
+  const specs = [];
+  if (year) specs.push({ icon:iCal(),   label:'ANNÉE',        val:year });
+  if (km)   specs.push({ icon:iSpeed(), label:'KILOMÉTRAGE',   val:km });
+  if (city) specs.push({ icon:iPin(),   label:'LOCALISATION',  val:city });
+  specs.push(
+    { icon:iGear(),  label:'TRANSMISSION', val:'Automatique' },
+    { icon:iFuel(),  label:'CARBURANT',    val:'Essence' },
+    { icon:iUser(),  label:'PROPRIÉTAIRE', val:'1er main' }
+  );
+  specs.slice(0,6).forEach(s => {
+    const div = document.createElement('div');
+    div.className = 'spec-card fade-up';
+    div.innerHTML = `<div class="spec-icon">${s.icon}</div><div class="spec-label">${s.label}</div><div class="spec-val">${s.val}</div>`;
+    el.appendChild(div);
+  });
+}
+
+function initCardAnimations() {
+  const obs = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+  }), { threshold: 0.06 });
+  document.querySelectorAll('#card-page .fade-up').forEach(el => obs.observe(el));
+}
+
+function fmtNum(str) {
+  const n = parseInt(str.replace(/\D/g,''));
+  if (isNaN(n)) return str;
+  return n.toLocaleString('fr-FR').replace(/ /g,'.').replace(/ /g,'.');
+}
+
+// ════════════════════════════════════════════════════ ACTIONS
+function doWhatsapp() {
+  const phone = document.getElementById('f-phone').value.replace(/\D/g,'');
+  const msg = encodeURIComponent(`Bonjour, je suis intéressé(e) par ce véhicule sur VITESSE. Est-il toujours disponible ?`);
+  if (phone) window.open(`https://wa.me/${phone}?text=${msg}`,'_blank');
+  else alert('Numéro WhatsApp non renseigné.');
+}
+function doCall() {
+  const phone = document.getElementById('f-phone').value.trim();
+  if (phone) window.location.href = 'tel:'+phone;
+  else alert('Numéro de téléphone non renseigné.');
+}
+function doShare() {
+  if (navigator.share) navigator.share({ title:'VITESSE', url:window.location.href });
+  else navigator.clipboard.writeText(window.location.href).then(()=>alert('Lien copié !'));
+}
+function goBack() {
+  document.getElementById('card-page').style.display  = 'none';
+  document.getElementById('c-sticky').style.display   = 'none';
+  document.getElementById('form-page').style.display  = 'flex';
+  window.scrollTo(0,0);
+}
+
+// ════════════════════════════════════════════════════ LIGHTBOX
+function openLb(idx) {
+  if (!enhanced.length) return;
+  lbIdx = idx;
+  document.getElementById('lb-img').src = enhanced[lbIdx];
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() { document.getElementById('lb').classList.remove('open'); document.body.style.overflow=''; }
+function lbNav(d) { lbIdx=(lbIdx+d+enhanced.length)%enhanced.length; document.getElementById('lb-img').src=enhanced[lbIdx]; }
+document.addEventListener('keydown', e => {
+  if (document.getElementById('lb').classList.contains('open')) {
+    if (e.key==='Escape') closeLb();
+    if (e.key==='ArrowLeft') lbNav(-1);
+    if (e.key==='ArrowRight') lbNav(1);
+  }
+});
+
+// ════════════════════════════════════════════════════ SVG ICONS
+function iCal(){return`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`}
+function iSpeed(){return`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`}
+function iPin(){return`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`}
+function iGear(){return`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 004.93 19.07M19.07 4.93l-2.83 2.83M4.93 19.07l2.83-2.83"/></svg>`}
+function iFuel(){return`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><path d="M10 22v-7h4v7"/></svg>`}
+function iUser(){return`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`}
+</script>
+</body>
+</html>

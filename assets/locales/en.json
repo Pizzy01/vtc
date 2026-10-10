@@ -1,0 +1,110 @@
+{
+  "brand": {
+    "name": "LUX-TAXI GENEVA",
+    "subtitle": "Private Chauffeur • Geneva & Alps"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services & Offerings",
+    "fleet": "Prestige Fleet",
+    "destinations": "Destinations & Alps",
+    "about": "About & Standards",
+    "booking": "Private Booking",
+    "contact": "Contact 24/7",
+    "whatsapp": "WhatsApp VIP 24/7",
+    "book": "Book Now"
+  },
+  "hero": {
+    "eyebrow": "SWISS PRIVATE CHAUFFEUR · GENEVA & ALPS",
+    "title_part1": "Travel,",
+    "title_part2": "refined.",
+    "description": "Premium VTC & Private Chauffeur Service in Geneva. Airport transfers, ski resort shuttles & 24/7 VIP hourly chauffeur service.",
+    "cta_primary": "Book a Chauffeur ↗"
+  },
+  "pillars": {
+    "eyebrow": "EXCELLENCE & PEACE OF MIND",
+    "title": "Pillars of Our Service",
+    "subtitle": "Exceptional tailored assistance designed for international, diplomatic, and executive clients.",
+    "p1_title": "Punctuality & Flight Tracking",
+    "p1_desc": "Real-time tracking of your arrival at Geneva Airport (GVA). Personalised meet & greet in the arrival hall with luggage handling.",
+    "p2_title": "Absolute Discretion & Peace of Mind",
+    "p2_desc": "Bilingual suited chauffeurs trained to strict confidentiality protocols. Discrete, refined, and secure transportation at all times.",
+    "p3_title": "Latest Prestige Fleet",
+    "p3_desc": "Immaculate Mercedes-Benz S-Class, V-Class & Maybach vehicles with leather interiors, tinted glass, and modern amenities."
+  },
+  "services": {
+    "eyebrow": "BESPOKE SERVICES",
+    "title": "Private Chauffeur Tailored to Perfection",
+    "subtitle": "From smooth city transfers to custom Alpine mountain journeys.",
+    "s1_title": "Airport & Station Transfers",
+    "s1_desc": "Seamless connections between Geneva GVA, Geneva-Cornavin, Lausanne, and regional airports. Flight delay monitoring included at no extra charge.",
+    "s2_title": "VIP Hourly Chauffeur",
+    "s2_desc": "Dedicated availability for business meetings, Rue du Rhône shopping sessions, or gala evenings in Geneva and Montreux.",
+    "s3_title": "Ski Shuttles & Alpine Transfers",
+    "s3_desc": "Mountain-equipped luxury 4x4 transfers to Chamonix, Courchevel, Megève, Verbier, Zermatt, Crans-Montana, and Gstaad."
+  },
+  "fleet": {
+    "eyebrow": "AUTOMOTIVE EXCELLENCE",
+    "title": "Our Fleet of Exceptional Vehicles",
+    "subtitle": "Each vehicle is handpicked to offer first-class comfort paired with maximum safety.",
+    "f1_title": "Mercedes-Benz S-Class Saloon",
+    "f1_tag": "EXECUTIVE FIRST CLASS",
+    "f1_desc": "The global benchmark for executive travel. Superior acoustic insulation, heated massaging rear seats, air suspension.",
+    "f1_specs": "Max 3 Passengers · 3 VIP Luggage",
+    "f2_title": "Mercedes-Benz V-Class VIP Extra-Long",
+    "f2_tag": "PREMIUM BUSINESS VAN",
+    "f2_desc": "Private lounge space for group travel, diplomatic delegations, and family ski or golf trips.",
+    "f2_specs": "Max 7 Passengers · 7 VIP Luggage",
+    "f3_title": "Mercedes-Maybach S-Class First Class",
+    "f3_tag": "ULTIMATE LUXURY",
+    "f3_desc": "The pinnacle of automotive luxury. Extra legroom, refrigerated console, artisanal finishes, and absolute discretion.",
+    "f3_specs": "Max 2 VIP Passengers · 3 VIP Luggage"
+  },
+  "experience": {
+    "eyebrow": "SPECIAL TOUCHES",
+    "title": "The Lux-Taxi On-Board Experience",
+    "subtitle": "Every detail matters to ensure a relaxing and productive journey.",
+    "exp1": "Complimentary Évian mineral water bottles & chilled refreshments",
+    "exp2": "High-speed 5G Wi-Fi & multi-device charging station",
+    "exp3": "International press, Swiss newspapers, and luxury lifestyle magazines",
+    "exp4": "VIP child seats & boosters installed upon request"
+  },
+  "reassurance": {
+    "eyebrow": "TRANSPARENCY & TRUST",
+    "title": "Why Choose LUX-TAXI Geneva?",
+    "r1_title": "100% Fixed Guaranteed Rates",
+    "r1_desc": "Upfront prices guaranteed upon booking. No traffic charges, no hidden fees.",
+    "r2_title": "Free Cancellation & Flexibility",
+    "r2_desc": "Complimentary modification or cancellation up to 24h prior to pickup.",
+    "r3_title": "Secure Payment & Invoicing",
+    "r3_desc": "Pay online, on-board, or via corporate bank transfer with itemised VAT invoice."
+  },
+  "booking": {
+    "title": "PRIVATE BOOKING ENGINE",
+    "subtitle": "Guaranteed fixed rate with zero hidden costs.",
+    "step1_title": "1. Service",
+    "step2_title": "2. Route",
+    "step3_title": "3. Confirmation",
+    "service_airport": "Airport Transfer (GVA)",
+    "service_hourly": "VIP Hourly Chauffeur",
+    "service_ski": "Ski & Alps Shuttle",
+    "service_corporate": "Corporate Travel",
+    "pickup": "Pickup Location",
+    "dropoff": "Destination",
+    "date": "Date & Time",
+    "flight_no": "Flight No. (Tracking included)",
+    "passengers": "Passengers",
+    "luggage": "Luggage",
+    "vehicle": "Vehicle Category",
+    "price_label": "Estimated Fixed Rate",
+    "confirm_btn": "Confirm & Book Chauffeur ↗",
+    "whatsapp_btn": "Order via WhatsApp 24/7"
+  },
+  "footer": {
+    "address": "📍 Rte de l'Aéroport 21, 1215 Geneva",
+    "phone": "+41 76 620 78 50",
+    "email": "contact@lux-taxi.com",
+    "regions": "Geneva • Lausanne • Chamonix • Courchevel • Verbier • Zermatt",
+    "copyright": "© 2026 LUX-TAXI Geneva. All rights reserved."
+  }
+}

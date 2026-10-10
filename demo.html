@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUX-TAXI Genève | Service de Chauffeur Privé 24/7 & Transferts Alpes</title>
+  <meta name="description" content="Chauffeur Privé & VTC Haut de Gamme à Genève (GVA). Transferts aéroport, navettes ski vers Chamonix, Courchevel, Verbier & mise à disposition VIP 24/7. Prix fixes."/>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <link rel="stylesheet" href="assets/css/vitesse-prestige.css"/>
+  <style>
+    .perspective-container { perspective: 1000px; }
+    .tilt-card-3d { transform-style: preserve-3d; transition: transform 0.15s ease-out; }
+    
+    .gold-particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #C6A96B;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #C6A96B;
+      opacity: 0.6;
+      animation: floatParticle 10s infinite linear;
+      pointer-events: none;
+    }
+    @keyframes floatParticle {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.7; }
+      80% { opacity: 0.7; }
+      100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="relative bg-cover bg-center bg-no-repeat animate-kenburns bg-[#0B0B0C] text-[#F5F1E8] selection:bg-[#C6A96B] selection:text-black overflow-x-hidden font-sans" style="background-image: url('assets/images/maybach-bg.jpg');">
+
+  <!-- AMBIENT PARTICLES & VIGNETTE LAYER -->
+  <div class="fixed inset-0 pointer-events-none z-10 overflow-hidden">
+    <div class="gold-particle" style="top:70%; left:20%; animation-delay:0s;"></div>
+    <div class="gold-particle" style="top:60%; left:80%; animation-delay:2.5s;"></div>
+    <div class="gold-particle" style="top:80%; left:50%; animation-delay:5s;"></div>
+    <div class="gold-particle" style="top:65%; left:35%; animation-delay:7.5s;"></div>
+  </div>
+  <div class="fixed inset-0 ambient-halo pointer-events-none z-0"></div>
+  <div class="fixed inset-0 hero-vignette pointer-events-none z-0"></div>
+
+  <!-- 1. HEADER (SLIM MINIMALIST WITH LANGUAGE SWITCHER & WHATSAPP) -->
+  <header class="relative z-30 px-4 sm:px-12 py-4 sm:py-7 flex items-center justify-between">
+    
+    <!-- Logo Lux-Taxi -->
+    <a href="index.html" class="flex items-center gap-2.5 sm:gap-3.5 group">
+      <div class="w-8 h-8 sm:w-10 sm:h-10 btn-gold-luxe font-serif-luxe font-bold text-base sm:text-xl flex items-center justify-center rounded-sm tracking-tighter shadow-xl">
+        LT
+      </div>
+      <div class="flex flex-col">
+        <span class="font-display font-extrabold text-sm sm:text-xl tracking-[0.16em] uppercase text-[#F5F1E8]">LUX<span class="text-[#C6A96B]">-</span>TAXI</span>
+        <span class="text-[8px] sm:text-[9px] font-mono tracking-[0.2em] text-[#C6A96B] uppercase font-medium">Genève • Swiss Excellence</span>
+      </div>
+    </a>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-2.5 sm:gap-4">
+      
+      <!-- Language Switcher Dropdown (FR ▾) -->
+      <div class="lang-dropdown">
+        <button class="glass-luxe-pill px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-mono text-[#F5F1E8] flex items-center gap-1 hover:border-[#C6A96B] transition-all focus:outline-none">
+          <span id="active-lang-code" class="font-bold text-[#C6A96B]">FR</span>
+          <span class="text-[9px] text-[#AAA59B]">▾</span>
+        </button>
+        <div class="lang-dropdown-menu">
+          <div onclick="VitesseI18n.setLanguage('fr')" class="lang-item">
+            <span>Français</span> <span class="font-mono text-[10px] text-[#C6A96B]">FR</span>
+          </div>
+          <div onclick="VitesseI18n.setLanguage('en')" class="lang-item">
+            <span>English</span> <span class="font-mono text-[10px] text-[#AAA59B]">EN</span>
+          </div>
+          <div onclick="VitesseI18n.setLanguage('de')" class="lang-item">
+            <span>Deutsch</span> <span class="font-mono text-[10px] text-[#AAA59B]">DE</span>
+          </div>
+          <div onclick="VitesseI18n.setLanguage('it')" class="lang-item">
+            <span>Italiano</span> <span class="font-mono text-[10px] text-[#AAA59B]">IT</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp VIP Badge (Desktop) -->
+      <a href="https://wa.me/41766207850" target="_blank" class="hidden sm:inline-flex items-center gap-2.5 text-xs font-semibold px-5 py-2.5 rounded-full glass-luxe-pill text-[#F5F1E8] transition-all">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="tracking-wider" data-i18n="nav.whatsapp">WhatsApp VIP 24/7</span>
+      </a>
+
+      <!-- Burger Menu Button -->
+      <button id="burger-btn" onclick="toggleMenu()" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full glass-luxe-pill flex flex-col items-center justify-center gap-1 sm:gap-1.5 transition-all focus:outline-none shadow-xl">
+        <span class="w-4 sm:w-5 h-[1.5px] bg-[#C6A96B] transition-all transform origin-center" id="b-line1"></span>
+        <span class="w-4 sm:w-5 h-[1.5px] bg-[#C6A96B] transition-all" id="b-line2"></span>
+      </button>
+    </div>
+
+  </header>
+
+  <!-- 2. HERO SECTION WITH 3D TILT CARD & ICONIC MAYBACH BACKGROUND -->
+  <section class="relative z-20 px-4 sm:px-12 text-center min-h-[85vh] flex items-center justify-center py-12 perspective-container">
+    <div id="tilt-card" class="tilt-card-3d space-y-5 max-w-3xl mx-auto">
+      
+      <!-- Eyebrow Badge -->
+      <div class="animate-fadeup-1 inline-flex items-center gap-2 px-4 sm:px-6 py-1.5 rounded-full border border-[#C6A96B]/50 bg-[#0B0B0C]/60 backdrop-blur-md text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.22em] text-[#C6A96B] shadow-2xl">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B] animate-pulse"></span>
+        <span data-i18n="hero.eyebrow">SWISS PRIVATE CHAUFFEUR · GENÈVE & ALPES</span>
+      </div>
+
+      <!-- Main Editorial Title -->
+      <h1 class="animate-fadeup-2 font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.1] drop-shadow-2xl">
+        <span data-i18n="hero.title_part1">Le voyage,</span> 
+        <span class="block text-[#C6A96B] mt-1 font-serif-luxe font-normal italic tracking-normal" data-i18n="hero.title_part2">autrement.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="animate-fadeup-3 text-xs sm:text-sm text-[#F5F1E8]/90 max-w-md sm:max-w-lg mx-auto font-normal tracking-wide leading-relaxed drop-shadow-lg" data-i18n="hero.description">
+        Service de VTC & Chauffeur Privé Haut de Gamme à Genève. Transferts aéroport, navettes stations de ski et mise à disposition VIP 24/7.
+      </p>
+
+      <!-- Primary Action Buttons -->
+      <div class="animate-fadeup-4 pt-2 sm:pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button onclick="toggleBookingModal()" class="btn-gold-luxe font-display font-extrabold text-[11px] sm:text-xs uppercase tracking-[0.14em] px-9 py-4 rounded-full transition-all shadow-2xl w-full sm:w-auto text-center" data-i18n="hero.cta_primary">
+          Réserver un chauffeur ↗
+        </button>
+        <a href="https://wa.me/41766207850" target="_blank" class="glass-luxe-pill text-xs font-semibold px-8 py-4 rounded-full text-[#F5F1E8] flex items-center justify-center gap-2 hover:border-[#C6A96B] transition-all w-full sm:w-auto">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>WhatsApp VIP Direct</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. FULLSCREEN BURGER MENU OVERLAY -->
+  <div id="menu-overlay" class="closed fixed inset-0 z-50 bg-[#0B0B0C]/97 backdrop-blur-3xl flex flex-col justify-between p-6 sm:p-16">
+    <div class="flex justify-between items-center border-b border-[#292929] pb-5">
+      <span class="text-xs font-mono text-[#C6A96B] uppercase tracking-widest">Navigation Privée • LUX-TAXI GENÈVE</span>
+      <button onclick="toggleMenu()" class="text-xs font-mono uppercase tracking-wider text-[#AAA59B] hover:text-[#C6A96B] transition-colors">Fermer ✕</button>
+    </div>
+
+    <nav class="flex flex-col space-y-4 sm:space-y-6 text-xl sm:text-3xl font-display font-black uppercase tracking-wider">
+      <a href="index.html" onclick="toggleMenu()" class="text-[#C6A96B]" data-i18n="nav.home">01. Accueil</a>
+      <a href="pages/services.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="nav.services">02. Services & Prestations</a>
+      <a href="pages/flotte.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="nav.fleet">03. Flotte Mercedes & Maybach</a>
+      <a href="pages/destinations.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="nav.destinations">04. Destinations (Genève, Alpes)</a>
+      <a href="pages/reservation.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="nav.booking">05. Réservation Privée</a>
+      <a href="https://wa.me/41766207850" target="_blank" class="text-emerald-400 hover:underline text-lg sm:text-xl pt-2">→ Contacter sur WhatsApp VIP 24/7</a>
+    </nav>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+</body>
+</html>

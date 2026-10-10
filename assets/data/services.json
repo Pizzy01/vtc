@@ -1,0 +1,70 @@
+{
+  "title": "Services & Prestations — LUX-TAXI GENÈVE",
+  "services": [
+    {
+      "id": "transfert-aeroport-geneve",
+      "number": "01",
+      "category": "GENÈVE & SUISSE",
+      "title": "Transfert Aéroport de Genève (GVA)",
+      "subtitle": "Un accueil nominatif d'exception dès votre sortie de l'avion.",
+      "description": "Bénéficiez d'une prise en charge fluide entre l'Aéroport de Genève-Cointrin (GVA) et votre destination en Suisse ou en France voisine. Votre chauffeur suit votre vol en temps réel pour s'adapter à tout retard sans aucuns frais supplémentaires.",
+      "advantages": [
+        "Accueil nominatif en zone d'arrivée avec pancarte personnalisée",
+        "Suivi du vol en temps réel & 60 minutes d'attente offertes à l'arrivée",
+        "Prise en charge intégrale de vos bagages jusqu'au véhicule"
+      ],
+      "image": "../assets/images/maybach-bg.jpg",
+      "ctaText": "Réserver un transfert aéroport →",
+      "ctaAction": "aeroport"
+    },
+    {
+      "id": "chauffeur-prive-a-l-heure",
+      "number": "02",
+      "category": "SUR MESURE VIP",
+      "title": "Chauffeur Privé à l'Heure & Journée",
+      "subtitle": "La liberté absolue de vous déplacer selon vos rendez-vous et vos envies.",
+      "description": "Pour vos réunions d'affaires à Palexpo, vos sessions shopping Rue du Rhône ou vos soirées de gala, disposez d'un chauffeur privé dédié. Votre véhicule reste prêt et disponible à tout moment.",
+      "advantages": [
+        "Chauffeur bilingue et véhicule dédié à votre disposition exclusive",
+        "Itinéraire souple et ajustement du parcours selon votre programme",
+        "Confidentialité diplomatique et discrétion garantie à bord"
+      ],
+      "image": "../assets/images/maybach-bg.jpg",
+      "ctaText": "Réserver un chauffeur à l'heure →",
+      "ctaAction": "mise-dispo"
+    },
+    {
+      "id": "navettes-ski-alpes",
+      "number": "03",
+      "category": "STATIONS DE SKI",
+      "title": "Navettes Ski & Stations Alpines",
+      "subtitle": "Des transferts sereins vers les plus belles stations des Alpes suisses et françaises.",
+      "description": "Voyagez en toute sécurité à bord de nos véhicules 4x4 haut de gamme équipés pour la montagne. Liaisons directes depuis Genève vers Chamonix, Courchevel, Megève, Verbier, Zermatt, Crans-Montana et Gstaad.",
+      "advantages": [
+        "Véhicules 4MATIC équipés neige (pneus hiver & chaînes de sécurité)",
+        "Grand espace pour bagages volumineux, housses de ski & équipement",
+        "Chauffeurs expérimentés dans la conduite en conditions alpiques"
+      ],
+      "image": "../assets/images/maybach-bg.jpg",
+      "ctaText": "Réserver une navette ski →",
+      "ctaAction": "ski"
+    }
+  ],
+  "process": [
+    {
+      "step": "01",
+      "title": "Communication de la demande",
+      "desc": "Indiquez votre numéro de vol, horaire et destination sur notre moteur privé."
+    },
+    {
+      "step": "02",
+      "title": "Organisation & Suivi",
+      "desc": "Votre chauffeur planifie la prise en charge et suit votre vol en direct."
+    },
+    {
+      "step": "03",
+      "title": "Accueil & Prise en Charge",
+      "desc": "Accueil nominatif en zone d'arrivée avec gestion complète de vos bagages."
+    }
+  ]
+}
