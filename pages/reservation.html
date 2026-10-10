@@ -37,8 +37,38 @@
       <p class="text-xs sm:text-sm text-[#AAA59B]">Confirmation immédiate et tarif fixe sans aucuns frais cachés.</p>
     </div>
 
+    <!-- Pre-selection Banner -->
+    <div id="preselection-banner" class="hidden p-4 rounded-2xl bg-[#C6A96B]/15 border border-[#C6A96B]/40 text-xs text-[#C6A96B] font-mono flex items-center justify-between shadow-lg">
+      <span id="banner-text">Pre-sélection activée</span>
+      <span class="text-[10px] text-[#F5F1E8] font-bold uppercase tracking-wider bg-[#C6A96B] text-black px-2.5 py-1 rounded-full">Tarif Fixe Garanti</span>
+    </div>
+
     <div class="luxe-card p-6 sm:p-10 space-y-6 border border-[#292929]">
       <div class="space-y-4">
+        
+        <!-- Service & Vehicle Selectors -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[10px] font-mono text-[#AAA59B] uppercase mb-1">Prestation Souhaitée</label>
+            <select id="res-service" class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs text-[#F5F1E8] focus:border-[#C6A96B] outline-none">
+              <option value="aeroport-gva">04 / Transfert Aéroport de Genève (GVA)</option>
+              <option value="chauffeur-vip">01 / Chauffeur Privé VIP à l'Heure & Journée</option>
+              <option value="navette-ski">02 / Navettes Ski & Stations Alpines</option>
+              <option value="evenementiel">03 / Événementiel, Congrès & Galas</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] font-mono text-[#AAA59B] uppercase mb-1">Gamme de Véhicule</label>
+            <select id="res-vehicule" class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs text-[#F5F1E8] focus:border-[#C6A96B] outline-none">
+              <option value="maybach">Mercedes-Maybach Classe S (First Class)</option>
+              <option value="classe-s">Mercedes-Benz Classe S Limousine</option>
+              <option value="classe-v">Mercedes-Benz Classe V VIP (7 Places)</option>
+              <option value="range-rover">Range Rover Autobiography LWB</option>
+              <option value="eqs">Mercedes EQS SUV 100% Électrique</option>
+            </select>
+          </div>
+        </div>
+
         <div>
           <label class="block text-[10px] font-mono text-[#AAA59B] uppercase mb-1">Point de Départ</label>
           <input type="text" value="Aéroport de Genève (GVA)" class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs text-[#F5F1E8] focus:border-[#C6A96B] outline-none"/>
@@ -98,6 +128,33 @@
       overlay.classList.toggle('closed', !isMenuOpen);
       overlay.classList.toggle('open', isMenuOpen);
     }
+
+    // URL Query Parameter pre-selection for booking form
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const service = urlParams.get('service');
+      const vehicule = urlParams.get('vehicule');
+      const banner = document.getElementById('preselection-banner');
+      const bannerText = document.getElementById('banner-text');
+
+      if (service) {
+        const serviceSelect = document.getElementById('res-service');
+        if (serviceSelect) serviceSelect.value = service;
+      }
+      if (vehicule) {
+        const vehiculeSelect = document.getElementById('res-vehicule');
+        if (vehiculeSelect) vehiculeSelect.value = vehicule;
+      }
+      if ((service || vehicule) && banner && bannerText) {
+        const serviceSelect = document.getElementById('res-service');
+        const vehiculeSelect = document.getElementById('res-vehicule');
+        const selectedServiceName = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex].text : '';
+        const selectedVehiculeName = vehiculeSelect ? vehiculeSelect.options[vehiculeSelect.selectedIndex].text : '';
+
+        banner.classList.remove('hidden');
+        bannerText.innerHTML = `✨ Option pré-sélectionnée : <strong class="text-white">${selectedServiceName || selectedVehiculeName}</strong>`;
+      }
+    });
   </script>
 </body>
 </html>

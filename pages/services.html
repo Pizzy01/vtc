@@ -74,8 +74,8 @@
   <!-- 4. COMPOSANT "CARTE SERVICE INTERACTIVE" GRID -->
   <main class="max-w-7xl mx-auto px-4 sm:px-12 pb-20 grid grid-cols-1 md:grid-cols-2 gap-8">
     
-    <!-- CARD 01: Service Chauffeur Privé VIP (Suit Chauffeur Opening Door) -->
-    <div onclick="toggleCard(this)" class="service-interactive-card aspect-[4/3] sm:aspect-[16/10] cursor-pointer group">
+    <!-- CARD 01: Service Chauffeur Privé VIP -->
+    <div id="chauffeur-vip" onclick="toggleCard(this)" class="service-interactive-card aspect-[4/3] sm:aspect-[16/10] cursor-pointer group scroll-mt-24">
       <img src="../assets/images/service_chauffeur_vip.jpg" alt="Chauffeur Privé VIP ouvrant portière" class="service-card-bg-img"/>
       
       <!-- Fixed Top Category Badge + Fixed Rate -->
@@ -117,7 +117,7 @@
           </div>
 
           <div class="pt-3 flex items-center gap-3">
-            <a href="reservation.html" onclick="event.stopPropagation()" class="btn-gold-luxe px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+            <a href="reservation.html?service=chauffeur-vip" onclick="event.stopPropagation()" class="btn-gold-luxe px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
               Réserver ce Service ↗
             </a>
             <a href="https://wa.me/41766207850" target="_blank" onclick="event.stopPropagation()" class="bg-emerald-600/90 hover:bg-emerald-600 px-4 py-2.5 rounded-full text-[10px] font-semibold text-white">
@@ -128,8 +128,8 @@
       </div>
     </div>
 
-    <!-- CARD 02: Navettes Ski & Stations Alpines (Snowy Mountain Pass 4x4) -->
-    <div onclick="toggleCard(this)" class="service-interactive-card aspect-[4/3] sm:aspect-[16/10] cursor-pointer group">
+    <!-- CARD 02: Navettes Ski & Stations Alpines -->
+    <div id="navette-ski" onclick="toggleCard(this)" class="service-interactive-card aspect-[4/3] sm:aspect-[16/10] cursor-pointer group scroll-mt-24">
       <img src="../assets/images/service_navette_ski.jpg" alt="Navette Ski 4x4 Mercedes V-Class col enneigé" class="service-card-bg-img"/>
       
       <div class="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
@@ -168,7 +168,7 @@
           </div>
 
           <div class="pt-3 flex items-center gap-3">
-            <a href="reservation.html" onclick="event.stopPropagation()" class="btn-gold-luxe px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+            <a href="reservation.html?service=navette-ski" onclick="event.stopPropagation()" class="btn-gold-luxe px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
               Réserver ce Service ↗
             </a>
             <a href="https://wa.me/41766207850" target="_blank" onclick="event.stopPropagation()" class="bg-emerald-600/90 hover:bg-emerald-600 px-4 py-2.5 rounded-full text-[10px] font-semibold text-white">
@@ -179,8 +179,8 @@
       </div>
     </div>
 
-    <!-- CARD 03: Événementiel, Galas & Corporate (Red Carpet Limousine Arrival) -->
-    <div onclick="toggleCard(this)" class="service-interactive-card aspect-[4/3] sm:aspect-[16/10] cursor-pointer group">
+    <!-- CARD 03: Événementiel, Galas & Corporate -->
+    <div id="evenementiel" onclick="toggleCard(this)" class="service-interactive-card aspect-[4/3] sm:aspect-[16/10] cursor-pointer group scroll-mt-24">
       <img src="../assets/images/service_corporate_gala.jpg" alt="Arrivée VIP Tapis rouge Galas et Congrès Palexpo" class="service-card-bg-img"/>
       
       <div class="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
@@ -219,7 +219,7 @@
           </div>
 
           <div class="pt-3 flex items-center gap-3">
-            <a href="reservation.html" onclick="event.stopPropagation()" class="btn-gold-luxe px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+            <a href="reservation.html?service=evenementiel" onclick="event.stopPropagation()" class="btn-gold-luxe px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
               Réserver ce Service ↗
             </a>
             <a href="https://wa.me/41766207850" target="_blank" onclick="event.stopPropagation()" class="bg-emerald-600/90 hover:bg-emerald-600 px-4 py-2.5 rounded-full text-[10px] font-semibold text-white">
@@ -230,8 +230,8 @@
       </div>
     </div>
 
-    <!-- CARD 04: Transferts Aéroport GVA (Airport Terminal & Jet Privé) -->
-    <div onclick="toggleCard(this)" class="service-interactive-card aspect-[4/3] sm:aspect-[16/10] cursor-pointer group">
+    <!-- CARD 04: Transferts Aéroport GVA -->
+    <div id="aeroport-gva" onclick="toggleCard(this)" class="service-interactive-card aspect-[4/3] sm:aspect-[16/10] cursor-pointer group scroll-mt-24">
       <img src="../assets/images/service_aeroport_gva.jpg" alt="Accueil chauffeur privé terminal aéroport de Genève GVA jet privé" class="service-card-bg-img"/>
       
       <div class="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
@@ -270,7 +270,7 @@
           </div>
 
           <div class="pt-3 flex items-center gap-3">
-            <a href="reservation.html" onclick="event.stopPropagation()" class="btn-gold-luxe px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+            <a href="reservation.html?service=aeroport-gva" onclick="event.stopPropagation()" class="btn-gold-luxe px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
               Réserver ce Service ↗
             </a>
             <a href="https://wa.me/41766207850" target="_blank" onclick="event.stopPropagation()" class="bg-emerald-600/90 hover:bg-emerald-600 px-4 py-2.5 rounded-full text-[10px] font-semibold text-white">
@@ -363,6 +363,24 @@
       // Toggle active class for mobile tap interaction
       cardElement.classList.toggle('active');
     }
+
+    // Hash Anchor handling: Scroll smoothly & auto-expand targeted service card
+    function handleServiceHash() {
+      const hash = window.location.hash;
+      if (hash) {
+        const targetEl = document.querySelector(hash);
+        if (targetEl) {
+          setTimeout(() => {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Expand card detail
+            targetEl.classList.add('active');
+          }, 150);
+        }
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', handleServiceHash);
+    window.addEventListener('hashchange', handleServiceHash);
   </script>
 </body>
 </html>
