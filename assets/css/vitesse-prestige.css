@@ -213,6 +213,24 @@ html, body {
   animation: kenBurnsBg 28s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
 }
 
+/* Responsive Mobile Fit for Hero Maybach Car Visual */
+.hero-maybach-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: all 0.5s ease-out;
+}
+
+@media (max-width: 640px) {
+  .hero-maybach-img {
+    object-fit: contain !important;
+    object-position: center 40% !important;
+    transform: scale(1.12) !important;
+    opacity: 0.88 !important;
+  }
+}
+
 @keyframes fadeUp {
   0% {
     opacity: 0;
