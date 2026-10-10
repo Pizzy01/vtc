@@ -333,10 +333,32 @@ html, body {
 }
 
 .service-interactive-card:hover .service-details-reveal,
-.service-interactive-card.active .service-details-reveal {
+.service-interactive-card.active .service-details-reveal,
+.service-interactive-card:focus-within .service-details-reveal {
   max-height: 320px;
   opacity: 1;
   margin-top: 12px;
+}
+
+.service-interactive-card:active .service-card-bg-img,
+.service-interactive-card.active .service-card-bg-img {
+  transform: scale(1.05);
+}
+
+/* Accessibility: Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-kenburns,
+  .animate-fadeup-1,
+  .animate-fadeup-2,
+  .animate-fadeup-3,
+  .animate-fadeup-4,
+  .gold-particle,
+  .light-sweep-overlay,
+  .service-card-bg-img {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
 }
 
 
