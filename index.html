@@ -66,20 +66,10 @@
     }
   </style>
 </head>
-<body class="relative bg-cover bg-center bg-no-repeat animate-kenburns bg-[#0B0B0C] text-[#F5F1E8] selection:bg-[#C6A96B] selection:text-black overflow-x-hidden font-sans" style="background-image: url('assets/images/maybach-bg.jpg');">
+<body class="relative bg-[#0B0B0C] text-[#F5F1E8] selection:bg-[#C6A96B] selection:text-black overflow-x-hidden font-sans">
 
-  <!-- AMBIENT PARTICLES & VIGNETTE LAYER -->
-  <div class="fixed inset-0 pointer-events-none z-10 overflow-hidden">
-    <div class="gold-particle" style="top:70%; left:20%; animation-delay:0s;"></div>
-    <div class="gold-particle" style="top:60%; left:80%; animation-delay:2.5s;"></div>
-    <div class="gold-particle" style="top:80%; left:50%; animation-delay:5s;"></div>
-    <div class="gold-particle" style="top:65%; left:35%; animation-delay:7.5s;"></div>
-  </div>
-  <div class="fixed inset-0 ambient-halo pointer-events-none z-0"></div>
-  <div class="fixed inset-0 hero-vignette pointer-events-none z-0"></div>
-
-  <!-- 1. HEADER (SLIM MINIMALIST WITH LANGUAGE SWITCHER & WHATSAPP) -->
-  <header class="relative z-30 px-4 sm:px-12 py-4 sm:py-7 flex items-center justify-between">
+  <!-- 1. STICKY LUXURY HEADER (ALWAYS VISIBLE WITH LOGO SEAL, WHATSAPP & BURGER MENU) -->
+  <header class="sticky top-0 z-40 px-4 sm:px-12 py-3.5 sm:py-4 flex items-center justify-between backdrop-blur-md bg-[#0B0B0C]/90 border-b border-hairline shadow-2xl">
     
     <!-- Minimalist Circular Gold LT Seal Emblem -->
     <a href="index.html" class="flex items-center group">
@@ -113,14 +103,14 @@
         </div>
       </div>
 
-      <!-- WhatsApp VIP Badge (Desktop) -->
-      <a href="https://wa.me/41766207850" target="_blank" class="hidden sm:inline-flex items-center gap-2.5 text-xs font-semibold px-5 py-2.5 rounded-full glass-luxe-pill text-[#F5F1E8] transition-all">
+      <!-- WhatsApp VIP Badge -->
+      <a href="https://wa.me/41766207850" target="_blank" class="hidden sm:inline-flex items-center gap-2.5 text-xs font-semibold px-5 py-2.5 rounded-full glass-luxe-pill text-[#F5F1E8] transition-all hover:border-[#C6A96B]">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         <span class="tracking-wider" data-i18n="nav.whatsapp">WhatsApp VIP 24/7</span>
       </a>
 
       <!-- Burger Menu Button -->
-      <button id="burger-btn" onclick="toggleMenu()" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full glass-luxe-pill flex flex-col items-center justify-center gap-1 sm:gap-1.5 transition-all focus:outline-none shadow-xl">
+      <button id="burger-btn" onclick="toggleMenu()" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full glass-luxe-pill flex flex-col items-center justify-center gap-1 sm:gap-1.5 transition-all focus:outline-none shadow-xl border border-[#C6A96B]/30 hover:border-[#C6A96B]" aria-label="Menu">
         <span class="w-4 sm:w-5 h-[1.5px] bg-[#C6A96B] transition-all transform origin-center" id="b-line1"></span>
         <span class="w-4 sm:w-5 h-[1.5px] bg-[#C6A96B] transition-all" id="b-line2"></span>
       </button>
@@ -128,12 +118,27 @@
 
   </header>
 
-  <!-- 2. HERO SECTION WITH 3D TILT CARD & ICONIC MAYBACH BACKGROUND -->
-  <section class="relative z-20 px-4 sm:px-12 text-center min-h-[85vh] flex items-center justify-center py-12 perspective-container">
-    <div id="tilt-card" class="tilt-card-3d space-y-5 max-w-3xl mx-auto">
+  <!-- AMBIENT PARTICLES & VIGNETTE LAYER -->
+  <div class="fixed inset-0 pointer-events-none z-10 overflow-hidden">
+    <div class="gold-particle" style="top:70%; left:20%; animation-delay:0s;"></div>
+    <div class="gold-particle" style="top:60%; left:80%; animation-delay:2.5s;"></div>
+    <div class="gold-particle" style="top:80%; left:50%; animation-delay:5s;"></div>
+    <div class="gold-particle" style="top:65%; left:35%; animation-delay:7.5s;"></div>
+  </div>
+
+  <!-- 2. HERO SECTION WITH HERO-SCOPED MAYBACH VISUAL & 3D TILT CARD -->
+  <section class="relative z-20 px-4 sm:px-12 text-center min-h-[85vh] flex items-center justify-center py-16 perspective-container overflow-hidden">
+    
+    <!-- Dedicated Hero Maybach Background Container (Framed & Centered, No Yellow Stretching) -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <img src="assets/images/maybach-bg.jpg" alt="Mercedes Maybach S-Class devant Palace" class="w-full h-full object-cover object-center animate-kenburns opacity-65" />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0B0B0C] via-[#0B0B0C]/40 to-[#0B0B0C]/80"></div>
+    </div>
+
+    <div id="tilt-card" class="relative z-10 tilt-card-3d space-y-6 max-w-3xl mx-auto">
       
       <!-- Eyebrow Badge -->
-      <div class="animate-fadeup-1 inline-flex items-center gap-2 px-4 sm:px-6 py-1.5 rounded-full border border-[#C6A96B]/50 bg-[#0B0B0C]/60 backdrop-blur-md text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.22em] text-[#C6A96B] shadow-2xl">
+      <div class="animate-fadeup-1 inline-flex items-center gap-2 px-4 sm:px-6 py-1.5 rounded-full border border-[#C6A96B]/60 bg-[#0B0B0C]/80 backdrop-blur-md text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.22em] text-[#C6A96B] shadow-2xl">
         <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B] animate-pulse"></span>
         <span data-i18n="hero.eyebrow">SWISS PRIVATE CHAUFFEUR · GENÈVE & ALPES</span>
       </div>
@@ -154,8 +159,8 @@
         <button onclick="toggleBookingModal()" class="btn-gold-luxe font-display font-extrabold text-[11px] sm:text-xs uppercase tracking-[0.14em] px-9 py-4 rounded-full transition-all shadow-2xl w-full sm:w-auto text-center" data-i18n="hero.cta_primary">
           Réserver un chauffeur ↗
         </button>
-        <a href="https://wa.me/41766207850" target="_blank" class="glass-luxe-pill text-xs font-semibold px-8 py-4 rounded-full text-[#F5F1E8] flex items-center justify-center gap-2 hover:border-[#C6A96B] transition-all w-full sm:w-auto">
-          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <a href="https://wa.me/41766207850" target="_blank" class="glass-luxe-pill text-xs font-semibold px-8 py-4 rounded-full text-[#F5F1E8] flex items-center justify-center gap-2 hover:border-[#C6A96B] transition-all w-full sm:w-auto bg-[#0B0B0C]/70 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>WhatsApp VIP Direct</span>
         </a>
       </div>
