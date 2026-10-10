@@ -126,46 +126,55 @@
     <div class="gold-particle" style="top:65%; left:35%; animation-delay:7.5s;"></div>
   </div>
 
-  <!-- 2. HERO SECTION WITH HERO-SCOPED MAYBACH VISUAL & 3D TILT CARD -->
-  <section class="relative z-20 px-4 sm:px-12 text-center min-h-[85vh] flex items-center justify-center py-16 perspective-container overflow-hidden">
+  <!-- 2. HERO SECTION WITH AIRY LUXURY TYPOGRAPHY & UNCLUTTERED MAYBACH VISUAL -->
+  <section class="relative z-20 px-4 sm:px-12 text-center min-h-[82vh] flex flex-col justify-between py-10 sm:py-16 perspective-container overflow-hidden">
     
-    <!-- Dedicated Hero Maybach Background Container (Dark Bronze Luxury Studio Visual) -->
+    <!-- Dedicated Hero Maybach Background Container (Dark Bronze Studio Visual) -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none flex items-center justify-center">
-      <img src="assets/images/maybach-dark-bronze.jpg" alt="Mercedes Maybach S-Class Dark Bronze Studio" class="hero-maybach-img animate-kenburns opacity-85" />
-      <div class="absolute inset-0 bg-gradient-to-t from-[#0B0B0C] via-[#0B0B0C]/20 to-[#0B0B0C]/75"></div>
+      <img src="assets/images/maybach-dark-bronze.jpg" alt="Mercedes Maybach S-Class Dark Bronze Studio" class="hero-maybach-img animate-kenburns opacity-90" />
+      <!-- Crystal-Clear Vignette Overlay: Light middle so the Maybach car is completely visible -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0B0B0C]/75 via-[#0B0B0C]/15 to-[#0B0B0C]/90"></div>
     </div>
 
-    <div id="tilt-card" class="relative z-10 tilt-card-3d space-y-6 max-w-3xl mx-auto">
+    <!-- Top Spacing Filler -->
+    <div></div>
+
+    <!-- Central Air-Spaced Editorial Typography -->
+    <div id="tilt-card" class="relative z-10 tilt-card-3d space-y-6 sm:space-y-8 max-w-3xl mx-auto my-auto">
       
       <!-- Eyebrow Badge -->
-      <div class="animate-fadeup-1 inline-flex items-center gap-2 px-4 sm:px-6 py-1.5 rounded-full border border-[#C6A96B]/60 bg-[#0B0B0C]/80 backdrop-blur-md text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.22em] text-[#C6A96B] shadow-2xl">
+      <div class="animate-fadeup-1 inline-flex items-center gap-2 px-5 py-1.5 rounded-full border border-[#C6A96B]/50 bg-[#0B0B0C]/70 backdrop-blur-md text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.3em] text-[#C6A96B] shadow-2xl">
         <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B] animate-pulse"></span>
         <span data-i18n="hero.eyebrow">SWISS PRIVATE CHAUFFEUR · GENÈVE & ALPES</span>
       </div>
 
-      <!-- Main Editorial Title -->
-      <h1 class="animate-fadeup-2 font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.1] drop-shadow-2xl">
-        <span data-i18n="hero.title_part1">Le voyage,</span> 
-        <span class="block text-[#C6A96B] mt-1 font-serif-luxe font-normal italic tracking-normal" data-i18n="hero.title_part2">autrement.</span>
+      <!-- Main Editorial Title with Spaced Lettering -->
+      <h1 class="animate-fadeup-2 font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.08] drop-shadow-2xl">
+        <span data-i18n="hero.title_part1" class="tracking-tight text-white">Le voyage,</span> 
+        <span class="block text-[#C6A96B] mt-2 font-serif-luxe font-normal italic tracking-wide" data-i18n="hero.title_part2">autrement.</span>
       </h1>
 
-      <!-- Subtitle -->
-      <p class="animate-fadeup-3 text-xs sm:text-sm text-[#F5F1E8]/90 max-w-md sm:max-w-lg mx-auto font-normal tracking-wide leading-relaxed drop-shadow-lg" data-i18n="hero.description">
-        Service de VTC & Chauffeur Privé Haut de Gamme à Genève. Transferts aéroport, navettes stations de ski et mise à disposition VIP 24/7.
+      <!-- Subtitle with Clean Spaced Monospace Styling -->
+      <p class="animate-fadeup-3 text-[11px] sm:text-xs text-[#AAA59B] max-w-md mx-auto font-mono tracking-widest uppercase leading-relaxed drop-shadow-lg" data-i18n="hero.description">
+        Service de VTC & Chauffeur Privé Haut de Gamme à Genève • Transferts Aéroport & Alpes 24/7
       </p>
 
-      <!-- Primary Action Buttons -->
-      <div class="animate-fadeup-4 pt-2 sm:pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <button onclick="toggleBookingModal()" class="btn-gold-luxe font-display font-extrabold text-[11px] sm:text-xs uppercase tracking-[0.14em] px-9 py-4 rounded-full transition-all shadow-2xl w-full sm:w-auto text-center" data-i18n="hero.cta_primary">
+      <!-- Primary Action Buttons with Airy Glass Padding -->
+      <div class="animate-fadeup-4 pt-4 sm:pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button onclick="toggleBookingModal()" class="btn-gold-luxe font-display font-extrabold text-[11px] sm:text-xs uppercase tracking-[0.16em] px-10 py-4 rounded-full transition-all shadow-2xl w-full sm:w-auto text-center" data-i18n="hero.cta_primary">
           Réserver un chauffeur ↗
         </button>
-        <a href="https://wa.me/41766207850" target="_blank" class="glass-luxe-pill text-xs font-semibold px-8 py-4 rounded-full text-[#F5F1E8] flex items-center justify-center gap-2 hover:border-[#C6A96B] transition-all w-full sm:w-auto bg-[#0B0B0C]/70 backdrop-blur-md">
+        <a href="https://wa.me/41766207850" target="_blank" class="glass-luxe-pill text-xs font-semibold px-8 py-4 rounded-full text-[#F5F1E8] flex items-center justify-center gap-2 hover:border-[#C6A96B] transition-all w-full sm:w-auto bg-[#0B0B0C]/60 backdrop-blur-md border border-white/10">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>WhatsApp VIP Direct</span>
         </a>
       </div>
 
     </div>
+
+    <!-- Bottom Spacing Filler -->
+    <div></div>
+
   </section>
 
   <!-- 3. SECTION 1: NOS SERVICES SIGNATURE (BENTO GRID VISUEL) -->
