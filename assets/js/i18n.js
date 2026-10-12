@@ -93,6 +93,27 @@ const VitesseI18n = (function() {
   };
 })();
 
+// Global Helper: Localized WhatsApp Booking Funnel
+function openWhatsAppBooking(service = '') {
+  const lang = (typeof VitesseI18n !== 'undefined' && VitesseI18n.getLang()) ? VitesseI18n.getLang() : 'fr';
+  const serviceSuffix = service ? ` (${service})` : '';
+  const templates = {
+    fr: `Bonjour Lux-Taxi,\n\nJe souhaite réserver un transfert privé.\n\nDate et heure : \nLieu de prise en charge : \nDestination : \nNombre de passagers : \nBagages : \nType de véhicule souhaité : ${serviceSuffix}\n\nMerci de me confirmer le tarif et la disponibilité.`,
+    en: `Hello Lux-Taxi,\n\nI would like to book a private transfer.\n\nDate & time: \nPick-up location: \nDestination: \nNumber of passengers: \nLuggage count: \nPreferred vehicle: ${serviceSuffix}\n\nThank you for confirming the fixed price and availability.`,
+    de: `Guten Tag Lux-Taxi,\n\nich möchte eine private Fahrt buchen.\n\nDatum & Uhrzeit: \nAbholort: \nZielort: \nAnzahl der Fahrgäste: \nGepäck: \nGewünschter Fahrzeugtyp: ${serviceSuffix}\n\nBitte bestätigen Sie mir den Festpreis und die Verfügbarkeit.`,
+    it: `Buongiorno Lux-Taxi,\n\nvorrei prenotare un trasferimento privato.\n\nData e ora: \nLuogo di partenza: \nDestinazione: \nNumero di passeggeri: \nBagagli: \nTipo di veicolo desiderato: ${serviceSuffix}\n\nGrazie di confermarmi la tariffa fissa e la disponibilità.`
+  };
+  const message = templates[lang] || templates.fr;
+  window.open(`https://wa.me/41766207850?text=${encodeURIComponent(message)}`, '_blank');
+}
+
+// Global Helper: Pre-filled Corporate Email Funnel
+function openCorporateMail() {
+  const subject = encodeURIComponent("Demande de transfert corporate – Lux-Taxi");
+  const body = encodeURIComponent(`Bonjour,\n\nJe souhaite obtenir une proposition pour un transport professionnel.\n\nEntreprise : \nNom du contact : \nTéléphone : \nDate(s) et horaire(s) : \nLieu de prise en charge : \nDestination : \nNombre de personnes : \nType de service : transfert aéroport / événement / mise à disposition / autre\nBesoin spécifique (facturation mensuelle, protocole VIP, accueil salon) : \n\nMerci de me transmettre votre proposition.`);
+  window.location.href = `mailto:info@lux-taxi.com?subject=${subject}&body=${body}`;
+}
+
 // Auto-initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   VitesseI18n.init();

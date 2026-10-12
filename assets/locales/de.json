@@ -15,11 +15,11 @@
     "book": "Buchen"
   },
   "hero": {
-    "eyebrow": "SWISS PRIVATE CHAUFFEUR · GENF & ALPEN",
-    "title_part1": "Reisen,",
-    "title_part2": "neu definiert.",
-    "description": "Erstklassiger VTC & Privatchauffeur-Service in Genf. Flughafentransfers, Ski-Shuttles und 24/7 VIP-Stundenservice.",
-    "cta_primary": "Chauffeur buchen ↗"
+    "eyebrow": "HAUS FÜR PRIVATCHAUFFEURE · GENF & SCHWEIZER ALPEN",
+    "title_part1": "Die Exzellenz des Privatchauffeurs",
+    "title_part2": "in Genf",
+    "description": "Maßgeschneiderte Transfers ab Flughafen Genf (GVA), VIP-Stundenservice und erstklassige Alpenverbindungen. Ruhiges Fahrverhalten, strikte Pünktlichkeit und absolute Diskretion.",
+    "cta_primary": "Auf WhatsApp buchen ↗"
   },
   "pillars": {
     "eyebrow": "EXZELLENZ & DISKRETION",
@@ -103,7 +103,7 @@
   "footer": {
     "address": "📍 Rte de l'Aéroport 21, 1215 Genf",
     "phone": "+41 76 620 78 50",
-    "email": "contact@lux-taxi.com",
+    "email": "info@lux-taxi.com",
     "regions": "Genf • Lausanne • Chamonix • Courchevel • Verbier • Zermatt",
     "copyright": "© 2026 LUX-TAXI Genf. Alle Rechte vorbehalten."
   }

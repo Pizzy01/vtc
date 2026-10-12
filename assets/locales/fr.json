@@ -15,11 +15,11 @@
     "book": "Réserver"
   },
   "hero": {
-    "eyebrow": "SWISS PRIVATE CHAUFFEUR · GENÈVE & ALPES",
-    "title_part1": "Le voyage,",
-    "title_part2": "autrement.",
-    "description": "Service de VTC & Chauffeur Privé Haut de Gamme à Genève. Transferts aéroport, navettes stations de ski et mise à disposition VIP 24/7.",
-    "cta_primary": "Réserver un chauffeur ↗"
+    "eyebrow": "MAISON DE CHAUFFEURS PRIVÉS · GENÈVE & ALPES SUISSES",
+    "title_part1": "L'Excellence du Chauffeur Privé",
+    "title_part2": "à Genève",
+    "description": "Transferts personnalisés depuis l'Aéroport de Genève (GVA), mises à disposition d'affaires et liaisons alpines de premier ordre. Une conduite feutrée, une ponctualité rigoureuse et une discrétion absolue.",
+    "cta_primary": "Réserver sur WhatsApp ↗"
   },
   "pillars": {
     "eyebrow": "EXCELLENCE & SERENITÉ",
@@ -33,9 +33,9 @@
     "p3_desc": "Mercedes-Benz Classe S, Classe V & Maybach d'une propreté irréprochable. Intérieurs cuir, vitres teintées et équipements de confort modernes."
   },
   "services": {
-    "eyebrow": "PRESTATIONS SUR MESURE",
-    "title": "Un Service Privé Répondant à Exigence",
-    "subtitle": "Du simple transfert urbain au circuit sur mesure dans les Alpes suisses et françaises.",
+    "eyebrow": "EXCELLENCE OPÉRATIONNELLE",
+    "title": "Un Service de Haute Mobilité",
+    "subtitle": "De la prise en charge personnalisée à l'aéroport aux délégations diplomatiques, chaque trajet est exécuté avec une précision suisse.",
     "s1_title": "Transferts Aéroport & Gares",
     "s1_desc": "Connexions fluides entre GVA, Genève-Cornavin, Lausanne et les aéroports régionaux. Suivi des retards de vol sans aucun supplément.",
     "s2_title": "Chauffeur Privé à l'Heure VIP",
@@ -103,7 +103,7 @@
   "footer": {
     "address": "📍 Rte de l'Aéroport 21, 1215 Genève",
     "phone": "+41 76 620 78 50",
-    "email": "contact@lux-taxi.com",
+    "email": "info@lux-taxi.com",
     "regions": "Genève • Lausanne • Chamonix • Courchevel • Verbier • Zermatt",
     "copyright": "© 2026 LUX-TAXI Genève. Tous droits réservés."
   }

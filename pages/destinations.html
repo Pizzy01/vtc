@@ -3,10 +3,19 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Destinations Phares | LUX-TAXI Genève — Suisse & Alpes</title>
-  <meta name="description" content="Transferts d'exception depuis Genève vers Lausanne, Chamonix, Courchevel, Verbier, Zermatt & Gstaad."/>
+  <title>Destinations depuis l'aéroport de Genève : Chamonix, Courchevel, Verbier, Megève, Zermatt | LUX-TAXI</title>
+  <meta name="description" content="Transferts privés haut de gamme depuis l'aéroport de Genève (GVA) vers les stations de ski des Alpes (Chamonix, Courchevel, Verbier...) et Genève."/>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <link rel="stylesheet" href="../assets/css/vitesse-prestige.css"/>
+  <style>
+    .bento-card-target {
+      transition: all 0.5s ease-in-out;
+    }
+    .bento-gold-glow {
+      box-shadow: 0 0 35px rgba(198, 169, 107, 0.45);
+      border-color: rgba(198, 169, 107, 0.9) !important;
+    }
+  </style>
 </head>
 <body class="bg-[#0B0B0C] text-[#F5F1E8] font-sans selection:bg-[#C6A96B] selection:text-black">
 
@@ -20,7 +29,7 @@
     </a>
 
     <div class="flex items-center gap-3">
-      <a href="../index.html" class="text-xs font-mono uppercase text-[#AAA59B] hover:text-[#C6A96B] transition-colors">← Accueil</a>
+      <a href="../index.html" class="text-xs font-mono uppercase text-[#AAA59B] hover:text-[#C6A96B] transition-colors hidden sm:inline">← Accueil</a>
       <a href="https://wa.me/41766207850" target="_blank" class="glass-luxe-pill px-4 py-2 rounded-full text-xs font-semibold text-[#F5F1E8]">WhatsApp 24/7</a>
       <button onclick="toggleMenu()" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full glass-luxe-pill flex flex-col items-center justify-center gap-1">
         <span class="w-4 h-[1.5px] bg-[#C6A96B]"></span>
@@ -29,45 +38,281 @@
     </div>
   </header>
 
-  <!-- 2. CONTENT HERO -->
-  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-12">
-    <div class="space-y-3 text-center">
-      <span class="text-[10px] font-mono text-[#C6A96B] uppercase tracking-[0.25em] font-bold">SUISSE & ALPES INTERNATIONALES</span>
-      <h1 class="font-serif-luxe text-4xl sm:text-5xl text-[#F5F1E8]">Destinations Phares</h1>
-      <p class="text-xs sm:text-sm text-[#AAA59B] max-w-xl mx-auto">
-        Liaisons privées en véhicules de luxe entre l'Aéroport de Genève (GVA) et les plus prestigieuses stations de ski et villes suisses.
+  <!-- 2. MAIN CONTENT CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-16">
+
+    <!-- HERO SECTION -->
+    <div class="space-y-4 text-center max-w-3xl mx-auto">
+      <span class="text-[10px] sm:text-xs font-mono text-[#C6A96B] uppercase tracking-[0.25em] font-bold">TRANSPORTS SUR-MESURE & TRANSFERTS D'EXCEPTION</span>
+      <h1 class="font-serif-luxe text-4xl sm:text-6xl text-[#F5F1E8] tracking-tight">Nos Destinations</h1>
+      <p class="text-xs sm:text-base text-[#AAA59B] leading-relaxed font-light">
+        Chauffeur privé depuis l'Aéroport de Genève (GVA) vers les plus grandes stations des Alpes et tout Genève.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="luxe-card p-6 space-y-3">
-        <div class="text-[10px] font-mono text-[#C6A96B] uppercase font-bold">TRANSFERT D'EXCEPTION</div>
-        <h2 class="font-display font-bold text-xl text-[#F5F1E8]">Genève & Aéroport (GVA)</h2>
-        <p class="text-xs text-[#AAA59B] leading-relaxed">Prise en charge directe au terminal d'arrivée, hôtels 5 étoiles et siège des organisations internationales.</p>
-        <a href="reservation.html" class="text-xs font-mono text-[#C6A96B] hover:underline inline-block pt-1">Réserver un transfert ↗</a>
+    <!-- SECTION 1: DEPUIS L'AÉROPORT DE GENÈVE (GVA) -->
+    <section class="space-y-8">
+      <div class="flex items-center gap-4 border-b border-[#292929] pb-4">
+        <div class="w-2 h-2 rounded-full bg-[#C6A96B]"></div>
+        <h2 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Depuis l'aéroport de Genève (GVA)</h2>
       </div>
 
-      <div class="luxe-card p-6 space-y-3">
-        <div class="text-[10px] font-mono text-[#C6A96B] uppercase font-bold">LIAISON RIVIERA</div>
-        <h2 class="font-display font-bold text-xl text-[#F5F1E8]">Lausanne & Montreux</h2>
-        <p class="text-xs text-[#AAA59B] leading-relaxed">Trajets fluides et confortables le long du lac Léman pour vos rendez-vous d'affaires et séjours.</p>
-        <a href="reservation.html" class="text-xs font-mono text-[#C6A96B] hover:underline inline-block pt-1">Réserver cette liaison ↗</a>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
+        
+        <!-- CARD 1: GENEVE -->
+        <div id="geneve" class="bento-card-target md:col-span-7 group relative rounded-3xl overflow-hidden border border-[#292929] hover:border-[#C6A96B]/60 transition-all duration-500 bg-gradient-to-br from-[#1a1813] via-[#12110e] to-[#0b0b0c] min-h-[340px] flex flex-col justify-end p-6 sm:p-8 scroll-mt-28 shadow-2xl">
+          <img src="../assets/images/service_chauffeur_vip.jpg" alt="Genève Centre & Hôtels" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+          <div class="relative z-10 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C6A96B]/20 border border-[#C6A96B]/40 text-[#C6A96B] backdrop-blur-md">Léman & Business</span>
+            </div>
+            <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Genève Centre & Hôtels</h3>
+            <p class="text-xs font-mono text-[#C6A96B]">~25 min • Transfert direct GVA</p>
+            <p class="text-xs sm:text-sm text-[#AAA59B] max-w-lg leading-relaxed">
+              Transfert rapide et discret vers les grands hôtels du lac, banques privées et instances internationales.
+            </p>
+            <div class="pt-2">
+              <a href="reservation.html?destination=geneve" class="inline-flex items-center gap-2 text-xs font-mono text-[#C6A96B] hover:text-white transition-colors group-hover:translate-x-1 duration-300">
+                <span>Réserver vers Genève</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: CHAMONIX -->
+        <div id="chamonix" class="bento-card-target md:col-span-5 group relative rounded-3xl overflow-hidden border border-[#292929] hover:border-[#C6A96B]/60 transition-all duration-500 bg-gradient-to-br from-[#1a1813] via-[#12110e] to-[#0b0b0c] min-h-[340px] flex flex-col justify-end p-6 sm:p-8 scroll-mt-28 shadow-2xl">
+          <img src="../assets/images/service_navette_ski.jpg" alt="Chamonix-Mont-Blanc" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+          <div class="relative z-10 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C6A96B]/20 border border-[#C6A96B]/40 text-[#C6A96B] backdrop-blur-md">Mont-Blanc</span>
+            </div>
+            <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Chamonix-Mont-Blanc</h3>
+            <p class="text-xs font-mono text-[#C6A96B]">~1h15 • Haute-Savoie</p>
+            <p class="text-xs sm:text-sm text-[#AAA59B] leading-relaxed">
+              Accès direct au pied du Mont-Blanc. Chauffeurs rodés aux routes de montagne enneigées.
+            </p>
+            <div class="pt-2">
+              <a href="reservation.html?destination=chamonix" class="inline-flex items-center gap-2 text-xs font-mono text-[#C6A96B] hover:text-white transition-colors group-hover:translate-x-1 duration-300">
+                <span>Réserver Chamonix</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: COURCHEVEL -->
+        <div id="courchevel" class="bento-card-target md:col-span-5 group relative rounded-3xl overflow-hidden border border-[#292929] hover:border-[#C6A96B]/60 transition-all duration-500 bg-gradient-to-br from-[#1a1813] via-[#12110e] to-[#0b0b0c] min-h-[340px] flex flex-col justify-end p-6 sm:p-8 scroll-mt-28 shadow-2xl">
+          <img src="../assets/images/service_navette_ski.jpg" alt="Courchevel" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+          <div class="relative z-10 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C6A96B]/20 border border-[#C6A96B]/40 text-[#C6A96B] backdrop-blur-md">3 Vallées</span>
+            </div>
+            <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Courchevel (1850 / 1650)</h3>
+            <p class="text-xs font-mono text-[#C6A96B]">~2h30 • Alpes Françaises</p>
+            <p class="text-xs sm:text-sm text-[#AAA59B] leading-relaxed">
+              Liaison première classe vers la station phare des 3 Vallées. Véhicules 4MATIC équipés grand confort.
+            </p>
+            <div class="pt-2">
+              <a href="reservation.html?destination=courchevel" class="inline-flex items-center gap-2 text-xs font-mono text-[#C6A96B] hover:text-white transition-colors group-hover:translate-x-1 duration-300">
+                <span>Réserver Courchevel</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: VERBIER -->
+        <div id="verbier" class="bento-card-target md:col-span-7 group relative rounded-3xl overflow-hidden border border-[#292929] hover:border-[#C6A96B]/60 transition-all duration-500 bg-gradient-to-br from-[#1a1813] via-[#12110e] to-[#0b0b0c] min-h-[340px] flex flex-col justify-end p-6 sm:p-8 scroll-mt-28 shadow-2xl">
+          <img src="../assets/images/service_navette_ski.jpg" alt="Verbier" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+          <div class="relative z-10 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C6A96B]/20 border border-[#C6A96B]/40 text-[#C6A96B] backdrop-blur-md">Valais Prestige</span>
+            </div>
+            <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Verbier</h3>
+            <p class="text-xs font-mono text-[#C6A96B]">~2h15 • Alpes Suisses</p>
+            <p class="text-xs sm:text-sm text-[#AAA59B] max-w-lg leading-relaxed">
+              Transfert VIP au cœur des 4 Vallées. Prise en charge bagages lourds et équipements ski.
+            </p>
+            <div class="pt-2">
+              <a href="reservation.html?destination=verbier" class="inline-flex items-center gap-2 text-xs font-mono text-[#C6A96B] hover:text-white transition-colors group-hover:translate-x-1 duration-300">
+                <span>Réserver Verbier</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 5: MEGEVE -->
+        <div id="megeve" class="bento-card-target md:col-span-6 group relative rounded-3xl overflow-hidden border border-[#292929] hover:border-[#C6A96B]/60 transition-all duration-500 bg-gradient-to-br from-[#1a1813] via-[#12110e] to-[#0b0b0c] min-h-[340px] flex flex-col justify-end p-6 sm:p-8 scroll-mt-28 shadow-2xl">
+          <img src="../assets/images/service_navette_ski.jpg" alt="Megève" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+          <div class="relative z-10 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/20 border border-amber-500/50 text-amber-300 backdrop-blur-md">Centre Piéton</span>
+            </div>
+            <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Megève</h3>
+            <p class="text-xs font-mono text-[#C6A96B]">~1h15 • Évasion Chic</p>
+            <p class="text-xs sm:text-sm text-[#AAA59B] leading-relaxed">
+              Chauffeur privé jusqu meublé ou votre hôtel de luxe au cœur du village.
+            </p>
+            <div class="pt-2">
+              <a href="reservation.html?destination=megeve" class="inline-flex items-center gap-2 text-xs font-mono text-[#C6A96B] hover:text-white transition-colors group-hover:translate-x-1 duration-300">
+                <span>Réserver Megève</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 6: ZERMATT -->
+        <div id="zermatt" class="bento-card-target md:col-span-6 group relative rounded-3xl overflow-hidden border border-[#292929] hover:border-[#C6A96B]/60 transition-all duration-500 bg-gradient-to-br from-[#1a1813] via-[#12110e] to-[#0b0b0c] min-h-[340px] flex flex-col justify-end p-6 sm:p-8 scroll-mt-28 shadow-2xl">
+          <img src="../assets/images/service_navette_ski.jpg" alt="Zermatt & Cervin" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+          <div class="relative z-10 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/20 border border-amber-500/50 text-amber-300 backdrop-blur-md">Dépose à Täsch</span>
+            </div>
+            <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Zermatt & Cervin</h3>
+            <p class="text-xs font-mono text-[#C6A96B]">~3h30 • Valais</p>
+            <p class="text-xs sm:text-sm text-[#AAA59B] leading-relaxed">
+              Acheminement en limousine jusqu'au terminal de Täsch puis navette / train Zermatt sans stress.
+            </p>
+            <div class="pt-2">
+              <a href="reservation.html?destination=zermatt" class="inline-flex items-center gap-2 text-xs font-mono text-[#C6A96B] hover:text-white transition-colors group-hover:translate-x-1 duration-300">
+                <span>Réserver Zermatt</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: DANS GENÈVE -->
+    <section class="space-y-8">
+      <div class="flex items-center gap-4 border-b border-[#292929] pb-4">
+        <div class="w-2 h-2 rounded-full bg-[#C6A96B]"></div>
+        <h2 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Dans Genève</h2>
       </div>
 
-      <div class="luxe-card p-6 space-y-3">
-        <div class="text-[10px] font-mono text-[#C6A96B] uppercase font-bold">ALPES FRANÇAISES 4X4</div>
-        <h2 class="font-display font-bold text-xl text-[#F5F1E8]">Chamonix, Megève & Courchevel</h2>
-        <p class="text-xs text-[#AAA59B] leading-relaxed">Transferts en 4x4 équipé neige pour vos séjours au ski dans les 3 Vallées et le domaine du Mont-Blanc.</p>
-        <a href="reservation.html" class="text-xs font-mono text-[#C6A96B] hover:underline inline-block pt-1">Réserver navette ski ↗</a>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
+        
+        <!-- CARD 1: CENTRE-GENEVE -->
+        <div id="centre-geneve" class="bento-card-target md:col-span-6 group relative rounded-3xl overflow-hidden border border-[#292929] hover:border-[#C6A96B]/60 transition-all duration-500 bg-gradient-to-br from-[#1a1813] via-[#12110e] to-[#0b0b0c] min-h-[320px] flex flex-col justify-end p-6 sm:p-8 scroll-mt-28 shadow-2xl">
+          <img src="../assets/images/vip-lifestyle-night.jpg" alt="Rue du Rhône & Centre-ville" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+          <div class="relative z-10 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C6A96B]/20 border border-[#C6A96B]/40 text-[#C6A96B] backdrop-blur-md">Shopping & Luxe</span>
+            </div>
+            <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Rue du Rhône & Centre-ville</h3>
+            <p class="text-xs font-mono text-[#C6A96B]">Chauffeur Privé Horaires / Journée</p>
+            <p class="text-xs sm:text-sm text-[#AAA59B] leading-relaxed">
+              Boutiques de luxe, horlogers prestigieux et rendez-vous au bord du lac Léman.
+            </p>
+            <div class="pt-2">
+              <a href="reservation.html?destination=centre-geneve" class="inline-flex items-center gap-2 text-xs font-mono text-[#C6A96B] hover:text-white transition-colors group-hover:translate-x-1 duration-300">
+                <span>Réserver Centre-ville</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: PALEXPO -->
+        <div id="palexpo" class="bento-card-target md:col-span-6 group relative rounded-3xl overflow-hidden border border-[#292929] hover:border-[#C6A96B]/60 transition-all duration-500 bg-gradient-to-br from-[#1a1813] via-[#12110e] to-[#0b0b0c] min-h-[320px] flex flex-col justify-end p-6 sm:p-8 scroll-mt-28 shadow-2xl">
+          <img src="../assets/images/service_corporate_gala.jpg" alt="Palexpo & Arena Genève" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+          <div class="relative z-10 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C6A96B]/20 border border-[#C6A96B]/40 text-[#C6A96B] backdrop-blur-md">Business & Expositions</span>
+            </div>
+            <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Palexpo & Arena Genève</h3>
+            <p class="text-xs font-mono text-[#C6A96B]">~5 min depuis GVA</p>
+            <p class="text-xs sm:text-sm text-[#AAA59B] leading-relaxed">
+              Transport officiel pour congrès, salons professionnels et événements d'affaires VIP.
+            </p>
+            <div class="pt-2">
+              <a href="reservation.html?destination=palexpo" class="inline-flex items-center gap-2 text-xs font-mono text-[#C6A96B] hover:text-white transition-colors group-hover:translate-x-1 duration-300">
+                <span>Réserver Palexpo</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: RIVE GAUCHE -->
+        <div id="rive-gauche" class="bento-card-target md:col-span-6 group relative rounded-3xl overflow-hidden border border-[#292929] hover:border-[#C6A96B]/60 transition-all duration-500 bg-gradient-to-br from-[#1a1813] via-[#12110e] to-[#0b0b0c] min-h-[320px] flex flex-col justify-end p-6 sm:p-8 scroll-mt-28 shadow-2xl">
+          <img src="../assets/images/maybach-dark-bronze.jpg" alt="Cologny, Vandœuvres & Rive Gauche" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+          <div class="relative z-10 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C6A96B]/20 border border-[#C6A96B]/40 text-[#C6A96B] backdrop-blur-md">Résidentiel Prestige</span>
+            </div>
+            <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Cologny, Vandœuvres & Rive Gauche</h3>
+            <p class="text-xs font-mono text-[#C6A96B]">Transferts Résidentiels</p>
+            <p class="text-xs sm:text-sm text-[#AAA59B] leading-relaxed">
+              Service discret pour villas et domaines privés de la Rive Gauche.
+            </p>
+            <div class="pt-2">
+              <a href="reservation.html?destination=rive-gauche" class="inline-flex items-center gap-2 text-xs font-mono text-[#C6A96B] hover:text-white transition-colors group-hover:translate-x-1 duration-300">
+                <span>Réserver Rive Gauche</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: CORNAVIN -->
+        <div id="cornavin" class="bento-card-target md:col-span-6 group relative rounded-3xl overflow-hidden border border-[#292929] hover:border-[#C6A96B]/60 transition-all duration-500 bg-gradient-to-br from-[#1a1813] via-[#12110e] to-[#0b0b0c] min-h-[320px] flex flex-col justify-end p-6 sm:p-8 scroll-mt-28 shadow-2xl">
+          <img src="../assets/images/service_aeroport_gva.jpg" alt="Gare Genève-Cornavin" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+          <div class="relative z-10 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#C6A96B]/20 border border-[#C6A96B]/40 text-[#C6A96B] backdrop-blur-md">Gare TGV / CFF</span>
+            </div>
+            <h3 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8]">Gare Genève-Cornavin</h3>
+            <p class="text-xs font-mono text-[#C6A96B]">Connexion Rail-Chauffeur</p>
+            <p class="text-xs sm:text-sm text-[#AAA59B] leading-relaxed">
+              Accueil personnalisé en tête de quai avec pancarte et gestion de vos bagages.
+            </p>
+            <div class="pt-2">
+              <a href="reservation.html?destination=cornavin" class="inline-flex items-center gap-2 text-xs font-mono text-[#C6A96B] hover:text-white transition-colors group-hover:translate-x-1 duration-300">
+                <span>Réserver Cornavin</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: CTA AUTRES DESTINATIONS -->
+    <section class="luxe-card p-8 sm:p-12 text-center space-y-6 border border-[#292929] bg-gradient-to-b from-[#141310] to-[#0b0b0c] rounded-3xl">
+      <div class="space-y-3 max-w-2xl mx-auto">
+        <h2 class="font-serif-luxe text-3xl sm:text-4xl text-[#F5F1E8]">Votre destination n'est pas listée ?</h2>
+        <p class="text-xs sm:text-sm text-[#AAA59B] leading-relaxed font-light">
+          Nous couvrons l'ensemble de la Suisse (Lausanne, Montreux, Gstaad, Zurich, Bâle) ainsi que toute la France et l'Europe sur demande.
+        </p>
       </div>
 
-      <div class="luxe-card p-6 space-y-3">
-        <div class="text-[10px] font-mono text-[#C6A96B] uppercase font-bold">HAUTE MONTAGNE SUISSE</div>
-        <h2 class="font-display font-bold text-xl text-[#F5F1E8]">Verbier, Zermatt & Gstaad</h2>
-        <p class="text-xs text-[#AAA59B] leading-relaxed">Service première classe vers les stations alpines suisses d'exception avec chauffeurs expérimentés.</p>
-        <a href="reservation.html" class="text-xs font-mono text-[#C6A96B] hover:underline inline-block pt-1">Réserver navette ski ↗</a>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-xl mx-auto pt-2">
+        <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20une%20destination%20sur-mesure." target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs px-6 py-4 rounded-xl text-center flex items-center justify-center gap-2 transition-colors">
+          <span>Demander un itinéraire sur-mesure (WhatsApp)</span>
+        </a>
+        <a href="reservation.html?destination=autre" class="w-full sm:w-auto btn-gold-luxe px-6 py-4 rounded-xl text-xs font-bold uppercase tracking-wider text-center">
+          <span>Réserver un transfert personnalisé ↗</span>
+        </a>
       </div>
-    </div>
+    </section>
+
   </main>
 
   <!-- 3. BURGER OVERLAY -->
@@ -86,8 +331,9 @@
   </div>
 
   <!-- 4. OFFICIAL FOOTER -->
-  <footer class="px-6 py-6 border-t border-[#292929] text-center text-xs text-[#AAA59B] font-mono">
-    📍 Rte de l'Aéroport 21, 1215 Genève • 📞 +41 76 620 78 50 • contact@lux-taxi.com
+  <footer class="px-6 py-8 border-t border-[#292929] text-center text-xs text-[#AAA59B] font-mono space-y-2">
+    <div>📍 Rte de l'Aéroport 21, 1215 Genève • 📞 +41 76 620 78 50 • info@lux-taxi.com</div>
+    <div class="text-[10px] text-[#555]">LUX-TAXI GENÈVE © — Service Chauffeur Privé VIP GVA</div>
   </footer>
 
   <script>
@@ -98,6 +344,26 @@
       overlay.classList.toggle('closed', !isMenuOpen);
       overlay.classList.toggle('open', isMenuOpen);
     }
+
+    // Hash navigation smooth scroll & 2.5s golden glow highlight animation
+    function handleDestinationsHash() {
+      const hash = window.location.hash;
+      if (!hash) return;
+      const targetId = hash.replace('#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          element.classList.add('bento-gold-glow');
+          setTimeout(() => {
+            element.classList.remove('bento-gold-glow');
+          }, 2500);
+        }, 150);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', handleDestinationsHash);
+    window.addEventListener('hashchange', handleDestinationsHash);
   </script>
 </body>
 </html>

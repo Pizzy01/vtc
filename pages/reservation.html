@@ -20,7 +20,7 @@
     </a>
 
     <div class="flex items-center gap-3">
-      <a href="../index.html" class="text-xs font-mono uppercase text-[#AAA59B] hover:text-[#C6A96B] transition-colors">← Accueil</a>
+      <a href="../index.html" class="text-xs font-mono uppercase text-[#AAA59B] hover:text-[#C6A96B] transition-colors hidden sm:inline">← Accueil</a>
       <a href="https://wa.me/41766207850" target="_blank" class="glass-luxe-pill px-4 py-2 rounded-full text-xs font-semibold text-[#F5F1E8]">WhatsApp 24/7</a>
       <button onclick="toggleMenu()" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full glass-luxe-pill flex flex-col items-center justify-center gap-1">
         <span class="w-4 h-[1.5px] bg-[#C6A96B]"></span>
@@ -71,31 +71,31 @@
 
         <div>
           <label class="block text-[10px] font-mono text-[#AAA59B] uppercase mb-1">Point de Départ</label>
-          <input type="text" value="Aéroport de Genève (GVA)" class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs text-[#F5F1E8] focus:border-[#C6A96B] outline-none"/>
+          <input type="text" id="res-pickup-input" value="Aéroport de Genève (GVA)" class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs text-[#F5F1E8] focus:border-[#C6A96B] outline-none"/>
         </div>
         <div>
           <label class="block text-[10px] font-mono text-[#AAA59B] uppercase mb-1">Destination</label>
-          <input type="text" placeholder="Hôtel, Chamonix, Lausanne..." class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs text-[#F5F1E8] focus:border-[#C6A96B] outline-none"/>
+          <input type="text" id="res-destination-input" placeholder="Hôtel, Chamonix, Lausanne..." class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs text-[#F5F1E8] focus:border-[#C6A96B] outline-none"/>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-[10px] font-mono text-[#AAA59B] uppercase mb-1">Date & Heure</label>
-            <input type="datetime-local" class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs text-[#F5F1E8] focus:border-[#C6A96B] outline-none"/>
+            <input type="datetime-local" id="res-datetime-input" class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs text-[#F5F1E8] focus:border-[#C6A96B] outline-none"/>
           </div>
           <div>
             <label class="block text-[10px] font-mono text-[#AAA59B] uppercase mb-1">N° Vol (Suivi inclus)</label>
-            <input type="text" placeholder="Ex: LX 2801" class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs font-mono text-[#F5F1E8] focus:border-[#C6A96B] outline-none"/>
+            <input type="text" id="res-flight-input" placeholder="Ex: LX 2801" class="w-full bg-[#0B0B0C] border border-[#292929] rounded-xl px-4 py-3 text-xs font-mono text-[#F5F1E8] focus:border-[#C6A96B] outline-none"/>
           </div>
         </div>
       </div>
 
       <div class="pt-4 flex flex-col sm:flex-row gap-4">
-        <button onclick="alert('Réservation enregistrée ! Notre concierge vous recontacte immédiatement.')" class="w-full btn-gold-luxe py-4 rounded-xl text-xs font-bold uppercase tracking-wider">
-          Valider & Bloquer mon Tarif Fixe ↗
+        <button type="button" onclick="submitReservationWhatsApp()" class="w-full btn-gold-luxe py-4 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2">
+          <span>Réserver sur WhatsApp (Confirmation Rapide) ↗</span>
         </button>
-        <a href="https://wa.me/41766207850" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs py-4 rounded-xl text-center flex items-center justify-center gap-2 transition-colors">
-          Commander via WhatsApp 24/7
-        </a>
+        <button type="button" onclick="submitCorporateEmail()" class="w-full glass-luxe-pill hover:border-[#C6A96B] text-[#F5F1E8] font-semibold text-xs py-4 rounded-xl text-center flex items-center justify-center gap-2 transition-colors">
+          <span>Demande Entreprise (Email) ✉</span>
+        </button>
       </div>
     </div>
   </main>
@@ -117,7 +117,7 @@
 
   <!-- 4. OFFICIAL FOOTER -->
   <footer class="px-6 py-6 border-t border-[#292929] text-center text-xs text-[#AAA59B] font-mono">
-    📍 Rte de l'Aéroport 21, 1215 Genève • 📞 +41 76 620 78 50 • contact@lux-taxi.com
+    📍 Rte de l'Aéroport 21, 1215 Genève • 📞 +41 76 620 78 50 • info@lux-taxi.com
   </footer>
 
   <script>
@@ -129,13 +129,58 @@
       overlay.classList.toggle('open', isMenuOpen);
     }
 
-    // URL Query Parameter pre-selection for booking form
+    function submitReservationWhatsApp() {
+      const service = document.getElementById('res-service')?.selectedOptions[0]?.text || '';
+      const vehicule = document.getElementById('res-vehicule')?.selectedOptions[0]?.text || '';
+      const pickup = document.getElementById('res-pickup-input')?.value || 'Aéroport de Genève (GVA)';
+      const dest = document.getElementById('res-destination-input')?.value || 'Genève';
+      const datetime = document.getElementById('res-datetime-input')?.value || '';
+      const flight = document.getElementById('res-flight-input')?.value || '';
+
+      let msg = `Bonjour LUX-TAXI Genève,\n\nJe souhaite réserver un chauffeur privé :\n- Prestation : ${service}\n- Véhicule : ${vehicule}\n- Départ : ${pickup}\n- Destination : ${dest}`;
+      if (datetime) msg += `\n- Date & Heure : ${datetime}`;
+      if (flight) msg += `\n- N° de Vol : ${flight}`;
+      msg += `\n\nMerci de me confirmer la prise en charge et le tarif fixe garanti.`;
+
+      window.open(`https://wa.me/41766207850?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function submitCorporateEmail() {
+      const service = document.getElementById('res-service')?.selectedOptions[0]?.text || '';
+      const vehicule = document.getElementById('res-vehicule')?.selectedOptions[0]?.text || '';
+      const pickup = document.getElementById('res-pickup-input')?.value || 'Aéroport de Genève (GVA)';
+      const dest = document.getElementById('res-destination-input')?.value || 'Genève';
+      const datetime = document.getElementById('res-datetime-input')?.value || '';
+      const flight = document.getElementById('res-flight-input')?.value || '';
+
+      const subject = `Demande de Réservation Corporate - LUX-TAXI Genève`;
+      let body = `Bonjour LUX-TAXI Genève,\n\nNous souhaitons réserver une prestation ou obtenir un devis entreprise :\n\n- Prestation : ${service}\n- Véhicule : ${vehicule}\n- Départ : ${pickup}\n- Destination : ${dest}\n- Date & Heure : ${datetime || 'À préciser'}\n- N° de Vol : ${flight || 'N/A'}\n\nSociété / Raison Sociale :\nContact référent & Téléphone :\nMode de facturation souhaité :\n\nMerci d'avance pour votre confirmation rapide.`;
+
+      window.location.href = `mailto:info@lux-taxi.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    // URL Query Parameter pre-selection for booking form (Service, Vehicle, Destination)
     window.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       const service = urlParams.get('service');
       const vehicule = urlParams.get('vehicule');
+      const destination = urlParams.get('destination');
       const banner = document.getElementById('preselection-banner');
       const bannerText = document.getElementById('banner-text');
+
+      const destMap = {
+        'geneve': 'Genève Centre & Hôtels',
+        'chamonix': 'Chamonix-Mont-Blanc',
+        'courchevel': 'Courchevel (1850 / 1650)',
+        'verbier': 'Verbier',
+        'megeve': 'Megève',
+        'zermatt': 'Zermatt & Cervin',
+        'centre-geneve': 'Rue du Rhône & Centre-ville',
+        'palexpo': 'Palexpo & Arena Genève',
+        'rive-gauche': 'Cologny, Vandœuvres & Rive Gauche',
+        'cornavin': 'Gare Genève-Cornavin',
+        'autre': 'Transfert Sur-Mesure'
+      };
 
       if (service) {
         const serviceSelect = document.getElementById('res-service');
@@ -145,14 +190,28 @@
         const vehiculeSelect = document.getElementById('res-vehicule');
         if (vehiculeSelect) vehiculeSelect.value = vehicule;
       }
-      if ((service || vehicule) && banner && bannerText) {
+      if (destination) {
+        const destInput = document.getElementById('res-destination-input');
+        if (destInput) {
+          destInput.value = destMap[destination] || destination;
+        }
+        // Auto-select ski service for ski stations
+        if (['chamonix', 'courchevel', 'verbier', 'megeve', 'zermatt'].includes(destination)) {
+          const serviceSelect = document.getElementById('res-service');
+          if (serviceSelect) serviceSelect.value = 'navette-ski';
+        }
+      }
+
+      if ((service || vehicule || destination) && banner && bannerText) {
         const serviceSelect = document.getElementById('res-service');
         const vehiculeSelect = document.getElementById('res-vehicule');
         const selectedServiceName = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex].text : '';
         const selectedVehiculeName = vehiculeSelect ? vehiculeSelect.options[vehiculeSelect.selectedIndex].text : '';
+        const destName = destMap[destination] || destination;
 
+        let displayLabel = destName || selectedServiceName || selectedVehiculeName;
         banner.classList.remove('hidden');
-        bannerText.innerHTML = `✨ Option pré-sélectionnée : <strong class="text-white">${selectedServiceName || selectedVehiculeName}</strong>`;
+        bannerText.innerHTML = `✨ Pré-sélection activée : <strong class="text-white">${displayLabel}</strong>`;
       }
     });
   </script>
