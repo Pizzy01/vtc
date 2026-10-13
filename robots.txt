@@ -1,0 +1,7 @@
+# robots.txt for LUX-TAXI Genève (https://lux-taxi.com)
+User-agent: *
+Allow: /
+Disallow: /assets/data/
+
+# Sitemaps
+Sitemap: https://lux-taxi.com/sitemap.xml

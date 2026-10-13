@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="goldRing" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#E6C88B"/>
+      <stop offset="50%" stop-color="#C6A96B"/>
+      <stop offset="100%" stop-color="#8A6C28"/>
+    </radialGradient>
+    <radialGradient id="darkBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#141417"/>
+      <stop offset="100%" stop-color="#0B0B0C"/>
+    </radialGradient>
+  </defs>
+  <!-- Outer Gold Ring -->
+  <circle cx="32" cy="32" r="30" fill="url(#goldRing)"/>
+  <!-- Inner Dark Core -->
+  <circle cx="32" cy="32" r="27.5" fill="url(#darkBg)"/>
+  <!-- Fine Inner Hairline Ring -->
+  <circle cx="32" cy="32" r="25.5" fill="none" stroke="#C6A96B" stroke-width="0.8" stroke-opacity="0.6"/>
+  <!-- Monogram LT -->
+  <text x="32" y="38" font-family="'Cormorant Garamond', 'Cinzel', 'Times New Roman', serif" font-size="21" font-weight="700" fill="url(#goldRing)" text-anchor="middle" letter-spacing="-1">LT</text>
+</svg>

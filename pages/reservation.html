@@ -5,6 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Réservation Privée | LUX-TAXI Genève — Chauffeur Privé 24/7</title>
   <meta name="description" content="Réservez votre chauffeur privé à Genève. Confirmation immédiate, tarif fixe garanti et suivi de vol inclus."/>
+  
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg"/>
+  <link rel="apple-touch-icon" href="../assets/images/favicon.svg"/>
+  <link rel="canonical" href="https://lux-taxi.com/pages/reservation.html"/>
+
+  <!-- Open Graph / WhatsApp / Facebook / LinkedIn -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="LUX-TAXI GENÈVE"/>
+  <meta property="og:url" content="https://lux-taxi.com/pages/reservation.html"/>
+  <meta property="og:title" content="Réservation Privée | LUX-TAXI Genève"/>
+  <meta property="og:description" content="Réservation immédiate de votre chauffeur privé à Genève. Tarifs fixes garantis & suivi de vol GVA inclus."/>
+  <meta property="og:image" content="https://lux-taxi.com/assets/images/maybach-bg.jpg"/>
+  <meta property="og:locale" content="fr_CH"/>
+
+  <!-- Twitter Meta Cards -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Réservation Privée | LUX-TAXI Genève"/>
+  <meta name="twitter:description" content="Réservation immédiate de chauffeur privé à Genève et dans les Alpes."/>
+  <meta name="twitter:image" content="https://lux-taxi.com/assets/images/maybach-bg.jpg"/>
+
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <link rel="stylesheet" href="../assets/css/vitesse-prestige.css"/>
 </head>
@@ -221,9 +246,21 @@
   </div>
 
   <!-- 4. OFFICIAL FOOTER -->
-  <footer class="px-6 py-6 border-t border-[#292929] text-center text-xs text-[#AAA59B] font-mono">
+  <footer class="px-6 py-6 pb-24 sm:pb-6 border-t border-[#292929] text-center text-xs text-[#AAA59B] font-mono">
     📍 Rte de l'Aéroport 21, 1215 Genève • 📞 +41 76 620 78 50 • info@lux-taxi.com
   </footer>
+
+  <!-- FLOATING LUXURY BOTTOM BAR FOR MOBILE CONVERSION -->
+  <aside id="mobile-sticky-bar" class="fixed bottom-0 left-0 right-0 z-40 sm:hidden bg-[#0B0B0C]/92 backdrop-blur-2xl border-t border-[#C6A96B]/30 px-4 py-3 shadow-[0_-10px_35px_rgba(0,0,0,0.85)]">
+    <div class="flex items-center justify-between gap-3 max-w-md mx-auto">
+      <button type="button" onclick="openWhatsAppBooking()" class="flex-1 py-3 px-3 rounded-full bg-gradient-to-r from-[#C6A96B] to-[#D8BE84] text-black font-semibold text-xs tracking-wider uppercase shadow-lg active:scale-95 transition-all flex items-center justify-center gap-1.5 font-sans">
+        <span>WhatsApp 24/7 ↗</span>
+      </button>
+      <a href="tel:+41766207850" class="flex-1 py-3 px-3 rounded-full glass-luxe-pill text-[#F5F1E8] border border-[#C6A96B]/40 font-semibold text-xs tracking-wider uppercase active:scale-95 transition-all flex items-center justify-center gap-1.5 font-sans">
+        <span>Appeler +41 76</span>
+      </a>
+    </div>
+  </aside>
 
   <script>
     let isMenuOpen = false;
