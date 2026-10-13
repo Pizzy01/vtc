@@ -3,86 +3,119 @@
   "currency": "CHF",
   "vehicles": [
     {
-      "id": "classe-s",
-      "name": "MERCEDES-BENZ CLASSE S LIMOUSINE",
-      "category": "Executive First Class",
-      "tagline": "À partir de CHF 120 / h · Transferts VIP GVA",
-      "image": "assets/images/maybach-bg.jpg",
+      "id": "standard",
+      "name": "VÉHICULE STANDARD (TOYOTA CAMRY / SKODA SUPERB)",
+      "category": "Standard Cab & Eco Chauffeur",
+      "tagline": "Dès CHF 70 · Tarif fixe garanti",
+      "image": "assets/images/flotte_standard.jpg",
       "passengers": 3,
       "luggage": 3,
-      "transmission": "4MATIC Transmission Intégrale",
+      "pricing": {
+        "suisse": { "per_km": 2.50, "minimum": 70.00, "hourly": 60.00, "included_km_h": 20 },
+        "international": { "per_km": 2.50, "minimum": 80.00, "hourly": 60.00, "included_km_h": 20 }
+      },
       "comfort": [
-        "Insonorisation supérieure & suspension pneumatique AirMatic",
-        "Sièges arrière Executive inclinables, chauffants & massants",
-        "Bouteilles d'eau Évian & rafraîchissements offerts",
-        "Wi-Fi 5G haut débit & sélecteur de chargeurs tous mobiles",
-        "Vitres teintées privacy & stores de protection intégrés"
+        "Berline hybride moderne, silencieuse et économique",
+        "Climatisation automatique & sellerie soignée",
+        "Bouteilles d'eau offertes & chargeurs smartphones",
+        "Idéal pour transferts quotidiens, gare & aéroport de Genève"
+      ]
+    },
+    {
+      "id": "classe-e",
+      "name": "MERCEDES-BENZ CLASSE E BERLINE",
+      "category": "Business Executive Class",
+      "tagline": "Dès CHF 100 · Confort Corporate",
+      "image": "assets/images/flotte_classe_e.jpg",
+      "passengers": 3,
+      "luggage": 3,
+      "pricing": {
+        "suisse": { "per_km": 3.00, "minimum": 100.00, "hourly": 80.00, "included_km_h": 20 },
+        "international": { "per_km": 3.50, "minimum": 100.00, "hourly": 80.00, "included_km_h": 20 }
+      },
+      "comfort": [
+        "Berline d'affaires sobre et élégante par excellence",
+        "Sièges en cuir ergonomiques & insonorisation de qualité",
+        "Wi-Fi haut débit & bouteilles d'eau minérale offertes",
+        "Chauffeur professionnel bilingue en costume cravate"
       ]
     },
     {
       "id": "classe-v",
       "name": "MERCEDES-BENZ CLASSE V VIP EXTRA-LONG",
-      "category": "Premium Business Van",
-      "tagline": "À partir de CHF 140 / h · Groupes & Ski Alpes",
-      "image": "assets/images/maybach-bg.jpg",
+      "category": "Premium Business Van (7 Places)",
+      "tagline": "Dès CHF 120 · Groupes & Ski Alpes",
+      "image": "assets/images/flotte_classe_v.jpg",
       "passengers": 7,
       "luggage": 7,
       "transmission": "4MATIC Transmission Intégrale Montagne",
+      "pricing": {
+        "suisse": { "per_km": 3.50, "minimum": 120.00, "hourly": 100.00, "included_km_h": 20 },
+        "international": { "per_km": 4.00, "minimum": 120.00, "hourly": 100.00, "included_km_h": 20 }
+      },
       "comfort": [
-        "Salon VIP avec sièges individuels en cuir nappa",
-        "Espace géant pour sacs de ski, clubs de golf & valises",
-        "Prises 230V & Wi-Fi 5G pour travailler pendant le trajet",
-        "Climatisation automatique multi-zones réglable à l'arrière",
-        "Suspension adaptative idéale pour les routes alpines"
+        "7 Sièges individuels VIP en cuir nappa grand confort",
+        "Espace géant pour sacs de ski, clubs de golf et 7 valises",
+        "Transmission 4MATIC intégrale sécurisée pour la neige",
+        "Prises de charge & Wi-Fi pour travailler pendant le trajet"
+      ]
+    },
+    {
+      "id": "classe-s",
+      "name": "MERCEDES-BENZ CLASSE S LIMOUSINE",
+      "category": "First Class Executive",
+      "tagline": "Dès CHF 150 · Première Classe Prestige",
+      "image": "assets/images/flotte_classe_s.jpg",
+      "passengers": 2,
+      "luggage": 3,
+      "transmission": "4MATIC Transmission Intégrale",
+      "pricing": {
+        "suisse": { "per_km": 5.00, "minimum": 150.00, "hourly": 130.00, "included_km_h": 20 },
+        "international": { "per_km": 5.00, "minimum": 150.00, "hourly": 130.00, "included_km_h": 20 }
+      },
+      "comfort": [
+        "Fauteuils arrière inclinables, chauffants et massants",
+        "Insonorisation supérieure & suspension pneumatique AirMatic",
+        "Intérieur cuir nappa crème, boiseries nobles et ambiance tamisée",
+        "Discrétion absolue pour délégations, banques privées & VIP"
       ]
     },
     {
       "id": "maybach",
       "name": "MERCEDES-MAYBACH CLASSE S FIRST CLASS",
-      "category": "Ultimate Luxury Suite",
-      "tagline": "À partir de CHF 250 / h · Prestation Prestige Sur-Mesure",
-      "image": "assets/images/maybach-bg.jpg",
+      "category": "Grand Luxe Suite",
+      "tagline": "Sur Devis VIP · L'Apogée Automobile",
+      "image": "assets/images/flotte_maybach.jpg",
       "passengers": 2,
       "luggage": 3,
       "transmission": "V8 Biturbo 4MATIC First Class",
+      "pricing": {
+        "suisse": { "per_km": 5.00, "minimum": 200.00, "hourly": 160.00, "included_km_h": 20 },
+        "international": { "per_km": 5.00, "minimum": 200.00, "hourly": 160.00, "included_km_h": 20 }
+      },
       "comfort": [
         "Fauteuils Recline First Class avec repose-jambes électrique",
-        "Console centrale réfrigérée avec flûtes à champagne argentées",
+        "Console centrale réfrigérée avec flûtes en argent",
         "Système audio Burmester High-End 4D Surround",
-        "Bouteilles d'eau d'exception & rafraîchissements haut de gamme",
-        "Discrétion absolue et chauffeur certifié conciergerie VIP"
+        "Chauffeur certifié protocole VIP & discrétion absolue"
       ]
     },
     {
-      "id": "eqs-suv",
-      "name": "MERCEDES-BENZ EQS SUV ELECTRIC VIP",
-      "category": "Zero Emission Executive",
-      "tagline": "À partir de CHF 130 / h · Silence & Écologie",
-      "image": "assets/images/maybach-bg.jpg",
-      "passengers": 4,
-      "luggage": 4,
-      "transmission": "100% Électrique 4MATIC Dual Motor",
+      "id": "sprinter",
+      "name": "MERCEDES-BENZ SPRINTER VIP",
+      "category": "Minibus VIP Corporate",
+      "tagline": "Uniquement sur demande",
+      "image": "assets/images/flotte_classe_v.jpg",
+      "passengers": 16,
+      "luggage": 16,
+      "pricing": {
+        "note": "Tarif sur demande selon itinéraire et durée de mise à disposition"
+      },
       "comfort": [
-        "Silence de roulement absolu et zéro émission de CO2",
-        "Écran Hyperscreen Mercedes MBUX dernière génération",
-        "Sièges en cuir écologique ultra-moelleux",
-        "Purificateur d'air HEPA à bord avec parfum d'ambiance d'exception"
-      ]
-    },
-    {
-      "id": "range-rover",
-      "name": "RANGE ROVER AUTOBIOGRAPHY LWB",
-      "category": "Exclusive Alpine SUV",
-      "tagline": "À partir de CHF 200 / h · Navette Ski Prestige",
-      "image": "assets/images/maybach-bg.jpg",
-      "passengers": 4,
-      "luggage": 5,
-      "transmission": "4x4 All-Terrain Terrain Response 2",
-      "comfort": [
-        "Châssis long LWB avec espace jambes arrière démesuré",
-        "Transmission intégrale parfaite pour la neige & le verglas",
-        "Toit panoramique ouvrant & console multimédia arrière",
-        "Coffre spacieux pour bagages et équipement de ski VIP"
+        "Configuration salon VIP pour événements et congrès",
+        "Capacité maximale pour délégations et grands groupes",
+        "Climatisation automatique multi-zones & grands coffres bagages",
+        "Prise en charge intégrale à Palexpo ou Genève Aéroport"
       ]
     }
   ]

@@ -36,11 +36,11 @@
     "@context": "https://schema.org",
     "@type": "ProductModel",
     "name": "Flotte Prestige LUX-TAXI Genève",
-    "brand": "Mercedes-Benz / Maybach / Range Rover",
+    "brand": "Mercedes-Benz / Maybach / Toyota",
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "CHF",
-      "lowPrice": "120",
+      "lowPrice": "70",
       "highPrice": "250"
     }
   }
@@ -85,23 +85,32 @@
     </div>
     <h1 class="font-display font-black text-3xl sm:text-5xl text-[#F5F1E8] tracking-wider uppercase">Notre Flotte d'Exception</h1>
     <p class="text-xs sm:text-sm text-[#AAA59B] leading-relaxed max-w-xl mx-auto">
-      Chaque véhicule de notre flotte est minutieusement entretenu et configuré pour offrir une alliance parfaite entre confort de première classe, sécurité et discrétion absolue.
+      Chaque véhicule de notre flotte est sélectionné avec soin, entretenu selon les plus hauts standards et configuré pour allier confort, discrétion et ponctualité suisse.
     </p>
+
+    <!-- Pricing Assurance Banner -->
+    <div class="mt-6 p-3.5 rounded-2xl bg-[#151515] border border-[#C6A96B]/30 max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
+      <div class="flex items-center gap-2 text-[#C6A96B]">
+        <span>🛡️</span>
+        <span class="font-bold">Tarifs Fixes Garantis Sans Frais Cachés</span>
+      </div>
+      <span class="text-[11px] text-[#AAA59B]">Suisse & Liaisons Alpines Internationales</span>
+    </div>
   </section>
 
-  <!-- 3. FLOTTE CARDS GRID (EDITORIAL DESIGN BASED ON ACTUALITÉS LAYOUT) -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-12 pb-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+  <!-- 3. FLOTTE CARDS GRID (EDITORIAL DESIGN 6 OFFICAL CATEGORIES) -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-12 pb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     
-    <!-- Vehicle Card 1: Mercedes-Benz Classe S -->
-    <article id="classe-s" class="luxe-card overflow-hidden flex flex-col justify-between group scroll-mt-24 transition-all duration-500">
+    <!-- Vehicle Card 1: Standard Cab (Toyota Camry / Skoda Superb) -->
+    <article id="standard" class="luxe-card overflow-hidden flex flex-col justify-between group scroll-mt-24 transition-all duration-500">
       <div>
         <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-[#292929]">
-          <img src="../assets/images/maybach-bg.jpg" alt="Mercedes Classe S Limousine" class="w-full h-full object-cover fleet-card-img"/>
+          <img src="../assets/images/flotte_standard.jpg" alt="Véhicule Standard Toyota Camry" class="w-full h-full object-cover fleet-card-img"/>
           <span class="absolute top-3 left-3 px-3 py-1 rounded bg-[#0B0B0C]/85 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase border border-[#C6A96B]/30">
-            EXECUTIVE FIRST CLASS
+            STANDARD CAB & ECO
           </span>
-          <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-black/80 font-mono text-[10px] text-[#F5F1E8] font-bold">
-            À partir de CHF 120 / h
+          <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-black/85 font-mono text-[10px] text-[#C6A96B] font-bold border border-[#C6A96B]/30">
+            Dès CHF 70
           </span>
         </div>
 
@@ -112,41 +121,116 @@
           </div>
 
           <h2 class="font-serif-luxe text-2xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
-            Mercedes-Benz Classe S Limousine
+            Véhicule Standard (Toyota / Skoda)
           </h2>
           
           <p class="text-xs text-[#AAA59B] leading-relaxed">
-            La référence mondiale du voyage d'affaires. Insonorisation supérieure, sièges arrière chauffants et massants, suspension pneumatique AirMatic.
+            Berline hybride moderne, silencieuse et économique. Idéale pour les transferts quotidiens, liaisons gares et navettes aéroport de Genève.
           </p>
 
-          <ul class="text-[11px] text-gray-300 space-y-2 pt-1">
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Bouteilles d'eau Évian & rafraîchissements</li>
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Wi-Fi 5G & chargeurs multi-appareils</li>
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Vitres teintées privacy & stores électriques</li>
+          <div class="p-3 rounded-xl bg-[#0B0B0C] border border-[#292929] space-y-1.5 font-mono text-[11px]">
+            <div class="flex justify-between text-gray-300">
+              <span>Course minimale :</span>
+              <span class="text-[#C6A96B] font-bold">CHF 70.00</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Mise à disposition :</span>
+              <span class="text-gray-200">CHF 60.00 / h (20 km incl.)</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Tarif kilométrique :</span>
+              <span class="text-gray-200">2.50 CHF / km</span>
+            </div>
+          </div>
+
+          <ul class="text-[11px] text-gray-300 space-y-1.5 pt-1">
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Climatisation & sellerie soignée</li>
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Bouteilles d'eau & chargeurs smartphones</li>
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Chauffeur professionnel et discret</li>
           </ul>
         </div>
       </div>
 
       <div class="p-6 pt-0 flex flex-col sm:flex-row gap-2">
-        <a href="reservation.html?vehicule=classe-s" class="flex-1 btn-gold-luxe py-3 rounded-xl text-xs font-bold text-center block uppercase tracking-wider">
-          Réserver Classe S ↗
+        <a href="reservation.html?vehicule=standard" class="flex-1 btn-gold-luxe py-3 rounded-xl text-xs font-bold text-center block uppercase tracking-wider">
+          Réserver Standard ↗
         </a>
-        <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20r%C3%A9server%20la%20Mercedes-Benz%20Classe%20S." target="_blank" class="px-4 py-3 bg-[#151515] border border-[#292929] hover:border-[#25D366] text-emerald-400 rounded-xl text-xs font-mono font-semibold text-center flex items-center justify-center gap-1.5 transition-colors">
+        <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20r%C3%A9server%20un%20V%C3%A9hicule%20Standard%20(Toyota/Skoda)." target="_blank" class="px-4 py-3 bg-[#151515] border border-[#292929] hover:border-[#25D366] text-emerald-400 rounded-xl text-xs font-mono font-semibold text-center flex items-center justify-center gap-1.5 transition-colors">
           <span>WhatsApp</span>
         </a>
       </div>
     </article>
 
-    <!-- Vehicle Card 2: Mercedes-Benz Classe V VIP -->
+    <!-- Vehicle Card 2: Mercedes-Benz Classe E -->
+    <article id="classe-e" class="luxe-card overflow-hidden flex flex-col justify-between group scroll-mt-24 transition-all duration-500">
+      <div>
+        <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-[#292929]">
+          <img src="../assets/images/flotte_classe_e.jpg" alt="Mercedes Classe E Berline" class="w-full h-full object-cover fleet-card-img"/>
+          <span class="absolute top-3 left-3 px-3 py-1 rounded bg-[#0B0B0C]/85 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase border border-[#C6A96B]/30">
+            BUSINESS EXECUTIVE CLASS
+          </span>
+          <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-black/85 font-mono text-[10px] text-[#C6A96B] font-bold border border-[#C6A96B]/30">
+            Dès CHF 100
+          </span>
+        </div>
+
+        <div class="p-6 space-y-4">
+          <div class="flex items-center justify-between text-[11px] font-mono text-[#C6A96B] border-b border-[#292929] pb-3">
+            <span>👤 3 Passagers VIP</span>
+            <span>💼 3 Bagages VIP</span>
+          </div>
+
+          <h2 class="font-serif-luxe text-2xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
+            Mercedes-Benz Classe E Berline
+          </h2>
+          
+          <p class="text-xs text-[#AAA59B] leading-relaxed">
+            La berline d'affaires sobre et élégante par excellence. Idéale pour rendez-vous corporate, diplomatie et transferts aéroport tout confort.
+          </p>
+
+          <div class="p-3 rounded-xl bg-[#0B0B0C] border border-[#292929] space-y-1.5 font-mono text-[11px]">
+            <div class="flex justify-between text-gray-300">
+              <span>Course minimale :</span>
+              <span class="text-[#C6A96B] font-bold">CHF 100.00</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Mise à disposition :</span>
+              <span class="text-gray-200">CHF 80.00 / h (20 km incl.)</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Tarif kilométrique :</span>
+              <span class="text-gray-200">3.00 CHF / km (CH)</span>
+            </div>
+          </div>
+
+          <ul class="text-[11px] text-gray-300 space-y-1.5 pt-1">
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Sièges en cuir ergonomiques & insonorisation</li>
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Wi-Fi 5G & rafraîchissements offerts</li>
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Chauffeur en costume cravate bilingue</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="p-6 pt-0 flex flex-col sm:flex-row gap-2">
+        <a href="reservation.html?vehicule=classe-e" class="flex-1 btn-gold-luxe py-3 rounded-xl text-xs font-bold text-center block uppercase tracking-wider">
+          Réserver Classe E ↗
+        </a>
+        <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20r%C3%A9server%20la%20Mercedes-Benz%20Classe%20E." target="_blank" class="px-4 py-3 bg-[#151515] border border-[#292929] hover:border-[#25D366] text-emerald-400 rounded-xl text-xs font-mono font-semibold text-center flex items-center justify-center gap-1.5 transition-colors">
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- Vehicle Card 3: Mercedes-Benz Classe V VIP -->
     <article id="classe-v" class="luxe-card overflow-hidden flex flex-col justify-between group border-[#C6A96B]/40 scroll-mt-24 transition-all duration-500">
       <div>
         <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-[#292929]">
-          <img src="../assets/images/service_navette_ski.jpg" alt="Mercedes Classe V VIP" class="w-full h-full object-cover fleet-card-img"/>
+          <img src="../assets/images/flotte_classe_v.jpg" alt="Mercedes Classe V VIP Extra-Long" class="w-full h-full object-cover fleet-card-img"/>
           <span class="absolute top-3 left-3 px-3 py-1 rounded bg-[#0B0B0C]/85 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase border border-[#C6A96B]/30">
-            PREMIUM BUSINESS VAN
+            PREMIUM BUSINESS VAN (7 PLACES)
           </span>
-          <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-black/80 font-mono text-[10px] text-[#F5F1E8] font-bold">
-            À partir de CHF 140 / h
+          <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-black/85 font-mono text-[10px] text-[#C6A96B] font-bold border border-[#C6A96B]/30">
+            Dès CHF 120
           </span>
         </div>
 
@@ -161,13 +245,28 @@
           </h2>
           
           <p class="text-xs text-[#AAA59B] leading-relaxed">
-            L'espace d'un salon privé pour vos déplacements de groupe, délégations et séjours au ski en famille avec bagages volumineux.
+            L'espace d'un salon mobile grand confort pour délégations, familles nombreuses et séjours aux sports d'hiver avec équipements volumineux.
           </p>
 
-          <ul class="text-[11px] text-gray-300 space-y-2 pt-1">
+          <div class="p-3 rounded-xl bg-[#0B0B0C] border border-[#292929] space-y-1.5 font-mono text-[11px]">
+            <div class="flex justify-between text-gray-300">
+              <span>Course minimale :</span>
+              <span class="text-[#C6A96B] font-bold">CHF 120.00</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Mise à disposition :</span>
+              <span class="text-gray-200">CHF 100.00 / h (20 km incl.)</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Tarif kilométrique :</span>
+              <span class="text-gray-200">3.50 CHF / km (CH)</span>
+            </div>
+          </div>
+
+          <ul class="text-[11px] text-gray-300 space-y-1.5 pt-1">
             <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> 7 Sièges individuels en cuir nappa</li>
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Prises 230V & Wi-Fi 5G pour travailler</li>
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Transmission 4x4 idéale pour la neige</li>
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Transmission 4MATIC 4x4 idéale neige</li>
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Prises 230V & Wi-Fi haut débit</li>
           </ul>
         </div>
       </div>
@@ -182,23 +281,83 @@
       </div>
     </article>
 
-    <!-- Vehicle Card 3: Mercedes-Maybach Classe S -->
-    <article id="maybach" class="luxe-card overflow-hidden flex flex-col justify-between group bg-[#C6A96B]/5 border-[#C6A96B]/60 scroll-mt-24 transition-all duration-500">
+    <!-- Vehicle Card 4: Mercedes-Benz Classe S Limousine -->
+    <article id="classe-s" class="luxe-card overflow-hidden flex flex-col justify-between group scroll-mt-24 transition-all duration-500">
       <div>
-        <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-[#C6A96B]/30">
-          <img src="../assets/images/maybach-dark-bronze.jpg" alt="Mercedes-Maybach First Class Dark Bronze Edition" class="w-full h-full object-cover fleet-card-img"/>
-          <span class="absolute top-3 left-3 px-3 py-1 rounded bg-[#C6A96B] text-[9px] font-mono text-black font-extrabold uppercase">
-            ULTIMATE LUXURY SUITE
+        <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-[#292929]">
+          <img src="../assets/images/flotte_classe_s.jpg" alt="Mercedes Classe S Limousine" class="w-full h-full object-cover fleet-card-img"/>
+          <span class="absolute top-3 left-3 px-3 py-1 rounded bg-[#0B0B0C]/85 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase border border-[#C6A96B]/30">
+            EXECUTIVE FIRST CLASS
           </span>
-          <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-black/80 font-mono text-[10px] text-[#C6A96B] font-bold">
-            À partir de CHF 250 / h
+          <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-black/85 font-mono text-[10px] text-[#C6A96B] font-bold border border-[#C6A96B]/30">
+            Dès CHF 150
           </span>
         </div>
 
         <div class="p-6 space-y-4">
           <div class="flex items-center justify-between text-[11px] font-mono text-[#C6A96B] border-b border-[#292929] pb-3">
             <span>👤 2 Passagers VIP</span>
-            <span>🍾 Champagne Console</span>
+            <span>💼 3 Bagages VIP</span>
+          </div>
+
+          <h2 class="font-serif-luxe text-2xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
+            Mercedes-Benz Classe S Limousine
+          </h2>
+          
+          <p class="text-xs text-[#AAA59B] leading-relaxed">
+            La référence absolue du voyage de prestige. Insonorisation exceptionnelle, fauteuils arrière inclinables massants et suspension AirMatic.
+          </p>
+
+          <div class="p-3 rounded-xl bg-[#0B0B0C] border border-[#292929] space-y-1.5 font-mono text-[11px]">
+            <div class="flex justify-between text-gray-300">
+              <span>Course minimale :</span>
+              <span class="text-[#C6A96B] font-bold">CHF 150.00</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Mise à disposition :</span>
+              <span class="text-gray-200">CHF 130.00 / h (20 km incl.)</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Tarif kilométrique :</span>
+              <span class="text-gray-200">5.00 CHF / km</span>
+            </div>
+          </div>
+
+          <ul class="text-[11px] text-gray-300 space-y-1.5 pt-1">
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Fauteuils massants & climatisation 4 zones</li>
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Eau Évian, Wi-Fi 5G & chargeurs sans fil</li>
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Discrétion absolue banques privées & VIP</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="p-6 pt-0 flex flex-col sm:flex-row gap-2">
+        <a href="reservation.html?vehicule=classe-s" class="flex-1 btn-gold-luxe py-3 rounded-xl text-xs font-bold text-center block uppercase tracking-wider">
+          Réserver Classe S ↗
+        </a>
+        <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20r%C3%A9server%20la%20Mercedes-Benz%20Classe%20S." target="_blank" class="px-4 py-3 bg-[#151515] border border-[#292929] hover:border-[#25D366] text-emerald-400 rounded-xl text-xs font-mono font-semibold text-center flex items-center justify-center gap-1.5 transition-colors">
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- Vehicle Card 5: Mercedes-Maybach Classe S -->
+    <article id="maybach" class="luxe-card overflow-hidden flex flex-col justify-between group bg-[#C6A96B]/5 border-[#C6A96B]/60 scroll-mt-24 transition-all duration-500">
+      <div>
+        <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-[#C6A96B]/30">
+          <img src="../assets/images/flotte_maybach.jpg" alt="Mercedes-Maybach First Class" class="w-full h-full object-cover fleet-card-img"/>
+          <span class="absolute top-3 left-3 px-3 py-1 rounded bg-[#C6A96B] text-[9px] font-mono text-black font-extrabold uppercase">
+            GRAND LUXE SUITE
+          </span>
+          <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-black/85 font-mono text-[10px] text-[#C6A96B] font-bold border border-[#C6A96B]/40">
+            Sur Devis VIP
+          </span>
+        </div>
+
+        <div class="p-6 space-y-4">
+          <div class="flex items-center justify-between text-[11px] font-mono text-[#C6A96B] border-b border-[#292929] pb-3">
+            <span>👤 2 Passagers VIP</span>
+            <span>🍾 Flûtes & Champagne</span>
           </div>
 
           <h2 class="font-serif-luxe text-2xl text-[#C6A96B] group-hover:text-white transition-colors leading-snug">
@@ -206,13 +365,28 @@
           </h2>
           
           <p class="text-xs text-[#AAA59B] leading-relaxed">
-            L'apogée absolue du luxe automobile. Espace arrière démesuré, console centrale réfrigérée avec flûtes en argent et discrétion absolue.
+            L'apogée ultime du luxe automobile. Espace arrière First Class démesuré, console réfrigérée, acoustique Burmester 4D et service protocolaire.
           </p>
 
-          <ul class="text-[11px] text-gray-300 space-y-2 pt-1">
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Fauteuils Recline First Class repose-jambes</li>
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Console réfrigérée & champagne offert</li>
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Système audio Burmester High-End 4D</li>
+          <div class="p-3 rounded-xl bg-[#0B0B0C] border border-[#C6A96B]/30 space-y-1.5 font-mono text-[11px]">
+            <div class="flex justify-between text-gray-300">
+              <span>Tarif de base :</span>
+              <span class="text-[#C6A96B] font-bold">Dès CHF 200.00 min</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Mise à disposition :</span>
+              <span class="text-[#C6A96B]">Dès CHF 160.00 / h (20 km incl.)</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Prestation :</span>
+              <span class="text-gray-200">Sur mesure & devis conciergerie</span>
+            </div>
+          </div>
+
+          <ul class="text-[11px] text-gray-300 space-y-1.5 pt-1">
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Fauteuils Recline First Class avec repose-jambes</li>
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Console centrale réfrigérée avec flûtes en argent</li>
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Chauffeur de maître certifié protocole VIP</li>
           </ul>
         </div>
       </div>
@@ -227,91 +401,61 @@
       </div>
     </article>
 
-    <!-- Vehicle Card 4: Mercedes EQS SUV Électrique -->
-    <article id="eqs" class="luxe-card overflow-hidden flex flex-col justify-between group scroll-mt-24 transition-all duration-500">
+    <!-- Vehicle Card 6: Mercedes-Benz Sprinter VIP -->
+    <article id="sprinter" class="luxe-card overflow-hidden flex flex-col justify-between group scroll-mt-24 transition-all duration-500">
       <div>
         <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-[#292929]">
-          <img src="../assets/images/vip-lifestyle-night.jpg" alt="Mercedes EQS SUV Électrique" class="w-full h-full object-cover fleet-card-img"/>
-          <span class="absolute top-3 left-3 px-3 py-1 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-400 text-[9px] font-mono font-bold uppercase">
-            100% ÉLECTRIQUE VIP
-          </span>
-          <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-black/80 font-mono text-[10px] text-[#F5F1E8] font-bold">
-            À partir de CHF 130 / h
-          </span>
-        </div>
-
-        <div class="p-6 space-y-4">
-          <div class="flex items-center justify-between text-[11px] font-mono text-[#C6A96B] border-b border-[#292929] pb-3">
-            <span>👤 4 Passagers VIP</span>
-            <span>⚡ Dual Motor 4MATIC</span>
-          </div>
-
-          <h2 class="font-serif-luxe text-2xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
-            Mercedes-Benz EQS SUV Électrique
-          </h2>
-          
-          <p class="text-xs text-[#AAA59B] leading-relaxed">
-            Silence de roulement absolu et zéro émission de CO2. Écran Hyperscreen Mercedes MBUX et purificateur d'air HEPA à bord.
-          </p>
-
-          <ul class="text-[11px] text-gray-300 space-y-2 pt-1">
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Propulsion 100% électrique silencieuse</li>
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Intérieur cuir écologique & parfum d'ambiance</li>
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Hyperscreen 3 écrans multimédia</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="p-6 pt-0 flex flex-col sm:flex-row gap-2">
-        <a href="reservation.html?vehicule=eqs" class="flex-1 btn-gold-luxe py-3 rounded-xl text-xs font-bold text-center block uppercase tracking-wider">
-          Réserver EQS SUV ↗
-        </a>
-        <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20r%C3%A9server%20le%20Mercedes-Benz%20EQS%20SUV." target="_blank" class="px-4 py-3 bg-[#151515] border border-[#292929] hover:border-[#25D366] text-emerald-400 rounded-xl text-xs font-mono font-semibold text-center flex items-center justify-center gap-1.5 transition-colors">
-          <span>WhatsApp</span>
-        </a>
-      </div>
-    </article>
-
-    <!-- Vehicle Card 5: Range Rover Autobiography LWB -->
-    <article id="range-rover" class="luxe-card overflow-hidden flex flex-col justify-between group scroll-mt-24 transition-all duration-500">
-      <div>
-        <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-[#292929]">
-          <img src="../assets/images/vip-lifestyle-night.jpg" alt="Range Rover Autobiography" class="w-full h-full object-cover fleet-card-img"/>
+          <img src="../assets/images/service_corporate_gala.jpg" alt="Mercedes Sprinter VIP" class="w-full h-full object-cover fleet-card-img"/>
           <span class="absolute top-3 left-3 px-3 py-1 rounded bg-[#0B0B0C]/85 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase border border-[#C6A96B]/30">
-            EXCLUSIVE ALPINE SUV
+            GROUPE & ÉVÉNEMENTIEL
           </span>
-          <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-black/80 font-mono text-[10px] text-[#F5F1E8] font-bold">
-            À partir de CHF 200 / h
+          <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-black/85 font-mono text-[10px] text-[#C6A96B] font-bold border border-[#C6A96B]/30">
+            Sur Demande
           </span>
         </div>
 
         <div class="p-6 space-y-4">
           <div class="flex items-center justify-between text-[11px] font-mono text-[#C6A96B] border-b border-[#292929] pb-3">
-            <span>👤 4 Passagers VIP</span>
-            <span>🏔️ Équipement Neige VIP</span>
+            <span>👤 Jusqu'à 16 Passagers</span>
+            <span>💼 Grand Volume Bagages</span>
           </div>
 
           <h2 class="font-serif-luxe text-2xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
-            Range Rover Autobiography LWB
+            Mercedes-Benz Sprinter VIP Minibus
           </h2>
           
           <p class="text-xs text-[#AAA59B] leading-relaxed">
-            Châssis long avec espace jambes démesuré et transmission intégrale 4x4 d'exception pour vos liaisons vers Chamonix, Courchevel et Verbier.
+            Configuration salon d'affaires pour transferts de groupes, délégations officielles, sommets internationaux, mariages et événements privés.
           </p>
 
-          <ul class="text-[11px] text-gray-300 space-y-2 pt-1">
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Toit panoramique ouvrant & multimédia arrière</li>
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Motricité maximale neige & verglas</li>
-            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Coffre géant pour bagages & housses de ski</li>
+          <div class="p-3 rounded-xl bg-[#0B0B0C] border border-[#292929] space-y-1.5 font-mono text-[11px]">
+            <div class="flex justify-between text-gray-300">
+              <span>Disponibilité :</span>
+              <span class="text-[#C6A96B] font-bold">Sur réservation préalable</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Prestation :</span>
+              <span class="text-gray-200">Devis sur-mesure sous 15 min</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Flotte événementielle :</span>
+              <span class="text-gray-200">Cortèges multi-véhicules</span>
+            </div>
+          </div>
+
+          <ul class="text-[11px] text-gray-300 space-y-1.5 pt-1">
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Configuration salon affaires en cuir</li>
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Écran multimédia, sonorisation & Wi-Fi</li>
+            <li class="flex items-center gap-2"><span class="text-[#C6A96B]">✓</span> Espace géant pour valises volumineuses</li>
           </ul>
         </div>
       </div>
 
       <div class="p-6 pt-0 flex flex-col sm:flex-row gap-2">
-        <a href="reservation.html?vehicule=range-rover" class="flex-1 btn-gold-luxe py-3 rounded-xl text-xs font-bold text-center block uppercase tracking-wider">
-          Réserver Range Rover ↗
+        <a href="reservation.html?vehicule=sprinter" class="flex-1 btn-gold-luxe py-3 rounded-xl text-xs font-bold text-center block uppercase tracking-wider">
+          Devis Sprinter ↗
         </a>
-        <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20r%C3%A9server%20le%20Range%20Rover%20Autobiography." target="_blank" class="px-4 py-3 bg-[#151515] border border-[#292929] hover:border-[#25D366] text-emerald-400 rounded-xl text-xs font-mono font-semibold text-center flex items-center justify-center gap-1.5 transition-colors">
+        <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20le%20Mercedes-Benz%20Sprinter%20VIP." target="_blank" class="px-4 py-3 bg-[#151515] border border-[#292929] hover:border-[#25D366] text-emerald-400 rounded-xl text-xs font-mono font-semibold text-center flex items-center justify-center gap-1.5 transition-colors">
           <span>WhatsApp</span>
         </a>
       </div>
