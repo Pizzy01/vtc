@@ -16,7 +16,8 @@ const VitesseI18n = (function() {
   // Load language JSON dictionary
   async function loadTranslations(lang) {
     try {
-      const response = await fetch(`assets/locales/${lang}.json`);
+      const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
+      const response = await fetch(`${basePath}assets/locales/${lang}.json`);
       if (!response.ok) throw new Error(`Failed to load ${lang}.json`);
       translations[lang] = await response.json();
       return true;
@@ -53,6 +54,16 @@ const VitesseI18n = (function() {
     if (langLabel) {
       langLabel.textContent = lang.toUpperCase();
     }
+
+    // Update active state on menu language pills
+    document.querySelectorAll('.menu-lang-pill').forEach(btn => {
+      const btnLang = btn.getAttribute('data-lang');
+      if (btnLang === lang) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
   }
 
   // Set active language
@@ -117,4 +128,13 @@ function openCorporateMail() {
 // Auto-initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   VitesseI18n.init();
+
+  // Event delegation for language switchers (pills & triggers)
+  document.addEventListener('click', (e) => {
+    const pill = e.target.closest('.menu-lang-pill');
+    if (pill) {
+      const lang = pill.getAttribute('data-lang');
+      if (lang) VitesseI18n.setLanguage(lang);
+    }
+  });
 });
