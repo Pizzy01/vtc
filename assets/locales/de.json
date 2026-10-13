@@ -1,7 +1,7 @@
 {
   "brand": {
-    "name": "LUX-TAXI GENF",
-    "subtitle": "Privatchauffeur • Genf & Alpen"
+    "name": "LT MAISON DE CHAUFFEURS",
+    "subtitle": "Genf • Elite-Chauffeurdienst"
   },
   "nav": {
     "home": "Startseite",
@@ -62,7 +62,7 @@
   },
   "experience": {
     "eyebrow": "BESONDERE AUFMERKSAMKEIT",
-    "title": "Das Lux-Taxi Bordeinrichtung",
+    "title": "Das LT Bordeinrichtung",
     "subtitle": "Jedes Detail zählt für Ihre entspannte Reise.",
     "exp1": "Kostenloses Évian Mineralwasser & Erfrischungen",
     "exp2": "Highspeed 5G WLAN & Ladestationen für alle Smartphones",
@@ -71,7 +71,7 @@
   },
   "reassurance": {
     "eyebrow": "TRANSPARENZ & VERLÄSSLICHKEIT",
-    "title": "Warum LUX-TAXI Genf wählen?",
+    "title": "Warum LT Maison de Chauffeurs wählen?",
     "r1_title": "100% Festpreisgarantie",
     "r1_desc": "Keine versteckten Kosten, keine Stauaufschläge.",
     "r2_title": "Kostenlose Stornierung",

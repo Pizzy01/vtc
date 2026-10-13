@@ -1,7 +1,7 @@
 {
   "brand": {
-    "name": "LUX-TAXI GINEVRA",
-    "subtitle": "Autista Privato • Ginevra & Alpi"
+    "name": "LT MAISON DE CHAUFFEURS",
+    "subtitle": "Ginevra • Servizio d'Élite"
   },
   "nav": {
     "home": "Home",
@@ -62,7 +62,7 @@
   },
   "experience": {
     "eyebrow": "ATTENZIONE AI DETTAGLI",
-    "title": "L'Esperienza a Bordo Lux-Taxi",
+    "title": "L'Esperienza a Bordo LT",
     "subtitle": "Ogni dettaglio è curato per garantirvi un viaggio rilassante.",
     "exp1": "Bottiglie d'acqua minerale Évian e rinfreschi offerti",
     "exp2": "Wi-Fi 5G ad alta velocità e caricabatterie multi-dispositivo",
@@ -71,7 +71,7 @@
   },
   "reassurance": {
     "eyebrow": "TRASPARENZA & AFFIDABILITÀ",
-    "title": "Perché Scegliere LUX-TAXI Ginevra?",
+    "title": "Perché Scegliere LT Maison de Chauffeurs?",
     "r1_title": "Tariffe Fisse Garantite 100%",
     "r1_desc": "Prezzi trasparenti alla prenotazione senza supplementi per il traffico.",
     "r2_title": "Cancellazione Gratuita",

@@ -1,7 +1,7 @@
 {
   "brand": {
-    "name": "LUX-TAXI GENEVA",
-    "subtitle": "Private Chauffeur • Geneva & Alps"
+    "name": "LT MAISON DE CHAUFFEURS",
+    "subtitle": "Geneva • Elite Chauffeurs"
   },
   "nav": {
     "home": "Home",
@@ -62,7 +62,7 @@
   },
   "experience": {
     "eyebrow": "SPECIAL TOUCHES",
-    "title": "The Lux-Taxi On-Board Experience",
+    "title": "The LT On-Board Experience",
     "subtitle": "Every detail matters to ensure a relaxing and productive journey.",
     "exp1": "Complimentary Évian mineral water bottles & chilled refreshments",
     "exp2": "High-speed 5G Wi-Fi & multi-device charging station",
@@ -71,7 +71,7 @@
   },
   "reassurance": {
     "eyebrow": "TRANSPARENCY & TRUST",
-    "title": "Why Choose LUX-TAXI Geneva?",
+    "title": "Why Choose LT Maison de Chauffeurs?",
     "r1_title": "100% Fixed Guaranteed Rates",
     "r1_desc": "Upfront prices guaranteed upon booking. No traffic charges, no hidden fees.",
     "r2_title": "Free Cancellation & Flexibility",

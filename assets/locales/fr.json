@@ -1,7 +1,7 @@
 {
   "brand": {
-    "name": "LUX-TAXI GENÈVE",
-    "subtitle": "Chauffeur Privé • Genève & Alpes"
+    "name": "LT MAISON DE CHAUFFEURS",
+    "subtitle": "Genève • Service d'Élite"
   },
   "nav": {
     "home": "Accueil",
@@ -62,7 +62,7 @@
   },
   "experience": {
     "eyebrow": "ATTENTIONS PARTICULIÈRES",
-    "title": "L'Expérience à Bord Lux-Taxi",
+    "title": "L'Expérience à Bord LT",
     "subtitle": "Chaque détail compte pour vous offrir un voyage relaxant et productif.",
     "exp1": "Bouteilles d'eau minérale Évian & rafraîchissements offerts",
     "exp2": "Connexion Wi-Fi 5G haut débit & sélecteur de chargeurs tous smartphones",
@@ -71,7 +71,7 @@
   },
   "reassurance": {
     "eyebrow": "TRANSPARENCE & ENGAGEMENT",
-    "title": "Pourquoi Choisir LUX-TAXI Genève ?",
+    "title": "Pourquoi Choisir LT Maison de Chauffeurs ?",
     "r1_title": "100% Tarifs Fixes Garantis",
     "r1_desc": "Prix connus à la réservation. Pas de frais de trafic, pas de frais cachés.",
     "r2_title": "Annulation & Flexibilité",
