@@ -366,49 +366,93 @@
     <!-- MAIN BODY: TWO-COLUMN LUXURY SUITE -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 my-auto py-8">
       
-      <!-- COLUMN 1: EDITORIAL NAVIGATION LINKS -->
-      <nav class="lg:col-span-7 flex flex-col space-y-3 sm:space-y-4 font-display">
-        
-        <a href="../index.html" class="menu-nav-link group">
-          <div class="flex items-baseline gap-3">
-            <span class="text-xs font-mono text-[#C6A96B]">01.</span>
-            <span class="menu-link-title text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#F5F1E8]">Accueil</span>
-          </div>
-          <span class="menu-link-subtitle text-[11px] font-mono text-[#AAA59B] pl-7">Maison & Philosophie de Service Suisse</span>
-        </a>
+      <!-- COLUMN 1: LUXURY BENTO GRID NAVIGATION -->
+      <nav class="lg:col-span-7">
+        <div class="grid grid-cols-2 gap-2.5 sm:gap-3.5">
+          
+          <!-- TILE 01: ACCUEIL -->
+          <a href="../index.html" class="menu-bento-card group">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono text-[#C6A96B] font-bold tracking-widest">01 • MAISON</span>
+              <span class="menu-bento-indicator">↗</span>
+            </div>
+            <div class="mt-2 sm:mt-3">
+              <h4 class="menu-bento-title text-base sm:text-xl font-display font-black uppercase tracking-wider text-[#F5F1E8]" data-i18n="nav.home">Accueil</h4>
+              <p class="text-[10px] sm:text-[11px] font-mono text-[#AAA59B] mt-0.5 line-clamp-1">Maison & Philosophie Suisse</p>
+            </div>
+            <div class="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-[#AAA59B] group-hover:text-[#C6A96B] transition-colors">
+              <span>Standard Palace</span>
+              <span class="text-[#C6A96B] opacity-0 group-hover:opacity-100 transition-opacity">●</span>
+            </div>
+          </a>
 
-        <a href="services.html" class="menu-nav-link active group">
-          <div class="flex items-baseline gap-3">
-            <span class="text-xs font-mono text-[#C6A96B]">02.</span>
-            <span class="menu-link-title text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#F5F1E8]">Prestations & Services</span>
-          </div>
-          <span class="menu-link-subtitle text-[11px] font-mono text-[#AAA59B] pl-7">Transferts GVA, Mises à Disposition & Navettes Ski</span>
-        </a>
+          <!-- TILE 02: SERVICES -->
+          <a href="services.html" class="menu-bento-card active group">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono text-[#C6A96B] font-bold tracking-widest">02 • SERVICES</span>
+              <span class="menu-bento-indicator">↗</span>
+            </div>
+            <div class="mt-2 sm:mt-3">
+              <h4 class="menu-bento-title text-base sm:text-xl font-display font-black uppercase tracking-wider text-[#F5F1E8]" data-i18n="nav.services">Prestations</h4>
+              <p class="text-[10px] sm:text-[11px] font-mono text-[#AAA59B] mt-0.5 line-clamp-1">Transferts GVA & Navettes</p>
+            </div>
+            <div class="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-[#AAA59B] group-hover:text-[#C6A96B] transition-colors">
+              <span>Aéroport & Événements</span>
+              <span class="text-[#C6A96B]">●</span>
+            </div>
+          </a>
 
-        <a href="flotte.html" class="menu-nav-link group">
-          <div class="flex items-baseline gap-3">
-            <span class="text-xs font-mono text-[#C6A96B]">03.</span>
-            <span class="menu-link-title text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#F5F1E8]">Flotte d'Exception</span>
-          </div>
-          <span class="menu-link-subtitle text-[11px] font-mono text-[#AAA59B] pl-7">Mercedes-Maybach, Classe S Limousine & Vans 4MATIC</span>
-        </a>
+          <!-- TILE 03: FLOTTE PRESTIGE -->
+          <a href="flotte.html" class="menu-bento-card group">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono text-[#C6A96B] font-bold tracking-widest">03 • FLOTTE</span>
+              <span class="menu-bento-indicator">↗</span>
+            </div>
+            <div class="mt-2 sm:mt-3">
+              <h4 class="menu-bento-title text-base sm:text-xl font-display font-black uppercase tracking-wider text-[#F5F1E8]" data-i18n="nav.fleet">Flotte Prestige</h4>
+              <p class="text-[10px] sm:text-[11px] font-mono text-[#AAA59B] mt-0.5 line-clamp-1">Maybach, S-Class & Vans</p>
+            </div>
+            <div class="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-[#AAA59B] group-hover:text-[#C6A96B] transition-colors">
+              <span>Transmission 4MATIC</span>
+              <span class="text-[#C6A96B] opacity-0 group-hover:opacity-100 transition-opacity">●</span>
+            </div>
+          </a>
 
-        <a href="destinations.html" class="menu-nav-link group">
-          <div class="flex items-baseline gap-3">
-            <span class="text-xs font-mono text-[#C6A96B]">04.</span>
-            <span class="menu-link-title text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#F5F1E8]">Destinations & Alpes</span>
-          </div>
-          <span class="menu-link-subtitle text-[11px] font-mono text-[#AAA59B] pl-7">Courchevel, Chamonix, Verbier, Megève & Rive Gauche</span>
-        </a>
+          <!-- TILE 04: DESTINATIONS -->
+          <a href="destinations.html" class="menu-bento-card group">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono text-[#C6A96B] font-bold tracking-widest">04 • ALPES</span>
+              <span class="menu-bento-indicator">↗</span>
+            </div>
+            <div class="mt-2 sm:mt-3">
+              <h4 class="menu-bento-title text-base sm:text-xl font-display font-black uppercase tracking-wider text-[#F5F1E8]" data-i18n="nav.destinations">Destinations</h4>
+              <p class="text-[10px] sm:text-[11px] font-mono text-[#AAA59B] mt-0.5 line-clamp-1">Courchevel, Verbier, Megève</p>
+            </div>
+            <div class="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-[#AAA59B] group-hover:text-[#C6A96B] transition-colors">
+              <span>Liaisons Stations Ski</span>
+              <span class="text-[#C6A96B] opacity-0 group-hover:opacity-100 transition-opacity">●</span>
+            </div>
+          </a>
 
-        <a href="reservation.html" class="menu-nav-link group">
-          <div class="flex items-baseline gap-3">
-            <span class="text-xs font-mono text-[#C6A96B]">05.</span>
-            <span class="menu-link-title text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#F5F1E8]">Réservation Privée</span>
-          </div>
-          <span class="menu-link-subtitle text-[11px] font-mono text-[#AAA59B] pl-7">Tarifs Fixes Garantis, Suivi de Vol GVA & Devis Immédiat</span>
-        </a>
+          <!-- TILE 05: RÉSERVATION PRIVÉE (FULL WIDTH HERO TILE) -->
+          <a href="reservation.html" class="col-span-2 menu-bento-card menu-bento-card-highlight group">
+            <div class="flex items-center justify-between gap-3">
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] font-mono text-[#C6A96B] font-bold tracking-widest">05 • RÉSERVATION PRIVÉE</span>
+                  <span class="text-[9px] font-mono uppercase bg-[#C6A96B]/15 text-[#C6A96B] px-1.5 py-0.5 rounded border border-[#C6A96B]/30 hidden xs:inline">Tarifs Fixes</span>
+                </div>
+                <h4 class="menu-bento-title text-base sm:text-xl font-display font-black uppercase tracking-wider text-[#F5F1E8]" data-i18n="nav.booking">Calculateur & Devis Immédiat</h4>
+                <p class="text-[10px] sm:text-[11px] font-mono text-[#AAA59B] leading-tight">Confirmation instantanée • Suivi de vol GVA inclus</p>
+              </div>
+              <div class="btn-gold-luxe px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-wider shrink-0 flex items-center gap-1.5 shadow-lg group-hover:scale-105 transition-transform">
+                <span class="hidden sm:inline">Réserver</span>
+                <span>↗</span>
+              </div>
+            </div>
+          </a>
 
+        </div>
       </nav>
 
       <!-- COLUMN 2: CONCIERGERIE & HIGH-CONVERSION CARD -->
