@@ -687,112 +687,67 @@
       </div>
     </div>
 
-    <!-- 9.2 MAIN BODY: TWO-COLUMN LUXURY SUITE (NAVIGATION + CONCIERGE DESK) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 my-auto py-8">
+    <!-- 9.2 MAIN BODY: TWO-COLUMN LUXURY SUITE (NAVIGATION ÉPURÉE PALACE + CONCIERGERIE) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 my-auto py-6 sm:py-10">
       
-      <!-- COLUMN 1: DISCREET LUXURY NAVIGATION (1 ITEM PAR LIGNE • MOBILE FIRST) -->
-      <nav class="lg:col-span-7 flex flex-col space-y-2 sm:space-y-2.5">
-        
-        <!-- 01. ACCUEIL -->
-        <a href="index.html" onclick="toggleMenu()" class="menu-luxe-row active group">
-          <div class="flex items-center gap-3 sm:gap-4 min-w-0">
-            <span class="menu-row-num">01</span>
-            <span class="menu-row-divider"></span>
-            <div class="flex flex-col min-w-0">
-              <span class="menu-row-title" data-i18n="nav.home">Accueil</span>
-              <span class="menu-row-sub truncate">Maison & Philosophie de Service Suisse</span>
-            </div>
-          </div>
-          <div class="menu-row-arrow">
-            <span>→</span>
-          </div>
-        </a>
+      <!-- COLUMN 1: PURE PALACE TYPOGRAPHIC NAVIGATION -->
+      <nav class="lg:col-span-7 flex flex-col justify-center">
+        <div class="menu-palace-nav">
+          
+          <!-- ACCUEIL -->
+          <a href="index.html" onclick="toggleMenu()" class="menu-palace-link active group">
+            <span class="menu-palace-text" data-i18n="nav.home">Accueil</span>
+            <span class="menu-palace-dot"></span>
+            <span class="menu-palace-arrow">→</span>
+          </a>
 
-        <!-- 02. SERVICES & PRESTATIONS -->
-        <a href="pages/services.html" class="menu-luxe-row group">
-          <div class="flex items-center gap-3 sm:gap-4 min-w-0">
-            <span class="menu-row-num">02</span>
-            <span class="menu-row-divider"></span>
-            <div class="flex flex-col min-w-0">
-              <span class="menu-row-title" data-i18n="nav.services">Services & Prestations</span>
-              <span class="menu-row-sub truncate">Transferts GVA, Mises à Disposition & Navettes Ski</span>
-            </div>
-          </div>
-          <div class="menu-row-arrow">
-            <span>→</span>
-          </div>
-        </a>
+          <!-- PRESTATIONS & SERVICES -->
+          <a href="pages/services.html" class="menu-palace-link group">
+            <span class="menu-palace-text" data-i18n="nav.services">Prestations</span>
+            <span class="menu-palace-dot"></span>
+            <span class="menu-palace-arrow">→</span>
+          </a>
 
-        <!-- 03. FLOTTE D'EXCEPTION -->
-        <a href="pages/flotte.html" class="menu-luxe-row group">
-          <div class="flex items-center gap-3 sm:gap-4 min-w-0">
-            <span class="menu-row-num">03</span>
-            <span class="menu-row-divider"></span>
-            <div class="flex flex-col min-w-0">
-              <span class="menu-row-title" data-i18n="nav.fleet">Flotte d'Exception</span>
-              <span class="menu-row-sub truncate">Mercedes-Maybach, Classe S Limousine & Vans 4MATIC</span>
-            </div>
-          </div>
-          <div class="menu-row-arrow">
-            <span>→</span>
-          </div>
-        </a>
+          <!-- FLOTTE D'EXCEPTION -->
+          <a href="pages/flotte.html" class="menu-palace-link group">
+            <span class="menu-palace-text" data-i18n="nav.fleet">Flotte d'Exception</span>
+            <span class="menu-palace-dot"></span>
+            <span class="menu-palace-arrow">→</span>
+          </a>
 
-        <!-- 04. DESTINATIONS & ALPES -->
-        <a href="pages/destinations.html" class="menu-luxe-row group">
-          <div class="flex items-center gap-3 sm:gap-4 min-w-0">
-            <span class="menu-row-num">04</span>
-            <span class="menu-row-divider"></span>
-            <div class="flex flex-col min-w-0">
-              <span class="menu-row-title" data-i18n="nav.destinations">Destinations & Alpes</span>
-              <span class="menu-row-sub truncate">Courchevel, Chamonix, Verbier, Megève & Rive Gauche</span>
-            </div>
-          </div>
-          <div class="menu-row-arrow">
-            <span>→</span>
-          </div>
-        </a>
+          <!-- DESTINATIONS & ALPES -->
+          <a href="pages/destinations.html" class="menu-palace-link group">
+            <span class="menu-palace-text" data-i18n="nav.destinations">Destinations</span>
+            <span class="menu-palace-dot"></span>
+            <span class="menu-palace-arrow">→</span>
+          </a>
 
-        <!-- 05. RÉSERVATION PRIVÉE -->
-        <a href="pages/reservation.html" class="menu-luxe-row highlight group">
-          <div class="flex items-center gap-3 sm:gap-4 min-w-0">
-            <span class="menu-row-num">05</span>
-            <span class="menu-row-divider"></span>
-            <div class="flex flex-col min-w-0">
-              <div class="flex items-center gap-2">
-                <span class="menu-row-title" data-i18n="nav.booking">Réservation Privée</span>
-                <span class="text-[9px] font-mono uppercase bg-[#C6A96B]/15 text-[#C6A96B] px-1.5 py-0.5 rounded border border-[#C6A96B]/30 hidden xs:inline">Tarifs Fixes</span>
-              </div>
-              <span class="menu-row-sub truncate">Suivi de Vol GVA, Confirmation & Devis Immédiat</span>
-            </div>
-          </div>
-          <div class="menu-row-arrow">
-            <span>↗</span>
-          </div>
-        </a>
+          <!-- RÉSERVATION PRIVÉE -->
+          <a href="pages/reservation.html" class="menu-palace-link group">
+            <span class="menu-palace-text text-[#C6A96B]" data-i18n="nav.booking">Réservation Privée</span>
+            <span class="menu-palace-dot"></span>
+            <span class="menu-palace-arrow">↗</span>
+          </a>
 
+        </div>
       </nav>
 
-      <!-- COLUMN 2: CONCIERGERIE & HIGH-CONVERSION CARD -->
+      <!-- COLUMN 2: CONCIERGERIE DISCRÈTE & CONVERSION VIP -->
       <div class="lg:col-span-5 flex flex-col justify-center">
-        <div class="luxe-card p-6 sm:p-7 space-y-5 border-[#C6A96B]/30 bg-gradient-to-br from-[#161618] via-[#121214] to-[#0B0B0C] relative overflow-hidden shadow-2xl">
+        <div class="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#161619]/90 to-[#0B0B0D]/95 border border-white/[0.07] backdrop-blur-xl space-y-4 shadow-2xl">
           
-          <div class="flex items-center justify-between border-b border-[#292929] pb-3">
-            <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-[#C6A96B]">CONCIERGERIE VIP 24/7</span>
+          <div class="flex items-center justify-between border-b border-white/[0.06] pb-3">
+            <span class="text-[10px] font-mono tracking-widest text-[#C6A96B] uppercase font-bold">Conciergerie Privée 24/7</span>
             <span class="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               EN DIRECT
             </span>
           </div>
 
-          <div class="space-y-1">
-            <h3 class="font-serif-luxe text-xl text-[#F5F1E8]">Besoin d'un chauffeur immédiat ?</h3>
-            <p class="text-xs text-[#AAA59B] leading-relaxed">
-              Prise en charge à l'Aéroport de Genève (GVA), accueil nominatif ou mise à disposition d'affaires sur-mesure.
-            </p>
-          </div>
+          <p class="font-serif-luxe text-lg sm:text-xl text-[#F5F1E8] font-light leading-snug">
+            Un chauffeur privé à votre disposition immédiate à Genève ?
+          </p>
 
-          <!-- Direct Conversion Action Buttons -->
           <div class="space-y-2.5 pt-1">
             <button type="button" onclick="openWhatsAppBooking(); toggleMenu();" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl">
               <span>Réserver sur WhatsApp ↗</span>
@@ -802,17 +757,10 @@
             </a>
           </div>
 
-          <!-- B2B Link & Key Trust Badges -->
-          <div class="border-t border-[#292929] pt-4 space-y-2.5">
-            <button type="button" onclick="openCorporateMail(); toggleMenu();" class="w-full text-left text-[11px] font-mono text-[#AAA59B] hover:text-[#C6A96B] transition-colors flex items-center justify-between">
-              <span>Transport Corporate & Facturation</span>
-              <span>→</span>
-            </button>
-            <div class="flex items-center justify-between text-[10px] font-mono text-[#777] pt-1">
-              <span>★ 5.0/5 Google</span>
-              <span>• Tarifs Fixes Garantis</span>
-              <span>• Flotte &lt; 2 Ans</span>
-            </div>
+          <div class="border-t border-white/[0.05] pt-3 flex items-center justify-between text-[10px] font-mono text-[#777]">
+            <span>★ 5.0 Google</span>
+            <span>• Tarifs Fixes</span>
+            <span>• Discrétion Absolue</span>
           </div>
 
         </div>
