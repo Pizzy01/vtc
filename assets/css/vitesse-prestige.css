@@ -40,6 +40,7 @@
   letter-spacing: -0.05em;
 }
 
+:root {
   --vp-bg-main: #0B0B0C;
   --vp-bg-section: #151515;
   --vp-accent-gold: #C6A96B;
