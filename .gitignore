@@ -2,3 +2,5 @@
 */.DS_Store
 Service /
 *.tmp
+/*.png
+/*.html.tmp
