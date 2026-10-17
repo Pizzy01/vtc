@@ -4,3 +4,4 @@ Service /
 *.tmp
 /*.png
 /*.html.tmp
+*.zip
