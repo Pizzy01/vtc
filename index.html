@@ -165,7 +165,7 @@
     <div id="tilt-card" class="relative z-10 tilt-card-3d space-y-3.5 sm:space-y-6 max-w-3xl mx-auto sm:my-auto pt-1 sm:pt-0">
       
       <!-- Eyebrow Badge -->
-      <div class="animate-fadeup-1 inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-[#C6A96B]/50 bg-[#0B0B0C]/90 backdrop-blur-md text-[8.5px] sm:text-[10px] font-bold uppercase tracking-[0.16em] sm:tracking-[0.25em] text-[#C6A96B] shadow-2xl whitespace-nowrap">
+      <div class="animate-fadeup-1 inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-[#C6A96B]/50 bg-[#0B0B0C]/90 backdrop-blur-md text-[8.5px] sm:text-[10px] font-bold uppercase tracking-[0.16em] sm:tracking-[0.25em] text-[#C6A96B] shadow-2xl whitespace-normal sm:whitespace-nowrap max-w-full text-center">
         <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B] animate-pulse"></span>
         <span data-i18n="hero.eyebrow">MAISON DE CHAUFFEURS PRIVÉS · GENÈVE & ALPES SUISSES</span>
       </div>
@@ -184,7 +184,7 @@
       <!-- Action Buttons (Standardized Dual Funnel: WhatsApp VIP & Corporate Email) -->
       <div class="animate-fadeup-4 pt-3 sm:pt-6 flex flex-row flex-wrap items-center justify-center gap-2.5 sm:gap-4">
         <button onclick="openWhatsAppBooking()" class="btn-gold-luxe font-display font-extrabold text-[11px] sm:text-xs uppercase tracking-[0.12em] px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-all shadow-xl text-center cursor-pointer inline-flex items-center justify-center gap-2">
-          <span>Réserver sur WhatsApp ↗</span>
+          <span data-i18n="common.book_chauffeur">Réserver votre chauffeur ↗</span>
         </button>
         <button onclick="openCorporateMail()" class="glass-luxe-pill text-[11px] sm:text-xs font-semibold px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-[#F5F1E8] inline-flex items-center justify-center gap-2 hover:border-[#C6A96B] transition-all bg-[#0B0B0C]/80 backdrop-blur-md border border-white/10">
           <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B]"></span>
@@ -697,10 +697,10 @@
   <aside id="mobile-sticky-bar" class="fixed bottom-0 left-0 right-0 z-40 sm:hidden bg-[#0B0B0C]/94 backdrop-blur-2xl border-t border-[#C6A96B]/30 px-4 py-3 shadow-[0_-10px_35px_rgba(0,0,0,0.85)]">
     <div class="flex items-center justify-between gap-3 max-w-md mx-auto">
       <button type="button" onclick="openWhatsAppBooking()" class="flex-1 py-3 px-3 rounded-full bg-gradient-to-r from-[#C6A96B] to-[#D8BE84] text-black font-semibold text-xs tracking-wider uppercase shadow-lg active:scale-95 transition-all flex items-center justify-center font-sans">
-        <span>Réserver votre chauffeur ↗</span>
+        <span data-i18n="common.book_chauffeur">Réserver votre chauffeur ↗</span>
       </button>
       <a href="tel:+41766207850" class="flex-1 py-3 px-3 rounded-full glass-luxe-pill text-[#F5F1E8] border border-white/[0.15] font-semibold text-xs tracking-wider uppercase active:scale-95 transition-all flex items-center justify-center font-sans">
-        <span>Appel Direct</span>
+        <span data-i18n="common.direct_call">Appel Direct</span>
       </a>
     </div>
   </aside>

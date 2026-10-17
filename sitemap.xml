@@ -41,7 +41,15 @@
   <!-- RÉSERVATION PRIVÉE -->
   <url>
     <loc>https://lux-taxi.com/pages/reservation.html</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- CONTACT & DEVIS CONFIDENTIEL -->
+  <url>
+    <loc>https://lux-taxi.com/pages/contact.html</loc>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

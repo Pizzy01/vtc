@@ -57,7 +57,7 @@
     }
   </style>
 </head>
-<body class="bg-[#0B0B0C] text-[#F5F1E8] font-sans selection:bg-[#C6A96B] selection:text-black">
+<body class="bg-[#0B0B0C] text-[#F5F1E8] font-sans selection:bg-[#C6A96B] selection:text-black overflow-x-hidden w-full max-w-full">
 
   <!-- 1. HEADER (STICKY WITH SEAL LOGO, BRAND NAME & BURGER MENU) -->
   <header class="sticky top-0 z-40 px-4 sm:px-12 py-3.5 flex items-center justify-between backdrop-blur-md bg-[#0B0B0C]/90 border-b border-hairline shadow-2xl">
@@ -72,35 +72,59 @@
       </div>
     </a>
 
-    <div class="flex items-center gap-3">
-      <a href="../index.html" class="text-xs font-mono uppercase text-[#AAA59B] hover:text-[#C6A96B] transition-colors hidden md:inline">← Accueil</a>
-      <a href="https://wa.me/41766207850" target="_blank" class="glass-luxe-pill px-4 py-2 rounded-full text-xs font-semibold text-[#F5F1E8] hover:border-[#C6A96B]">Conciergerie WhatsApp</a>
-      <button id="burger-btn" onclick="toggleMenu()" class="w-10 h-10 rounded-full glass-luxe-pill flex flex-col items-center justify-center gap-1 transition-all focus:outline-none shadow-xl border border-[#C6A96B]/30 hover:border-[#C6A96B]" aria-label="Menu">
-        <span class="w-4 h-[1.5px] bg-[#C6A96B] transition-all transform origin-center" id="b-line1"></span>
-        <span class="w-4 h-[1.5px] bg-[#C6A96B] transition-all" id="b-line2"></span>
+    <div class="flex items-center gap-2.5 sm:gap-4">
+      <div class="lang-dropdown">
+        <button class="glass-luxe-pill px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-mono text-[#F5F1E8] flex items-center gap-1 hover:border-[#C6A96B] transition-all focus:outline-none">
+          <span id="active-lang-code" class="font-bold text-[#C6A96B]">FR</span>
+          <span class="text-[9px] text-[#AAA59B]">▾</span>
+        </button>
+        <div class="lang-dropdown-menu">
+          <div onclick="VitesseI18n.setLanguage('fr')" class="lang-item">
+            <span>Français</span> <span class="font-mono text-[10px] text-[#C6A96B]">FR</span>
+          </div>
+          <div onclick="VitesseI18n.setLanguage('en')" class="lang-item">
+            <span>English</span> <span class="font-mono text-[10px] text-[#AAA59B]">EN</span>
+          </div>
+          <div onclick="VitesseI18n.setLanguage('de')" class="lang-item">
+            <span>Deutsch</span> <span class="font-mono text-[10px] text-[#AAA59B]">DE</span>
+          </div>
+          <div onclick="VitesseI18n.setLanguage('it')" class="lang-item">
+            <span>Italiano</span> <span class="font-mono text-[10px] text-[#AAA59B]">IT</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://wa.me/41766207850" target="_blank" class="hidden sm:inline-flex items-center gap-2.5 text-xs font-semibold px-5 py-2.5 rounded-full glass-luxe-pill text-[#F5F1E8] transition-all hover:border-[#C6A96B]">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="tracking-wider">Conciergerie WhatsApp</span>
+      </a>
+
+      <button id="burger-btn" onclick="toggleMenu()" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full glass-luxe-pill flex flex-col items-center justify-center gap-1 sm:gap-1.5 transition-all focus:outline-none shadow-xl border border-[#C6A96B]/30 hover:border-[#C6A96B]" aria-label="Menu">
+        <span class="w-4 sm:w-5 h-[1.5px] bg-[#C6A96B] transition-all transform origin-center" id="b-line1"></span>
+        <span class="w-4 sm:w-5 h-[1.5px] bg-[#C6A96B] transition-all" id="b-line2"></span>
       </button>
     </div>
   </header>
 
   <!-- 2. TITLE HERO (QUIET LUXURY & AIR) -->
   <section class="py-20 px-4 text-center max-w-4xl mx-auto space-y-5">
-    <div class="inline-block px-4 py-1.5 rounded-full border border-white/[0.08] bg-[#121110] text-[10px] font-mono font-bold text-[#C6A96B] uppercase tracking-[0.25em]">
+    <div data-i18n="flotte_page.eyebrow" class="inline-block px-4 py-1.5 rounded-full border border-white/[0.08] bg-[#121110] text-[10px] font-mono font-bold text-[#C6A96B] uppercase tracking-[0.25em]">
       GALERIE AUTOMOBILE DE MAÎTRE
     </div>
-    <h1 class="font-display font-light text-4xl sm:text-6xl text-[#F5F1E8] tracking-wide uppercase">
+    <h1 data-i18n="flotte_page.title" class="font-display font-light text-4xl sm:text-6xl text-[#F5F1E8] tracking-wide uppercase">
       Notre Flotte d'Exception
     </h1>
-    <p class="font-serif-luxe italic text-base sm:text-lg text-[#AAA59B] leading-relaxed max-w-2xl mx-auto">
+    <p data-i18n="flotte_page.desc" class="font-serif-luxe italic text-base sm:text-lg text-[#AAA59B] leading-relaxed max-w-2xl mx-auto">
       Chaque berline est préparée dans le plus pur esprit des salons feutrés suisses : insonorisation absolue, sellerie de haute manufacture et discrétion diplomatique.
     </p>
 
     <!-- Whispered Reassurance Banner (Zero Emojis) -->
     <div class="pt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] font-mono text-[#AAA59B] tracking-wider uppercase">
-      <span>Suivi Aérien GVA Nominatif</span>
+      <span data-i18n="flotte_page.t1">Suivi Aérien GVA Nominatif</span>
       <span class="text-[#C6A96B]">·</span>
-      <span>Accueil Protocolaire sur Piste</span>
+      <span data-i18n="flotte_page.t2">Accueil Protocolaire sur Piste</span>
       <span class="text-[#C6A96B]">·</span>
-      <span>Tarifs Fixes Garantis</span>
+      <span data-i18n="flotte_page.t3">Tarifs Fixes Garantis</span>
     </div>
   </section>
 
@@ -112,37 +136,37 @@
       <div>
         <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-white/[0.08]">
           <img src="../assets/images/flotte_maybach.jpg" alt="Mercedes-Maybach Classe S First Class" class="w-full h-full object-cover fleet-card-img"/>
-          <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0B0B0C]/90 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase tracking-widest border border-[#C6A96B]/30">
+          <span data-i18n="flotte_page.maybach_badge" class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0B0B0C]/90 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase tracking-widest border border-[#C6A96B]/30">
             GRAND LUXE SUITE
           </span>
-          <span class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/90 backdrop-blur-md font-mono text-[10px] text-[#C6A96B] font-bold tracking-wider border border-[#C6A96B]/30">
+          <span data-i18n="flotte_page.maybach_price" class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/90 backdrop-blur-md font-mono text-[10px] text-[#C6A96B] font-bold tracking-wider border border-[#C6A96B]/30">
             Sur Devis VIP
           </span>
         </div>
 
         <div class="p-7 sm:p-8 space-y-4">
           <div class="flex items-center justify-between text-[10px] font-mono text-[#AAA59B] uppercase tracking-widest border-b border-white/[0.06] pb-3">
-            <span>2 Hôtes d'Honneur</span>
-            <span class="text-[#C6A96B]">Console Flûtes & Champagne</span>
+            <span data-i18n="flotte_page.maybach_cap">2 Hôtes d'Honneur</span>
+            <span data-i18n="flotte_page.maybach_feat" class="text-[#C6A96B]">Console Flûtes & Champagne</span>
           </div>
 
-          <h2 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
+          <h2 data-i18n="flotte_page.maybach_title" class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
             Mercedes-Maybach Classe S First Class
           </h2>
           
-          <p class="text-xs text-[#AAA59B] leading-relaxed font-light">
+          <p data-i18n="flotte_page.maybach_desc" class="text-xs text-[#AAA59B] leading-relaxed font-light">
             L'apogée automobile mondiale. Fauteuils First Class Recline avec repose-jambes électrique, console réfrigérée et chauffeur certifié protocole VIP.
           </p>
 
           <div class="pt-2 text-[10px] font-mono text-[#AAA59B] flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B]"></span>
-            <span>Accompagnement d'État · Délégations · Mariages de Prestige</span>
+            <span data-i18n="flotte_page.maybach_usage">Accompagnement d'État · Délégations · Mariages de Prestige</span>
           </div>
         </div>
       </div>
 
       <div class="p-7 sm:p-8 pt-0">
-        <a href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20solliciter%20la%20Mercedes-Maybach%20Classe%20S%20First%20Class." target="_blank" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-xl transition-all">
+        <a data-i18n="flotte_page.maybach_cta" href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20solliciter%20la%20Mercedes-Maybach%20Classe%20S%20First%20Class." target="_blank" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-xl transition-all">
           Solliciter la Maybach ↗
         </a>
       </div>
@@ -153,37 +177,37 @@
       <div>
         <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-white/[0.08]">
           <img src="../assets/images/flotte_classe_s.jpg" alt="Mercedes Classe S Limousine" class="w-full h-full object-cover fleet-card-img"/>
-          <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0B0B0C]/90 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase tracking-widest border border-white/[0.1]">
+          <span data-i18n="flotte_page.sclass_badge" class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0B0B0C]/90 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase tracking-widest border border-white/[0.1]">
             EXECUTIVE FIRST CLASS
           </span>
-          <span class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/90 backdrop-blur-md font-mono text-[10px] text-[#C6A96B] font-bold tracking-wider border border-white/[0.1]">
+          <span data-i18n="flotte_page.sclass_price" class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/90 backdrop-blur-md font-mono text-[10px] text-[#C6A96B] font-bold tracking-wider border border-white/[0.1]">
             Dès CHF 150
           </span>
         </div>
 
         <div class="p-7 sm:p-8 space-y-4">
           <div class="flex items-center justify-between text-[10px] font-mono text-[#AAA59B] uppercase tracking-widest border-b border-white/[0.06] pb-3">
-            <span>2 Hôtes VIP</span>
-            <span>3 Malles</span>
+            <span data-i18n="flotte_page.sclass_cap">2 Hôtes VIP</span>
+            <span data-i18n="flotte_page.sclass_luggage">3 Malles</span>
           </div>
 
-          <h2 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
+          <h2 data-i18n="flotte_page.sclass_title" class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
             Mercedes-Benz Classe S Limousine
           </h2>
           
-          <p class="text-xs text-[#AAA59B] leading-relaxed font-light">
+          <p data-i18n="flotte_page.sclass_desc" class="text-xs text-[#AAA59B] leading-relaxed font-light">
             L'icône du voyage d'affaires. Insonorisation feutrée supérieure, fauteuils arrière massants chauffants, suspension AirMatic et discrétion diplomatique.
           </p>
 
           <div class="pt-2 text-[10px] font-mono text-[#AAA59B] flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B]"></span>
-            <span>Haute Finance · Banques Privées · Transferts GVA</span>
+            <span data-i18n="flotte_page.sclass_usage">Haute Finance · Banques Privées · Transferts GVA</span>
           </div>
         </div>
       </div>
 
       <div class="p-7 sm:p-8 pt-0">
-        <a href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20r%C3%A9server%20la%20Mercedes-Benz%20Classe%20S%20Limousine." target="_blank" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-xl transition-all">
+        <a data-i18n="flotte_page.sclass_cta" href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20r%C3%A9server%20la%20Mercedes-Benz%20Classe%20S%20Limousine." target="_blank" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-xl transition-all">
           Réserver la Classe S ↗
         </a>
       </div>
@@ -194,37 +218,37 @@
       <div>
         <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-white/[0.08]">
           <img src="../assets/images/flotte_classe_v.jpg" alt="Mercedes Classe V VIP Extra-Long" class="w-full h-full object-cover fleet-card-img"/>
-          <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0B0B0C]/90 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase tracking-widest border border-white/[0.1]">
+          <span data-i18n="flotte_page.vclass_badge" class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0B0B0C]/90 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase tracking-widest border border-white/[0.1]">
             PREMIUM BUSINESS VAN
           </span>
-          <span class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/90 backdrop-blur-md font-mono text-[10px] text-[#C6A96B] font-bold tracking-wider border border-white/[0.1]">
+          <span data-i18n="flotte_page.vclass_price" class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/90 backdrop-blur-md font-mono text-[10px] text-[#C6A96B] font-bold tracking-wider border border-white/[0.1]">
             Dès CHF 120
           </span>
         </div>
 
         <div class="p-7 sm:p-8 space-y-4">
           <div class="flex items-center justify-between text-[10px] font-mono text-[#AAA59B] uppercase tracking-widest border-b border-white/[0.06] pb-3">
-            <span>7 Hôtes VIP</span>
-            <span>7 Grandes Malles & Skis</span>
+            <span data-i18n="flotte_page.vclass_cap">7 Hôtes VIP</span>
+            <span data-i18n="flotte_page.vclass_luggage">7 Grandes Malles & Skis</span>
           </div>
 
-          <h2 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
+          <h2 data-i18n="flotte_page.vclass_title" class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
             Mercedes-Benz Classe V VIP Extra-Long
           </h2>
           
-          <p class="text-xs text-[#AAA59B] leading-relaxed font-light">
+          <p data-i18n="flotte_page.vclass_desc" class="text-xs text-[#AAA59B] leading-relaxed font-light">
             Le salon privé mobile par excellence. 7 sièges individuels en cuir nappa, transmission 4MATIC intégrale montagne et espace géant pour vos effets.
           </p>
 
           <div class="pt-2 text-[10px] font-mono text-[#AAA59B] flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B]"></span>
-            <span>Liaisons Alpines · Gstaad · Verbier · Courchevel</span>
+            <span data-i18n="flotte_page.vclass_usage">Liaisons Alpines · Gstaad · Verbier · Courchevel</span>
           </div>
         </div>
       </div>
 
       <div class="p-7 sm:p-8 pt-0">
-        <a href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20r%C3%A9server%20la%20Mercedes-Benz%20Classe%20V%20VIP." target="_blank" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-xl transition-all">
+        <a data-i18n="flotte_page.vclass_cta" href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20r%C3%A9server%20la%20Mercedes-Benz%20Classe%20V%20VIP." target="_blank" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-xl transition-all">
           Réserver la Classe V ↗
         </a>
       </div>
@@ -235,37 +259,37 @@
       <div>
         <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-white/[0.08]">
           <img src="../assets/images/flotte_classe_e.jpg" alt="Mercedes Classe E Berline" class="w-full h-full object-cover fleet-card-img"/>
-          <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0B0B0C]/90 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase tracking-widest border border-white/[0.1]">
+          <span data-i18n="flotte_page.eclass_badge" class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0B0B0C]/90 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase tracking-widest border border-white/[0.1]">
             BUSINESS EXECUTIVE
           </span>
-          <span class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/90 backdrop-blur-md font-mono text-[10px] text-[#C6A96B] font-bold tracking-wider border border-white/[0.1]">
+          <span data-i18n="flotte_page.eclass_price" class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/90 backdrop-blur-md font-mono text-[10px] text-[#C6A96B] font-bold tracking-wider border border-white/[0.1]">
             Dès CHF 100
           </span>
         </div>
 
         <div class="p-7 sm:p-8 space-y-4">
           <div class="flex items-center justify-between text-[10px] font-mono text-[#AAA59B] uppercase tracking-widest border-b border-white/[0.06] pb-3">
-            <span>3 Hôtes VIP</span>
-            <span>3 Malles</span>
+            <span data-i18n="flotte_page.eclass_cap">3 Hôtes VIP</span>
+            <span data-i18n="flotte_page.eclass_luggage">3 Malles</span>
           </div>
 
-          <h2 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
+          <h2 data-i18n="flotte_page.eclass_title" class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
             Mercedes-Benz Classe E Berline
           </h2>
           
-          <p class="text-xs text-[#AAA59B] leading-relaxed font-light">
+          <p data-i18n="flotte_page.eclass_desc" class="text-xs text-[#AAA59B] leading-relaxed font-light">
             L'élégance sobre et feutrée. L'exigence corporate pour vos transferts lémaniques, déjeuners d'affaires et liaisons confidentielles.
           </p>
 
           <div class="pt-2 text-[10px] font-mono text-[#AAA59B] flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B]"></span>
-            <span>Mise à Disposition Corporate · Rue du Rhône · Genève</span>
+            <span data-i18n="flotte_page.eclass_usage">Mise à Disposition Corporate · Rue du Rhône · Genève</span>
           </div>
         </div>
       </div>
 
       <div class="p-7 sm:p-8 pt-0">
-        <a href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20r%C3%A9server%20la%20Mercedes-Benz%20Classe%20E." target="_blank" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-xl transition-all">
+        <a data-i18n="flotte_page.eclass_cta" href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20r%C3%A9server%20la%20Mercedes-Benz%20Classe%20E." target="_blank" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-xl transition-all">
           Réserver la Classe E ↗
         </a>
       </div>
@@ -276,37 +300,37 @@
       <div>
         <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-white/[0.08]">
           <img src="../assets/images/flotte_standard.jpg" alt="Berline Hybride Exécutive Toyota Camry" class="w-full h-full object-cover fleet-card-img"/>
-          <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0B0B0C]/90 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase tracking-widest border border-white/[0.1]">
+          <span data-i18n="flotte_page.hybrid_badge" class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0B0B0C]/90 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase tracking-widest border border-white/[0.1]">
             BERLINE HYBRIDE EXÉCUTIVE
           </span>
-          <span class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/90 backdrop-blur-md font-mono text-[10px] text-[#C6A96B] font-bold tracking-wider border border-white/[0.1]">
+          <span data-i18n="flotte_page.hybrid_price" class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/90 backdrop-blur-md font-mono text-[10px] text-[#C6A96B] font-bold tracking-wider border border-white/[0.1]">
             Dès CHF 70
           </span>
         </div>
 
         <div class="p-7 sm:p-8 space-y-4">
           <div class="flex items-center justify-between text-[10px] font-mono text-[#AAA59B] uppercase tracking-widest border-b border-white/[0.06] pb-3">
-            <span>3 Hôtes</span>
-            <span>3 Malles</span>
+            <span data-i18n="flotte_page.hybrid_cap">3 Hôtes</span>
+            <span data-i18n="flotte_page.hybrid_luggage">3 Malles</span>
           </div>
 
-          <h2 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
+          <h2 data-i18n="flotte_page.hybrid_title" class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
             Berline Hybride Exécutive
           </h2>
           
-          <p class="text-xs text-[#AAA59B] leading-relaxed font-light">
+          <p data-i18n="flotte_page.hybrid_desc" class="text-xs text-[#AAA59B] leading-relaxed font-light">
             Le confort feutré et silencieux. Sérénité discrète et efficience hybride pour vos transferts urbains, navettes gares et aéroport de Genève.
           </p>
 
           <div class="pt-2 text-[10px] font-mono text-[#AAA59B] flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B]"></span>
-            <span>Navettes Cointrin (GVA) · Cornavin · Territoire Suisse</span>
+            <span data-i18n="flotte_page.hybrid_usage">Navettes Cointrin (GVA) · Cornavin · Territoire Suisse</span>
           </div>
         </div>
       </div>
 
       <div class="p-7 sm:p-8 pt-0">
-        <a href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20r%C3%A9server%20une%20Berline%20Hybride%20Ex%C3%A9cutive." target="_blank" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-xl transition-all">
+        <a data-i18n="flotte_page.hybrid_cta" href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20r%C3%A9server%20une%20Berline%20Hybride%20Ex%C3%A9cutive." target="_blank" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-xl transition-all">
           Réserver la Berline Hybride ↗
         </a>
       </div>
@@ -317,37 +341,37 @@
       <div>
         <div class="aspect-[16/10] bg-[#151515] overflow-hidden relative border-b border-white/[0.08]">
           <img src="../assets/images/service_corporate_gala.jpg" alt="Mercedes Sprinter VIP" class="w-full h-full object-cover fleet-card-img"/>
-          <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0B0B0C]/90 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase tracking-widest border border-white/[0.1]">
+          <span data-i18n="flotte_page.sprinter_badge" class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0B0B0C]/90 backdrop-blur-md text-[9px] font-mono text-[#C6A96B] font-bold uppercase tracking-widest border border-white/[0.1]">
             MINIBUS DÉLÉGATIONS
           </span>
-          <span class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/90 backdrop-blur-md font-mono text-[10px] text-[#C6A96B] font-bold tracking-wider border border-white/[0.1]">
+          <span data-i18n="flotte_page.sprinter_price" class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/90 backdrop-blur-md font-mono text-[10px] text-[#C6A96B] font-bold tracking-wider border border-white/[0.1]">
             Sur Demande
           </span>
         </div>
 
         <div class="p-7 sm:p-8 space-y-4">
           <div class="flex items-center justify-between text-[10px] font-mono text-[#AAA59B] uppercase tracking-widest border-b border-white/[0.06] pb-3">
-            <span>Jusqu'à 16 Hôtes</span>
-            <span>Grand Volume de Bagages</span>
+            <span data-i18n="flotte_page.sprinter_cap">Jusqu'à 16 Hôtes</span>
+            <span data-i18n="flotte_page.sprinter_luggage">Grand Volume de Bagages</span>
           </div>
 
-          <h2 class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
+          <h2 data-i18n="flotte_page.sprinter_title" class="font-serif-luxe text-2xl sm:text-3xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors leading-snug">
             Mercedes-Benz Sprinter VIP
           </h2>
           
-          <p class="text-xs text-[#AAA59B] leading-relaxed font-light">
+          <p data-i18n="flotte_page.sprinter_desc" class="text-xs text-[#AAA59B] leading-relaxed font-light">
             L'hospitalité de groupe sur-mesure. Configuration salon grand confort pour sommets diplomatiques de l'ONU, événements de prestige et cortèges coordonnés.
           </p>
 
           <div class="pt-2 text-[10px] font-mono text-[#AAA59B] flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B]"></span>
-            <span>Palexpo · Sommets Diplomatiques · Congrès & Galas</span>
+            <span data-i18n="flotte_page.sprinter_usage">Palexpo · Sommets Diplomatiques · Congrès & Galas</span>
           </div>
         </div>
       </div>
 
       <div class="p-7 sm:p-8 pt-0">
-        <a href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20solliciter%20un%20devis%20pour%20le%20Mercedes-Benz%20Sprinter%20VIP." target="_blank" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-xl transition-all">
+        <a data-i18n="flotte_page.sprinter_cta" href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20solliciter%20un%20devis%20pour%20le%20Mercedes-Benz%20Sprinter%20VIP." target="_blank" class="w-full btn-gold-luxe py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-xl transition-all">
           Demander un Devis Sprinter ↗
         </a>
       </div>
@@ -360,19 +384,19 @@
     <div class="border border-white/[0.08] rounded-3xl overflow-hidden grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08] bg-[#121110]">
       
       <a href="reservation.html" class="p-8 text-center space-y-3 hover:bg-[#18181b] transition-colors group block">
-        <span class="text-xs font-mono tracking-[0.25em] text-[#C6A96B] uppercase block">SERVICES & DÉTAILS</span>
-        <h3 class="font-serif-luxe text-xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors">
+        <span data-i18n="flotte_page.tile1_eyebrow" class="text-xs font-mono tracking-[0.25em] text-[#C6A96B] uppercase block">SERVICES & DÉTAILS</span>
+        <h3 data-i18n="flotte_page.tile1_title" class="font-serif-luxe text-xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors">
           Carnet de Conciergerie Privée
         </h3>
-        <p class="text-xs text-[#AAA59B]">Capacités d'accueil, cortèges & liaisons personnalisées</p>
+        <p data-i18n="flotte_page.tile1_desc" class="text-xs text-[#AAA59B]">Capacités d'accueil, cortèges & liaisons personnalisées</p>
       </a>
 
       <a href="https://wa.me/41766207850?text=Bonjour%20LT%20Maison%20de%20Chauffeurs,%20je%20souhaite%20une%20demande%20sur-mesure." target="_blank" class="p-8 text-center space-y-3 hover:bg-[#18181b] transition-colors group block">
-        <span class="text-xs font-mono tracking-[0.25em] text-[#C6A96B] uppercase block">SUR-MESURE / BESPOKE</span>
-        <h3 class="font-serif-luxe text-xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors">
+        <span data-i18n="flotte_page.tile2_eyebrow" class="text-xs font-mono tracking-[0.25em] text-[#C6A96B] uppercase block">SUR-MESURE / BESPOKE</span>
+        <h3 data-i18n="flotte_page.tile2_title" class="font-serif-luxe text-xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors">
           Concierge de Garde 24/7
         </h3>
-        <p class="text-xs text-[#AAA59B]">Assistance immédiate par messagerie sécurisée</p>
+        <p data-i18n="flotte_page.tile2_desc" class="text-xs text-[#AAA59B]">Assistance immédiate par messagerie sécurisée</p>
       </a>
 
     </div>

@@ -35,7 +35,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="../assets/css/design-system.css"/>
+  <link rel="stylesheet" href="../assets/css/vitesse-prestige.css"/>
   <script src="../assets/js/i18n.js" defer></script>
 </head>
 <body class="relative bg-[#0B0B0C] text-[#F5F1E8] selection:bg-[#C6A96B] selection:text-black overflow-x-hidden font-sans">
@@ -90,14 +90,14 @@
   <section class="relative z-20 px-4 sm:px-12 pt-8 sm:pt-14 pb-8 max-w-7xl mx-auto text-center">
     <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-[#C6A96B]/50 bg-[#0B0B0C]/90 backdrop-blur-md text-[8.5px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-[#C6A96B] shadow-2xl mb-4">
       <span class="w-1.5 h-1.5 rounded-full bg-[#C6A96B] animate-pulse"></span>
-      <span>CONCIERGERIE PRIVÉE & LIAISONS OFFICIELLES</span>
+      <span data-i18n="contact_page.eyebrow">CONCIERGERIE PRIVÉE & LIAISONS OFFICIELLES</span>
     </div>
 
     <h1 class="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-[#F5F1E8] tracking-tight leading-[1.15] max-w-3xl mx-auto">
       Contact & <span class="font-serif italic font-normal text-[#C6A96B]">Devis Confidentiel</span>
     </h1>
 
-    <p class="text-xs sm:text-base text-[#AAA59B] max-w-2xl mx-auto mt-4 font-light leading-relaxed">
+    <p data-i18n="contact_page.subtitle" class="text-xs sm:text-base text-[#AAA59B] max-w-2xl mx-auto mt-4 font-light leading-relaxed">
       Family Offices, représentations diplomatiques, entreprises ou voyageurs exigeants : soumettez votre demande sur-mesure. Notre dispatching vous répond sous 15 minutes avec une proposition forfaitaire claire.
     </p>
   </section>
@@ -114,10 +114,10 @@
 
         <div class="border-b border-[#292929] pb-5 mb-6">
           <div class="flex items-center justify-between">
-            <span class="text-[10px] font-mono tracking-widest text-[#C6A96B] uppercase font-bold">FORMULAIRE DE LIAISON PRIVÉE</span>
-            <span class="text-[10px] font-mono text-[#AAA59B]">Protocole Confidentiel</span>
+            <span data-i18n="contact_page.form_badge" class="text-[10px] font-mono tracking-widest text-[#C6A96B] uppercase font-bold">FORMULAIRE DE LIAISON PRIVÉE</span>
+            <span data-i18n="contact_page.form_protocol" class="text-[10px] font-mono text-[#AAA59B]">Protocole Confidentiel</span>
           </div>
-          <h2 class="font-serif text-2xl text-[#F5F1E8] mt-1">Détails de votre Mission</h2>
+          <h2 data-i18n="contact_page.form_title" class="font-serif text-2xl text-[#F5F1E8] mt-1">Détails de votre Mission</h2>
         </div>
 
         <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-5">
@@ -125,14 +125,14 @@
           <!-- Ligne 1 : Nom complet & Société -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label for="c-name" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
+              <label for="c-name" data-i18n="contact_page.label_name" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
                 Nom complet <span class="text-[#C6A96B]">*</span>
               </label>
               <input type="text" id="c-name" required placeholder="M. Jean de Dupont"
                      class="w-full px-4 py-3 rounded-xl bg-[#0B0B0C]/80 border border-[#292929] focus:border-[#C6A96B] focus:ring-1 focus:ring-[#C6A96B] text-sm text-[#F5F1E8] placeholder-[#555] transition-all outline-none font-sans"/>
             </div>
             <div>
-              <label for="c-company" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
+              <label for="c-company" data-i18n="contact_page.label_company" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
                 Société / Organisation <span class="text-[#555] font-light">(Optionnel)</span>
               </label>
               <input type="text" id="c-company" placeholder="Ex: Banque Privée / Ambassade"
@@ -143,14 +143,14 @@
           <!-- Ligne 2 : Email & Téléphone -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label for="c-email" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
+              <label for="c-email" data-i18n="contact_page.label_email" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
                 Adresse Email <span class="text-[#C6A96B]">*</span>
               </label>
               <input type="email" id="c-email" required placeholder="jean.dupont@domain.ch"
                      class="w-full px-4 py-3 rounded-xl bg-[#0B0B0C]/80 border border-[#292929] focus:border-[#C6A96B] focus:ring-1 focus:ring-[#C6A96B] text-sm text-[#F5F1E8] placeholder-[#555] transition-all outline-none font-sans"/>
             </div>
             <div>
-              <label for="c-phone" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
+              <label for="c-phone" data-i18n="contact_page.label_phone" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
                 Téléphone / WhatsApp <span class="text-[#C6A96B]">*</span>
               </label>
               <input type="tel" id="c-phone" required placeholder="+41 79 000 00 00"
@@ -161,7 +161,7 @@
           <!-- Ligne 3 : Type de Prestation & Véhicule -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label for="c-service" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
+              <label for="c-service" data-i18n="contact_page.label_service" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
                 Type de Prestation <span class="text-[#C6A96B]">*</span>
               </label>
               <select id="c-service" required class="w-full px-4 py-3 rounded-xl bg-[#0B0B0C]/80 border border-[#292929] focus:border-[#C6A96B] focus:ring-1 focus:ring-[#C6A96B] text-sm text-[#F5F1E8] transition-all outline-none font-sans">
@@ -174,7 +174,7 @@
               </select>
             </div>
             <div>
-              <label for="c-fleet" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
+              <label for="c-fleet" data-i18n="contact_page.label_fleet" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
                 Véhicule Souhaité
               </label>
               <select id="c-fleet" class="w-full px-4 py-3 rounded-xl bg-[#0B0B0C]/80 border border-[#292929] focus:border-[#C6A96B] focus:ring-1 focus:ring-[#C6A96B] text-sm text-[#F5F1E8] transition-all outline-none font-sans">
@@ -192,14 +192,14 @@
           <!-- Ligne 4 : Date & Heure souhaitées -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label for="c-date" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
+              <label for="c-date" data-i18n="contact_page.label_date" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
                 Date de prise en charge
               </label>
               <input type="date" id="c-date"
                      class="w-full px-4 py-3 rounded-xl bg-[#0B0B0C]/80 border border-[#292929] focus:border-[#C6A96B] focus:ring-1 focus:ring-[#C6A96B] text-sm text-[#F5F1E8] transition-all outline-none font-sans"/>
             </div>
             <div>
-              <label for="c-time" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
+              <label for="c-time" data-i18n="contact_page.label_time" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
                 Heure souhaitée
               </label>
               <input type="time" id="c-time"
@@ -210,14 +210,14 @@
           <!-- Ligne 5 : Prise en charge & Destination -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label for="c-pickup" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
+              <label for="c-pickup" data-i18n="contact_page.label_pickup" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
                 Lieu de Prise en Charge
               </label>
               <input type="text" id="c-pickup" placeholder="Ex: Aéroport GVA Terminal C3 ou Hôtel Beau-Rivage"
                      class="w-full px-4 py-3 rounded-xl bg-[#0B0B0C]/80 border border-[#292929] focus:border-[#C6A96B] focus:ring-1 focus:ring-[#C6A96B] text-sm text-[#F5F1E8] placeholder-[#555] transition-all outline-none font-sans"/>
             </div>
             <div>
-              <label for="c-dropoff" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
+              <label for="c-dropoff" data-i18n="contact_page.label_dropoff" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
                 Destination ou Itinéraire
               </label>
               <input type="text" id="c-dropoff" placeholder="Ex: Gstaad Palace, Courchevel ou Itinéraire libre"
@@ -227,7 +227,7 @@
 
           <!-- Ligne 6 : Message & Exigences spécifiques -->
           <div>
-            <label for="c-message" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
+            <label for="c-message" data-i18n="contact_page.label_message" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
               Précisions & Exigences Particulières
             </label>
             <textarea id="c-message" rows="4" placeholder="Nombre de passagers, volume de bagages, numéro de vol, exigences de confidentialité ou consignes de protocole..."
@@ -236,10 +236,13 @@
 
           <!-- Bouton de Soumission Noble -->
           <div class="pt-2">
+            <!-- Honeypot Anti-Spam (Hidden) -->
+            <input type="text" name="website_check" id="c-honeypot" class="hidden" style="display:none !important;" tabindex="-1" autocomplete="off" />
+
             <button type="submit" id="submit-btn" class="w-full btn-gold-luxe py-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-black flex items-center justify-center gap-2 shadow-2xl active:scale-[0.99] transition-all">
-              <span>Transmettre ma Demande Confidentielle →</span>
+              <span data-i18n="contact_page.btn_submit">Transmettre ma Demande Confidentielle →</span>
             </button>
-            <p class="text-center text-[10px] font-mono text-[#777] mt-2">
+            <p data-i18n="contact_page.secure_note" class="text-center text-[10px] font-mono text-[#777] mt-2">
               🔒 Transmission sécurisée sous secret professionnel • Zéro engagement
             </p>
           </div>
@@ -251,10 +254,10 @@
           <div class="w-10 h-10 mx-auto rounded-full bg-[#C6A96B]/20 border border-[#C6A96B] flex items-center justify-center text-[#C6A96B] text-lg font-bold">✓</div>
           <h3 class="font-serif text-xl text-[#F5F1E8]">Demande Transmise avec Succès</h3>
           <p class="text-xs text-[#AAA59B] max-w-md mx-auto leading-relaxed">
-            Votre demande a été acheminée à notre coordinateur de permanence. Un devis sur-mesure vous sera communiqué sous 15 minutes.
+            Votre demande a été acheminée directement à notre dispatching. Un devis officiel forfaitaire vous est communiqué sous 15 minutes.
           </p>
           <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="https://wa.me/41766207850" target="_blank" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#C6A96B] text-black font-semibold text-xs tracking-wider uppercase">
+            <a id="confirm-wa-btn" href="https://wa.me/41766207850" target="_blank" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#C6A96B] text-black font-semibold text-xs tracking-wider uppercase">
               Échanger en direct sur WhatsApp ↗
             </a>
             <button type="button" onclick="resetContactForm()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl glass-luxe-pill text-xs font-mono text-[#AAA59B] hover:text-white">
@@ -271,14 +274,14 @@
         <!-- CARTE 1: LIGNE DIRECTE & PERMANENCE 24/7 -->
         <div class="bg-gradient-to-br from-[#161619] to-[#0E0E10] border border-[#292929] rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl">
           <div class="flex items-center justify-between border-b border-[#292929] pb-4">
-            <span class="text-[10px] font-mono tracking-widest text-[#C6A96B] uppercase font-bold">PERMANENCE CONCIERGERIE</span>
+            <span data-i18n="contact_page.dispatch_badge" class="text-[10px] font-mono tracking-widest text-[#C6A96B] uppercase font-bold">PERMANENCE CONCIERGERIE</span>
             <span class="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              24/7 EN LIGNE
+              <span data-i18n="contact_page.dispatch_online">24/7 EN LIGNE</span>
             </span>
           </div>
 
-          <p class="text-xs text-[#AAA59B] leading-relaxed">
+          <p data-i18n="contact_page.dispatch_desc" class="text-xs text-[#AAA59B] leading-relaxed">
             Pour toute demande urgente, réservation de vol dernière minute ou coordination immédiate, nos coordinateurs sont joignables sans interruption.
           </p>
 
@@ -481,33 +484,64 @@
       overlay.classList.toggle('open', isMenuOpen);
     }
 
-    function handleContactSubmit(e) {
+    async function handleContactSubmit(e) {
       e.preventDefault();
       
-      const name = document.getElementById('c-name').value;
-      const company = document.getElementById('c-company').value;
-      const email = document.getElementById('c-email').value;
-      const phone = document.getElementById('c-phone').value;
-      const service = document.getElementById('c-service').value;
-      const fleet = document.getElementById('c-fleet').value;
-      const date = document.getElementById('c-date').value;
-      const time = document.getElementById('c-time').value;
-      const pickup = document.getElementById('c-pickup').value;
-      const dropoff = document.getElementById('c-dropoff').value;
-      const message = document.getElementById('c-message').value;
+      const submitBtn = document.getElementById('submit-btn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span>Transmission sécurisée en cours...</span>`;
 
-      // Prepare Subject & Body for mailto:
-      const subject = encodeURIComponent(`Demande de Devis Chauffeur Privé — ${name}${company ? ' (' + company + ')' : ''}`);
-      const bodyContent = `Bonjour LT Maison de Chauffeurs,\n\nVoici ma demande de devis confidentiel :\n\n- Client : ${name}\n- Société : ${company || 'Particulier VIP'}\n- Email : ${email}\n- Téléphone : ${phone}\n- Prestation : ${service}\n- Véhicule souhaité : ${fleet}\n- Date & Heure : ${date || 'À convenir'} à ${time || 'À convenir'}\n- Prise en charge : ${pickup || 'Non spécifié'}\n- Destination : ${dropoff || 'Non spécifié'}\n\nExigences particulières :\n${message || 'Aucune'}\n\nMerci de me faire parvenir votre meilleure proposition forfaitaire.`;
-      
-      const mailtoUrl = `mailto:info@lux-taxi.com?subject=${subject}&body=${encodeURIComponent(bodyContent)}`;
-      
-      // Open client email client
-      window.location.href = mailtoUrl;
+      const payload = {
+        name: document.getElementById('c-name').value,
+        company: document.getElementById('c-company').value,
+        email: document.getElementById('c-email').value,
+        phone: document.getElementById('c-phone').value,
+        service: document.getElementById('c-service').options[document.getElementById('c-service').selectedIndex].text,
+        fleet: document.getElementById('c-fleet').options[document.getElementById('c-fleet').selectedIndex].text,
+        date: document.getElementById('c-date').value,
+        time: document.getElementById('c-time').value,
+        pickup: document.getElementById('c-pickup').value,
+        dropoff: document.getElementById('c-dropoff').value,
+        message: document.getElementById('c-message').value,
+        website_check: document.getElementById('c-honeypot') ? document.getElementById('c-honeypot').value : ''
+      };
 
-      // Show confirmation card on screen
+      try {
+        const response = await fetch('../api/contact.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json().catch(() => null);
+
+        // If backend returned success: false with fallback flag (e.g. testing locally without PHP mail)
+        if (result && !result.success && result.fallback) {
+          const subject = encodeURIComponent(`Demande de Devis Chauffeur VIP — ${payload.name}`);
+          const body = encodeURIComponent(`Client : ${payload.name}\nEmail : ${payload.email}\nTéléphone : ${payload.phone}\nPrestation : ${payload.service}\nVéhicule : ${payload.fleet}\nDate : ${payload.date} ${payload.time}\nPrise en charge : ${payload.pickup}\nDestination : ${payload.dropoff}\nMessage : ${payload.message}`);
+          window.location.href = `mailto:info@lux-taxi.com?subject=${subject}&body=${body}`;
+        }
+      } catch (err) {
+        console.warn('API submission fallback:', err);
+      }
+
+      // Configure direct WhatsApp forward in confirmation banner
+      const waBtn = document.getElementById('confirm-wa-btn');
+      if (waBtn) {
+        const waMsg = `Bonjour LT Maison de Chauffeurs,\nJe viens de soumettre ma demande de devis sur le site :\n- Nom : ${payload.name}\n- Trajet : ${payload.pickup || 'GVA'} vers ${payload.dropoff || 'Genève'}\n- Véhicule : ${payload.fleet}`;
+        waBtn.href = `https://wa.me/41766207850?text=${encodeURIComponent(waMsg)}`;
+      }
+
+      // Display success confirmation card
       document.getElementById('contact-form').classList.add('hidden');
       document.getElementById('confirmation-banner').classList.remove('hidden');
+
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
     }
 
     function resetContactForm() {
@@ -515,6 +549,46 @@
       document.getElementById('contact-form').classList.remove('hidden');
       document.getElementById('confirmation-banner').classList.add('hidden');
     }
+
+    // URL Query parameters pre-selection (ex: contact.html?service=ski&destination=courchevel)
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const service = params.get('service');
+      const fleet = params.get('fleet');
+      const dest = params.get('destination');
+      const pickup = params.get('pickup');
+
+      if (service) {
+        const serviceSelect = document.getElementById('c-service');
+        if (serviceSelect) {
+          for (let opt of serviceSelect.options) {
+            if (opt.value === service || opt.text.toLowerCase().includes(service.toLowerCase())) {
+              serviceSelect.value = opt.value;
+              break;
+            }
+          }
+        }
+      }
+      if (fleet) {
+        const fleetSelect = document.getElementById('c-fleet');
+        if (fleetSelect) {
+          for (let opt of fleetSelect.options) {
+            if (opt.value === fleet || opt.text.toLowerCase().includes(fleet.toLowerCase())) {
+              fleetSelect.value = opt.value;
+              break;
+            }
+          }
+        }
+      }
+      if (dest) {
+        const dropInput = document.getElementById('c-dropoff');
+        if (dropInput) dropInput.value = dest;
+      }
+      if (pickup) {
+        const pickInput = document.getElementById('c-pickup');
+        if (pickInput) pickInput.value = pickup;
+      }
+    });
   </script>
 
 </body>
