@@ -98,7 +98,9 @@
     "vehicle": "Fahrzeugkategorie",
     "price_label": "Geschätzter Festpreis",
     "confirm_btn": "Chauffeur Verbindlich Buchen ↗",
-    "whatsapp_btn": "Direkt per WhatsApp Bestellen 24/7"
+    "whatsapp_btn": "Direkt per WhatsApp Bestellen 24/7",
+    "summary_label": "Zusammenfassung Ihrer Anfrage",
+    "summary_note": "Unser Team bestätigt Ihnen Festpreis und Verfügbarkeit, ohne versteckte Kosten."
   },
   "footer": {
     "address": "📍 Rte de l'Aéroport 21, 1215 Genf",
@@ -293,5 +295,11 @@
     "placeholder_flight": "z.B. LX 2801 / Privatflug",
     "btn_whatsapp": "Concierge Anfragen (WhatsApp) ↗",
     "btn_email": "Geschäftskunden-Anfrage (E-Mail) ↗"
+  },
+  "topnav": {
+    "services": "Leistungen",
+    "fleet": "Flotte",
+    "destinations": "Ziele",
+    "quote": "Angebot anfragen"
   }
 }

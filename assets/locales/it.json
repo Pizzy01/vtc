@@ -98,7 +98,9 @@
     "vehicle": "Categoria Veicolo",
     "price_label": "Tariffa Fissa Stimata",
     "confirm_btn": "Conferma & Prenota Autista ↗",
-    "whatsapp_btn": "Ordina via WhatsApp 24/7"
+    "whatsapp_btn": "Ordina via WhatsApp 24/7",
+    "summary_label": "Riepilogo della richiesta",
+    "summary_note": "Il nostro team vi conferma tariffa fissa e disponibilità, senza costi nascosti."
   },
   "footer": {
     "address": "📍 Rte de l'Aéroport 21, 1215 Ginevra",
@@ -293,5 +295,11 @@
     "placeholder_flight": "es. LX 2801 / Volo Privato",
     "btn_whatsapp": "Contattare Conciergerie (WhatsApp) ↗",
     "btn_email": "Richiesta Aziendale (Email) ↗"
+  },
+  "topnav": {
+    "services": "Servizi",
+    "fleet": "Flotta",
+    "destinations": "Destinazioni",
+    "quote": "Richiedi un preventivo"
   }
 }

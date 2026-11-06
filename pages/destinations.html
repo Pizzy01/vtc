@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 
-  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../assets/css/vitesse-prestige.css"/>
   <style>
     .bento-card-target {
@@ -58,6 +58,14 @@
     </a>
 
     <div class="flex items-center gap-2.5 sm:gap-4">
+      <!-- Menu principal (ordinateur) -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold tracking-wider text-[#F5F1E8] mr-2" aria-label="Menu principal">
+        <a href="services.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="topnav.services">Services</a>
+        <a href="flotte.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="topnav.fleet">Flotte</a>
+        <a href="destinations.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="topnav.destinations">Destinations</a>
+        <a href="contact.html" class="px-4 py-2 rounded-full border border-[#C6A96B]/60 text-[#C6A96B] hover:bg-[#C6A96B] hover:text-[#0B0B0C] transition-colors" data-i18n="topnav.quote">Demander un devis</a>
+      </nav>
+
       <div class="lang-dropdown">
         <button class="glass-luxe-pill px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-mono text-[#F5F1E8] flex items-center gap-1 hover:border-[#C6A96B] transition-all focus:outline-none">
           <span id="active-lang-code" class="font-bold text-[#C6A96B]">FR</span>
@@ -163,7 +171,7 @@
           <a id="custom-dest-wa" href="https://wa.me/41766207850" target="_blank" class="btn-gold-luxe py-3 px-6 rounded-xl text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 shadow-lg">
             <span data-i18n="dest_page.btn_quote_wa">Demander le devis direct sur WhatsApp ↗</span>
           </a>
-          <a id="custom-dest-book" href="reservation.html" class="glass-luxe-pill py-3 px-6 rounded-xl text-xs font-semibold text-[#F5F1E8] text-center hover:border-[#C6A96B] transition-colors">
+          <a id="custom-dest-book" href="contact.html" class="glass-luxe-pill py-3 px-6 rounded-xl text-xs font-semibold text-[#F5F1E8] text-center hover:border-[#C6A96B] transition-colors">
             <span data-i18n="dest_page.btn_reserve_form">Carnet de Réservation Privée ↗</span>
           </a>
         </div>
@@ -197,7 +205,7 @@
               Liaison première classe vers les Palaces et chalets d'exception des 3 Vallées en Mercedes 4MATIC.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=courchevel" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=courchevel" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20solliciter%20un%20transfert%20vers%20Courchevel." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -224,7 +232,7 @@
               Desserte raffinée vers le cœur du village, les établissements 5 étoiles et tables étoilées.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=megeve" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=megeve" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20solliciter%20un%20transfert%20vers%20Meg%C3%A8ve." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -251,7 +259,7 @@
               Accès direct et sécurisé au pied du Mont-Blanc. Chauffeurs rodés aux routes alpines d'hiver.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=chamonix" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=chamonix" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20solliciter%20un%20transfert%20vers%20Chamonix." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -278,7 +286,7 @@
               Liaison VIP au cœur des 4 Vallées suisses. Prise en charge intégrale des bagages et équipements ski.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=verbier" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=verbier" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20solliciter%20un%20transfert%20vers%20Verbier." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -305,7 +313,7 @@
               Le sanctuaire de la discrétion suisse. Transferts exclusifs vers le Gstaad Palace et The Alpina.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=gva-gstaad" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=gva-gstaad" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20solliciter%20un%20transfert%20vers%20Gstaad." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -332,7 +340,7 @@
               Liaison limousine jusqu'au terminal privé de Täsch, avec transition fluide vers Zermatt.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=zermatt" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=zermatt" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20solliciter%20un%20transfert%20vers%20Zermatt." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -359,7 +367,7 @@
               Transfert feutré vers les Palaces du lac, banques privées et représentations diplomatiques.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=geneve" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=geneve" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20solliciter%20un%20chauffeur%20pour%20Gen%C3%A8ve%20Centre." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -386,7 +394,7 @@
               Chauffeur privé dédié pour vos essayages, achats horlogers et déjeuners privés en ville.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=centre-geneve" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=centre-geneve" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20un%20chauffeur%20pour%20la%20Rue%20du%20Rh%C3%B4ne." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -413,7 +421,7 @@
               Desserte officielle et régie de transport pour Watches & Wonders, sommets et congrès.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=palexpo" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=palexpo" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20un%20transport%20vers%20Palexpo." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -440,7 +448,7 @@
               Liaisons confidentielles pour résidences et propriétés de prestige de la Rive Gauche.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=rive-gauche" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=rive-gauche" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20un%20chauffeur%20pour%20Cologny/Rive%20Gauche." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -467,7 +475,7 @@
               Liaison directe vers le Beau-Rivage Palace, Montreux Jazz Festival et sièges internationaux.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=gva-lausanne" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=gva-lausanne" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20un%20transfert%20vers%20Lausanne/Montreux." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -494,7 +502,7 @@
               Connexions interurbaines fluides entre banques zurichoises, The Chedi Andermatt et l'Engadine.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=gva-zurich" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=gva-zurich" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20un%20transfert%20interurbain%20vers%20Zurich/St-Moritz." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -521,7 +529,7 @@
               Liaisons longue distance sans escale en limousine First Class à travers l'Europe continentale.
             </p>
             <div class="pt-2 flex items-center gap-3">
-              <a href="reservation.html?destination=autre" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
+              <a href="contact.html?destination=autre" class="flex-1 btn-gold-luxe py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider text-center" data-i18n="common.reserve_now">
                 Réserver ↗
               </a>
               <a href="https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20une%20liaison%20europ%C3%A9enne%20longue%20distance." target="_blank" class="px-3 py-2.5 rounded-xl glass-luxe-pill text-[10px] font-mono text-[#C6A96B] hover:border-[#C6A96B]" data-i18n="common.whatsapp_btn">
@@ -654,7 +662,7 @@
             <a href="tel:+41766207850" class="w-full glass-luxe-pill py-3 rounded-xl text-xs font-semibold text-[#F5F1E8] hover:border-[#C6A96B] flex items-center justify-center gap-2 transition-colors">
               <span>+41 76 620 78 50 (Ligne Directe)</span>
             </a>
-            <a href="reservation.html" class="block text-center text-[11px] font-mono text-[#AAA59B] hover:text-[#C6A96B] transition-colors py-1">
+            <a href="contact.html" class="block text-center text-[11px] font-mono text-[#AAA59B] hover:text-[#C6A96B] transition-colors py-1">
               <span>Formulaire de réservation en ligne →</span>
             </a>
           </div>
@@ -758,7 +766,7 @@
           customWa.href = `https://wa.me/41766207850?text=Bonjour,%20je%20souhaite%20solliciter%20un%20itin%C3%A9raire%20sur-mesure%20pour%20la%20destination%20suivante%20:%20${encoded}.`;
         }
         if (customBook) {
-          customBook.href = `reservation.html?destination=${encoded}`;
+          customBook.href = `contact.html?destination=${encoded}`;
         }
       } else {
         if (customBanner) customBanner.classList.add('hidden');

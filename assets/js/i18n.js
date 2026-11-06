@@ -118,11 +118,10 @@ function openWhatsAppBooking(service = '') {
   window.open(`https://wa.me/41766207850?text=${encodeURIComponent(message)}`, '_blank');
 }
 
-// Global Helper: Pre-filled Corporate Email Funnel
+// Global Helper: demandes entreprises -> formulaire unique (envoyé à info@lux-taxi.com)
 function openCorporateMail() {
-  const subject = encodeURIComponent("Demande de transfert corporate – Lux-Taxi");
-  const body = encodeURIComponent(`Bonjour,\n\nJe souhaite obtenir une proposition pour un transport professionnel.\n\nEntreprise : \nNom du contact : \nTéléphone : \nDate(s) et horaire(s) : \nLieu de prise en charge : \nDestination : \nNombre de personnes : \nType de service : transfert aéroport / événement / mise à disposition / autre\nBesoin spécifique (facturation mensuelle, protocole VIP, accueil salon) : \n\nMerci de me transmettre votre proposition.`);
-  window.location.href = `mailto:info@lux-taxi.com?subject=${subject}&body=${body}`;
+  const base = window.location.pathname.includes('/pages/') ? '' : 'pages/';
+  window.location.href = `${base}contact.html?service=corporate`;
 }
 
 // Auto-initialize when DOM is ready

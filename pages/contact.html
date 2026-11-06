@@ -53,6 +53,14 @@
     </a>
 
     <div class="flex items-center gap-2.5 sm:gap-4">
+      <!-- Menu principal (ordinateur) -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold tracking-wider text-[#F5F1E8] mr-2" aria-label="Menu principal">
+        <a href="services.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="topnav.services">Services</a>
+        <a href="flotte.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="topnav.fleet">Flotte</a>
+        <a href="destinations.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="topnav.destinations">Destinations</a>
+        <a href="contact.html" class="px-4 py-2 rounded-full border border-[#C6A96B]/60 text-[#C6A96B] hover:bg-[#C6A96B] hover:text-[#0B0B0C] transition-colors" data-i18n="topnav.quote">Demander un devis</a>
+      </nav>
+
       <div class="lang-dropdown">
         <button class="glass-luxe-pill px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-mono text-[#F5F1E8] flex items-center gap-1 hover:border-[#C6A96B] transition-all focus:outline-none">
           <span id="active-lang-code" class="font-bold text-[#C6A96B]">FR</span>
@@ -128,7 +136,7 @@
               <label for="c-name" data-i18n="contact_page.label_name" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
                 Nom complet <span class="text-[#C6A96B]">*</span>
               </label>
-              <input type="text" id="c-name" required placeholder="M. Jean de Dupont"
+              <input type="text" id="c-name" required placeholder="Prénom Nom"
                      class="w-full px-4 py-3 rounded-xl bg-[#0B0B0C]/80 border border-[#292929] focus:border-[#C6A96B] focus:ring-1 focus:ring-[#C6A96B] text-sm text-[#F5F1E8] placeholder-[#555] transition-all outline-none font-sans"/>
             </div>
             <div>
@@ -146,7 +154,7 @@
               <label for="c-email" data-i18n="contact_page.label_email" class="block text-[11px] font-mono uppercase tracking-wider text-[#AAA59B] mb-1.5">
                 Adresse Email <span class="text-[#C6A96B]">*</span>
               </label>
-              <input type="email" id="c-email" required placeholder="jean.dupont@domain.ch"
+              <input type="email" id="c-email" required placeholder="nom@exemple.ch"
                      class="w-full px-4 py-3 rounded-xl bg-[#0B0B0C]/80 border border-[#292929] focus:border-[#C6A96B] focus:ring-1 focus:ring-[#C6A96B] text-sm text-[#F5F1E8] placeholder-[#555] transition-all outline-none font-sans"/>
             </div>
             <div>
@@ -452,7 +460,7 @@
             <a href="tel:+41766207850" class="w-full glass-luxe-pill py-3 rounded-xl text-xs font-semibold text-[#F5F1E8] hover:border-[#C6A96B] flex items-center justify-center gap-2 transition-colors">
               <span>+41 76 620 78 50 (Ligne Directe)</span>
             </a>
-            <a href="reservation.html" class="block text-center text-[11px] font-mono text-[#AAA59B] hover:text-[#C6A96B] transition-colors py-1">
+            <a href="contact.html" class="block text-center text-[11px] font-mono text-[#AAA59B] hover:text-[#C6A96B] transition-colors py-1">
               <span>Formulaire de réservation en ligne →</span>
             </a>
           </div>
@@ -555,23 +563,34 @@
       const fleet = params.get('fleet');
       const dest = params.get('destination');
       const pickup = params.get('pickup');
+      const vehicule = params.get('vehicule');
+
+      // Alias des anciens liens (services, flotte, destinations, ancienne page Réservation)
+      const serviceAlias = { 'aeroport-gva': 'aeroport', 'chauffeur-vip': 'disposition', 'mise-dispo': 'disposition',
+        'navette-ski': 'ski', 'evenementiel': 'corporate', 'corporate': 'corporate' };
+      const destAlias = { 'geneve': 'Genève Centre & Hôtels', 'chamonix': 'Chamonix-Mont-Blanc', 'courchevel': 'Courchevel (1850 / 1650)',
+        'verbier': 'Verbier (4 Vallées)', 'megeve': 'Megève', 'zermatt': 'Zermatt', 'centre-geneve': 'Rue du Rhône & Centre-ville',
+        'palexpo': 'Palexpo Genève', 'rive-gauche': 'Cologny, Vandœuvres & Rive Gauche', 'cornavin': 'Gare Genève-Cornavin',
+        'gva-lausanne': 'Lausanne', 'gva-gstaad': 'Gstaad', 'gva-zurich': 'Zurich', 'autre': '' };
 
       if (service) {
+        const svcKey = serviceAlias[service] || service;
         const serviceSelect = document.getElementById('c-service');
         if (serviceSelect) {
           for (let opt of serviceSelect.options) {
-            if (opt.value === service || opt.text.toLowerCase().includes(service.toLowerCase())) {
+            if (opt.value === svcKey || opt.text.toLowerCase().includes(svcKey.toLowerCase())) {
               serviceSelect.value = opt.value;
               break;
             }
           }
         }
       }
-      if (fleet) {
+      if (fleet || vehicule) {
         const fleetSelect = document.getElementById('c-fleet');
         if (fleetSelect) {
           for (let opt of fleetSelect.options) {
-            if (opt.value === fleet || opt.text.toLowerCase().includes(fleet.toLowerCase())) {
+            const f = (fleet || vehicule).toLowerCase();
+            if (opt.value === f || opt.text.toLowerCase().includes(f)) {
               fleetSelect.value = opt.value;
               break;
             }
@@ -580,7 +599,7 @@
       }
       if (dest) {
         const dropInput = document.getElementById('c-dropoff');
-        if (dropInput) dropInput.value = dest;
+        if (dropInput) dropInput.value = (dest in destAlias) ? destAlias[dest] : dest;
       }
       if (pickup) {
         const pickInput = document.getElementById('c-pickup');

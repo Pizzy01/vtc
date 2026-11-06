@@ -98,7 +98,9 @@
     "vehicle": "Vehicle Category",
     "price_label": "Estimated Fixed Rate",
     "confirm_btn": "Confirm & Book Chauffeur ↗",
-    "whatsapp_btn": "Order via WhatsApp 24/7"
+    "whatsapp_btn": "Order via WhatsApp 24/7",
+    "summary_label": "Your request summary",
+    "summary_note": "Our team will confirm the fixed price and availability, with no hidden fees."
   },
   "footer": {
     "address": "📍 Rte de l'Aéroport 21, 1215 Geneva",
@@ -293,5 +295,11 @@
     "placeholder_flight": "e.g. LX 2801 / Private Flight",
     "btn_whatsapp": "Contact Concierge (WhatsApp) ↗",
     "btn_email": "Corporate Request (Email) ↗"
+  },
+  "topnav": {
+    "services": "Services",
+    "fleet": "Fleet",
+    "destinations": "Destinations",
+    "quote": "Get a quote"
   }
 }

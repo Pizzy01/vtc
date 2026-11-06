@@ -11,6 +11,9 @@
     # Redirection automatique HTTP vers HTTPS
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Ancienne page Réservation fusionnée dans le formulaire unique (paramètres conservés)
+    RewriteRule ^pages/reservation\.html$ /pages/contact.html [L,R=301,QSA]
 </IfModule>
 
 # 2. EN-TÊTES DE SÉCURITÉ PALACE
@@ -103,5 +106,5 @@ AddDefaultCharset UTF-8
     Deny from all
 </FilesMatch>
 
-# 8. PAGES D'ERREUR PERSONNALISÉES (REDIRECTION DISCRÈTE ACCUEIL SI 404)
-ErrorDocument 404 /index.html
+# 8. PAGE D'ERREUR 404 (vrai code 404 pour Google)
+ErrorDocument 404 /404.html

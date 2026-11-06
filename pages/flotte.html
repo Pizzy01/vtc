@@ -46,7 +46,7 @@
   }
   </script>
 
-  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../assets/css/vitesse-prestige.css"/>
   <style>
     .fleet-card-img {
@@ -73,6 +73,14 @@
     </a>
 
     <div class="flex items-center gap-2.5 sm:gap-4">
+      <!-- Menu principal (ordinateur) -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold tracking-wider text-[#F5F1E8] mr-2" aria-label="Menu principal">
+        <a href="services.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="topnav.services">Services</a>
+        <a href="flotte.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="topnav.fleet">Flotte</a>
+        <a href="destinations.html" class="hover:text-[#C6A96B] transition-colors" data-i18n="topnav.destinations">Destinations</a>
+        <a href="contact.html" class="px-4 py-2 rounded-full border border-[#C6A96B]/60 text-[#C6A96B] hover:bg-[#C6A96B] hover:text-[#0B0B0C] transition-colors" data-i18n="topnav.quote">Demander un devis</a>
+      </nav>
+
       <div class="lang-dropdown">
         <button class="glass-luxe-pill px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-mono text-[#F5F1E8] flex items-center gap-1 hover:border-[#C6A96B] transition-all focus:outline-none">
           <span id="active-lang-code" class="font-bold text-[#C6A96B]">FR</span>
@@ -383,7 +391,7 @@
   <section class="max-w-7xl mx-auto mb-20 px-4 sm:px-12">
     <div class="border border-white/[0.08] rounded-3xl overflow-hidden grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08] bg-[#121110]">
       
-      <a href="reservation.html" class="p-8 text-center space-y-3 hover:bg-[#18181b] transition-colors group block">
+      <a href="contact.html" class="p-8 text-center space-y-3 hover:bg-[#18181b] transition-colors group block">
         <span data-i18n="flotte_page.tile1_eyebrow" class="text-xs font-mono tracking-[0.25em] text-[#C6A96B] uppercase block">SERVICES & DÉTAILS</span>
         <h3 data-i18n="flotte_page.tile1_title" class="font-serif-luxe text-xl text-[#F5F1E8] group-hover:text-[#C6A96B] transition-colors">
           Carnet de Conciergerie Privée
@@ -496,7 +504,7 @@
             <a href="tel:+41766207850" class="w-full glass-luxe-pill py-3 rounded-xl text-xs font-semibold text-[#F5F1E8] hover:border-[#C6A96B] flex items-center justify-center gap-2 transition-colors">
               <span>Appel Direct (+41 76 620 78 50)</span>
             </a>
-            <a href="reservation.html" class="block text-center text-[11px] font-mono text-[#AAA59B] hover:text-[#C6A96B] transition-colors py-1">
+            <a href="contact.html" class="block text-center text-[11px] font-mono text-[#AAA59B] hover:text-[#C6A96B] transition-colors py-1">
               <span>Formulaire de réservation en ligne →</span>
             </a>
           </div>

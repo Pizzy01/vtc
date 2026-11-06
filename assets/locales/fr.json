@@ -81,7 +81,7 @@
   },
   "booking": {
     "title": "MOTEUR DE RÉSERVATION PRIVÉ",
-    "subtitle": "Tarif fixe garanti sans aucuns frais cachés.",
+    "subtitle": "Tarif fixe garanti sans frais cachés.",
     "step1_title": "1. Prestation",
     "step2_title": "2. Trajet",
     "step3_title": "3. Confirmation",
@@ -98,7 +98,9 @@
     "vehicle": "Catégorie Véhicule",
     "price_label": "Tarif Fixe Estimé",
     "confirm_btn": "Valider & Réserver mon Chauffeur ↗",
-    "whatsapp_btn": "Commander via WhatsApp 24/7"
+    "whatsapp_btn": "Commander via WhatsApp 24/7",
+    "summary_label": "Récapitulatif de votre demande",
+    "summary_note": "Notre équipe vous confirme le tarif fixe et la disponibilité, sans frais cachés."
   },
   "footer": {
     "address": "📍 Rte de l'Aéroport 21, 1215 Genève",
@@ -293,5 +295,11 @@
     "placeholder_flight": "Ex: LX 2801 / Vol Privé",
     "btn_whatsapp": "Solliciter la Conciergerie (WhatsApp) ↗",
     "btn_email": "Demande Entreprise (Email) ↗"
+  },
+  "topnav": {
+    "services": "Services",
+    "fleet": "Flotte",
+    "destinations": "Destinations",
+    "quote": "Demander un devis"
   }
 }
