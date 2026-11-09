@@ -28,7 +28,7 @@ EXCLUS=(--exclude .git --exclude tools/ --exclude '*.md' --exclude redirects.csv
 
 if [ "$ESSAI" = "--essai" ]; then
   echo "ESSAI : fichiers qui seraient modifiés ou supprimés"
-  rsync -a --delete --dry-run --itemize-changes "${EXCLUS[@]}" "$TRAVAIL"/ "$SITE"/
+  rsync -a --checksum --delete --dry-run --itemize-changes "${EXCLUS[@]}" "$TRAVAIL"/ "$SITE"/
   exit 0
 fi
 
@@ -36,7 +36,7 @@ mkdir -p "$HOME/sauvegardes"
 tar czf "$HOME/sauvegardes/lux-taxi.com-$DATE.tar.gz" -C "$HOME/sites" lux-taxi.com
 echo "Sauvegarde : ~/sauvegardes/lux-taxi.com-$DATE.tar.gz"
 
-rsync -a --delete "${EXCLUS[@]}" "$TRAVAIL"/ "$SITE"/
+rsync -a --checksum --delete "${EXCLUS[@]}" "$TRAVAIL"/ "$SITE"/
 echo "En ligne. Contrôle :"
 for u in / /pages/contact.html /fr/ /service/airport-transfer-geneva/ /sitemap.xml; do
   curl -s -o /dev/null -w "%{http_code} %{redirect_url}  <- $u\n" "https://www.lux-taxi.com$u"
