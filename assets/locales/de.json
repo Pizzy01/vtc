@@ -10,15 +10,15 @@
     "destinations": "Destinationen & Alpen",
     "about": "Über uns",
     "booking": "Reservierung",
-    "contact": "Kontakt & Diskretes Angebot",
+    "contact": "Kontakt & Angebot",
     "whatsapp": "WhatsApp VIP 24/7",
     "book": "Buchen"
   },
   "hero": {
-    "eyebrow": "HAUS FÜR PRIVATCHAUFFEURE · GENF & SCHWEIZER ALPEN",
-    "title_part1": "Die Exzellenz des Privatchauffeurs",
-    "title_part2": "in Genf",
-    "description": "Maßgeschneiderte Transfers ab Flughafen Genf (GVA), VIP-Stundenservice und erstklassige Alpenverbindungen. Ruhiges Fahrverhalten, strikte Pünktlichkeit und absolute Diskretion.",
+    "eyebrow": "PRIVATCHAUFFEURE IN GENF · SEIT 2010",
+    "title_part1": "Ihr Privatchauffeur",
+    "title_part2": "in Genf, seit 2010",
+    "description": "Flughafen Genf, Geschäftstermine, Schulweg der Kinder oder Chalet in den Bergen: Ein professioneller Chauffeur erwartet Sie, zum vorab vereinbarten Preis.",
     "cta_primary": "Auf WhatsApp buchen ↗"
   },
   "pillars": {
@@ -65,8 +65,8 @@
     "title": "Das LT Bordeinrichtung",
     "subtitle": "Jedes Detail zählt für Ihre entspannte Reise.",
     "exp1": "Kostenloses Évian Mineralwasser & Erfrischungen",
-    "exp2": "Highspeed 5G WLAN & Ladestationen für alle Smartphones",
-    "exp3": "Internationale Presse und Schweizer Magazin-Auswahl",
+    "exp2": "WLAN und Ladekabel für alle Telefone an Bord",
+    "exp3": "Flugverfolgung und 60 Minuten kostenlose Wartezeit am Flughafen",
     "exp4": "VIP Kindersitze auf Anfrage kostenlos verfügbar"
   },
   "reassurance": {
@@ -75,9 +75,9 @@
     "r1_title": "100% Festpreisgarantie",
     "r1_desc": "Keine versteckten Kosten, keine Stauaufschläge.",
     "r2_title": "Kostenlose Stornierung",
-    "r2_desc": "Kostenfrei stornierbar oder änderbar bis 24 Stunden vor Abfahrt.",
+    "r2_desc": "Planänderung? Passen Sie Ihre Fahrt einfach an; die Stornobedingungen stehen in Ihrem Angebot.",
     "r3_title": "Sichere Zahlung & Rechnung",
-    "r3_desc": "Zahlung online, im Fahrzeug oder per Firmenüberweisung."
+    "r3_desc": "Zahlung an Bord oder per Überweisung, mit detaillierter Rechnung für Unternehmen."
   },
   "booking": {
     "title": "PRIVATES BUCHUNGSSYSTEM",
@@ -110,7 +110,7 @@
     "copyright": "© 2026 LUX-TAXI Genf. Alle Rechte vorbehalten."
   },
   "common": {
-    "book_chauffeur": "Chauffeur buchen ↗",
+    "book_chauffeur": "Über WhatsApp buchen ↗",
     "direct_call": "Direktanruf",
     "concierge_title": "Benötigen Sie sofort einen Chauffeur in Genf?",
     "concierge_badge": "24/7 Privater Concierge",
@@ -164,7 +164,7 @@
     "p4_b3": "Zentralisierte Firmenabrechnung mit detaillierter Kostenaufstellung",
     "btn_reserve": "Diesen Service Buchen ↗",
     "btn_wa_service": "WhatsApp Direkt ↗",
-    "btn_corp_service": "Firmenanfrage (E-Mail) ↗"
+    "btn_corp_service": "Angebot anfordern ↗"
   },
   "dest_page": {
     "eyebrow": "PRIVATE LIAISONS & LUXUSDESTINATIONEN",
@@ -191,7 +191,7 @@
     "eyebrow": "PRIVATER CONCIERGE & OFFIZIELLE FAHRTEN",
     "title1": "Kontakt &",
     "title2": "Vertrauliches Angebot",
-    "subtitle": "Family Offices, diplomatische Vertretungen, Unternehmen oder anspruchsvolle Privatreisende: Unser Team antwortet innerhalb von 15 Minuten.",
+    "subtitle": "Privatkunden, Familien, Unternehmen oder Delegationen: Beschreiben Sie Ihre Fahrt. Wir antworten schnell mit einem Festpreis, vor der Fahrt bestätigt.",
     "form_badge": "FORMULAR FÜR INDIVIDUELLE ANFRAGEN",
     "form_protocol": "Vertrauliches Protokoll",
     "form_title": "Details Ihres Fahrtenauftrags",

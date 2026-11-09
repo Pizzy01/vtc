@@ -10,15 +10,15 @@
     "destinations": "Destinations & Alps",
     "about": "About & Standards",
     "booking": "Private Booking",
-    "contact": "Contact & Bespoke Quote",
+    "contact": "Contact & quote",
     "whatsapp": "WhatsApp VIP 24/7",
     "book": "Book Now"
   },
   "hero": {
-    "eyebrow": "MAISON OF PRIVATE CHAUFFEURS · GENEVA & SWISS ALPS",
-    "title_part1": "The Excellence of Private Chauffeur Service",
-    "title_part2": "in Geneva",
-    "description": "Tailored transfers from Geneva Airport (GVA), executive hourly hire, and first-class Alpine journeys. Smooth driving, strict punctuality, and absolute discretion.",
+    "eyebrow": "PRIVATE CHAUFFEURS IN GENEVA · SINCE 2010",
+    "title_part1": "Your private chauffeur",
+    "title_part2": "in Geneva, since 2010",
+    "description": "Geneva Airport, business meetings, school runs or your chalet in the Alps: a professional chauffeur waits for you, at a price agreed in advance.",
     "cta_primary": "Book on WhatsApp ↗"
   },
   "pillars": {
@@ -65,8 +65,8 @@
     "title": "The LT On-Board Experience",
     "subtitle": "Every detail matters to ensure a relaxing and productive journey.",
     "exp1": "Complimentary Évian mineral water bottles & chilled refreshments",
-    "exp2": "High-speed 5G Wi-Fi & multi-device charging station",
-    "exp3": "International press, Swiss newspapers, and luxury lifestyle magazines",
+    "exp2": "Wi-Fi and chargers for all phones on board",
+    "exp3": "Flight tracking and 60 minutes of free waiting time at the airport",
     "exp4": "VIP child seats & boosters installed upon request"
   },
   "reassurance": {
@@ -75,9 +75,9 @@
     "r1_title": "100% Fixed Guaranteed Rates",
     "r1_desc": "Upfront prices guaranteed upon booking. No traffic charges, no hidden fees.",
     "r2_title": "Free Cancellation & Flexibility",
-    "r2_desc": "Complimentary modification or cancellation up to 24h prior to pickup.",
+    "r2_desc": "Change of plans? Simply modify your ride; cancellation terms are stated with your quote.",
     "r3_title": "Secure Payment & Invoicing",
-    "r3_desc": "Pay online, on-board, or via corporate bank transfer with itemised VAT invoice."
+    "r3_desc": "Pay on board or by bank transfer, with detailed invoices for companies."
   },
   "booking": {
     "title": "PRIVATE BOOKING ENGINE",
@@ -110,7 +110,7 @@
     "copyright": "© 2026 LUX-TAXI Geneva. All rights reserved."
   },
   "common": {
-    "book_chauffeur": "Book your chauffeur ↗",
+    "book_chauffeur": "Book on WhatsApp ↗",
     "direct_call": "Direct Call",
     "concierge_title": "Need a private chauffeur in Geneva right away?",
     "concierge_badge": "24/7 Private Concierge",
@@ -164,7 +164,7 @@
     "p4_b3": "Centralized corporate billing with detailed itinerary reporting",
     "btn_reserve": "Book this Service ↗",
     "btn_wa_service": "Direct WhatsApp ↗",
-    "btn_corp_service": "Corporate Inquiry (Email) ↗"
+    "btn_corp_service": "Request a quote ↗"
   },
   "dest_page": {
     "eyebrow": "PRIVATE TRANSFERS & LUXURY HUBS",
@@ -191,7 +191,7 @@
     "eyebrow": "PRIVATE CONCIERGE & DIPLOMATIC TRANSFERS",
     "title1": "Contact &",
     "title2": "Confidential Quote",
-    "subtitle": "Family Offices, diplomatic missions, corporations, and discerning private travelers: submit your bespoke request. Our dispatch team responds within 15 minutes.",
+    "subtitle": "Private clients, families, companies or delegations: describe your journey. We reply quickly with a fixed price, confirmed before the ride.",
     "form_badge": "PRIVATE TRANSFER INQUIRY",
     "form_protocol": "Confidential Protocol",
     "form_title": "Your Itinerary Details",

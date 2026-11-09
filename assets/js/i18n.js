@@ -16,8 +16,7 @@ const VitesseI18n = (function() {
   // Load language JSON dictionary
   async function loadTranslations(lang) {
     try {
-      const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
-      const response = await fetch(`${basePath}assets/locales/${lang}.json`);
+      const response = await fetch(`/assets/locales/${lang}.json`);
       if (!response.ok) throw new Error(`Failed to load ${lang}.json`);
       translations[lang] = await response.json();
       return true;
@@ -120,8 +119,7 @@ function openWhatsAppBooking(service = '') {
 
 // Global Helper: demandes entreprises -> formulaire unique (envoyé à info@lux-taxi.com)
 function openCorporateMail() {
-  const base = window.location.pathname.includes('/pages/') ? '' : 'pages/';
-  window.location.href = `${base}contact.html?service=corporate`;
+  window.location.href = '/pages/contact.html?service=corporate';
 }
 
 // Auto-initialize when DOM is ready

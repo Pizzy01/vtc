@@ -10,15 +10,15 @@
     "destinations": "Destinations & Alpes",
     "about": "À Propos & Engagement",
     "booking": "Réservation Privée",
-    "contact": "Contact & Devis Confidentiel",
+    "contact": "Contact & devis",
     "whatsapp": "WhatsApp VIP 24/7",
     "book": "Réserver"
   },
   "hero": {
-    "eyebrow": "MAISON DE CHAUFFEURS PRIVÉS · GENÈVE & ALPES SUISSES",
-    "title_part1": "L'Excellence du Chauffeur Privé",
-    "title_part2": "à Genève",
-    "description": "Transferts personnalisés depuis l'Aéroport de Genève (GVA), mises à disposition d'affaires et liaisons alpines de premier ordre. Une conduite feutrée, une ponctualité rigoureuse et une discrétion absolue.",
+    "eyebrow": "CHAUFFEURS PRIVÉS À GENÈVE · DEPUIS 2010",
+    "title_part1": "Votre chauffeur privé",
+    "title_part2": "à Genève, depuis 2010",
+    "description": "Aéroport de Genève, rendez-vous d'affaires, école des enfants ou chalet en station : un chauffeur professionnel vous attend, au prix convenu à l'avance.",
     "cta_primary": "Réserver sur WhatsApp ↗"
   },
   "pillars": {
@@ -27,7 +27,7 @@
     "subtitle": "Un accompagnement d'exception pensé pour la clientèle internationale, diplomatique et d'affaires.",
     "p1_title": "Ponctualité & Suivi de Vol",
     "p1_desc": "Suivi en temps réel de votre vol à l'Aéroport de Genève (GVA). Accueil nominatif en zone d'arrivée avec pancarte et prise en charge intégrale de vos bagages.",
-    "p2_title": "Discrétion & Sérénité Absolute",
+    "p2_title": "Discrétion & sérénité",
     "p2_desc": "Chauffeurs costumés, bilingues et formés aux exigences de confidentialité la plus stricte. Un service discret, raffiné et sécurisé à chaque instant.",
     "p3_title": "Flotte Prestige de Dernier Cri",
     "p3_desc": "Mercedes-Benz Classe S, Classe V & Maybach d'une propreté irréprochable. Intérieurs cuir, vitres teintées et équipements de confort modernes."
@@ -65,8 +65,8 @@
     "title": "L'Expérience à Bord LT",
     "subtitle": "Chaque détail compte pour vous offrir un voyage relaxant et productif.",
     "exp1": "Bouteilles d'eau minérale Évian & rafraîchissements offerts",
-    "exp2": "Connexion Wi-Fi 5G haut débit & sélecteur de chargeurs tous smartphones",
-    "exp3": "Presse internationale, journaux suisses et magazines de prestige",
+    "exp2": "Wi-Fi et chargeurs pour tous les téléphones à bord",
+    "exp3": "Suivi de votre vol et 60 minutes d'attente offertes à l'aéroport",
     "exp4": "Sièges enfants VIP & rehausseurs installés sur simple demande"
   },
   "reassurance": {
@@ -75,9 +75,9 @@
     "r1_title": "100% Tarifs Fixes Garantis",
     "r1_desc": "Prix connus à la réservation. Pas de frais de trafic, pas de frais cachés.",
     "r2_title": "Annulation & Flexibilité",
-    "r2_desc": "Modification ou annulation gratuite jusqu'à 24h avant le départ.",
+    "r2_desc": "Un changement de programme ? Modifiez votre course simplement ; les conditions d'annulation sont précisées avec votre devis.",
     "r3_title": "Paiement Sécurisé & Facture",
-    "r3_desc": "Paiement en ligne, à bord ou par virement d'entreprise avec facture détaillée."
+    "r3_desc": "Paiement à bord ou par virement, avec facture détaillée pour les entreprises."
   },
   "booking": {
     "title": "MOTEUR DE RÉSERVATION PRIVÉ",
@@ -110,7 +110,7 @@
     "copyright": "© 2026 LUX-TAXI Genève. Tous droits réservés."
   },
   "common": {
-    "book_chauffeur": "Réserver votre chauffeur ↗",
+    "book_chauffeur": "Réserver sur WhatsApp ↗",
     "direct_call": "Appel Direct",
     "concierge_title": "Un chauffeur privé à votre disposition immédiate à Genève ?",
     "concierge_badge": "Conciergerie Privée 24/7",
@@ -164,7 +164,7 @@
     "p4_b3": "Facturation centralisée d'entreprise avec suivi nominatif",
     "btn_reserve": "Réserver ce Service ↗",
     "btn_wa_service": "WhatsApp Direct ↗",
-    "btn_corp_service": "Demande Corporate (Email) ↗"
+    "btn_corp_service": "Demander un devis ↗"
   },
   "dest_page": {
     "eyebrow": "LIAISONS PRIVÉES & DESSERTE HAUT DE GAMME",
@@ -191,7 +191,7 @@
     "eyebrow": "CONCIERGERIE PRIVÉE & LIAISONS OFFICIELLES",
     "title1": "Contact &",
     "title2": "Devis Confidentiel",
-    "subtitle": "Family Offices, représentations diplomatiques, entreprises ou voyageurs exigeants : soumettez votre demande sur-mesure. Notre dispatching vous répond sous 15 minutes avec une proposition forfaitaire claire.",
+    "subtitle": "Particuliers, familles, entreprises ou délégations : décrivez votre trajet. Nous vous répondons rapidement avec un prix fixe, confirmé avant la course.",
     "form_badge": "FORMULAIRE DE LIAISON PRIVÉE",
     "form_protocol": "Protocole Confidentiel",
     "form_title": "Détails de votre Mission",

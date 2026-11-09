@@ -2,6 +2,7 @@
 User-agent: *
 Allow: /
 Disallow: /assets/data/
+Disallow: /api/
 
 # Sitemaps
 Sitemap: https://www.lux-taxi.com/sitemap.xml

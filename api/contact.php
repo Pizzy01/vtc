@@ -1,122 +1,158 @@
 <?php
 /**
- * LT MAISON DE CHAUFFEURS • GENÈVE
- * Script de traitement sécurisé des demandes de devis et réservations
- * Optimisé pour hébergement Infomaniak (PHP 7.4 / 8.x)
+ * lux-taxi.com — Traitement du formulaire de devis
+ * 1. Enregistre chaque demande dans api/data/demandes.csv (rien ne se perd)
+ * 2. Envoie la demande par e-mail à info@lux-taxi.com
+ * 3. Ne répond "succès" au visiteur que si l'e-mail est vraiment parti
  */
 
 header('Content-Type: application/json; charset=utf-8');
 
-// Autoriser uniquement les requêtes POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['success' => false, 'error' => 'Méthode non autorisée.']);
+const DESTINATAIRE = 'info@lux-taxi.com';
+const EXPEDITEUR   = 'info@lux-taxi.com';
+const TELEPHONE    = '+41 76 620 78 50';
+const DOSSIER_DATA = __DIR__ . '/data';
+
+function repondre(int $code, array $data): void {
+    http_response_code($code);
+    echo json_encode($data, JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-// Récupération des données POST (form-data ou json)
-$inputJSON = file_get_contents('php://input');
-$input = json_decode($inputJSON, true) ?: $_POST;
+// Texte sur une ligne : sans balises, sans retours à la ligne (anti-injection d'en-têtes), longueur limitée
+function ligne($v, int $max = 200): string {
+    $v = is_string($v) ? $v : '';
+    $v = strip_tags($v);
+    $v = preg_replace('/[\x00-\x1F\x7F]+/u', ' ', $v);
+    return mb_substr(trim($v), 0, $max);
+}
 
-// Protection Anti-Spam (Honeypot)
+// Texte multiligne : sans balises, longueur limitée
+function bloc($v, int $max = 3000): string {
+    $v = is_string($v) ? $v : '';
+    $v = strip_tags($v);
+    $v = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]+/u', '', $v);
+    return mb_substr(trim($v), 0, $max);
+}
+
+function h(string $v): string {
+    return htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
+}
+
+if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+    repondre(405, ['success' => false, 'error' => 'Méthode non autorisée.']);
+}
+
+$input = json_decode(file_get_contents('php://input'), true);
+if (!is_array($input)) { $input = $_POST; }
+
+// Anti-spam : champ invisible rempli = robot (on fait semblant d'accepter)
 if (!empty($input['website_check'])) {
-    echo json_encode(['success' => true]);
-    exit;
+    repondre(200, ['success' => true]);
 }
 
-// Nettoyage et sécurisation des champs
-$name = isset($input['name']) ? trim(strip_tags($input['name'])) : '';
-$company = isset($input['company']) ? trim(strip_tags($input['company'])) : '';
-$email = isset($input['email']) ? filter_var(trim($input['email']), FILTER_VALIDATE_EMAIL) : '';
-$phone = isset($input['phone']) ? trim(strip_tags($input['phone'])) : '';
-$service = isset($input['service']) ? trim(strip_tags($input['service'])) : 'Non spécifié';
-$fleet = isset($input['fleet']) ? trim(strip_tags($input['fleet'])) : 'Non spécifié';
-$date = isset($input['date']) ? trim(strip_tags($input['date'])) : 'À convenir';
-$time = isset($input['time']) ? trim(strip_tags($input['time'])) : 'À convenir';
-$pickup = isset($input['pickup']) ? trim(strip_tags($input['pickup'])) : 'Non spécifié';
-$dropoff = isset($input['dropoff']) ? trim(strip_tags($input['dropoff'])) : 'Non spécifié';
-$message = isset($input['message']) ? trim(strip_tags($input['message'])) : 'Aucune précision';
+if (!is_dir(DOSSIER_DATA)) { @mkdir(DOSSIER_DATA, 0750, true); }
 
-// Validation minimale
-if (empty($name) || empty($phone) || !$email) {
-    http_response_code(400);
-    echo json_encode([
-        'success' => false,
-        'error' => 'Veuillez renseigner votre nom, un email valide et votre numéro de téléphone.'
-    ]);
-    exit;
+// Anti-abus : 5 demandes max par adresse IP et par tranche de 10 minutes
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'inconnue';
+$fichierLimite = DOSSIER_DATA . '/limite_' . hash('sha256', $ip) . '.txt';
+$maintenant = time();
+$historique = [];
+if (is_file($fichierLimite)) {
+    $historique = array_filter(
+        array_map('intval', explode("\n", (string) @file_get_contents($fichierLimite))),
+        fn($t) => $t > $maintenant - 600
+    );
+}
+if (count($historique) >= 5) {
+    repondre(429, ['success' => false, 'error' => 'Trop de demandes en peu de temps. Merci de nous contacter sur WhatsApp ou au ' . TELEPHONE . '.']);
+}
+$historique[] = $maintenant;
+@file_put_contents($fichierLimite, implode("\n", $historique), LOCK_EX);
+
+$d = [
+    'nom'          => ligne($input['name'] ?? '', 120),
+    'societe'      => ligne($input['company'] ?? '', 120),
+    'email'        => filter_var(ligne($input['email'] ?? '', 160), FILTER_VALIDATE_EMAIL) ?: '',
+    'telephone'    => ligne($input['phone'] ?? '', 40),
+    'prestation'   => ligne($input['service'] ?? '', 120),
+    'vehicule'     => ligne($input['fleet'] ?? '', 120),
+    'date'         => ligne($input['date'] ?? '', 20),
+    'heure'        => ligne($input['time'] ?? '', 10),
+    'depart'       => ligne($input['pickup'] ?? '', 200),
+    'destination'  => ligne($input['dropoff'] ?? '', 200),
+    'message'      => bloc($input['message'] ?? ''),
+];
+
+if ($d['nom'] === '' || $d['telephone'] === '' || $d['email'] === '') {
+    repondre(400, ['success' => false, 'error' => 'Merci d\'indiquer votre nom, un e-mail valide et votre téléphone.']);
 }
 
-// Configuration de destination
-$to = 'info@lux-taxi.com';
-$subject = "Demande de Devis Chauffeur VIP — " . $name . (!empty($company) ? " (" . $company . ")" : "");
-
-// Construction du corps du message HTML
-$bodyHtml = "
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8'>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #0b0b0c; color: #f5f1e8; padding: 20px; }
-    .card { max-width: 600px; margin: 0 auto; background: #161619; border: 1px solid #C6A96B; border-radius: 16px; padding: 30px; }
-    .header { border-bottom: 1px solid #292929; padding-bottom: 20px; margin-bottom: 20px; text-align: center; }
-    .gold { color: #C6A96B; font-weight: bold; }
-    .row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #222; font-size: 14px; }
-    .label { color: #aaa59b; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
-    .val { color: #fff; font-weight: 500; text-align: right; }
-    .msg-box { margin-top: 20px; background: #0b0b0c; padding: 15px; border-radius: 8px; border-left: 3px solid #C6A96B; font-size: 14px; color: #ddd; line-height: 1.5; }
-    .footer { margin-top: 25px; text-align: center; font-size: 11px; color: #777; }
-  </style>
-</head>
-<body>
-  <div class='card'>
-    <div class='header'>
-      <div class='gold' style='font-size: 18px; letter-spacing: 0.15em;'>LT MAISON DE CHAUFFEURS • GENÈVE</div>
-      <div style='font-size: 12px; color: #aaa59b; margin-top: 4px;'>Nouvelle Demande de Liaison Confidentielle</div>
-    </div>
-
-    <div class='row'><span class='label'>Client :</span><span class='val'>{$name}</span></div>
-    " . (!empty($company) ? "<div class='row'><span class='label'>Société :</span><span class='val'>{$company}</span></div>" : "") . "
-    <div class='row'><span class='label'>Email :</span><span class='val'><a href='mailto:{$email}' style='color:#C6A96B;'>{$email}</a></span></div>
-    <div class='row'><span class='label'>Téléphone / WhatsApp :</span><span class='val'><a href='tel:{$phone}' style='color:#C6A96B;'>{$phone}</a></span></div>
-    <div class='row'><span class='label'>Prestation :</span><span class='val'>{$service}</span></div>
-    <div class='row'><span class='label'>Véhicule :</span><span class='val'>{$fleet}</span></div>
-    <div class='row'><span class='label'>Date & Heure :</span><span class='val'>{$date} à {$time}</span></div>
-    <div class='row'><span class='label'>Prise en charge :</span><span class='val'>{$pickup}</span></div>
-    <div class='row'><span class='label'>Destination :</span><span class='val'>{$dropoff}</span></div>
-
-    <div class='label' style='margin-top: 20px;'>Précisions & Consignes :</div>
-    <div class='msg-box'>" . nl2br(htmlspecialchars($message)) . "</div>
-
-    <div class='footer'>
-      Ce message a été généré depuis le formulaire officiel de lux-taxi.com
-    </div>
-  </div>
-</body>
-</html>
-";
-
-// En-têtes pour envoi HTML propre
-$headers = [];
-$headers[] = 'MIME-Version: 1.0';
-$headers[] = 'Content-type: text/html; charset=utf-8';
-$headers[] = 'From: LT Conciergerie <no-reply@lux-taxi.com>';
-$headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';
-$headers[] = 'X-Mailer: PHP/' . phpversion();
-
-// Envoi via mail() natif Infomaniak
-$sent = @mail($to, $subject, $bodyHtml, implode("\r\n", $headers));
-
-if ($sent) {
-    echo json_encode([
-        'success' => true,
-        'message' => 'Votre demande a été transmise avec succès à notre permanence.'
-    ]);
-} else {
-    echo json_encode([
-        'success' => false,
-        'fallback' => true,
-        'error' => "Serveur local ou sendmail non configuré."
-    ]);
+// 1. Enregistrement de la demande (avant l'envoi, pour ne jamais la perdre)
+$csv = DOSSIER_DATA . '/demandes.csv';
+$nouveau = !is_file($csv);
+if ($fh = @fopen($csv, 'a')) {
+    if (flock($fh, LOCK_EX)) {
+        if ($nouveau) {
+            fwrite($fh, "\xEF\xBB\xBF"); // pour qu'Excel lise bien les accents
+            fputcsv($fh, ['Reçue le', 'Nom', 'Société', 'E-mail', 'Téléphone', 'Prestation', 'Véhicule', 'Date', 'Heure', 'Départ', 'Destination', 'Message', 'E-mail envoyé', 'Statut'], ';');
+        }
+        $ligneCsv = array_merge([date('Y-m-d H:i')], array_values($d));
+        // Neutralise les formules si le fichier est ouvert dans un tableur
+        $ligneCsv = array_map(fn($c) => preg_match('/^(=|@|[+\-](?![0-9 ]))/', (string) $c) ? "'" . $c : $c, $ligneCsv);
+        $positionLigne = ftell($fh);
+        fputcsv($fh, array_merge($ligneCsv, ['en cours', 'Nouveau']), ';');
+        flock($fh, LOCK_UN);
+    }
+    fclose($fh);
 }
+
+// 2. Envoi de l'e-mail
+$sujet = 'Nouvelle demande de devis — ' . $d['nom'] . ($d['societe'] !== '' ? ' (' . $d['societe'] . ')' : '');
+$lignes = [
+    'Client'        => $d['nom'],
+    'Société'       => $d['societe'],
+    'E-mail'        => $d['email'],
+    'Téléphone'     => $d['telephone'],
+    'Prestation'    => $d['prestation'],
+    'Véhicule'      => $d['vehicule'],
+    'Date et heure' => trim($d['date'] . ' ' . $d['heure']),
+    'Départ'        => $d['depart'],
+    'Destination'   => $d['destination'],
+];
+$html = '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body style="font-family:Arial,Helvetica,sans-serif;color:#111;">';
+$html .= '<h2 style="margin:0 0 12px;">Nouvelle demande de devis — lux-taxi.com</h2><table cellpadding="6" style="border-collapse:collapse;">';
+foreach ($lignes as $label => $val) {
+    if ($val === '') { continue; }
+    $html .= '<tr><td style="color:#666;border-bottom:1px solid #eee;">' . h($label) . '</td><td style="border-bottom:1px solid #eee;"><strong>' . h($val) . '</strong></td></tr>';
+}
+$html .= '</table>';
+if ($d['message'] !== '') {
+    $html .= '<p style="color:#666;margin:16px 0 4px;">Message</p><p style="background:#f5f5f5;padding:12px;">' . nl2br(h($d['message'])) . '</p>';
+}
+$html .= '<p style="color:#888;font-size:12px;margin-top:20px;">Répondez directement à cet e-mail pour écrire au client. WhatsApp / téléphone du client : ' . h($d['telephone']) . '</p></body></html>';
+
+$entetes = [
+    'MIME-Version: 1.0',
+    'Content-Type: text/html; charset=utf-8',
+    'From: ' . mb_encode_mimeheader('Lux Taxi — Site web', 'UTF-8') . ' <' . EXPEDITEUR . '>',
+    'Reply-To: ' . mb_encode_mimeheader(preg_replace('/[^\p{L}\p{N} .\'-]/u', '', $d['nom']) ?: 'Client', 'UTF-8') . ' <' . $d['email'] . '>',
+];
+$envoye = @mail(DESTINATAIRE, mb_encode_mimeheader($sujet, 'UTF-8'), $html, implode("\r\n", $entetes), '-f' . EXPEDITEUR);
+
+// Note l'état de l'envoi dans le fichier des demandes
+if (is_file($csv) && isset($positionLigne)) {
+    $contenu = (string) @file_get_contents($csv);
+    $fin = substr($contenu, $positionLigne);
+    $fin = preg_replace('/;"?en cours"?;Nouveau\s*$/u', ';' . ($envoye ? 'oui' : 'NON') . ';Nouveau' . "\n", $fin, 1);
+    @file_put_contents($csv, substr($contenu, 0, $positionLigne) . $fin, LOCK_EX);
+}
+
+// 3. Réponse au visiteur
+if ($envoye) {
+    repondre(200, ['success' => true]);
+}
+repondre(500, [
+    'success' => false,
+    'error'   => 'Votre demande n\'a pas pu être envoyée. Contactez-nous directement sur WhatsApp ou au ' . TELEPHONE . '.',
+]);

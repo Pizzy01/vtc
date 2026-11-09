@@ -5,3 +5,6 @@ Service /
 /*.png
 /*.html.tmp
 *.zip
+api/data/*.csv
+api/data/limite_*
+*.zip
