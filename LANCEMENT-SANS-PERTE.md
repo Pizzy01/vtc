@@ -2,6 +2,13 @@
 
 Le passage du WordPress au site actuel, début novembre 2026, a cassé toutes les anciennes adresses connues de Google (404). Cette procédure sert à ce que ça ne se reproduise pas, notamment au lancement du nouveau site.
 
+## État au 9 novembre 2026 (à lire avant toute mise en ligne)
+
+- Les correctifs SEO sont **en ligne** depuis le 9 nov. : 57 redirections exactes + motifs, testées en direct, version unique `https://www.lux-taxi.com`, Analytics G-E1BTELQ36P (vérifié : les visites arrivent), sitemap envoyé à la Search Console.
+- Ils ont été appliqués avec `tools/appliquer_correctifs_serveur.py`, **par-dessus les fichiers du serveur**. En effet, le serveur contient une version plus récente que GitHub, venue de l'archive « MISE-A-JOUR 2026-11-06 » : nouveau `api/contact.php` qui enregistre les demandes dans `api/data/demandes.csv`, formulaire qui gère les échecs, traductions et `i18n.js` modifiés.
+- **Ne pas déployer les fichiers de ce dépôt tels quels** tant que la version du serveur n'a pas été réimportée dans GitHub : cela effacerait ces améliorations.
+- Sauvegarde complète du site avant correctifs : `~/sauvegardes/lux-taxi.com-avant-seo-2026-11-09.tar.gz` sur l'hébergement (avec l'archive .zip, retirée du dossier public).
+
 ## La règle d'or
 
 **Une adresse que Google connaît ne disparaît jamais : elle redirige (301) vers la page qui la remplace, en un seul saut.**
