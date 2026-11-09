@@ -2,11 +2,22 @@
 
 Le passage du WordPress au site actuel, début novembre 2026, a cassé toutes les anciennes adresses connues de Google (404). Cette procédure sert à ce que ça ne se reproduise pas, notamment au lancement du nouveau site.
 
-## État au 9 novembre 2026 (à lire avant toute mise en ligne)
+## Mettre en ligne (depuis le 9 nov. 2026)
+
+La branche `serveur/en-ligne-2026-11-09` contient **exactement la version en ligne** : c'est la base de travail. Pour mettre en ligne une branche, dans la console SSH Infomaniak (hébergement taxi-driver-geneva.ch → FTP / SSH → Console SSH) :
+
+```
+git clone -q --depth 1 -b <branche> github-vtc:Pizzy01/vtc.git ~/tmp/vtc-deploy && bash ~/tmp/vtc-deploy/tools/deployer.sh <branche> --essai
+bash ~/tmp/vtc-deploy/tools/deployer.sh <branche>
+```
+
+Le script teste les redirections, fait une sauvegarde dans `~/sauvegardes/`, met à jour `~/sites/lux-taxi.com` sans toucher aux demandes clients (`api/data/*.csv`) ni au fichier de vérification Google, puis contrôle 5 adresses.
+
+## État au 9 novembre 2026
 
 - Les correctifs SEO sont **en ligne** depuis le 9 nov. : 57 redirections exactes + motifs, testées en direct, version unique `https://www.lux-taxi.com`, Analytics G-E1BTELQ36P (vérifié : les visites arrivent), sitemap envoyé à la Search Console.
 - Ils ont été appliqués avec `tools/appliquer_correctifs_serveur.py`, **par-dessus les fichiers du serveur**. En effet, le serveur contient une version plus récente que GitHub, venue de l'archive « MISE-A-JOUR 2026-11-06 » : nouveau `api/contact.php` qui enregistre les demandes dans `api/data/demandes.csv`, formulaire qui gère les échecs, traductions et `i18n.js` modifiés.
-- **Ne pas déployer les fichiers de ce dépôt tels quels** tant que la version du serveur n'a pas été réimportée dans GitHub : cela effacerait ces améliorations.
+- La version du serveur a été réimportée dans GitHub le 9 nov. (branche `serveur/en-ligne-2026-11-09`). Les branches plus anciennes (`main`, `claude/audit-corrections`, `seo/redirections-301`) ont des fichiers HTML/PHP **périmés** : ne jamais les mettre en ligne.
 - Sauvegarde complète du site avant correctifs : `~/sauvegardes/lux-taxi.com-avant-seo-2026-11-09.tar.gz` sur l'hébergement (avec l'archive .zip, retirée du dossier public).
 
 ## La règle d'or
