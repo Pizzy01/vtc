@@ -527,6 +527,8 @@
         website_check: document.getElementById('c-honeypot') ? document.getElementById('c-honeypot').value : ''
       };
 
+      let ok = false;
+      let errorMsg = '';
       try {
         const response = await fetch('../api/contact.php', {
           method: 'POST',
@@ -536,37 +538,47 @@
           },
           body: JSON.stringify(payload)
         });
-
         const result = await response.json().catch(() => null);
-
-        // Analytics : une demande de devis réellement envoyée
-        if (result && result.success && window.luxTrack) {
-          window.luxTrack('generate_lead', { method: 'formulaire', service: payload.service });
-        }
-
-        // If backend returned success: false with fallback flag (e.g. testing locally without PHP mail)
-        if (result && !result.success && result.fallback) {
-          const subject = encodeURIComponent(`Demande de Devis Chauffeur VIP — ${payload.name}`);
-          const body = encodeURIComponent(`Client : ${payload.name}\nEmail : ${payload.email}\nTéléphone : ${payload.phone}\nPrestation : ${payload.service}\nVéhicule : ${payload.fleet}\nDate : ${payload.date} ${payload.time}\nPrise en charge : ${payload.pickup}\nDestination : ${payload.dropoff}\nMessage : ${payload.message}`);
-          window.location.href = `mailto:info@lux-taxi.com?subject=${subject}&body=${body}`;
-        }
+        ok = !!(response.ok && result && result.success);
+        if (!ok) errorMsg = (result && result.error) ? result.error : '';
       } catch (err) {
-        console.warn('API submission fallback:', err);
+        console.warn('Envoi du formulaire impossible :', err);
       }
 
-      // Configure direct WhatsApp forward in confirmation banner
-      const waBtn = document.getElementById('confirm-wa-btn');
-      if (waBtn) {
-        const waMsg = `Bonjour LT Maison de Chauffeurs,\nJe viens de soumettre ma demande de devis sur le site :\n- Nom : ${payload.name}\n- Trajet : ${payload.pickup || 'GVA'} vers ${payload.dropoff || 'Genève'}\n- Véhicule : ${payload.fleet}`;
-        waBtn.href = `https://wa.me/41766207850?text=${encodeURIComponent(waMsg)}`;
-      }
-
-      // Display success confirmation card
-      document.getElementById('contact-form').classList.add('hidden');
-      document.getElementById('confirmation-banner').classList.remove('hidden');
+      // Message WhatsApp prêt à envoyer (succès comme échec)
+      const waMsg = `Bonjour LT Maison de Chauffeurs,\nJe souhaite un devis :\n- Nom : ${payload.name}\n- Téléphone : ${payload.phone}\n- Trajet : ${payload.pickup || 'GVA'} vers ${payload.dropoff || 'Genève'}\n- Date : ${payload.date} ${payload.time}\n- Véhicule : ${payload.fleet}\n- Précisions : ${payload.message}`;
+      const waHref = `https://wa.me/41766207850?text=${encodeURIComponent(waMsg)}`;
 
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
+
+      if (!ok) {
+        // Échec réel : on le dit, et on propose WhatsApp avec la demande pré-remplie
+        let box = document.getElementById('send-error');
+        if (!box) {
+          box = document.createElement('div');
+          box.id = 'send-error';
+          box.setAttribute('role', 'alert');
+          box.className = 'mt-4 p-4 rounded-xl border border-red-500/60 bg-red-950/40 text-sm text-[#F5F1E8] space-y-3';
+          document.getElementById('contact-form').appendChild(box);
+        }
+        box.innerHTML = '<p><strong>Votre demande n\'a pas pu être envoyée.</strong> ' +
+          (errorMsg ? errorMsg.replace(/[<>]/g, '') + ' ' : '') +
+          'Envoyez-la en un clic sur WhatsApp, ou appelez le +41 76 620 78 50.</p>' +
+          '<a id="send-error-wa" target="_blank" rel="noopener" class="inline-block px-5 py-2.5 rounded-full bg-[#C6A96B] text-[#0B0B0C] text-xs font-semibold">Envoyer sur WhatsApp</a>';
+        document.getElementById('send-error-wa').href = waHref;
+        if (window.luxTrack) window.luxTrack('form_error', { reason: errorMsg ? 'serveur' : 'reseau' });
+        return;
+      }
+
+      // Succès réel
+      const oldErr = document.getElementById('send-error');
+      if (oldErr) oldErr.remove();
+      if (window.luxTrack) window.luxTrack('generate_lead', { method: 'formulaire', service: payload.service });
+      const waBtn = document.getElementById('confirm-wa-btn');
+      if (waBtn) waBtn.href = waHref;
+      document.getElementById('contact-form').classList.add('hidden');
+      document.getElementById('confirmation-banner').classList.remove('hidden');
     }
 
     function resetContactForm() {
