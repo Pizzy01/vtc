@@ -1,0 +1,82 @@
+# Table unique des redirections 301 de lux-taxi.com
+# Format : ancienne_adresse,nouvelle_adresse   (chemins, sans le domaine)
+# Lignes "exactes" : l'ancienne adresse est comparée avec ou sans "/" final, paramètres ignorés.
+# Lignes "motif:" : expression régulière sur le chemin (sans "/" initial), appliquée après les lignes exactes.
+# Après modification : python3 tools/redirects.py build && python3 tools/redirects.py test
+#
+# Sources : Search Console (pages avec affichages, pages en 404 et non indexées), 9 nov. 2026.
+
+# --- Pages de l'ancien WordPress les plus vues ---
+/fr/,/
+/fr/chauffeur-prive-a-geneve/,/
+/service/airport-transfer-geneva/,/pages/services.html
+/fr/service/transfert-aeroport-geneve/,/pages/services.html
+/fr/service/taxi-geneve/,/
+/fr/service/service-chauffeur-prive-geneve/,/
+/private-chauffeur-services-geneva/,/
+/fr/contact-taxi-geneve/,/pages/contact.html
+/fr/transfert-aeroport-geneve/,/pages/services.html
+/geneva-airport-transfers-luxury/,/pages/services.html
+/fr/combien-coute-reellement-un-chauffeur-prive-a-geneve/,/pages/services.html
+/service/luggage-parcel-delivery-service-geneva/,/pages/services.html
+/fr/notre-flotte/,/pages/flotte.html
+/service/taxi-geneva/,/
+/contact-taxi-geneva/,/pages/contact.html
+/how-to-get-a-taxi-at-geneva-airport/,/pages/services.html
+/how-much-does-a-private-chauffeur-cost-in-geneva/,/pages/services.html
+/service/private-chauffeur-geneva/,/
+/geneva-airport-guide/,/pages/services.html
+/fr/transferts-aeroport-apres-vacances/,/pages/services.html
+/post-holiday-airport-transfers/,/pages/services.html
+/chauffeur-de-maitre-private-luxury/,/
+/fr/chauffeur-de-maitre-private-luxury/,/
+/rate-and-faq-geneva-transfers/,/pages/services.html
+/fr/tarifs-faq-transferts-geneve/,/pages/services.html
+/fleet-taxi-geneva/,/pages/flotte.html
+/geneva-airport-taxi/,/pages/services.html
+/geneva-airport-private-transfer-with-lux-airport-taxi/,/pages/services.html
+/fr/transfert-vip-aeroport-geneve-lux-airport-taxi/,/pages/services.html
+/taxi-from-geneva-airport-to-the-city-center-fast-easy/,/pages/services.html
+/fr/taxi-depuis-aeroport-geneve-vers-centre-ville-rapide-facile/,/pages/services.html
+/fr/service/livraison-de-bagages-colis/,/pages/services.html
+/international-schools-in-switzerland-chauffeur-service/,/pages/services.html
+/fr/ecoles-internationales-en-suisse-chauffeur-prive/,/pages/services.html
+/corporate-travel-simplified-vip-transfers/,/pages/services.html
+/fr/voyages-affaires-transferts-lux‑taxi/,/pages/services.html
+/fr/voyages-affaires-transferts-lux-taxi/,/pages/services.html
+
+# --- Destinations, salons, événements ---
+/fr/taxi-depuis-lausanne-vers-aeroport-geneve/,/pages/destinations.html
+/geneva-to-chamonix-ski-transfers/,/pages/destinations.html
+/fr/chauffeur-prive-palexpo-geneve/,/pages/destinations.html
+/private-chauffeur-palexpo-geneva/,/pages/destinations.html
+/fr/chauffeur-prive-ephj-geneve/,/pages/destinations.html
+/private-chauffeur-ephj-geneva/,/pages/destinations.html
+/taxi-montreux-jazz-festival/,/pages/destinations.html
+/fr/taxi-montreux-jazz-festival/,/pages/destinations.html
+/private-wine-tour-with-chauffeur-in-switzerland/,/pages/destinations.html
+/michelin-restaurant-crissier-with-private-chauffeur/,/pages/destinations.html
+
+# --- Réservation et contact ---
+/fr/reserve,/pages/contact.html
+/reserve,/pages/contact.html
+/fr/from,/pages/contact.html
+# (/pages/reservation.html -> /pages/contact.html est écrite à la main dans .htaccess : elle garde les paramètres)
+
+# --- Pages légales (pas encore d'équivalent : accueil en attendant) ---
+/terms/,/
+/privacy-policy/,/
+/cookie-policy/,/
+/fr/conditions-generales/,/
+/fr/politique-de-confidentialite/,/
+/fr/politique-de-cookies/,/
+
+# --- Ancienne adresse de l'accueil ---
+/index.html,/
+
+# --- Motifs : tout le reste de l'ancien WordPress ---
+motif:^(fr/)?ourfleet(/.*)?$,/pages/flotte.html
+motif:^(fr/)?(service|service_category)(/.*)?$,/pages/services.html
+motif:^(fr/)?(category|tag|author|blog|feed)(/.*)?$,/
+motif:^(it|ru|de|en)(/.*)?$,/
+motif:^fr/.+$,/

@@ -9,7 +9,9 @@
   <meta property="og:title" content="Contact & Devis Confidentiel | LT Maison de Chauffeurs • Genève"/>
   <meta property="og:description" content="Formulaire officiel de demande de transport privé et devis sur-mesure. Service 24/7 à Genève et dans les Alpes suisses."/>
   <meta property="og:type" content="website"/>
-  <meta property="og:image" content="../assets/images/maybach-dark-bronze.jpg"/>
+  <meta property="og:url" content="https://www.lux-taxi.com/pages/contact.html"/>
+  <meta property="og:image" content="https://www.lux-taxi.com/assets/images/maybach-dark-bronze.jpg"/>
+  <link rel="canonical" href="https://www.lux-taxi.com/pages/contact.html"/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,6 +39,18 @@
   </script>
   <link rel="stylesheet" href="../assets/css/vitesse-prestige.css"/>
   <script src="../assets/js/i18n.js" defer></script>
+  <!-- Google Analytics 4 (G-E1BTELQ36P). Consentement refusé par défaut pour l'UE/EEE et le Royaume-Uni tant qu'il n'y a pas de bannière. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied',
+      region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB']});
+    gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted'});
+    gtag('js', new Date());
+    gtag('config', 'G-E1BTELQ36P');
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1BTELQ36P"></script>
+  <script defer src="/assets/js/analytics.js"></script>
 </head>
 <body class="relative bg-[#0B0B0C] text-[#F5F1E8] selection:bg-[#C6A96B] selection:text-black overflow-x-hidden font-sans">
 
@@ -524,6 +538,11 @@
         });
 
         const result = await response.json().catch(() => null);
+
+        // Analytics : une demande de devis réellement envoyée
+        if (result && result.success && window.luxTrack) {
+          window.luxTrack('generate_lead', { method: 'formulaire', service: payload.service });
+        }
 
         // If backend returned success: false with fallback flag (e.g. testing locally without PHP mail)
         if (result && !result.success && result.fallback) {

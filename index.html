@@ -10,15 +10,15 @@
   <!-- Favicon & Brand Icons -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg"/>
   <link rel="apple-touch-icon" href="assets/images/favicon.svg"/>
-  <link rel="canonical" href="https://lux-taxi.com/"/>
+  <link rel="canonical" href="https://www.lux-taxi.com/"/>
 
   <!-- Open Graph / WhatsApp / Facebook / LinkedIn -->
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="LT MAISON DE CHAUFFEURS"/>
-  <meta property="og:url" content="https://lux-taxi.com/"/>
+  <meta property="og:url" content="https://www.lux-taxi.com/"/>
   <meta property="og:title" content="LT Maison de Chauffeurs • Genève | Chauffeur de Maître & Conciergerie VIP"/>
   <meta property="og:description" content="Maison de Chauffeurs Privés à Genève. Transferts aéroport GVA, liaisons alpines et mise à disposition VIP 24/7."/>
-  <meta property="og:image" content="https://lux-taxi.com/assets/images/maybach-bg.jpg"/>
+  <meta property="og:image" content="https://www.lux-taxi.com/assets/images/maybach-bg.jpg"/>
   <meta property="og:locale" content="fr_CH"/>
   <meta property="og:locale:alternate" content="en_US"/>
   <meta property="og:locale:alternate" content="de_CH"/>
@@ -28,7 +28,7 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="LT Maison de Chauffeurs • Genève | Chauffeur de Maître & Conciergerie VIP"/>
   <meta name="twitter:description" content="Transferts aéroport GVA, navettes alpines de prestige, mise à disposition VIP à Genève."/>
-  <meta name="twitter:image" content="https://lux-taxi.com/assets/images/maybach-bg.jpg"/>
+  <meta name="twitter:image" content="https://www.lux-taxi.com/assets/images/maybach-bg.jpg"/>
 
   <!-- Preconnect Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -44,7 +44,7 @@
     "@type": "TaxiService",
     "name": "LT MAISON DE CHAUFFEURS GENÈVE",
     "description": "Maison de Chauffeurs Privés & Conciergerie Automobile à Genève et dans les Alpes Suisses.",
-    "url": "https://lux-taxi.com",
+    "url": "https://www.lux-taxi.com",
     "telephone": "+41766207850",
     "email": "info@lux-taxi.com",
     "address": {
@@ -93,6 +93,18 @@
       100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
     }
   </style>
+  <!-- Google Analytics 4 (G-E1BTELQ36P). Consentement refusé par défaut pour l'UE/EEE et le Royaume-Uni tant qu'il n'y a pas de bannière. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied',
+      region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB']});
+    gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted'});
+    gtag('js', new Date());
+    gtag('config', 'G-E1BTELQ36P');
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1BTELQ36P"></script>
+  <script defer src="/assets/js/analytics.js"></script>
 </head>
 <body class="relative bg-[#0B0B0C] text-[#F5F1E8] selection:bg-[#C6A96B] selection:text-black overflow-x-hidden font-sans">
 
@@ -1003,6 +1015,7 @@ N° de vol : ${d.flight}` : '') +
         `
 
 Merci de me confirmer le tarif fixe et la disponibilité.`;
+      if (window.luxTrack) window.luxTrack('generate_lead', { method: 'reservation_whatsapp' });
       window.open(`https://wa.me/41766207850?text=${encodeURIComponent(msg)}`, '_blank');
       toggleBookingModal();
     }
