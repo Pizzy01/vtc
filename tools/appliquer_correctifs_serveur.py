@@ -36,7 +36,7 @@ NEW_GA = """  <!-- Google Analytics 4 (G-E1BTELQ36P). Consentement refusé par d
     gtag('config', 'G-E1BTELQ36P');
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1BTELQ36P"></script>
-  <script defer src="/assets/js/analytics.js?v=20261109b"></script>
+  <script defer src="/assets/js/analytics.js?v=20261109c"></script>
 """
 WA_OPEN = "window.open(`https://wa.me/41766207850?text=${encodeURIComponent(msg)}`, '_blank');"
 

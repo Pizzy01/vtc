@@ -84,6 +84,11 @@
     zone.appendChild(bouton(tx.ok, true, 'granted'));
     b.appendChild(p);
     b.appendChild(zone);
+    // Sur mobile, ne pas cacher la barre WhatsApp / Appel du bas de l'écran
+    var barre = document.getElementById('mobile-sticky-bar');
+    if (barre && barre.offsetParent !== null && barre.getBoundingClientRect().height > 0) {
+      b.style.bottom = (Math.round(barre.getBoundingClientRect().height) + 12) + 'px';
+    }
     document.body.appendChild(b);
   }
 
