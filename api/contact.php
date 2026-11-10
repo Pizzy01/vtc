@@ -53,23 +53,6 @@ if (!empty($input['website_check'])) {
 
 if (!is_dir(DOSSIER_DATA)) { @mkdir(DOSSIER_DATA, 0750, true); }
 
-// Anti-abus : 5 demandes max par adresse IP et par tranche de 10 minutes
-$ip = $_SERVER['REMOTE_ADDR'] ?? 'inconnue';
-$fichierLimite = DOSSIER_DATA . '/limite_' . hash('sha256', $ip) . '.txt';
-$maintenant = time();
-$historique = [];
-if (is_file($fichierLimite)) {
-    $historique = array_filter(
-        array_map('intval', explode("\n", (string) @file_get_contents($fichierLimite))),
-        fn($t) => $t > $maintenant - 600
-    );
-}
-if (count($historique) >= 5) {
-    repondre(429, ['success' => false, 'error' => 'Trop de demandes en peu de temps. Merci de nous contacter sur WhatsApp ou au ' . TELEPHONE . '.']);
-}
-$historique[] = $maintenant;
-@file_put_contents($fichierLimite, implode("\n", $historique), LOCK_EX);
-
 $d = [
     'nom'          => ligne($input['name'] ?? '', 120),
     'societe'      => ligne($input['company'] ?? '', 120),
@@ -84,9 +67,65 @@ $d = [
     'message'      => bloc($input['message'] ?? ''),
 ];
 
-// Nouveau site (nov. 2026) : un seul champ « téléphone ou e-mail » ; il faut le nom et au moins l'un des deux
-if ($d['nom'] === '' || ($d['telephone'] === '' && $d['email'] === '')) {
-    repondre(400, ['success' => false, 'error' => 'Please enter your name and a phone number or email. / Merci d\'indiquer votre nom et un téléphone ou un e-mail.']);
+// Contrôles (nov. 2026) : nom, départ, arrivée, date future, téléphone valable ; e-mail facultatif mais valable s'il est donné
+function telephoneValable(string $t): string {
+    $c = preg_replace('/[\s.\-()\/]/', '', $t);
+    if (strpos($c, '00') === 0) { $c = '+' . substr($c, 2); }
+    if (preg_match('/^\+[1-9]\d{7,14}$/', $c) || preg_match('/^0[1-9]\d{8}$/', $c)) {
+        $chiffres = preg_replace('/\D/', '', $c);
+        if (count(array_unique(str_split($chiffres))) >= 3) { return $c; }
+    }
+    return '';
+}
+function emailValable(string $e): bool {
+    if (!filter_var($e, FILTER_VALIDATE_EMAIL) || !preg_match('/@[^@\s]+\.[a-z]{2,}$/i', $e)) { return false; }
+    $domaine = substr(strrchr($e, '@'), 1);
+    // Le domaine doit exister (si le serveur arrive à vérifier : test sur gmail.com d'abord, pour ne jamais perdre un client)
+    if (function_exists('checkdnsrr') && @checkdnsrr('gmail.com', 'MX')) {
+        if (!@checkdnsrr($domaine, 'MX') && !@checkdnsrr($domaine, 'A')) { return false; }
+    }
+    return true;
+}
+$erreurs = [];
+$emailBrut = ligne($input['email'] ?? '', 160);
+$d['email'] = '';
+if ($d['nom'] === '') { $erreurs['name'] = 'Please enter your name.'; }
+if ($d['depart'] === '') { $erreurs['from'] = 'Please enter a pick-up place.'; }
+if ($d['destination'] === '') { $erreurs['to'] = 'Please enter a drop-off place.'; }
+$quand = (preg_match('/^\d{4}-\d{2}-\d{2}$/', $d['date']) && preg_match('/^\d{2}:\d{2}$/', $d['heure'])) ? strtotime($d['date'] . ' ' . $d['heure'] . ' Europe/Zurich') : false;
+if (!$quand) { $erreurs['when'] = 'Please choose a date and time.'; }
+elseif ($quand < time() - 3600) { $erreurs['when'] = 'Please choose a date and time in the future.'; }
+$tel = telephoneValable($d['telephone']);
+if ($tel === '') { $erreurs['phone'] = 'Please enter a valid phone number, e.g. +41 79 123 45 67.'; } else { $d['telephone'] = $tel; }
+if ($emailBrut !== '') {
+    if (emailValable($emailBrut)) { $d['email'] = $emailBrut; } else { $erreurs['email'] = 'This email address does not look valid.'; }
+}
+if ($erreurs) {
+    repondre(422, ['success' => false, 'error' => 'Please check the highlighted fields.', 'fields' => $erreurs]);
+}
+// Anti-abus : 5 demandes max par adresse IP et par tranche de 10 minutes
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'inconnue';
+$fichierLimite = DOSSIER_DATA . '/limite_' . hash('sha256', $ip) . '.txt';
+$maintenant = time();
+$historique = [];
+if (is_file($fichierLimite)) {
+    $historique = array_filter(
+        array_map('intval', explode("\n", (string) @file_get_contents($fichierLimite))),
+        fn($t) => $t > $maintenant - 600
+    );
+}
+if (count($historique) >= 5) {
+    repondre(429, ['success' => false, 'error' => 'Too many requests in a short time. Please message us on WhatsApp or call ' . TELEPHONE . '.']);
+}
+$historique[] = $maintenant;
+@file_put_contents($fichierLimite, implode("\n", $historique), LOCK_EX);
+
+// Position GPS envoyée par le bouton « Use my location » : lien carte ajouté au message
+$lat = filter_var($input['lat'] ?? null, FILTER_VALIDATE_FLOAT);
+$lng = filter_var($input['lng'] ?? null, FILTER_VALIDATE_FLOAT);
+if ($lat !== false && $lng !== false && $lat !== null && $lng !== null && abs($lat) <= 90 && abs($lng) <= 180) {
+    $lien = 'https://maps.google.com/?q=' . round($lat, 6) . ',' . round($lng, 6);
+    $d['message'] = trim('Position GPS du client (départ) : ' . $lien . "\n" . $d['message']);
 }
 
 // 1. Enregistrement de la demande (avant l'envoi, pour ne jamais la perdre)
@@ -131,6 +170,9 @@ $html .= '</table>';
 if ($d['message'] !== '') {
     $html .= '<p style="color:#666;margin:16px 0 4px;">Message</p><p style="background:#f5f5f5;padding:12px;">' . nl2br(h($d['message'])) . '</p>';
 }
+if (!empty($lien)) {
+    $html .= '<p style="margin:16px 0;"><a href="' . h($lien) . '" style="background:#c6a96b;color:#050506;padding:10px 16px;border-radius:6px;text-decoration:none;">Voir la position du client sur la carte</a></p>';
+}
 $html .= '<p style="color:#888;font-size:12px;margin-top:20px;">Répondez directement à cet e-mail pour écrire au client. WhatsApp / téléphone du client : ' . h($d['telephone']) . '</p></body></html>';
 
 $entetes = [
@@ -157,5 +199,5 @@ if ($envoye) {
 }
 repondre(500, [
     'success' => false,
-    'error'   => 'Votre demande n\'a pas pu être envoyée. Contactez-nous directement sur WhatsApp ou au ' . TELEPHONE . '.',
+    'error'   => 'Sending failed. Please message us on WhatsApp or call ' . TELEPHONE . '.',
 ]);
