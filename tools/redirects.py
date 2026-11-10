@@ -141,7 +141,7 @@ def test():
     # 3. Les pages actuelles ne doivent PAS être redirigées
     for p in ["/", "/geneva-airport-transfer/", "/ski-transfers/", "/chauffeur-by-the-hour/",
               "/404.html", "/sitemap.xml", "/robots.txt", "/api/contact.php",
-              "/assets/site/prosper.css", "/assets/site/hero.mp4"]:
+              "/assets/site/prosper.css", "/assets/site/hd-berline-2000.webp"]:
         code, dest = resolve(p)
         checked += 1
         if code != 200:
