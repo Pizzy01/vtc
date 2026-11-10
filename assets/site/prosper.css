@@ -3,7 +3,7 @@ a{color:#f5f1e8;text-decoration:none}a:hover{color:#c6a96b}
 input::placeholder,textarea::placeholder{color:#8a857c}
 input:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:2px solid #c6a96b;outline-offset:3px}
 @keyframes ps-rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes ps-zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes ps-zoom{from{transform:scale(1.05)}to{transform:scale(1)}}
 @keyframes ps-sweep{0%{transform:translateX(-120%)}55%,100%{transform:translateX(120%)}}
 @keyframes ps-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes ps-line{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -46,3 +46,22 @@ input:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:2px soli
 .ps-status.is-ok{color:#c6a96b}.ps-status.is-err{color:#f0a48a}
 button[disabled]{opacity:.6;cursor:wait}
 @media (prefers-reduced-motion:reduce){.ps-reveal{opacity:1;transform:none;transition:none}}
+
+/* --- 10 nov. : netteté et fluidité --- */
+.ps-heroimg{image-rendering:auto;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.ps-zoom{will-change:transform}
+.ps-mbar{transform:translateY(160%);transition:transform .45s cubic-bezier(.2,.7,.1,1)}
+.ps-mbar.is-on{transform:none}
+@media (max-width:760px){
+.ps-hero{height:auto!important;min-height:0!important}
+.ps-hero>header{order:0}
+.ps-hero>.ps-herobottom{order:1;flex:0 0 auto!important;justify-content:flex-start!important;padding-top:40px!important;padding-bottom:28px!important}
+.ps-hero>.ps-zoom{order:2;position:relative!important;inset:auto!important;margin:0 20px 8px;aspect-ratio:16/9;border-radius:20px;overflow:hidden;animation:none!important;transform:none!important;background:#000}
+.ps-hero>.ps-shade,.ps-hero>[aria-hidden="true"]:not(.ps-zoom){display:none!important}
+.ps-heroimg{filter:none!important;object-position:center!important}
+.ps-herocta{flex-wrap:nowrap!important;gap:16px!important}
+.ps-herocta a:first-child{padding:16px 20px!important;white-space:nowrap}
+.ps-herocta a:last-child{white-space:nowrap}
+.ps-mbar{-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important}
+.ps-hero .ps-herobottom h1{font-size:clamp(44px,12vw,56px)!important}
+}

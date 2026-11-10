@@ -8,6 +8,14 @@
     document.querySelectorAll('section:not(#top) > *').forEach(function (el) { el.classList.add('ps-reveal'); io.observe(el); });
   }
 
+  // Barre WhatsApp / Call : visible seulement après le haut de page (évite le doublon avec les boutons du haut)
+  var bar = document.getElementById('mobile-sticky-bar'), top = document.getElementById('top');
+  if (bar) {
+    if ('IntersectionObserver' in window && top) {
+      new IntersectionObserver(function (e) { bar.classList.toggle('is-on', !e[0].isIntersecting); }, { threshold: 0.05 }).observe(top);
+    } else { bar.classList.add('is-on'); }
+  }
+
   var form = document.getElementById('quote-form');
   if (!form) return;
   var status = form.querySelector('.ps-status');
