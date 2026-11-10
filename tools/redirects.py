@@ -78,8 +78,11 @@ def build():
 
 def exists(path):
     path = path.split("?")[0]
+    path = path.split("#")[0]
     if path == "/":
         return (ROOT / "index.html").exists()
+    if path.endswith("/"):
+        return (ROOT / path.strip("/") / "index.html").is_file()
     return (ROOT / path.lstrip("/")).is_file()
 
 
@@ -119,9 +122,9 @@ def test():
                     errors.append(f"{v} : chaîne ou destination cassée ({dest} -> {code2})")
     # 2. Exemples couverts par les motifs
     samples = {
-        "/ourfleet/business-electric-tesla-t/": "/pages/flotte.html",
-        "/fr/ourfleet/tesla-t/": "/pages/flotte.html",
-        "/service_category/lux-taxi-service/": "/pages/services.html",
+        "/ourfleet/business-electric-tesla-t/": "/",
+        "/fr/ourfleet/tesla-t/": "/",
+        "/service_category/lux-taxi-service/": "/geneva-airport-transfer/",
         "/category/chauffeur/": "/",
         "/fr/category/voyage/": "/",
         "/blog/?start=0": "/",
@@ -136,9 +139,9 @@ def test():
         if dest != BASE + new:
             errors.append(f"motif : {v} -> {code} {dest} (attendu {BASE + new})")
     # 3. Les pages actuelles ne doivent PAS être redirigées
-    for p in ["/", "/pages/services.html", "/pages/flotte.html", "/pages/destinations.html",
-              "/pages/contact.html", "/404.html", "/sitemap.xml", "/robots.txt", "/api/contact.php",
-              "/assets/css/vitesse-prestige.css"]:
+    for p in ["/", "/geneva-airport-transfer/", "/ski-transfers/", "/chauffeur-by-the-hour/",
+              "/404.html", "/sitemap.xml", "/robots.txt", "/api/contact.php",
+              "/assets/site/prosper.css", "/assets/site/hero.mp4"]:
         code, dest = resolve(p)
         checked += 1
         if code != 200:

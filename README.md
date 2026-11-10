@@ -1,25 +1,25 @@
-# LUX-TAXI Genève — Maison de Chauffeurs Privés
+# Prosper & Co. — Private Chauffeur Geneva (lux-taxi.com)
 
-Site web officiel haute performance de **LUX-TAXI Genève** (Genève & Alpes Suisses).
+Site statique, léger, en anglais (version française prévue ensuite).
 
-## Architecture Technique
+## Pages
 
-- **Frontend** : HTML5 sémantique, Tailwind CSS, CSS Custom Prestige (`vitesse-prestige.css`)
-- **Multilingue (i18n)** : Moteur réactif sans rechargement (`assets/js/i18n.js`), 4 langues : Français (FR), Anglais (EN), Allemand (DE), Italien (IT)
-- **Conversion** :
-  - **B2C Particuliers** : Réservation WhatsApp instantanée avec message pré-rempli et géolocalisé
-  - **Formulaire unique** : `pages/contact.html` → `api/contact.php` → `info@lux-taxi.com` (particuliers et entreprises)
-- **Hébergement** : Infomaniak (Apache, PHP 8 pour `api/contact.php`)
+- `index.html` : accueil (vidéo, services, prix « from », avis, formulaire de devis `#quote`)
+- `geneva-airport-transfer/` : transfert aéroport de Genève
+- `ski-transfers/` : stations de ski (Suisse et France)
+- `chauffeur-by-the-hour/` : chauffeur à l'heure, affaires et événements
+- `404.html` : page d'erreur
 
-## Structure des Pages
+## Fichiers communs
 
-- `index.html` : Accueil, simulateur de réservation, grille bento des services, avis vérifiés et aperçu des stations alpines
-- `pages/services.html` : Gamme de prestations VIP (Aéroport GVA, Chauffeur Privé à l'Heure, Navettes Ski, Corporate & Salons)
-- `pages/flotte.html` : Showroom des véhicules d'exception (Mercedes Classe S, Classe V VIP, Maybach First Class, EQS SUV, Range Rover)
-- `pages/destinations.html` : Bento interactif des transferts alpestres et résidences genevoises
-- `pages/contact.html` : Formulaire unique de demande de devis (pré-rempli depuis les autres pages)
-- `404.html` : Page d'erreur
+- `assets/site/prosper.css` et `prosper.js` : styles, animations, apparitions au défilement, envoi du formulaire.
+  À chaque modification, changer le numéro `?v=` dans les pages (cache navigateur d'un an).
+- `assets/site/*.webp` (800 et 1600 px), `hero.mp4` (200 Ko), `og.jpg` (partage).
+- `assets/js/analytics.js` : Google Analytics G-E1BTELQ36P et bannière cookies (inchangés).
+- `api/contact.php` : enregistre chaque demande dans `api/data/demandes.csv` puis l'envoie à info@lux-taxi.com.
 
-## Déploiement
+Les pages sont générées à partir de la maquette Claude (artifact « Lux Taxi — accueil minimaliste »).
 
-Fichiers déposés à la racine du site sur l'hébergement Infomaniak de lux-taxi.com (`.htaccess` inclus).
+## Mise en ligne
+
+Voir `LANCEMENT-SANS-PERTE.md` (GitHub → `tools/deployer.sh` dans la console SSH Infomaniak). Redirections : `redirects.csv`.

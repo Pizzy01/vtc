@@ -20,6 +20,12 @@ Le script teste les redirections, fait une sauvegarde dans `~/sauvegardes/`, met
 - La version du serveur a été réimportée dans GitHub le 9 nov. (branche `serveur/en-ligne-2026-11-09`). Les branches plus anciennes (`main`, `claude/audit-corrections`, `seo/redirections-301`) ont des fichiers HTML/PHP **périmés** : ne jamais les mettre en ligne.
 - Sauvegarde complète du site avant correctifs : `~/sauvegardes/lux-taxi.com-avant-seo-2026-11-09.tar.gz` sur l'hébergement (avec l'archive .zip, retirée du dossier public).
 
+## Nouveau site (10 nov. 2026)
+
+- Branche `site/studio-2026-11-10` : site Prosper & Co. en anglais, 4 pages à adresses propres (`/`, `/geneva-airport-transfer/`, `/ski-transfers/`, `/chauffeur-by-the-hour/`).
+- Les anciennes pages `/pages/*.html` et toutes les anciennes adresses WordPress redirigent en un saut vers la nouvelle page la plus proche. Le motif `^fr/.+$` est gardé tant qu'il n'y a pas de pages `/fr/`.
+- Pages légales et page Flotte : pas encore créées.
+
 ## La règle d'or
 
 **Une adresse que Google connaît ne disparaît jamais : elle redirige (301) vers la page qui la remplace, en un seul saut.**

@@ -1,46 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <!-- ACCUEIL -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.lux-taxi.com/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- SERVICES & PRESTATIONS -->
   <url>
-    <loc>https://www.lux-taxi.com/pages/services.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <loc>https://www.lux-taxi.com/geneva-airport-transfer/</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- FLOTTE D'EXCEPTION -->
   <url>
-    <loc>https://www.lux-taxi.com/pages/flotte.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <loc>https://www.lux-taxi.com/ski-transfers/</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- DESTINATIONS & ALPES -->
   <url>
-    <loc>https://www.lux-taxi.com/pages/destinations.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <loc>https://www.lux-taxi.com/chauffeur-by-the-hour/</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-
-  <!-- CONTACT & DEVIS CONFIDENTIEL -->
-  <url>
-    <loc>https://www.lux-taxi.com/pages/contact.html</loc>
-    <lastmod>2026-11-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
 </urlset>

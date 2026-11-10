@@ -84,8 +84,9 @@ $d = [
     'message'      => bloc($input['message'] ?? ''),
 ];
 
-if ($d['nom'] === '' || $d['telephone'] === '' || $d['email'] === '') {
-    repondre(400, ['success' => false, 'error' => 'Merci d\'indiquer votre nom, un e-mail valide et votre téléphone.']);
+// Nouveau site (nov. 2026) : un seul champ « téléphone ou e-mail » ; il faut le nom et au moins l'un des deux
+if ($d['nom'] === '' || ($d['telephone'] === '' && $d['email'] === '')) {
+    repondre(400, ['success' => false, 'error' => 'Please enter your name and a phone number or email. / Merci d\'indiquer votre nom et un téléphone ou un e-mail.']);
 }
 
 // 1. Enregistrement de la demande (avant l'envoi, pour ne jamais la perdre)
@@ -136,8 +137,10 @@ $entetes = [
     'MIME-Version: 1.0',
     'Content-Type: text/html; charset=utf-8',
     'From: ' . mb_encode_mimeheader('Lux Taxi — Site web', 'UTF-8') . ' <' . EXPEDITEUR . '>',
-    'Reply-To: ' . mb_encode_mimeheader(preg_replace('/[^\p{L}\p{N} .\'-]/u', '', $d['nom']) ?: 'Client', 'UTF-8') . ' <' . $d['email'] . '>',
 ];
+if ($d['email'] !== '') {
+    $entetes[] = 'Reply-To: ' . mb_encode_mimeheader(preg_replace('/[^\p{L}\p{N} .\'-]/u', '', $d['nom']) ?: 'Client', 'UTF-8') . ' <' . $d['email'] . '>';
+}
 $envoye = @mail(DESTINATAIRE, mb_encode_mimeheader($sujet, 'UTF-8'), $html, implode("\r\n", $entetes), '-f' . EXPEDITEUR);
 
 // Note l'état de l'envoi dans le fichier des demandes

@@ -8,8 +8,6 @@
     RewriteEngine On
     RewriteBase /
 
-    # Ancienne page Réservation fusionnée dans le formulaire unique (paramètres conservés)
-    RewriteRule ^pages/reservation\.html$ https://www.lux-taxi.com/pages/contact.html [L,R=301,QSA]
 </IfModule>
 
 # >>> REDIRECTIONS 301 (généré par tools/redirects.py depuis redirects.csv — ne pas modifier à la main)
@@ -17,54 +15,59 @@
     RewriteEngine On
     RewriteRule ^fr/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^fr/chauffeur-prive-a-geneve/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
-    RewriteRule ^service/airport-transfer-geneva/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/service/transfert-aeroport-geneve/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
+    RewriteRule ^service/airport-transfer-geneva/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/service/transfert-aeroport-geneve/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
     RewriteRule ^fr/service/taxi-geneve/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^fr/service/service-chauffeur-prive-geneve/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^private-chauffeur-services-geneva/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
-    RewriteRule ^fr/contact-taxi-geneve/?$ https://www.lux-taxi.com/pages/contact.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/transfert-aeroport-geneve/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^geneva-airport-transfers-luxury/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/combien-coute-reellement-un-chauffeur-prive-a-geneve/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^service/luggage-parcel-delivery-service-geneva/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/notre-flotte/?$ https://www.lux-taxi.com/pages/flotte.html [R=301,L,QSD,NE]
+    RewriteRule ^fr/contact-taxi-geneve/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/transfert-aeroport-geneve/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^geneva-airport-transfers-luxury/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/combien-coute-reellement-un-chauffeur-prive-a-geneve/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^service/luggage-parcel-delivery-service-geneva/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/notre-flotte/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^service/taxi-geneva/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
-    RewriteRule ^contact-taxi-geneva/?$ https://www.lux-taxi.com/pages/contact.html [R=301,L,QSD,NE]
-    RewriteRule ^how-to-get-a-taxi-at-geneva-airport/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^how-much-does-a-private-chauffeur-cost-in-geneva/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
+    RewriteRule ^contact-taxi-geneva/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
+    RewriteRule ^how-to-get-a-taxi-at-geneva-airport/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^how-much-does-a-private-chauffeur-cost-in-geneva/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
     RewriteRule ^service/private-chauffeur-geneva/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
-    RewriteRule ^geneva-airport-guide/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/transferts-aeroport-apres-vacances/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^post-holiday-airport-transfers/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
+    RewriteRule ^geneva-airport-guide/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/transferts-aeroport-apres-vacances/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^post-holiday-airport-transfers/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
     RewriteRule ^chauffeur-de-maitre-private-luxury/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^fr/chauffeur-de-maitre-private-luxury/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
-    RewriteRule ^rate-and-faq-geneva-transfers/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/tarifs-faq-transferts-geneve/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fleet-taxi-geneva/?$ https://www.lux-taxi.com/pages/flotte.html [R=301,L,QSD,NE]
-    RewriteRule ^geneva-airport-taxi/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^geneva-airport-private-transfer-with-lux-airport-taxi/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/transfert-vip-aeroport-geneve-lux-airport-taxi/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^taxi-from-geneva-airport-to-the-city-center-fast-easy/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/taxi-depuis-aeroport-geneve-vers-centre-ville-rapide-facile/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/service/livraison-de-bagages-colis/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^international-schools-in-switzerland-chauffeur-service/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/ecoles-internationales-en-suisse-chauffeur-prive/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^corporate-travel-simplified-vip-transfers/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/voyages-affaires-transferts-lux‑taxi/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/voyages-affaires-transferts-lux-taxi/?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/taxi-depuis-lausanne-vers-aeroport-geneve/?$ https://www.lux-taxi.com/pages/destinations.html [R=301,L,QSD,NE]
-    RewriteRule ^geneva-to-chamonix-ski-transfers/?$ https://www.lux-taxi.com/pages/destinations.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/chauffeur-prive-palexpo-geneve/?$ https://www.lux-taxi.com/pages/destinations.html [R=301,L,QSD,NE]
-    RewriteRule ^private-chauffeur-palexpo-geneva/?$ https://www.lux-taxi.com/pages/destinations.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/chauffeur-prive-ephj-geneve/?$ https://www.lux-taxi.com/pages/destinations.html [R=301,L,QSD,NE]
-    RewriteRule ^private-chauffeur-ephj-geneva/?$ https://www.lux-taxi.com/pages/destinations.html [R=301,L,QSD,NE]
-    RewriteRule ^taxi-montreux-jazz-festival/?$ https://www.lux-taxi.com/pages/destinations.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/taxi-montreux-jazz-festival/?$ https://www.lux-taxi.com/pages/destinations.html [R=301,L,QSD,NE]
-    RewriteRule ^private-wine-tour-with-chauffeur-in-switzerland/?$ https://www.lux-taxi.com/pages/destinations.html [R=301,L,QSD,NE]
-    RewriteRule ^michelin-restaurant-crissier-with-private-chauffeur/?$ https://www.lux-taxi.com/pages/destinations.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/reserve/?$ https://www.lux-taxi.com/pages/contact.html [R=301,L,QSD,NE]
-    RewriteRule ^reserve/?$ https://www.lux-taxi.com/pages/contact.html [R=301,L,QSD,NE]
-    RewriteRule ^fr/from/?$ https://www.lux-taxi.com/pages/contact.html [R=301,L,QSD,NE]
+    RewriteRule ^rate-and-faq-geneva-transfers/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/tarifs-faq-transferts-geneve/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^fleet-taxi-geneva/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
+    RewriteRule ^geneva-airport-taxi/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^geneva-airport-private-transfer-with-lux-airport-taxi/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/transfert-vip-aeroport-geneve-lux-airport-taxi/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^taxi-from-geneva-airport-to-the-city-center-fast-easy/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/taxi-depuis-aeroport-geneve-vers-centre-ville-rapide-facile/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/service/livraison-de-bagages-colis/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^international-schools-in-switzerland-chauffeur-service/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/ecoles-internationales-en-suisse-chauffeur-prive/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^corporate-travel-simplified-vip-transfers/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/voyages-affaires-transferts-lux‑taxi/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/voyages-affaires-transferts-lux-taxi/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/taxi-depuis-lausanne-vers-aeroport-geneve/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^geneva-to-chamonix-ski-transfers/?$ https://www.lux-taxi.com/ski-transfers/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/chauffeur-prive-palexpo-geneve/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
+    RewriteRule ^private-chauffeur-palexpo-geneva/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/chauffeur-prive-ephj-geneve/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
+    RewriteRule ^private-chauffeur-ephj-geneva/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
+    RewriteRule ^taxi-montreux-jazz-festival/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/taxi-montreux-jazz-festival/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
+    RewriteRule ^private-wine-tour-with-chauffeur-in-switzerland/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
+    RewriteRule ^michelin-restaurant-crissier-with-private-chauffeur/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
+    RewriteRule ^pages/services\.html/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^pages/destinations\.html/?$ https://www.lux-taxi.com/ski-transfers/ [R=301,L,QSD,NE]
+    RewriteRule ^pages/flotte\.html/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
+    RewriteRule ^pages/contact\.html/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
+    RewriteRule ^pages/reservation\.html/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/reserve/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
+    RewriteRule ^reserve/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/from/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^terms/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^privacy-policy/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^cookie-policy/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
@@ -73,8 +76,8 @@
     RewriteRule ^fr/politique-de-cookies/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
     RewriteRule ^index\.html/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
-    RewriteRule ^(fr/)?ourfleet(/.*)?$ https://www.lux-taxi.com/pages/flotte.html [R=301,L,QSD,NE]
-    RewriteRule ^(fr/)?(service|service_category)(/.*)?$ https://www.lux-taxi.com/pages/services.html [R=301,L,QSD,NE]
+    RewriteRule ^(fr/)?ourfleet(/.*)?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
+    RewriteRule ^(fr/)?(service|service_category)(/.*)?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
     RewriteRule ^(fr/)?(category|tag|author|blog|feed)(/.*)?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^(it|ru|de|en)(/.*)?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^fr/.+$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
@@ -148,6 +151,7 @@
     ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType video/mp4 "access plus 1 year"
 
     # Typographies Web
     ExpiresByType font/ttf "access plus 1 year"
@@ -164,6 +168,7 @@
     AddType image/webp .webp
     AddType image/svg+xml .svg
     AddType font/woff2 .woff2
+    AddType video/mp4 .mp4
     AddType font/woff .woff
 </IfModule>
 

@@ -38,7 +38,7 @@ echo "Sauvegarde : ~/sauvegardes/lux-taxi.com-$DATE.tar.gz"
 
 rsync -a --checksum --delete "${EXCLUS[@]}" "$TRAVAIL"/ "$SITE"/
 echo "En ligne. Contrôle :"
-for u in / /pages/contact.html /fr/ /service/airport-transfer-geneva/ /sitemap.xml; do
+for u in / /geneva-airport-transfer/ /ski-transfers/ /chauffeur-by-the-hour/ /pages/contact.html /fr/ /service/airport-transfer-geneva/ /sitemap.xml; do
   curl -s -o /dev/null -w "%{http_code} %{redirect_url}  <- $u\n" "https://www.lux-taxi.com$u"
 done
 echo "Pour revenir en arrière : rm -rf $SITE && tar xzf ~/sauvegardes/lux-taxi.com-$DATE.tar.gz -C ~/sites"
