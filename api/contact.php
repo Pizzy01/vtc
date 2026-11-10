@@ -148,7 +148,7 @@ if ($fh = @fopen($csv, 'a')) {
 }
 
 // 2. Envoi de l'e-mail
-$sujet = 'Nouvelle demande de devis — ' . $d['nom'] . ($d['societe'] !== '' ? ' (' . $d['societe'] . ')' : '');
+$sujet = 'Nouvelle demande de devis — ' . $d['nom'] . ($d['societe'] !== '' ? ' (' . $d['societe'] . ')' : '') . ' — ' . trim($d['depart'] . ' → ' . $d['destination']) . ($d['email'] === '' ? ' (répondre par WhatsApp)' : '');
 $lignes = [
     'Client'        => $d['nom'],
     'Société'       => $d['societe'],
@@ -160,8 +160,32 @@ $lignes = [
     'Départ'        => $d['depart'],
     'Destination'   => $d['destination'],
 ];
+// Boutons de réponse : le chauffeur répond au client en un clic (WhatsApp, appel, e-mail)
+$telIntl = $d['telephone'];
+if (preg_match('/^0[1-9]\d{8}$/', $telIntl)) { $telIntl = '+41' . substr($telIntl, 1); } // numéro local : supposé suisse
+$waNum = preg_replace('/\D/', '', $telIntl);
+$trajet = trim($d['depart'] . ' → ' . $d['destination']);
+$quandTxt = trim($d['date'] . ' ' . $d['heure']);
+$texteWa = 'Bonjour ' . $d['nom'] . ', Prosper & Co. ici, suite à votre demande sur lux-taxi.com (' . $trajet . ', ' . $quandTxt . '). Le prix fixe est de … CHF, tout compris. Je vous confirme la réservation ?';
+$btn = 'display:inline-block;margin:0 8px 8px 0;padding:12px 18px;border-radius:6px;text-decoration:none;font-weight:bold;';
+$boutons = '';
+if ($waNum !== '') {
+    $boutons .= '<a href="https://wa.me/' . $waNum . '?text=' . rawurlencode($texteWa) . '" style="' . $btn . 'background:#25D366;color:#fff;">Répondre sur WhatsApp</a>';
+    $boutons .= '<a href="tel:' . h($telIntl) . '" style="' . $btn . 'background:#111;color:#fff;">Appeler ' . h($d['telephone']) . '</a>';
+}
+if ($d['email'] !== '') {
+    $corpsMail = "Bonjour " . $d['nom'] . ",\n\nMerci pour votre demande (" . $trajet . ", " . $quandTxt . ").\nLe prix fixe est de … CHF, tout compris.\n\nBien à vous,\nProsper & Co.";
+    $boutons .= '<a href="mailto:' . h($d['email']) . '?subject=' . rawurlencode('Votre devis Prosper & Co. — ' . $trajet) . '&body=' . rawurlencode($corpsMail) . '" style="' . $btn . 'background:#c6a96b;color:#050506;">Répondre par e-mail</a>';
+}
 $html = '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body style="font-family:Arial,Helvetica,sans-serif;color:#111;">';
-$html .= '<h2 style="margin:0 0 12px;">Nouvelle demande de devis — lux-taxi.com</h2><table cellpadding="6" style="border-collapse:collapse;">';
+$html .= '<h2 style="margin:0 0 12px;">Nouvelle demande de devis — lux-taxi.com</h2>';
+$html .= '<p style="margin:0 0 8px;">' . $boutons . '</p>';
+if ($d['email'] === '') {
+    $html .= '<p style="background:#fff4e5;border-left:4px solid #e8a03c;padding:10px 12px;margin:0 0 16px;font-size:14px;">Le client n\'a pas laissé d\'e-mail : répondez par <strong>WhatsApp</strong> ou par <strong>téléphone</strong> (le bouton « Répondre » de votre messagerie écrirait à info@lux-taxi.com).</p>';
+} else {
+    $html .= '<p style="color:#555;margin:0 0 16px;font-size:14px;">Le bouton « Répondre » de votre messagerie écrit directement au client (' . h($d['email']) . ').</p>';
+}
+$html .= '<table cellpadding="6" style="border-collapse:collapse;">';
 foreach ($lignes as $label => $val) {
     if ($val === '') { continue; }
     $html .= '<tr><td style="color:#666;border-bottom:1px solid #eee;">' . h($label) . '</td><td style="border-bottom:1px solid #eee;"><strong>' . h($val) . '</strong></td></tr>';
@@ -171,9 +195,9 @@ if ($d['message'] !== '') {
     $html .= '<p style="color:#666;margin:16px 0 4px;">Message</p><p style="background:#f5f5f5;padding:12px;">' . nl2br(h($d['message'])) . '</p>';
 }
 if (!empty($lien)) {
-    $html .= '<p style="margin:16px 0;"><a href="' . h($lien) . '" style="background:#c6a96b;color:#050506;padding:10px 16px;border-radius:6px;text-decoration:none;">Voir la position du client sur la carte</a></p>';
+    $html .= '<p style="margin:16px 0;"><a href="' . h($lien) . '" style="' . $btn . 'background:#c6a96b;color:#050506;">Voir la position du client sur la carte</a></p>';
 }
-$html .= '<p style="color:#888;font-size:12px;margin-top:20px;">Répondez directement à cet e-mail pour écrire au client. WhatsApp / téléphone du client : ' . h($d['telephone']) . '</p></body></html>';
+$html .= '</body></html>';
 
 $entetes = [
     'MIME-Version: 1.0',
