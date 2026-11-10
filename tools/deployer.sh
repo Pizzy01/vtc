@@ -19,6 +19,12 @@ git clone -q --depth 1 -b "$BRANCHE" github-vtc:Pizzy01/vtc.git "$TRAVAIL"
 cd "$TRAVAIL"
 echo "Branche $BRANCHE : $(git log -1 --oneline)"
 
+# Sécurité : le dossier des demandes clients doit rester fermé au public (incident du 10 nov. 2026)
+if [ ! -f api/data/.htaccess ] || ! grep -q "Require all denied" api/data/.htaccess; then
+  echo "ARRÊT : api/data/.htaccess manque dans la branche (le fichier des demandes serait public). Rien n'a été mis en ligne."
+  exit 1
+fi
+
 # Les redirections doivent passer le test avant toute mise en ligne
 python3 tools/redirects.py test
 
