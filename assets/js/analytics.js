@@ -35,10 +35,10 @@
    */
   var CLE = 'lux_consent';
   var TEXTES = {
-    fr: { t: 'Nous utilisons des cookies de mesure d’audience (Google Analytics) pour améliorer le site. Aucune publicité.', ok: 'Accepter', non: 'Refuser' },
-    en: { t: 'We use audience measurement cookies (Google Analytics) to improve this site. No advertising.', ok: 'Accept', non: 'Decline' },
-    de: { t: 'Wir verwenden Cookies zur Reichweitenmessung (Google Analytics), um die Website zu verbessern. Keine Werbung.', ok: 'Akzeptieren', non: 'Ablehnen' },
-    it: { t: 'Utilizziamo cookie di misurazione del pubblico (Google Analytics) per migliorare il sito. Nessuna pubblicità.', ok: 'Accetta', non: 'Rifiuta' }
+    fr: { h: 'Votre vie privée', t: 'Nous utilisons des cookies de mesure d’audience (Google Analytics) pour comprendre l’usage du site et l’améliorer. Aucune publicité, aucune revente de vos données. Vous pouvez changer d’avis à tout moment avec le lien « Cookies » en bas de page.', ok: 'Tout accepter', non: 'Refuser' },
+    en: { h: 'Your privacy', t: 'We use audience measurement cookies (Google Analytics) to understand how this site is used and improve it. No advertising, no resale of your data. You can change your choice at any time with the “Cookies” link at the bottom of the page.', ok: 'Accept all', non: 'Decline' },
+    de: { h: 'Ihre Privatsphäre', t: 'Wir verwenden Cookies zur Reichweitenmessung (Google Analytics), um die Nutzung der Website zu verstehen und sie zu verbessern. Keine Werbung, kein Verkauf Ihrer Daten. Sie können Ihre Wahl jederzeit über den Link „Cookies“ unten auf der Seite ändern.', ok: 'Alle akzeptieren', non: 'Ablehnen' },
+    it: { h: 'La tua privacy', t: 'Utilizziamo cookie di misurazione del pubblico (Google Analytics) per capire come viene usato il sito e migliorarlo. Nessuna pubblicità, nessuna vendita dei tuoi dati. Puoi cambiare scelta in qualsiasi momento con il link «Cookies» in fondo alla pagina.', ok: 'Accetta tutto', non: 'Rifiuta' }
   };
 
   function lireChoix() { try { return localStorage.getItem(CLE); } catch (e) { return null; } }
@@ -53,44 +53,50 @@
     return TEXTES[l] ? l : 'fr';
   }
 
+  // Grand panneau en bas de l'écran sur fond assombri (modèle Blacklane, 11 nov. 2026).
+  // « Refuser » reste aussi visible et accessible qu'« Accepter » (règle européenne du consentement).
   function ouvrir() {
     if (document.getElementById('lux-consent')) return;
     var tx = TEXTES[langue()];
+    var fond = document.createElement('div');
+    fond.id = 'lux-consent';
+    fond.style.cssText = 'position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);' +
+      'display:flex;align-items:flex-end;justify-content:center';
     var b = document.createElement('div');
-    b.id = 'lux-consent';
     b.setAttribute('role', 'dialog');
-    b.setAttribute('aria-live', 'polite');
-    b.setAttribute('aria-label', 'Cookies');
-    b.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:560px;margin:0 auto;' +
-      'background:#111113;color:#F5F1E8;border:1px solid rgba(198,169,107,.45);border-radius:16px;' +
-      'padding:14px 16px;font:13px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;' +
-      'box-shadow:0 12px 40px rgba(0,0,0,.5);display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center';
+    b.setAttribute('aria-modal', 'true');
+    b.setAttribute('aria-labelledby', 'lux-consent-titre');
+    b.style.cssText = 'width:100%;max-width:640px;box-sizing:border-box;background:#F5F1E8;color:#0B0B0C;' +
+      'border-radius:22px 22px 0 0;padding:28px 24px calc(24px + env(safe-area-inset-bottom));' +
+      'font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 -12px 40px rgba(0,0,0,.35)';
+    var marque = document.createElement('div');
+    marque.textContent = 'Prosper & Co.';
+    marque.style.cssText = 'font:600 30px/1.1 Georgia,"Times New Roman",serif;letter-spacing:-.01em;margin:0 0 14px';
+    var h = document.createElement('h2');
+    h.id = 'lux-consent-titre';
+    h.textContent = tx.h;
+    h.style.cssText = 'margin:0 0 8px;font:700 20px/1.25 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#0B0B0C';
     var p = document.createElement('p');
-    p.style.cssText = 'margin:0;flex:1 1 260px';
     p.textContent = tx.t;
-    var zone = document.createElement('div');
-    zone.style.cssText = 'display:flex;gap:8px;flex:0 0 auto';
-    function bouton(label, plein, valeur) {
+    p.style.cssText = 'margin:0 0 22px;color:#2a2a2a';
+    function bouton(label, principal, valeur) {
       var x = document.createElement('button');
       x.type = 'button';
       x.textContent = label;
-      x.style.cssText = 'cursor:pointer;border-radius:999px;padding:8px 16px;font:600 12px/1 system-ui,sans-serif;' +
-        (plein ? 'background:#C6A96B;color:#0B0B0C;border:1px solid #C6A96B'
-               : 'background:transparent;color:#F5F1E8;border:1px solid #3a3a3a');
-      x.addEventListener('click', function () { enregistrer(valeur); b.remove(); });
+      x.style.cssText = 'display:block;width:100%;cursor:pointer;border-radius:12px;padding:16px;margin:0 0 10px;' +
+        'font:700 17px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;border:0;' +
+        (principal ? 'background:#0B0B0C;color:#F5F1E8' : 'background:#E2DCCF;color:#0B0B0C');
+      x.addEventListener('click', function () { enregistrer(valeur); fond.remove(); });
       return x;
     }
-    zone.appendChild(bouton(tx.non, false, 'denied'));
-    zone.appendChild(bouton(tx.ok, true, 'granted'));
+    b.appendChild(marque);
+    b.appendChild(h);
     b.appendChild(p);
-    b.appendChild(zone);
-    // Sur mobile, ne pas cacher la barre WhatsApp / Appel du bas de l'écran
-    // (elle n'apparaît qu'au défilement : on réserve sa place dès qu'elle existe à cette largeur d'écran)
-    var barre = document.getElementById('mobile-sticky-bar');
-    if (barre && window.getComputedStyle(barre).display !== 'none') {
-      b.style.bottom = ((barre.offsetHeight || 84) + 12) + 'px';
-    }
-    document.body.appendChild(b);
+    b.appendChild(bouton(tx.ok, true, 'granted'));
+    b.appendChild(bouton(tx.non, false, 'denied'));
+    fond.appendChild(b);
+    document.body.appendChild(fond);
+    try { b.querySelector('button').focus({ preventScroll: true }); } catch (e) {}
   }
 
   window.luxConsent = { ouvrir: ouvrir };
