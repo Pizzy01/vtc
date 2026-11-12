@@ -47,7 +47,7 @@
     RewriteRule ^fr/service/livraison-de-bagages-colis/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
     RewriteRule ^international-schools-in-switzerland-chauffeur-service/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
     RewriteRule ^fr/ecoles-internationales-en-suisse-chauffeur-prive/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
-    RewriteRule ^corporate-travel-simplified-vip-transfers/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
+    RewriteRule ^corporate-travel-simplified-vip-transfers/?$ https://www.lux-taxi.com/corporate-chauffeur-geneva/ [R=301,L,QSD,NE]
     RewriteRule ^fr/voyages-affaires-transferts-lux‑taxi/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
     RewriteRule ^fr/voyages-affaires-transferts-lux-taxi/?$ https://www.lux-taxi.com/chauffeur-by-the-hour/ [R=301,L,QSD,NE]
     RewriteRule ^fr/taxi-depuis-lausanne-vers-aeroport-geneve/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
