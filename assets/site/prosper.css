@@ -63,7 +63,7 @@ button[disabled]{opacity:.6;cursor:wait}
 .ps-herocta a:first-child{padding:16px 20px!important;white-space:nowrap}
 .ps-herocta a:last-child{white-space:nowrap}
 .ps-mbar{-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important}
-.ps-hero .ps-herobottom h1{font-size:clamp(44px,12vw,56px)!important}
+.ps-hero .ps-herobottom h1:not(.ps-kicker),.ps-hero .ps-herobottom .ps-big{font-size:clamp(44px,12vw,56px)!important}
 }
 
 /* --- 10 nov. (v3) : haut de page « texte puis photo », net à toutes les tailles --- */
@@ -75,7 +75,7 @@ button[disabled]{opacity:.6;cursor:wait}
 .ps-media .ps-heroimg{width:100%!important;height:100%!important;object-fit:cover;filter:none!important;display:block}
 .ps-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(255,236,205,.13) 50%,transparent 62%);transform:translateX(-110%);animation:ps-sweep 9s ease-in-out 1.8s infinite}
 .ps-media::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);z-index:1}
-.ps-hero .ps-herobottom h1{font-size:clamp(44px,7vw,104px)!important}
+.ps-hero .ps-herobottom h1:not(.ps-kicker),.ps-hero .ps-herobottom .ps-big{font-size:clamp(44px,7vw,104px)!important}
 @media (max-width:760px){
 .ps-hero>.ps-media{width:calc(100% - 40px);border-radius:20px}
 .ps-hero>.ps-herobottom{padding-top:36px!important;padding-bottom:28px!important}
