@@ -7,19 +7,18 @@
 # Sources : Search Console (pages avec affichages, pages en 404 et non indexées), 9 nov. 2026.
 
 # --- Pages de l'ancien WordPress les plus vues ---
-/fr/,/
-/fr/chauffeur-prive-a-geneve/,/
+/fr/chauffeur-prive-a-geneve/,/fr/
 /service/airport-transfer-geneva/,/geneva-airport-transfer/
 /fr/service/transfert-aeroport-geneve/,/geneva-airport-transfer/
-/fr/service/taxi-geneve/,/
-/fr/service/service-chauffeur-prive-geneve/,/
+/fr/service/taxi-geneve/,/fr/
+/fr/service/service-chauffeur-prive-geneve/,/fr/
 /private-chauffeur-services-geneva/,/
-/fr/contact-taxi-geneve/,/
+/fr/contact-taxi-geneve/,/fr/
 /fr/transfert-aeroport-geneve/,/geneva-airport-transfer/
 /geneva-airport-transfers-luxury/,/geneva-airport-transfer/
 /fr/combien-coute-reellement-un-chauffeur-prive-a-geneve/,/geneva-airport-transfer/
 /service/luggage-parcel-delivery-service-geneva/,/geneva-airport-transfer/
-/fr/notre-flotte/,/
+/fr/notre-flotte/,/fr/
 /service/taxi-geneva/,/
 /contact-taxi-geneva/,/
 /how-to-get-a-taxi-at-geneva-airport/,/geneva-airport-transfer/
@@ -29,7 +28,7 @@
 /fr/transferts-aeroport-apres-vacances/,/geneva-airport-transfer/
 /post-holiday-airport-transfers/,/geneva-airport-transfer/
 /chauffeur-de-maitre-private-luxury/,/
-/fr/chauffeur-de-maitre-private-luxury/,/
+/fr/chauffeur-de-maitre-private-luxury/,/fr/
 /rate-and-faq-geneva-transfers/,/geneva-airport-transfer/
 /fr/tarifs-faq-transferts-geneve/,/geneva-airport-transfer/
 /fleet-taxi-geneva/,/
@@ -42,18 +41,18 @@
 /international-schools-in-switzerland-chauffeur-service/,/geneva-airport-transfer/
 /fr/ecoles-internationales-en-suisse-chauffeur-prive/,/geneva-airport-transfer/
 /corporate-travel-simplified-vip-transfers/,/corporate-chauffeur-geneva/
-/fr/voyages-affaires-transferts-lux‑taxi/,/chauffeur-by-the-hour/
-/fr/voyages-affaires-transferts-lux-taxi/,/chauffeur-by-the-hour/
+/fr/voyages-affaires-transferts-lux‑taxi/,/fr/chauffeur-prive-business-geneve/
+/fr/voyages-affaires-transferts-lux-taxi/,/fr/chauffeur-prive-business-geneve/
 
 # --- Destinations, salons, événements ---
 /fr/taxi-depuis-lausanne-vers-aeroport-geneve/,/geneva-airport-transfer/
 /geneva-to-chamonix-ski-transfers/,/ski-transfers/
-/fr/chauffeur-prive-palexpo-geneve/,/chauffeur-by-the-hour/
+/fr/chauffeur-prive-palexpo-geneve/,/fr/chauffeur-a-disposition-geneve/
 /private-chauffeur-palexpo-geneva/,/chauffeur-by-the-hour/
-/fr/chauffeur-prive-ephj-geneve/,/chauffeur-by-the-hour/
+/fr/chauffeur-prive-ephj-geneve/,/fr/chauffeur-a-disposition-geneve/
 /private-chauffeur-ephj-geneva/,/chauffeur-by-the-hour/
 /taxi-montreux-jazz-festival/,/chauffeur-by-the-hour/
-/fr/taxi-montreux-jazz-festival/,/chauffeur-by-the-hour/
+/fr/taxi-montreux-jazz-festival/,/fr/chauffeur-a-disposition-geneve/
 /private-wine-tour-with-chauffeur-in-switzerland/,/chauffeur-by-the-hour/
 /michelin-restaurant-crissier-with-private-chauffeur/,/chauffeur-by-the-hour/
 
@@ -65,17 +64,17 @@
 /pages/reservation.html,/
 
 # --- Réservation et contact ---
-/fr/reserve,/
+/fr/reserve,/fr/
 /reserve,/
-/fr/from,/
+/fr/from,/fr/
 
 # --- Pages légales (pas encore d'équivalent : accueil en attendant) ---
 /terms/,/
 /privacy-policy/,/
 /cookie-policy/,/
-/fr/conditions-generales/,/
-/fr/politique-de-confidentialite/,/
-/fr/politique-de-cookies/,/
+/fr/conditions-generales/,/fr/
+/fr/politique-de-confidentialite/,/fr/
+/fr/politique-de-cookies/,/fr/
 
 # --- Ancienne adresse de l'accueil ---
 /index.html,/
@@ -85,4 +84,4 @@ motif:^(fr/)?ourfleet(/.*)?$,/
 motif:^(fr/)?(service|service_category)(/.*)?$,/geneva-airport-transfer/
 motif:^(fr/)?(category|tag|author|blog|feed)(/.*)?$,/
 motif:^(it|ru|de|en)(/.*)?$,/
-motif:^fr/.+$,/
+motif:^fr/(?!(chauffeur-prive-business-geneve|chauffeur-a-disposition-geneve|chauffeur-prive-diplomate-geneve)/?$).+$,/fr/

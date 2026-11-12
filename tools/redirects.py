@@ -131,7 +131,7 @@ def test():
         "/ru/blog?start=0": "/",
         "/it/": "/",
         "/it/blog?rCH=2": "/",
-        "/fr/une-page-inconnue/": "/",
+        "/fr/une-page-inconnue/": "/fr/",
     }
     for v, new in samples.items():
         code, dest = resolve(v)

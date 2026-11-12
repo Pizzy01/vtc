@@ -1,5 +1,9 @@
 /* Prosper & Co. — apparitions au défilement + formulaire de devis */
 (function () {
+  var FR = document.documentElement.lang === 'fr';
+  function T(en, fr) { return FR ? fr : en; }
+  var HOME = FR ? '/fr/' : '/';
+  var GPS = T('My current location (GPS)', 'Ma position actuelle (GPS)');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if ('IntersectionObserver' in window && !reduce) {
     var io = new IntersectionObserver(function (entries) {
@@ -19,15 +23,16 @@
   // Menu (burger) : panneau plein écran construit à partir des liens de l'en-tête
   var burger = document.querySelector('.ps-burger');
   if (burger) {
-    var LABELS = { '/geneva-airport-transfer/': ['Airport transfer', 'Geneva · Zurich · Lyon'], '/ski-transfers/': ['Ski transfers', 'Verbier · Courchevel'], '/chauffeur-by-the-hour/': ['By the hour', 'From CHF 80 / hour'], '/corporate-chauffeur-geneva/': ['Corporate', 'Executives · roadshows'], '/wef-davos-chauffeur/': ['WEF Davos', 'January 2027'] };
+    var LABELS = { '/fr/chauffeur-prive-business-geneve/': ['Entreprises', 'Dirigeants · roadshows'], '/fr/chauffeur-a-disposition-geneve/': ['À disposition', 'Dès CHF 80 / heure'], '/fr/chauffeur-prive-diplomate-geneve/': ['Délégations', 'Missions · conférences'], '/geneva-airport-transfer/': ['Airport transfer', 'Geneva · Zurich · Lyon'], '/ski-transfers/': ['Ski transfers', 'Verbier · Courchevel'], '/chauffeur-by-the-hour/': ['By the hour', 'From CHF 80 / hour'], '/corporate-chauffeur-geneva/': ['Corporate', 'Executives · roadshows'], '/wef-davos-chauffeur/': ['WEF Davos', 'January 2027'] };
     var menu = document.createElement('div');
     menu.id = 'ps-menu'; menu.className = 'ps-menu'; menu.setAttribute('role', 'dialog'); menu.setAttribute('aria-modal', 'true'); menu.setAttribute('aria-label', 'Menu');
-    var html = '<div class="ps-menutop"><span>Prosper &amp; Co.</span><button type="button" class="ps-menuclose" aria-label="Close menu">×</button></div><nav class="ps-menulinks" aria-label="Services">';
-    document.querySelectorAll('header .ps-navlink').forEach(function (a) {
+    var lang = document.querySelector('header .ps-lang');
+    var html = '<div class="ps-menutop"><span>Prosper &amp; Co.</span><span class="ps-menuright">' + (lang ? '<a class="ps-menulang" href="' + lang.getAttribute('href') + '">' + (FR ? 'English' : 'Français') + '</a>' : '') + '<button type="button" class="ps-menuclose" aria-label="' + T('Close menu', 'Fermer le menu') + '">×</button></span></div><nav class="ps-menulinks" aria-label="Services">';
+    document.querySelectorAll('header .ps-navlink:not(.ps-lang)').forEach(function (a) {
       var h = a.getAttribute('href'), l = LABELS[h] || [a.textContent, ''];
       html += '<a href="' + h + '"' + (location.pathname === h ? ' aria-current="page"' : '') + '>' + l[0] + '<small>' + l[1] + '</small></a>';
     });
-    html += '</nav><div class="ps-menucta"><a href="/#quote">Get a quote</a><div><a href="https://wa.me/41766207850">WhatsApp</a><a href="tel:+41766207850">Call</a></div></div>';
+    html += '</nav><div class="ps-menucta"><a href="' + HOME + '#quote">' + T('Get a quote', 'Demander un devis') + '</a><div><a href="https://wa.me/41766207850">WhatsApp</a><a href="tel:+41766207850">' + T('Call', 'Appeler') + '</a></div></div>';
     menu.innerHTML = html;
     document.body.appendChild(menu);
     var setMenu = function (open) {
@@ -47,7 +52,8 @@
   var status = form.querySelector('.ps-status');
   var btn = form.querySelector('button[type=submit]');
   var f = form.elements;
-  var MSG_FAIL = 'Sending failed. Please message us on WhatsApp: +41 76 620 78 50.';
+  var MSG_FAIL = T('Sending failed. Please message us on WhatsApp: +41 76 620 78 50.', "L'envoi a échoué. Écrivez-nous sur WhatsApp : +41 76 620 78 50.");
+  var MSG_CHECK = T('Please check the highlighted fields.', 'Merci de vérifier les champs signalés.');
   function say(t, cls) { status.textContent = t; status.className = 'ps-status ' + (cls || ''); }
 
   // Date : pas de date passée
@@ -66,17 +72,17 @@
   var TYPO = { 'gmial.com': 'gmail.com', 'gmai.com': 'gmail.com', 'gmail.co': 'gmail.com', 'gmail.fr': 'gmail.com', 'gamil.com': 'gmail.com', 'hotmial.com': 'hotmail.com', 'hotmail.co': 'hotmail.com', 'outlok.com': 'outlook.com', 'yahoo.co': 'yahoo.com', 'iclod.com': 'icloud.com', 'icloud.co': 'icloud.com', 'bluewin.c': 'bluewin.ch' };
   function checkEmail(v) {
     if (!v) return '';
-    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v)) return 'This email address does not look valid.';
+    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v)) return T('This email address does not look valid.', 'Cette adresse e-mail ne semble pas valide.');
     var dom = v.split('@')[1].toLowerCase();
-    if (TYPO[dom]) return 'Did you mean ' + v.split('@')[0] + '@' + TYPO[dom] + '?';
+    if (TYPO[dom]) return T('Did you mean ', 'Vouliez-vous dire ') + v.split('@')[0] + '@' + TYPO[dom] + '?';
     return '';
   }
   var rules = {
-    from: function (v) { return v.length < 2 ? 'Please enter a pick-up place — a hotel name is enough.' : ''; },
-    to: function (v) { return v.length < 2 ? 'Please enter a drop-off place — a hotel or resort name is enough.' : ''; },
-    when: function (v) { if (!v) return 'Please choose a date and time.'; return new Date(v).getTime() < Date.now() - 5 * 60000 ? 'Please choose a date and time in the future.' : ''; },
-    name: function (v) { return v.length < 2 ? 'Please enter your name.' : ''; },
-    phone: function (v) { if (!v) return 'We need a phone number to reach you on the day.'; return cleanPhone(v) ? '' : 'Please enter a valid phone number with country code, e.g. +41 79 123 45 67.'; },
+    from: function (v) { return v.length < 2 ? T('Please enter a pick-up place — a hotel name is enough.', "Indiquez le lieu de prise en charge : le nom d'un hôtel suffit.") : ''; },
+    to: function (v) { return v.length < 2 ? T('Please enter a drop-off place — a hotel or resort name is enough.', "Indiquez la destination : le nom d'un hôtel ou d'une station suffit.") : ''; },
+    when: function (v) { if (!v) return T('Please choose a date and time.', 'Choisissez une date et une heure.'); return new Date(v).getTime() < Date.now() - 5 * 60000 ? T('Please choose a date and time in the future.', 'Choisissez une date et une heure à venir.') : ''; },
+    name: function (v) { return v.length < 2 ? T('Please enter your name.', 'Indiquez votre nom.') : ''; },
+    phone: function (v) { if (!v) return T('We need a phone number to reach you on the day.', 'Il nous faut un numéro pour vous joindre le jour J.'); return cleanPhone(v) ? '' : T('Please enter a valid phone number with country code, e.g. +41 79 123 45 67.', "Entrez un numéro valide avec l'indicatif, par exemple +41 79 123 45 67."); },
     email: checkEmail
   };
   function mark(name, msg) {
@@ -85,7 +91,7 @@
     box.classList.toggle('is-ok', !msg && !!f[name].value.trim());
     f[name].setAttribute('aria-invalid', msg ? 'true' : 'false');
     box.querySelector('.ps-err').textContent = msg || '';
-    box.querySelector('.ps-err').classList.toggle('is-hint', /^Did you mean/.test(msg || ''));
+    box.querySelector('.ps-err').classList.toggle('is-hint', /^(Did you mean|Vouliez-vous dire)/.test(msg || ''));
   }
   function check(name) { var m = rules[name]((f[name].value || '').trim()); mark(name, m); return m; }
   Object.keys(rules).forEach(function (n) {
@@ -94,9 +100,9 @@
   });
   // Clic sur la suggestion « Did you mean … »
   f.email.closest('.ps-field').querySelector('.ps-err').addEventListener('click', function () {
-    var m = /Did you mean (\S+)\?/.exec(this.textContent); if (m) { f.email.value = m[1]; check('email'); }
+    var m = /(?:Did you mean|Vouliez-vous dire) (\S+)\?/.exec(this.textContent); if (m) { f.email.value = m[1]; check('email'); }
   });
-  f.from.addEventListener('input', function () { if (f.lat.value && f.from.value !== 'My current location (GPS)') { f.lat.value = ''; f.lng.value = ''; } });
+  f.from.addEventListener('input', function () { if (f.lat.value && f.from.value !== GPS) { f.lat.value = ''; f.lng.value = ''; } });
 
   // Devis rapide du haut de l'accueil : reporte les 3 champs dans le formulaire complet
   var quick = document.getElementById('quick-quote');
@@ -119,14 +125,14 @@
   if (geo) {
     if (!('geolocation' in navigator)) { geo.hidden = true; }
     geo.addEventListener('click', function () {
-      geo.setAttribute('aria-busy', 'true'); geo.textContent = 'Locating…';
+      geo.setAttribute('aria-busy', 'true'); geo.textContent = T('Locating…', 'Localisation…');
       navigator.geolocation.getCurrentPosition(function (p) {
         f.lat.value = p.coords.latitude.toFixed(6); f.lng.value = p.coords.longitude.toFixed(6);
-        f.from.value = 'My current location (GPS)'; check('from');
-        geo.removeAttribute('aria-busy'); geo.textContent = 'Location added ✓';
+        f.from.value = GPS; check('from');
+        geo.removeAttribute('aria-busy'); geo.textContent = T('Location added ✓', 'Position ajoutée ✓');
       }, function () {
-        geo.removeAttribute('aria-busy'); geo.textContent = 'Use my location';
-        mark('from', 'Location not available — please type your hotel or address.');
+        geo.removeAttribute('aria-busy'); geo.textContent = T('Use my location', 'Utiliser ma position');
+        mark('from', T('Location not available — please type your hotel or address.', 'Position indisponible : saisissez votre hôtel ou votre adresse.'));
       }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
     });
   }
@@ -135,7 +141,7 @@
     ev.preventDefault();
     var first = null;
     Object.keys(rules).forEach(function (n) { if (check(n) && !first) first = f[n]; });
-    if (first) { say('Please check the highlighted fields.', 'is-err'); first.focus({ preventScroll: true }); first.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    if (first) { say(MSG_CHECK, 'is-err'); first.focus({ preventScroll: true }); first.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     var when = f.when.value.split('T');
     var data = {
       name: f.name.value.trim(), pickup: f.from.value.trim(), dropoff: f.to.value.trim(),
@@ -144,21 +150,21 @@
       lat: f.lat.value, lng: f.lng.value,
       service: 'Site web — ' + location.pathname, website_check: f.website_check.value
     };
-    btn.disabled = true; say('Sending…');
+    btn.disabled = true; say(T('Sending…', 'Envoi…'));
     fetch('/api/contact.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
       .then(function (r) { return r.json().catch(function () { return { success: false }; }); })
       .then(function (res) {
         if (res && res.success) {
-          say('Thank you. Your request is sent — we reply with a fixed price within the hour (7am–11pm).', 'is-ok');
+          say(T('Thank you. Your request is sent — we reply with a fixed price within the hour (7am–11pm).', "Merci. Votre demande est envoyée : nous répondons avec un prix fixe dans l'heure (7 h – 23 h)."), 'is-ok');
           form.reset(); f.lat.value = ''; f.lng.value = ''; f.when.min = localNow();
           form.querySelectorAll('.ps-field').forEach(function (b) { b.classList.remove('is-ok', 'is-bad'); });
-          if (geo) geo.textContent = 'Use my location';
+          if (geo) geo.textContent = T('Use my location', 'Utiliser ma position');
           if (window.luxTrack) window.luxTrack('generate_lead', { method: 'form' });
         } else if (res && res.fields) {
           Object.keys(res.fields).forEach(function (n) { mark(n, res.fields[n]); });
-          say(res.error || 'Please check the highlighted fields.', 'is-err');
+          say(FR ? MSG_CHECK : (res.error || MSG_CHECK), 'is-err');
         } else {
-          say((res && res.error) || MSG_FAIL, 'is-err');
+          say(FR ? MSG_FAIL : ((res && res.error) || MSG_FAIL), 'is-err');
         }
       })
       .catch(function () { say(MSG_FAIL, 'is-err'); })
