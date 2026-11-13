@@ -1,5 +1,5 @@
 /*
- * Mesure des actions importantes pour Google Analytics 4 (propriété G-E1BTELQ36P).
+ * Mesure des actions importantes pour Google Analytics 4 (propriété G-KPG7Y6MRC7, compte digit).
  * Événements envoyés :
  *   - click_whatsapp : clic sur un lien wa.me
  *   - click_phone    : clic sur un lien tel:
