@@ -15,14 +15,13 @@
     RewriteEngine On
     RewriteRule ^fr/chauffeur-prive-a-geneve/?$ https://www.lux-taxi.com/fr/ [R=301,L,QSD,NE]
     RewriteRule ^service/airport-transfer-geneva/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
-    RewriteRule ^fr/service/transfert-aeroport-geneve/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/service/transfert-aeroport-geneve/?$ https://www.lux-taxi.com/fr/transfert-aeroport-geneve/ [R=301,L,QSD,NE]
     RewriteRule ^fr/service/taxi-geneve/?$ https://www.lux-taxi.com/fr/ [R=301,L,QSD,NE]
     RewriteRule ^fr/service/service-chauffeur-prive-geneve/?$ https://www.lux-taxi.com/fr/ [R=301,L,QSD,NE]
     RewriteRule ^private-chauffeur-services-geneva/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^fr/contact-taxi-geneve/?$ https://www.lux-taxi.com/fr/ [R=301,L,QSD,NE]
-    RewriteRule ^fr/transfert-aeroport-geneve/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
     RewriteRule ^geneva-airport-transfers-luxury/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
-    RewriteRule ^fr/combien-coute-reellement-un-chauffeur-prive-a-geneve/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/combien-coute-reellement-un-chauffeur-prive-a-geneve/?$ https://www.lux-taxi.com/fr/transfert-aeroport-geneve/ [R=301,L,QSD,NE]
     RewriteRule ^service/luggage-parcel-delivery-service-geneva/?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
     RewriteRule ^fr/notre-flotte/?$ https://www.lux-taxi.com/fr/ [R=301,L,QSD,NE]
     RewriteRule ^service/taxi-geneva/?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
@@ -79,7 +78,7 @@
     RewriteRule ^(fr/)?(service|service_category)(/.*)?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
     RewriteRule ^(fr/)?(category|tag|author|blog|feed)(/.*)?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^(it|ru|de|en)(/.*)?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
-    RewriteRule ^fr/(?!(chauffeur-prive-business-geneve|chauffeur-a-disposition-geneve|chauffeur-prive-diplomate-geneve)/?$).+$ https://www.lux-taxi.com/fr/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/(?!(chauffeur-prive-business-geneve|chauffeur-a-disposition-geneve|chauffeur-prive-diplomate-geneve|transfert-aeroport-geneve)/?$).+$ https://www.lux-taxi.com/fr/ [R=301,L,QSD,NE]
 
     # Une seule version du site : https://www.lux-taxi.com (en un seul saut)
     RewriteCond %{HTTPS} off [OR]

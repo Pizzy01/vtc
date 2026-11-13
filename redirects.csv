@@ -9,14 +9,13 @@
 # --- Pages de l'ancien WordPress les plus vues ---
 /fr/chauffeur-prive-a-geneve/,/fr/
 /service/airport-transfer-geneva/,/geneva-airport-transfer/
-/fr/service/transfert-aeroport-geneve/,/geneva-airport-transfer/
+/fr/service/transfert-aeroport-geneve/,/fr/transfert-aeroport-geneve/
 /fr/service/taxi-geneve/,/fr/
 /fr/service/service-chauffeur-prive-geneve/,/fr/
 /private-chauffeur-services-geneva/,/
 /fr/contact-taxi-geneve/,/fr/
-/fr/transfert-aeroport-geneve/,/geneva-airport-transfer/
 /geneva-airport-transfers-luxury/,/geneva-airport-transfer/
-/fr/combien-coute-reellement-un-chauffeur-prive-a-geneve/,/geneva-airport-transfer/
+/fr/combien-coute-reellement-un-chauffeur-prive-a-geneve/,/fr/transfert-aeroport-geneve/
 /service/luggage-parcel-delivery-service-geneva/,/geneva-airport-transfer/
 /fr/notre-flotte/,/fr/
 /service/taxi-geneva/,/
@@ -84,4 +83,4 @@ motif:^(fr/)?ourfleet(/.*)?$,/
 motif:^(fr/)?(service|service_category)(/.*)?$,/geneva-airport-transfer/
 motif:^(fr/)?(category|tag|author|blog|feed)(/.*)?$,/
 motif:^(it|ru|de|en)(/.*)?$,/
-motif:^fr/(?!(chauffeur-prive-business-geneve|chauffeur-a-disposition-geneve|chauffeur-prive-diplomate-geneve)/?$).+$,/fr/
+motif:^fr/(?!(chauffeur-prive-business-geneve|chauffeur-a-disposition-geneve|chauffeur-prive-diplomate-geneve|transfert-aeroport-geneve)/?$).+$,/fr/

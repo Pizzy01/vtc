@@ -59,7 +59,12 @@ P = {
      name="Geneva Airport Transfer", type="Airport transfer with private chauffeur",
      desc="Private chauffeur from Geneva Airport (GVA) arrivals or the private aviation terminal to your hotel, home or resort. Flight tracked, name sign, 60 minutes of waiting included.",
      area=["Geneva", "Lausanne", "Montreux", "Zurich", "Gstaad", "Verbier", "Zermatt", "Chamonix", "Megève", "Courchevel"],
-     offers=[(100, None, "Geneva city from CHF 100 in a Mercedes E-Class", "")]), None),
+     offers=[(100, None, "Geneva city from CHF 100 in a Mercedes E-Class", "")]), '/fr/transfert-aeroport-geneve/'),
+ 'fr/transfert-aeroport-geneve/index.html': ('fr', 'Transfert aéroport', dict(
+     name="Transfert aéroport Genève", type="Transfert aéroport avec chauffeur privé",
+     desc="Chauffeur privé depuis les arrivées de l'aéroport de Genève (GVA) ou le terminal d'aviation privée vers votre hôtel, votre domicile ou votre station. Vol suivi, pancarte à votre nom, 60 minutes d'attente comprises.",
+     area=["Geneva", "Lausanne", "Montreux", "Zurich", "Gstaad", "Verbier", "Zermatt", "Chamonix", "Megève", "Courchevel"],
+     offers=[(100, None, "", "Genève ville dès CHF 100 en Mercedes Classe E"), (180, None, "", "Lausanne dès CHF 180 en Mercedes Classe E"), (500, None, "", "Verbier dès CHF 500 en Mercedes Classe E")]), '/geneva-airport-transfer/'),
  'ski-transfers/index.html': ('en', 'Ski transfers', dict(
      name="Geneva Ski Transfers", type="Private ski resort transfer",
      desc="Private door-to-door transfers from Geneva Airport to Swiss and French ski resorts in a Mercedes V-Class VIP or E-Class, with room for skis and luggage.",
@@ -160,6 +165,7 @@ open('llms.txt', 'w', encoding='utf-8').write("""# Prosper & Co. (Lux Taxi)
 
 ## Services (français)
 - [Chauffeur privé de luxe à Genève](https://www.lux-taxi.com/fr/)
+- [Transfert aéroport Genève](https://www.lux-taxi.com/fr/transfert-aeroport-geneve/): dès CHF 100, vol suivi, terminal d'aviation privée
 - [Chauffeur privé business](https://www.lux-taxi.com/fr/chauffeur-prive-business-geneve/)
 - [Chauffeur à disposition](https://www.lux-taxi.com/fr/chauffeur-a-disposition-geneve/)
 - [Chauffeur privé pour diplomates et délégations](https://www.lux-taxi.com/fr/chauffeur-prive-diplomate-geneve/)
