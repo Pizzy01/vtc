@@ -22,6 +22,7 @@ BUSINESS = {
     "alternateName": ["Lux Taxi", "Prosper & Co. Private Chauffeur Geneva"],
     "legalName": "FairTransfert Sàrl",
     "taxID": "CHE-495.106.981",
+    "foundingDate": "2010",
     "url": B + "/",
     "logo": B + "/assets/site/og.jpg",
     "image": B + "/assets/site/og.jpg",
@@ -147,7 +148,7 @@ for path, (lang, crumb, svc, twin) in P.items():
 
 open('llms.txt', 'w', encoding='utf-8').write("""# Prosper & Co. (Lux Taxi)
 
-> Private chauffeur and luxury limousine service in Geneva, Switzerland, operated by FairTransfert Sàrl (CHE-495.106.981). Mercedes S-Class, V-Class VIP and E-Class. Fixed price confirmed before the ride. English and French. Bookings 7am to 11pm: +41 76 620 78 50, WhatsApp, info@lux-taxi.com.
+> Private chauffeur and luxury limousine service in Geneva, Switzerland, since 2010, operated by FairTransfert Sàrl (CHE-495.106.981). Mercedes S-Class, V-Class VIP and E-Class. Fixed price confirmed before the ride. English and French. Bookings 7am to 11pm: +41 76 620 78 50, WhatsApp, info@lux-taxi.com.
 
 ## Services (English)
 - [Geneva chauffeur service](https://www.lux-taxi.com/): luxury and VIP private chauffeur in Geneva
