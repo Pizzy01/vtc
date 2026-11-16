@@ -41,7 +41,7 @@
   // Menu (burger) : panneau plein écran construit à partir des liens de l'en-tête
   var burger = document.querySelector('.ps-burger');
   if (burger) {
-    var LABELS = { '/fr/chauffeur-prive-business-geneve/': ['Entreprises', 'Dirigeants · roadshows'], '/fr/chauffeur-a-disposition-geneve/': ['À disposition', 'Dès CHF 80 / heure'], '/fr/chauffeur-prive-diplomate-geneve/': ['Délégations', 'Missions · conférences'], '/geneva-airport-transfer/': ['Airport transfer', 'Geneva · Zurich · Lyon'], '/ski-transfers/': ['Ski transfers', 'Verbier · Courchevel'], '/chauffeur-by-the-hour/': ['By the hour', 'From CHF 80 / hour'], '/corporate-chauffeur-geneva/': ['Corporate', 'Executives · roadshows'], '/wef-davos-chauffeur/': ['WEF Davos', 'January 2027'] };
+    var LABELS = { '/fr/chauffeur-prive-business-geneve/': ['Entreprises', 'Dirigeants · roadshows'], '/fr/chauffeur-a-disposition-geneve/': ['À disposition', 'Dès CHF 90 / heure'], '/fr/chauffeur-prive-diplomate-geneve/': ['Délégations', 'Missions · conférences'], '/geneva-airport-transfer/': ['Airport transfer', 'Geneva · Zurich · Lyon'], '/ski-transfers/': ['Ski transfers', 'Verbier · Courchevel'], '/chauffeur-by-the-hour/': ['By the hour', 'From CHF 90 / hour'], '/corporate-chauffeur-geneva/': ['Corporate', 'Executives · roadshows'], '/wef-davos-chauffeur/': ['WEF Davos', 'January 2027'] };
     var menu = document.createElement('div');
     menu.id = 'ps-menu'; menu.className = 'ps-menu'; menu.setAttribute('role', 'dialog'); menu.setAttribute('aria-modal', 'true'); menu.setAttribute('aria-label', 'Menu');
     var lang = document.querySelector('header .ps-lang');
@@ -173,7 +173,7 @@
       .then(function (r) { return r.json().catch(function () { return { success: false }; }); })
       .then(function (res) {
         if (res && res.success) {
-          say(T('Thank you. Your request is sent — we reply with a fixed price within the hour (7am–11pm).', "Merci. Votre demande est envoyée : nous répondons avec un prix fixe dans l'heure (7 h – 23 h)."), 'is-ok');
+          say(T('Thank you. Your request is sent — we reply with a fixed price shortly. For priority dispatch in under 10 minutes, message us on WhatsApp (24/7).', "Merci. Votre demande est envoyée : nous répondons rapidement avec un prix fixe. Pour une réponse prioritaire en moins de 10 minutes, écrivez-nous sur WhatsApp (24 h/24)."), 'is-ok');
           form.reset(); f.lat.value = ''; f.lng.value = ''; f.when.min = localNow();
           form.querySelectorAll('.ps-field').forEach(function (b) { b.classList.remove('is-ok', 'is-bad'); });
           if (geo) geo.textContent = T('Use my location', 'Utiliser ma position');

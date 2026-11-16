@@ -83,4 +83,4 @@ motif:^(fr/)?ourfleet(/.*)?$,/
 motif:^(fr/)?(service|service_category)(/.*)?$,/geneva-airport-transfer/
 motif:^(fr/)?(category|tag|author|blog|feed)(/.*)?$,/
 motif:^(it|ru|de|en)(/.*)?$,/
-motif:^fr/(?!(chauffeur-prive-business-geneve|chauffeur-a-disposition-geneve|chauffeur-prive-diplomate-geneve|transfert-aeroport-geneve)/?$).+$,/fr/
+motif:^fr/(?!(chauffeur-prive-business-geneve|chauffeur-a-disposition-geneve|chauffeur-prive-diplomate-geneve|transfert-aeroport-geneve|transfert-aviation-privee-geneve|chauffeur-internats-cliniques-suisse|flotte-mercedes-classe-v-classe-s-geneve)/?$).+$,/fr/

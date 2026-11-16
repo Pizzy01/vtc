@@ -7,7 +7,7 @@ B = 'https://www.lux-taxi.com'
 BIZ = B + '/#business'; SITE = B + '/#website'
 
 def city(n): return {"@type": "City", "name": n}
-AREA_ALL = ["Geneva", "Lausanne", "Montreux", "Zurich", "Verbier", "Zermatt", "Gstaad", "Crans-Montana", "Chamonix", "Megève", "Courchevel", "Davos"]
+AREA_ALL = ["Geneva", "Lausanne", "Montreux", "Zurich", "Verbier", "Zermatt", "Gstaad", "Crans-Montana", "Chamonix", "Megève", "Courchevel", "Davos", "Rolle", "Sion", "Villars-sur-Ollon"]
 
 def offer(prix, unite, txt_en, txt_fr, fr):
     return {"@type": "Offer", "priceCurrency": "CHF",
@@ -19,26 +19,39 @@ BUSINESS = {
     "@type": ["LocalBusiness", "TaxiService"],
     "@id": BIZ,
     "name": "Prosper & Co.",
-    "alternateName": ["Lux Taxi", "Prosper & Co. Private Chauffeur Geneva"],
+    "alternateName": ["Lux Taxi", "Prosper & Co. (FairTransfert Sàrl - Founded 2010)", "Prosper & Co. Private Chauffeur Geneva"],
+    "additionalType": "https://en.wikipedia.org/wiki/Limousine_service",
     "legalName": "FairTransfert Sàrl",
     "taxID": "CHE-495.106.981",
     "foundingDate": "2010",
     "url": B + "/",
     "logo": B + "/assets/site/og.jpg",
     "image": B + "/assets/site/og.jpg",
-    "description": "Private chauffeur and luxury limousine service in Geneva: Mercedes S-Class, V-Class VIP and E-Class, airport transfers including private aviation terminals, chauffeur by the hour, corporate chauffeurs, delegations, ski resorts and WEF Davos. Fixed price confirmed before the ride. One contact from booking to drop-off.",
+    "description": "Private chauffeur and luxury limousine service in Geneva: Mercedes S-Class, V-Class VIP and E-Class, airport transfers including private aviation terminals, chauffeur by the hour, corporate chauffeurs, delegations, ski resorts and WEF Davos. Fixed price confirmed before the ride. 24/7 operations and flight monitoring, priority WhatsApp dispatch in under 10 minutes. Founded in 2010.",
     "telephone": "+41766207850",
     "email": "info@lux-taxi.com",
     "contactPoint": {"@type": "ContactPoint", "contactType": "reservations", "telephone": "+41766207850",
                      "email": "info@lux-taxi.com", "availableLanguage": ["English", "French"],
                      "hoursAvailable": {"@type": "OpeningHoursSpecification",
                                         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                                        "opens": "07:00", "closes": "23:00"}},
+                                        "opens": "00:00", "closes": "23:59"}},
     "address": {"@type": "PostalAddress", "addressLocality": "Geneva", "addressRegion": "GE", "addressCountry": "CH"},
     "areaServed": [city(c) for c in AREA_ALL] + [{"@type": "Country", "name": "Switzerland"}],
     "knowsLanguage": ["en", "fr"],
-    "priceRange": "CHF 80–840",
-    "currenciesAccepted": "CHF",
+    "priceRange": "CHF 90–840",
+    "currenciesAccepted": "CHF, EUR, USD",
+    "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+    "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Fixed prices in CHF", "itemListElement": [
+        offer(100, None, "Geneva Airport to Geneva city, Mercedes E-Class Business, fixed price", "", False),
+        offer(120, None, "Geneva Airport to Geneva city, Mercedes V-Class VIP Van, fixed price", "", False),
+        offer(180, None, "Geneva Airport to Lausanne, Mercedes E-Class Business, fixed price", "", False),
+        offer(290, None, "Geneva Airport to Montreux, Mercedes E-Class Business, fixed price", "", False),
+        offer(500, None, "Geneva Airport to Verbier, Mercedes E-Class Business, fixed price", "", False),
+        offer(530, None, "Geneva Airport to Courchevel, Mercedes E-Class Business, fixed price", "", False),
+        offer(720, None, "Geneva Airport to Zermatt, Mercedes E-Class Business, fixed price", "", False),
+        offer(90, "hour", "Chauffeur by the hour, Mercedes E-Class Business, 20 km included per hour", "", False),
+        offer(110, "hour", "Chauffeur by the hour, Mercedes V-Class VIP Van (7 pax), 20 km included per hour", "", False),
+        offer(140, "hour", "Chauffeur by the hour, Mercedes S-Class First Class, 20 km included per hour", "", False)]},
     "makesOffer": [
         {"@type": "Offer", "itemOffered": {"@id": B + "/geneva-airport-transfer/#service"}},
         {"@type": "Offer", "itemOffered": {"@id": B + "/chauffeur-by-the-hour/#service"}},
@@ -46,6 +59,9 @@ BUSINESS = {
         {"@type": "Offer", "itemOffered": {"@id": B + "/ski-transfers/#service"}},
         {"@type": "Offer", "itemOffered": {"@id": B + "/wef-davos-chauffeur/#service"}},
         {"@type": "Offer", "itemOffered": {"@id": B + "/fr/chauffeur-prive-diplomate-geneve/#service"}},
+        {"@type": "Offer", "itemOffered": {"@id": B + "/private-aviation-jet-transfer-geneva/#service"}},
+        {"@type": "Offer", "itemOffered": {"@id": B + "/swiss-boarding-schools-medical-chauffeur/#service"}},
+        {"@type": "Offer", "itemOffered": {"@id": B + "/mercedes-v-class-vip-s-class-fleet-geneva/#service"}},
     ],
 }
 WEBSITE = {"@type": "WebSite", "@id": SITE, "url": B + "/", "name": "Prosper & Co.", "alternateName": "Lux Taxi",
@@ -76,13 +92,13 @@ P = {
      name="Chauffeur by the Hour in Geneva", type="Hourly chauffeur service",
      desc="A car and a private chauffeur at your disposal in Geneva, by the hour, 20 km included per hour. Meetings, roadshows, dinners and events.",
      area=["Geneva", "Lausanne", "Montreux", "Zurich"],
-     offers=[(80, "hour", "Mercedes E-Class from CHF 80 per hour", ""), (100, "hour", "Mercedes V-Class VIP from CHF 100 per hour", ""),
-             (130, "hour", "Mercedes S-Class from CHF 130 per hour", "")]), '/fr/chauffeur-a-disposition-geneve/'),
+     offers=[(90, "hour", "Mercedes E-Class Business from CHF 90 per hour", ""), (110, "hour", "Mercedes V-Class VIP Van from CHF 110 per hour", ""),
+             (140, "hour", "Mercedes S-Class First Class from CHF 140 per hour", "")]), '/fr/chauffeur-a-disposition-geneve/'),
  'corporate-chauffeur-geneva/index.html': ('en', 'Corporate chauffeur', dict(
      name="Corporate Chauffeur Service Geneva", type="Corporate and executive chauffeur service",
      desc="Executive transport for companies, private banks and international organisations in Geneva, invoiced to the company, with one contact for every booking.",
      area=["Geneva", "Lausanne", "Zurich", "Davos"],
-     offers=[(80, "hour", "Mercedes E-Class from CHF 80 per hour", ""), (130, "hour", "Mercedes S-Class from CHF 130 per hour", "")]),
+     offers=[(90, "hour", "Mercedes E-Class Business from CHF 90 per hour", ""), (140, "hour", "Mercedes S-Class First Class from CHF 140 per hour", "")]),
      '/fr/chauffeur-prive-business-geneve/'),
  'wef-davos-chauffeur/index.html': ('en', 'WEF Davos', dict(
      name="WEF Davos Chauffeur Service", type="Chauffeur service for the World Economic Forum in Davos",
@@ -92,18 +108,48 @@ P = {
      name="Chauffeur privé business à Genève", type="Chauffeur privé pour entreprises et dirigeants",
      desc="Transport de dirigeants pour les entreprises, les banques privées et les organisations internationales à Genève, facturé à la société, avec un seul contact.",
      area=["Geneva", "Lausanne", "Zurich", "Davos"],
-     offers=[(80, "heure", "", "Mercedes Classe E dès CHF 80 de l'heure"), (130, "heure", "", "Mercedes Classe S dès CHF 130 de l'heure")]),
+     offers=[(90, "heure", "", "Mercedes Classe E Business dès CHF 90 de l'heure"), (140, "heure", "", "Mercedes Classe S First Class dès CHF 140 de l'heure")]),
      '/corporate-chauffeur-geneva/'),
  'fr/chauffeur-a-disposition-geneve/index.html': ('fr', 'Chauffeur à disposition', dict(
      name="Chauffeur à disposition à Genève", type="Mise à disposition de chauffeur à l'heure",
      desc="Une voiture et un chauffeur privé à votre disposition à Genève, à l'heure, 20 km compris par heure. Rendez-vous, roadshows, dîners, galas et événements.",
      area=["Geneva", "Lausanne", "Montreux", "Zurich"],
-     offers=[(80, "heure", "", "Mercedes Classe E dès CHF 80 de l'heure"), (100, "heure", "", "Mercedes Classe V VIP dès CHF 100 de l'heure"),
-             (130, "heure", "", "Mercedes Classe S dès CHF 130 de l'heure")]), '/chauffeur-by-the-hour/'),
+     offers=[(90, "heure", "", "Mercedes Classe E Business dès CHF 90 de l'heure"), (110, "heure", "", "Mercedes Classe V VIP Van dès CHF 110 de l'heure"),
+             (140, "heure", "", "Mercedes Classe S First Class dès CHF 140 de l'heure")]), '/chauffeur-by-the-hour/'),
  'fr/chauffeur-prive-diplomate-geneve/index.html': ('fr', 'Délégations et diplomates', dict(
      name="Chauffeur privé pour diplomates et délégations à Genève", type="Chauffeur privé pour diplomates, missions et délégations",
      desc="Chauffeurs privés pour les missions permanentes, les délégations officielles et les organisations internationales à Genève, avec plusieurs véhicules coordonnés par un seul contact.",
      area=["Geneva", "Lausanne", "Zurich", "Davos"], offers=[]), None),
+ 'private-aviation-jet-transfer-geneva/index.html': ('en', 'Private jet transfer', dict(
+     name="Private Jet Transfer Geneva", type="Private aviation chauffeur and FBO transfer",
+     desc="Chauffeur for private jet arrivals at Geneva Airport (C3 terminal, Jet Aviation, TAG Aviation, Signature Flight Support), Sion and Zurich. Tarmac access, 24/7 flight monitoring, absolute discretion for UHNW families, diplomats and family offices.",
+     area=["Geneva", "Sion", "Zurich", "Verbier", "Gstaad", "Zermatt", "Courchevel", "Davos"],
+     offers=[(140, "hour", "Mercedes S-Class First Class from CHF 140 per hour", ""), (110, "hour", "Mercedes V-Class VIP Van from CHF 110 per hour", "")]), '/fr/transfert-aviation-privee-geneve/'),
+ 'fr/transfert-aviation-privee-geneve/index.html': ('fr', 'Aviation privée', dict(
+     name="Transfert aviation privée Genève", type="Chauffeur pour l'aviation privée et les FBO",
+     desc="Chauffeur pour les arrivées en jet privé à l'aéroport de Genève (terminal C3, Jet Aviation, TAG Aviation, Signature Flight Support), Sion et Zurich. Accès tarmac, suivi des vols 24 h/24, discrétion absolue.",
+     area=["Geneva", "Sion", "Zurich", "Verbier", "Gstaad", "Zermatt", "Courchevel", "Davos"],
+     offers=[(140, "heure", "", "Mercedes Classe S First Class dès CHF 140 de l'heure"), (110, "heure", "", "Mercedes Classe V VIP Van dès CHF 110 de l'heure")]), '/private-aviation-jet-transfer-geneva/'),
+ 'swiss-boarding-schools-medical-chauffeur/index.html': ('en', 'Boarding schools and clinics', dict(
+     name="Swiss Boarding School and Private Clinic Chauffeur", type="Private chauffeur for boarding schools and private clinics",
+     desc="Trusted private chauffeur to Swiss boarding schools (Institut Le Rosey in Rolle and Gstaad, Collège du Léman in Versoix, Aiglon College and Beau Soleil in Villars-sur-Ollon) and private clinics (Clinique La Prairie in Montreux, Clinique de Genolier, Clinique La Colline in Geneva). Not medical transport.",
+     area=["Geneva", "Rolle", "Gstaad", "Versoix", "Villars-sur-Ollon", "Montreux", "Genolier", "Zurich"],
+     offers=[(90, "hour", "Mercedes E-Class Business from CHF 90 per hour", ""), (110, "hour", "Mercedes V-Class VIP Van from CHF 110 per hour", ""), (140, "hour", "Mercedes S-Class First Class from CHF 140 per hour", "")]), '/fr/chauffeur-internats-cliniques-suisse/'),
+ 'fr/chauffeur-internats-cliniques-suisse/index.html': ('fr', 'Internats et cliniques', dict(
+     name="Chauffeur pour internats suisses et cliniques privées", type="Chauffeur privé pour internats et cliniques privées",
+     desc="Chauffeur de confiance vers les internats suisses (Institut Le Rosey à Rolle et Gstaad, Collège du Léman à Versoix, Aiglon College et Beau Soleil à Villars-sur-Ollon) et les cliniques privées (Clinique La Prairie à Montreux, Clinique de Genolier, Clinique La Colline à Genève). Pas de transport médical.",
+     area=["Geneva", "Rolle", "Gstaad", "Versoix", "Villars-sur-Ollon", "Montreux", "Genolier", "Zurich"],
+     offers=[(90, "heure", "", "Mercedes Classe E Business dès CHF 90 de l'heure"), (110, "heure", "", "Mercedes Classe V VIP Van dès CHF 110 de l'heure"), (140, "heure", "", "Mercedes Classe S First Class dès CHF 140 de l'heure")]), '/swiss-boarding-schools-medical-chauffeur/'),
+ 'mercedes-v-class-vip-s-class-fleet-geneva/index.html': ('en', 'Mercedes fleet', dict(
+     name="Mercedes V-Class VIP and S-Class Fleet Geneva", type="Multi-vehicle chauffeur dispatch",
+     desc="Several Mercedes V-Class VIP vans and S-Class cars at the same time in Geneva since 2010, coordinated by one contact: African and diplomatic delegations, UN conferences, banking roadshows and large families.",
+     area=["Geneva", "Lausanne", "Montreux", "Zurich", "Davos"],
+     offers=[(90, "hour", "Mercedes E-Class Business from CHF 90 per hour per car", ""), (110, "hour", "Mercedes V-Class VIP Van from CHF 110 per hour per car", ""), (140, "hour", "Mercedes S-Class First Class from CHF 140 per hour per car", "")]), '/fr/flotte-mercedes-classe-v-classe-s-geneve/'),
+ 'fr/flotte-mercedes-classe-v-classe-s-geneve/index.html': ('fr', 'Flotte Mercedes', dict(
+     name="Flotte Mercedes Classe V VIP et Classe S à Genève", type="Mise à disposition de plusieurs véhicules avec chauffeur",
+     desc="Plusieurs Mercedes Classe V VIP Van et Classe S en même temps à Genève depuis 2010, coordonnées par un seul contact : délégations africaines et diplomatiques, conférences de l'ONU, roadshows bancaires, grandes familles.",
+     area=["Geneva", "Lausanne", "Montreux", "Zurich", "Davos"],
+     offers=[(90, "heure", "", "Mercedes Classe E Business dès CHF 90 de l'heure par voiture"), (110, "heure", "", "Mercedes Classe V VIP Van dès CHF 110 de l'heure par voiture"), (140, "heure", "", "Mercedes Classe S First Class dès CHF 140 de l'heure par voiture")]), '/mercedes-v-class-vip-s-class-fleet-geneva/'),
 }
 HOME_NAME = {'en': 'Home', 'fr': 'Accueil'}
 
@@ -153,14 +199,17 @@ for path, (lang, crumb, svc, twin) in P.items():
 
 open('llms.txt', 'w', encoding='utf-8').write("""# Prosper & Co. (Lux Taxi)
 
-> Private chauffeur and luxury limousine service in Geneva, Switzerland, since 2010, operated by FairTransfert Sàrl (CHE-495.106.981). Mercedes S-Class, V-Class VIP and E-Class. Fixed price confirmed before the ride. English and French. Bookings 7am to 11pm: +41 76 620 78 50, WhatsApp, info@lux-taxi.com.
+> Private chauffeur and luxury limousine service in Geneva, Switzerland, founded in 2010, operated by FairTransfert Sàrl (CHE-495.106.981). Mercedes S-Class, V-Class VIP and E-Class. Fixed price confirmed before the ride. English and French. Payment in CHF, EUR or USD. 24/7 operations and flight monitoring, priority WhatsApp dispatch in under 10 minutes: +41 76 620 78 50, WhatsApp, info@lux-taxi.com.
 
 ## Services (English)
 - [Geneva chauffeur service](https://www.lux-taxi.com/): luxury and VIP private chauffeur in Geneva
 - [Geneva airport transfer](https://www.lux-taxi.com/geneva-airport-transfer/): Geneva Airport arrivals and private aviation terminal, from CHF 100
-- [Chauffeur by the hour](https://www.lux-taxi.com/chauffeur-by-the-hour/): from CHF 80 per hour, 20 km included per hour
+- [Chauffeur by the hour](https://www.lux-taxi.com/chauffeur-by-the-hour/): E-Class Business from CHF 90, V-Class VIP Van from CHF 110, S-Class First Class from CHF 140 per hour, 20 km included per hour
 - [Corporate chauffeur service](https://www.lux-taxi.com/corporate-chauffeur-geneva/): executives, banks, international organisations
 - [Ski transfers](https://www.lux-taxi.com/ski-transfers/): Verbier, Zermatt, Gstaad, Chamonix, Megève, Courchevel
+- [Private jet transfer Geneva](https://www.lux-taxi.com/private-aviation-jet-transfer-geneva/): tarmac access, C3, Jet Aviation, TAG Aviation, Signature, Sion and Zurich
+- [Boarding schools and private clinics](https://www.lux-taxi.com/swiss-boarding-schools-medical-chauffeur/): Le Rosey, Collège du Léman, Aiglon, Beau Soleil; La Prairie, Genolier, La Colline
+- [Mercedes V-Class VIP and S-Class fleet](https://www.lux-taxi.com/mercedes-v-class-vip-s-class-fleet-geneva/): several cars at once for delegations, UN, roadshows, families
 - [WEF Davos chauffeur](https://www.lux-taxi.com/wef-davos-chauffeur/): World Economic Forum week, quoted as a full programme
 
 ## Services (français)
@@ -168,9 +217,12 @@ open('llms.txt', 'w', encoding='utf-8').write("""# Prosper & Co. (Lux Taxi)
 - [Transfert aéroport Genève](https://www.lux-taxi.com/fr/transfert-aeroport-geneve/): dès CHF 100, vol suivi, terminal d'aviation privée
 - [Chauffeur privé business](https://www.lux-taxi.com/fr/chauffeur-prive-business-geneve/)
 - [Chauffeur à disposition](https://www.lux-taxi.com/fr/chauffeur-a-disposition-geneve/)
+- [Transfert aviation privée](https://www.lux-taxi.com/fr/transfert-aviation-privee-geneve/)
+- [Chauffeur internats et cliniques privées](https://www.lux-taxi.com/fr/chauffeur-internats-cliniques-suisse/)
+- [Flotte Mercedes Classe V et Classe S](https://www.lux-taxi.com/fr/flotte-mercedes-classe-v-classe-s-geneve/)
 - [Chauffeur privé pour diplomates et délégations](https://www.lux-taxi.com/fr/chauffeur-prive-diplomate-geneve/)
 
 ## Areas served
-Geneva, Lausanne, Montreux, Zurich, Verbier, Zermatt, Gstaad, Crans-Montana, Davos, and the French Alps (Chamonix, Megève, Courchevel).
+Geneva, Lausanne, Montreux, Rolle, Zurich, Sion, Verbier, Zermatt, Gstaad, Crans-Montana, Davos, and the French Alps (Chamonix, Megève, Courchevel).
 """)
 print('llms.txt ok')
