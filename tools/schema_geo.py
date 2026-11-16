@@ -7,7 +7,7 @@ B = 'https://www.lux-taxi.com'
 BIZ = B + '/#business'; SITE = B + '/#website'
 
 def city(n): return {"@type": "City", "name": n}
-AREA_ALL = ["Geneva", "Lausanne", "Montreux", "Zurich", "Verbier", "Zermatt", "Gstaad", "Crans-Montana", "Chamonix", "Megève", "Courchevel", "Davos", "Rolle", "Sion", "Villars-sur-Ollon"]
+AREA_ALL = ["Geneva", "Lausanne", "Montreux", "Zurich", "Verbier", "Zermatt", "Gstaad", "Crans-Montana", "Chamonix", "Megève", "Courchevel", "Méribel", "Val d'Isère", "Tignes", "Davos", "Rolle", "Sion", "Villars-sur-Ollon"]
 
 def offer(prix, unite, txt_en, txt_fr, fr):
     return {"@type": "Offer", "priceCurrency": "CHF",
@@ -48,6 +48,9 @@ BUSINESS = {
         offer(290, None, "Geneva Airport to Montreux, Mercedes E-Class Business, fixed price", "", False),
         offer(500, None, "Geneva Airport to Verbier, Mercedes E-Class Business, fixed price", "", False),
         offer(530, None, "Geneva Airport to Courchevel, Mercedes E-Class Business, fixed price", "", False),
+        offer(530, None, "Geneva Airport to Méribel, Mercedes E-Class Business, fixed price", "", False),
+        offer(610, None, "Geneva Airport to Val d'Isère, Mercedes E-Class Business, fixed price", "", False),
+        offer(610, None, "Geneva Airport to Tignes, Mercedes E-Class Business, fixed price", "", False),
         offer(720, None, "Geneva Airport to Zermatt, Mercedes E-Class Business, fixed price", "", False),
         offer(90, "hour", "Chauffeur by the hour, Mercedes E-Class Business, 20 km included per hour", "", False),
         offer(110, "hour", "Chauffeur by the hour, Mercedes V-Class VIP Van (7 pax), 20 km included per hour", "", False),
@@ -84,10 +87,21 @@ P = {
  'ski-transfers/index.html': ('en', 'Ski transfers', dict(
      name="Geneva Ski Transfers", type="Private ski resort transfer",
      desc="Private door-to-door transfers from Geneva Airport to Swiss and French ski resorts in a Mercedes V-Class VIP or E-Class, with room for skis and luggage.",
-     area=["Verbier", "Zermatt", "Gstaad", "Crans-Montana", "Chamonix", "Megève", "Courchevel", "Méribel", "Val d'Isère"],
+     area=["Verbier", "Zermatt", "Gstaad", "Crans-Montana", "Chamonix", "Megève", "Courchevel", "Méribel", "Val d'Isère", "Tignes"],
      offers=[(500, None, "Geneva Airport to Verbier from CHF 500 in a Mercedes E-Class", ""),
              (720, None, "Geneva Airport to Täsch (Zermatt) from CHF 720 in a Mercedes E-Class", ""),
-             (530, None, "Geneva Airport to Courchevel from CHF 530 in a Mercedes E-Class", "")]), None),
+             (530, None, "Geneva Airport to Courchevel from CHF 530 in a Mercedes E-Class", ""),
+             (530, None, "Geneva Airport to Méribel from CHF 530 in a Mercedes E-Class", ""),
+             (610, None, "Geneva Airport to Val d'Isère from CHF 610 in a Mercedes E-Class", ""),
+             (610, None, "Geneva Airport to Tignes from CHF 610 in a Mercedes E-Class", "")]), '/fr/transferts-ski/'),
+ 'fr/transferts-ski/index.html': ('fr', 'Stations de ski', dict(
+     name="Transferts privés Aéroport de Genève vers les stations de ski", type="Transfert privé vers les stations de ski",
+     desc="Transferts privés de porte à porte depuis l'aéroport de Genève vers les stations de ski suisses et françaises, en Van Mercedes Classe V VIP ou Classe E, avec de la place pour les skis et les bagages. Tarif forfaitaire garanti.",
+     area=["Verbier", "Zermatt", "Gstaad", "Crans-Montana", "Chamonix", "Megève", "Courchevel", "Méribel", "Val d'Isère", "Tignes"],
+     offers=[(250, None, "", "Megève dès CHF 250 en Mercedes Classe E"), (300, None, "", "Chamonix dès CHF 300 en Mercedes Classe E"),
+             (500, None, "", "Verbier dès CHF 500 en Mercedes Classe E"), (530, None, "", "Courchevel dès CHF 530 en Mercedes Classe E"),
+             (530, None, "", "Méribel dès CHF 530 en Mercedes Classe E"), (610, None, "", "Val d'Isère dès CHF 610 en Mercedes Classe E"),
+             (610, None, "", "Tignes dès CHF 610 en Mercedes Classe E"), (720, None, "", "Täsch (Zermatt) dès CHF 720 en Mercedes Classe E")]), '/ski-transfers/'),
  'chauffeur-by-the-hour/index.html': ('en', 'Chauffeur by the hour', dict(
      name="Chauffeur by the Hour in Geneva", type="Hourly chauffeur service",
      desc="A car and a private chauffeur at your disposal in Geneva, by the hour, 20 km included per hour. Meetings, roadshows, dinners and events.",
@@ -206,7 +220,7 @@ open('llms.txt', 'w', encoding='utf-8').write("""# Prosper & Co. (Lux Taxi)
 - [Geneva airport transfer](https://www.lux-taxi.com/geneva-airport-transfer/): Geneva Airport arrivals and private aviation terminal, from CHF 100
 - [Chauffeur by the hour](https://www.lux-taxi.com/chauffeur-by-the-hour/): E-Class Business from CHF 90, V-Class VIP Van from CHF 110, S-Class First Class from CHF 140 per hour, 20 km included per hour
 - [Corporate chauffeur service](https://www.lux-taxi.com/corporate-chauffeur-geneva/): executives, banks, international organisations
-- [Ski transfers](https://www.lux-taxi.com/ski-transfers/): Verbier, Zermatt, Gstaad, Chamonix, Megève, Courchevel
+- [Ski transfers](https://www.lux-taxi.com/ski-transfers/): Verbier, Zermatt, Gstaad, Chamonix, Megève, Courchevel, Méribel, Val d'Isère, Tignes
 - [Private jet transfer Geneva](https://www.lux-taxi.com/private-aviation-jet-transfer-geneva/): tarmac access, C3, Jet Aviation, TAG Aviation, Signature, Sion and Zurich
 - [Boarding schools and private clinics](https://www.lux-taxi.com/swiss-boarding-schools-medical-chauffeur/): Le Rosey, Collège du Léman, Aiglon, Beau Soleil; La Prairie, Genolier, La Colline
 - [Mercedes V-Class VIP and S-Class fleet](https://www.lux-taxi.com/mercedes-v-class-vip-s-class-fleet-geneva/): several cars at once for delegations, UN, roadshows, families
@@ -215,6 +229,7 @@ open('llms.txt', 'w', encoding='utf-8').write("""# Prosper & Co. (Lux Taxi)
 ## Services (français)
 - [Chauffeur privé de luxe à Genève](https://www.lux-taxi.com/fr/)
 - [Transfert aéroport Genève](https://www.lux-taxi.com/fr/transfert-aeroport-geneve/): dès CHF 100, vol suivi, terminal d'aviation privée
+- [Transferts stations de ski](https://www.lux-taxi.com/fr/transferts-ski/): Courchevel, Méribel, Val d'Isère, Tignes, Verbier, Chamonix, Megève, Zermatt, dès CHF 250
 - [Chauffeur privé business](https://www.lux-taxi.com/fr/chauffeur-prive-business-geneve/)
 - [Chauffeur à disposition](https://www.lux-taxi.com/fr/chauffeur-a-disposition-geneve/)
 - [Transfert aviation privée](https://www.lux-taxi.com/fr/transfert-aviation-privee-geneve/)
@@ -223,6 +238,6 @@ open('llms.txt', 'w', encoding='utf-8').write("""# Prosper & Co. (Lux Taxi)
 - [Chauffeur privé pour diplomates et délégations](https://www.lux-taxi.com/fr/chauffeur-prive-diplomate-geneve/)
 
 ## Areas served
-Geneva, Lausanne, Montreux, Rolle, Zurich, Sion, Verbier, Zermatt, Gstaad, Crans-Montana, Davos, and the French Alps (Chamonix, Megève, Courchevel).
+Geneva, Lausanne, Montreux, Rolle, Zurich, Sion, Verbier, Zermatt, Gstaad, Crans-Montana, Davos, and the French Alps (Chamonix, Megève, Courchevel, Méribel, Val d'Isère, Tignes).
 """)
 print('llms.txt ok')
