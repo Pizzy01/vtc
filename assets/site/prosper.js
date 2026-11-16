@@ -41,7 +41,7 @@
   // Menu (burger) : panneau plein écran construit à partir des liens de l'en-tête
   var burger = document.querySelector('.ps-burger');
   if (burger) {
-    var LABELS = { '/fr/chauffeur-prive-business-geneve/': ['Entreprises', 'Dirigeants · roadshows'], '/fr/chauffeur-a-disposition-geneve/': ['À disposition', 'Dès CHF 90 / heure'], '/fr/chauffeur-prive-diplomate-geneve/': ['Délégations', 'Missions · conférences'], '/geneva-airport-transfer/': ['Airport transfer', 'Geneva · Zurich · Lyon'], '/ski-transfers/': ['Ski transfers', 'Verbier · Courchevel'], '/chauffeur-by-the-hour/': ['By the hour', 'From CHF 90 / hour'], '/corporate-chauffeur-geneva/': ['Corporate', 'Executives · roadshows'], '/wef-davos-chauffeur/': ['WEF Davos', 'January 2027'] };
+    var LABELS = { '/fr/chauffeur-prive-business-geneve/': ['Entreprises', 'Dirigeants · roadshows'], '/fr/chauffeur-a-disposition-geneve/': ['Mise à disposition', 'Dès CHF 90 / heure'], '/fr/chauffeur-prive-diplomate-geneve/': ['Délégations & Diplomatie', 'Missions · conférences'], '/geneva-airport-transfer/': ['Airport transfer', 'Geneva · Zurich · Lyon'], '/ski-transfers/': ['Ski transfers', 'Verbier · Courchevel'], '/chauffeur-by-the-hour/': ['By the hour', 'From CHF 90 / hour'], '/corporate-chauffeur-geneva/': ['Corporate', 'Executives · roadshows'], '/wef-davos-chauffeur/': ['WEF Davos', 'January 2027'] };
     var menu = document.createElement('div');
     menu.id = 'ps-menu'; menu.className = 'ps-menu'; menu.setAttribute('role', 'dialog'); menu.setAttribute('aria-modal', 'true'); menu.setAttribute('aria-label', 'Menu');
     var lang = document.querySelector('header .ps-lang');

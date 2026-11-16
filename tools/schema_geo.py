@@ -78,7 +78,7 @@ P = {
      offers=[(100, None, "Geneva city from CHF 100 in a Mercedes E-Class", "")]), '/fr/transfert-aeroport-geneve/'),
  'fr/transfert-aeroport-geneve/index.html': ('fr', 'Transfert aéroport', dict(
      name="Transfert aéroport Genève", type="Transfert aéroport avec chauffeur privé",
-     desc="Chauffeur privé depuis les arrivées de l'aéroport de Genève (GVA) ou le terminal d'aviation privée vers votre hôtel, votre domicile ou votre station. Vol suivi, pancarte à votre nom, 60 minutes d'attente comprises.",
+     desc="Chauffeur privé depuis les arrivées de l'aéroport de Genève (GVA) ou le terminal d'aviation privée vers votre hôtel, votre domicile ou votre station. Vol suivi, accueil personnalisé avec pancarte nominative, 60 minutes d'attente comprises.",
      area=["Geneva", "Lausanne", "Montreux", "Zurich", "Gstaad", "Verbier", "Zermatt", "Chamonix", "Megève", "Courchevel"],
      offers=[(100, None, "", "Genève ville dès CHF 100 en Mercedes Classe E"), (180, None, "", "Lausanne dès CHF 180 en Mercedes Classe E"), (500, None, "", "Verbier dès CHF 500 en Mercedes Classe E")]), '/geneva-airport-transfer/'),
  'ski-transfers/index.html': ('en', 'Ski transfers', dict(
