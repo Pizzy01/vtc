@@ -12,6 +12,24 @@
     document.querySelectorAll('section:not(#top) > *').forEach(function (el) { el.classList.add('ps-reveal'); io.observe(el); });
   }
 
+  // WhatsApp : message pré-rempli selon la page et la langue (référence LUX-TAXIVIP pour l'attribution)
+  (function () {
+    var P = location.pathname, S = {
+      '/': ['Geneva chauffeur service', ''], '/geneva-airport-transfer/': ['Geneva airport transfer', ''],
+      '/ski-transfers/': ['Ski transfer', ''], '/chauffeur-by-the-hour/': ['Chauffeur by the hour', ''],
+      '/corporate-chauffeur-geneva/': ['Corporate chauffeur', ''], '/wef-davos-chauffeur/': ['WEF Davos chauffeur', ''],
+      '/fr/': ['', 'Chauffeur privé à Genève'], '/fr/transfert-aeroport-geneve/': ['', 'Transfert aéroport Genève'],
+      '/fr/chauffeur-prive-business-geneve/': ['', 'Chauffeur privé business'], '/fr/chauffeur-a-disposition-geneve/': ['', 'Chauffeur à disposition'],
+      '/fr/chauffeur-prive-diplomate-geneve/': ['', 'Délégations et diplomates']
+    }[P] || [document.title.split(' | ')[0], document.title.split(' | ')[0]];
+    var msg = FR ? 'Bonjour Prosper & Co [Réf: LUX-TAXIVIP], je souhaite un tarif fixe pour : ' + (S[1] || S[0]) + ' - Date : '
+                 : 'Hello Prosper & Co [Ref: LUX-TAXIVIP], I would like a fixed quote for: ' + (S[0] || S[1]) + ' - Date: ';
+    var url = 'https://wa.me/41766207850?text=' + encodeURIComponent(msg);
+    window.psWhatsApp = url;
+    function fix(root) { (root || document).querySelectorAll('a[href^="https://wa.me/41766207850"]').forEach(function (a) { a.href = url; }); }
+    fix(); document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]'); if (a) a.href = url; }, true);
+  })();
+
   // Barre WhatsApp / Call : visible seulement après le haut de page (évite le doublon avec les boutons du haut)
   var bar = document.getElementById('mobile-sticky-bar'), top = document.getElementById('top');
   if (bar) {
@@ -171,3 +189,6 @@
       .then(function () { btn.disabled = false; });
   });
 })();
+
+// WhatsApp : applique le message pré-rempli aussi aux liens créés après (menu)
+(function () { if (window.psWhatsApp) document.querySelectorAll('a[href^="https://wa.me/41766207850"]').forEach(function (a) { a.href = window.psWhatsApp; }); })();

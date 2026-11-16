@@ -1,8 +1,22 @@
-# robots.txt for LUX-TAXI Genève (https://www.lux-taxi.com)
+# robots.txt — Prosper & Co. (https://www.lux-taxi.com)
+# Moteurs de recherche et moteurs IA explicitement autorisés (pages publiques) ; données et API exclues.
+
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Google-Extended
+Allow: /
+Disallow: /assets/data/
+Disallow: /api/
+
 User-agent: *
 Allow: /
 Disallow: /assets/data/
 Disallow: /api/
 
-# Sitemaps
 Sitemap: https://www.lux-taxi.com/sitemap.xml

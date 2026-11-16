@@ -148,7 +148,7 @@ if ($fh = @fopen($csv, 'a')) {
 }
 
 // 2. Envoi de l'e-mail
-$sujet = 'Nouvelle demande de devis — ' . $d['nom'] . ($d['societe'] !== '' ? ' (' . $d['societe'] . ')' : '');
+$sujet = '🔥 [LEAD LUX-TAXI.COM] - Nouvelle demande de réservation — ' . $d['nom'] . ($d['societe'] !== '' ? ' (' . $d['societe'] . ')' : '');
 $lignes = [
     'Client'        => $d['nom'],
     'Société'       => $d['societe'],
