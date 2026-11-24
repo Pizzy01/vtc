@@ -103,7 +103,7 @@ P = {
              (530, None, "", "Méribel dès CHF 530 en Mercedes Classe E"), (610, None, "", "Val d'Isère dès CHF 610 en Mercedes Classe E"),
              (610, None, "", "Tignes dès CHF 610 en Mercedes Classe E"), (720, None, "", "Täsch (Zermatt) dès CHF 720 en Mercedes Classe E")]), '/ski-transfers/'),
  'chauffeur-by-the-hour/index.html': ('en', 'Chauffeur by the hour', dict(
-     name="Chauffeur by the Hour in Geneva", type="Hourly chauffeur service",
+     name="Private Chauffeur Geneva by the Hour", type="Hourly chauffeur service",
      desc="A car and a private chauffeur at your disposal in Geneva, by the hour, 20 km included per hour. Meetings, roadshows, dinners and events.",
      area=["Geneva", "Lausanne", "Montreux", "Zurich"],
      offers=[(90, "hour", "Mercedes E-Class Business from CHF 90 per hour", ""), (110, "hour", "Mercedes V-Class VIP Van from CHF 110 per hour", ""),
@@ -117,7 +117,11 @@ P = {
  'wef-davos-chauffeur/index.html': ('en', 'WEF Davos', dict(
      name="WEF Davos Chauffeur Service", type="Chauffeur service for the World Economic Forum in Davos",
      desc="One car and one chauffeur by the day for the World Economic Forum week in Davos, quoted as a full programme: car, chauffeur, fuel, tolls and the chauffeur's stay included.",
-     area=["Davos", "Klosters", "Zurich", "Geneva"], offers=[]), None),
+     area=["Davos", "Klosters", "Zurich", "Geneva"], offers=[]), '/fr/chauffeur-wef-davos/'),
+ 'fr/chauffeur-wef-davos/index.html': ('fr', 'WEF Davos', dict(
+     name="Chauffeur privé WEF Davos", type="Chauffeur privé pour le Forum économique mondial de Davos",
+     desc="Une voiture et un chauffeur à la journée pour la semaine du Forum économique mondial à Davos, en devis global : voiture, chauffeur, carburant, péages et hébergement du chauffeur compris.",
+     area=["Davos", "Klosters", "Zurich", "Geneva"], offers=[]), '/wef-davos-chauffeur/'),
  'fr/chauffeur-prive-business-geneve/index.html': ('fr', 'Chauffeur privé business', dict(
      name="Chauffeur privé business à Genève", type="Chauffeur privé pour entreprises et dirigeants",
      desc="Transport de dirigeants pour les entreprises, les banques privées et les organisations internationales à Genève, facturé à la société, avec un seul contact.",
@@ -236,6 +240,7 @@ open('llms.txt', 'w', encoding='utf-8').write("""# Prosper & Co. (Lux Taxi)
 - [Chauffeur internats et cliniques privées](https://www.lux-taxi.com/fr/chauffeur-internats-cliniques-suisse/)
 - [Flotte Mercedes Classe V et Classe S](https://www.lux-taxi.com/fr/flotte-mercedes-classe-v-classe-s-geneve/)
 - [Chauffeur privé pour diplomates et délégations](https://www.lux-taxi.com/fr/chauffeur-prive-diplomate-geneve/)
+- [Chauffeur privé WEF Davos](https://www.lux-taxi.com/fr/chauffeur-wef-davos/): semaine du Forum économique mondial, devis global
 
 ## Areas served
 Geneva, Lausanne, Montreux, Rolle, Zurich, Sion, Verbier, Zermatt, Gstaad, Crans-Montana, Davos, and the French Alps (Chamonix, Megève, Courchevel, Méribel, Val d'Isère, Tignes).

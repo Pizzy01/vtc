@@ -32,13 +32,13 @@
   </url>
   <url>
     <loc>https://www.lux-taxi.com/wef-davos-chauffeur/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.lux-taxi.com/fr/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -105,6 +105,12 @@
   <url>
     <loc>https://www.lux-taxi.com/fr/transferts-ski/</loc>
     <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.lux-taxi.com/fr/chauffeur-wef-davos/</loc>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

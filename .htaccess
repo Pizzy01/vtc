@@ -80,7 +80,7 @@
     RewriteRule ^(fr/)?(service|service_category)(/.*)?$ https://www.lux-taxi.com/geneva-airport-transfer/ [R=301,L,QSD,NE]
     RewriteRule ^(fr/)?(category|tag|author|blog|feed)(/.*)?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
     RewriteRule ^(it|ru|de|en)(/.*)?$ https://www.lux-taxi.com/ [R=301,L,QSD,NE]
-    RewriteRule ^fr/(?!(chauffeur-prive-business-geneve|chauffeur-a-disposition-geneve|chauffeur-prive-diplomate-geneve|transfert-aeroport-geneve|transfert-aviation-privee-geneve|chauffeur-internats-cliniques-suisse|flotte-mercedes-classe-v-classe-s-geneve|transferts-ski)/?$).+$ https://www.lux-taxi.com/fr/ [R=301,L,QSD,NE]
+    RewriteRule ^fr/(?!(chauffeur-prive-business-geneve|chauffeur-a-disposition-geneve|chauffeur-prive-diplomate-geneve|transfert-aeroport-geneve|transfert-aviation-privee-geneve|chauffeur-internats-cliniques-suisse|flotte-mercedes-classe-v-classe-s-geneve|transferts-ski|chauffeur-wef-davos)/?$).+$ https://www.lux-taxi.com/fr/ [R=301,L,QSD,NE]
 
     # Une seule version du site : https://www.lux-taxi.com (en un seul saut)
     RewriteCond %{HTTPS} off [OR]
